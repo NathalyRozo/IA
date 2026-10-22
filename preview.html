@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PRISMA - Radar de Medios & Cobertura Informativa</title>
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#1e1b4b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { 
+      font-family: 'Inter', sans-serif; 
+      -webkit-tap-highlight-color: transparent;
+    }
+    h1, h2, h3, h4, .font-display { font-family: 'Outfit', sans-serif; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* Touch-friendly scrollbars */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #f8fafc; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+
+    /* Hide scrollbar for horizontal chips on touch */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
+
+  <!-- Mobile Drawer Backdrop Overlay -->
+  <div id="drawer-backdrop" onclick="toggleSidebar(false)" class="fixed inset-0 bg-slate-950/70 backdrop-blur-xs z-40 hidden transition-opacity duration-300"></div>
+
+  <!-- Top Announcement: Ethical & Scope Disclaimer Bar -->
+  <div class="bg-gradient-to-r from-violet-950 via-indigo-950 to-slate-950 text-white text-[11px] sm:text-xs px-3 sm:px-4 py-2 border-b border-indigo-950/60 z-30">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2 truncate">
+        <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
+        <span class="truncate">
+          <strong class="font-semibold text-slate-100">Observatorio de Medios:</strong> 10 salas de redacción analizadas. No califica veracidad fáctica.
+        </span>
+      </div>
+      <button onclick="toggleModal('modal-ethics', true)" class="text-indigo-300 hover:text-white font-bold underline flex-shrink-0 flex items-center gap-1 min-h-[32px] px-1">
+        <span>Límites</span>
+        <i data-lucide="info" class="w-3.5 h-3.5"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Multiplatform App Frame -->
+  <div class="flex-1 flex w-full relative overflow-hidden">
+
+    <!-- COLLAPSIBLE MOBILE-FIRST SIDEBAR / DRAWER -->
+    <aside id="sidebar" class="bg-slate-900 text-slate-300 w-[280px] sm:w-72 flex-shrink-0 flex flex-col border-r border-slate-800 fixed lg:static inset-y-0 left-0 z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out shadow-2xl lg:shadow-none">
+      
+      <!-- Brand & Mobile Close Header -->
+      <div class="h-16 flex items-center justify-between px-5 border-b border-slate-800 bg-slate-950/60 flex-shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-violet-500 to-cyan-400 flex items-center justify-center text-white font-black text-lg shadow-md shadow-indigo-500/30">
+            P
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-lg tracking-tight text-white flex items-center gap-0.5">
+              PRISMA<span class="text-indigo-400 text-xl leading-none">.</span>
+            </div>
+            <div class="text-[9px] text-slate-400 uppercase tracking-widest font-mono font-semibold -mt-0.5">Radar de Medios</div>
+          </div>
+        </div>
+
+        <!-- Mobile Drawer Close Button -->
+        <button onclick="toggleSidebar(false)" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 lg:hidden min-w-[40px] min-h-[40px] flex items-center justify-center" aria-label="Cerrar Menú">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Quick Status Pill -->
+      <div class="p-3.5 border-b border-slate-800/60">
+        <div class="bg-slate-800/80 rounded-2xl p-3 border border-slate-700/60 flex items-center justify-between">
+          <div>
+            <div class="text-[10px] text-slate-400 uppercase font-semibold">Monitoreo Activo</div>
+            <div class="text-xs font-bold text-white flex items-center gap-1.5 mt-0.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              10 Medios Clave
+            </div>
+          </div>
+          <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">
+            5 Nac | 5 Int
+          </span>
+        </div>
+      </div>
+
+      <!-- Sidebar Navigation Menu (Touch-Optimized) -->
+      <nav class="flex-1 px-3 py-3 space-y-1 overflow-y-auto">
+        <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn active w-full flex items-center gap-3 px-3.5 py-3 rounded-2xl text-xs sm:text-sm font-medium transition text-indigo-400 bg-slate-800 min-h-[46px]">
+          <i data-lucide="layout-grid" class="w-4 h-4"></i>
+          <span class="flex-1 text-left">Dashboard Principal</span>
+        </button>
+
+        <button onclick="switchTab('coverage')" id="nav-coverage" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-2xl text-xs sm:text-sm font-medium transition text-slate-400 hover:text-white hover:bg-slate-800/60 min-h-[46px]">
+          <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
+          <span class="flex-1 text-left">Cobertura & Subtemas</span>
+          <span class="text-[10px] font-bold bg-indigo-500/20 text-indigo-300 px-1.5 py-0.5 rounded-full">161</span>
+        </button>
+
+        <button onclick="switchTab('national')" id="nav-national" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-2xl text-xs sm:text-sm font-medium transition text-slate-400 hover:text-white hover:bg-slate-800/60 min-h-[46px]">
+          <i data-lucide="map-pin" class="w-4 h-4 text-amber-400"></i>
+          <div class="text-left flex-1">
+            <span class="block">Agenda Nacional</span>
+            <span class="text-[10px] text-slate-500 block">Departamentos de Colombia</span>
+          </div>
+        </button>
+
+        <button onclick="switchTab('international')" id="nav-international" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-2xl text-xs sm:text-sm font-medium transition text-slate-400 hover:text-white hover:bg-slate-800/60 min-h-[46px]">
+          <i data-lucide="globe" class="w-4 h-4 text-cyan-400"></i>
+          <div class="text-left flex-1">
+            <span class="block">Agenda Internacional</span>
+            <span class="text-[10px] text-slate-500 block">Continentes y Países</span>
+          </div>
+        </button>
+
+        <button onclick="switchTab('contrast')" id="nav-contrast" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-2xl text-xs sm:text-sm font-medium transition text-slate-400 hover:text-white hover:bg-slate-800/60 min-h-[46px]">
+          <i data-lucide="split" class="w-4 h-4 text-violet-400"></i>
+          <span class="flex-1 text-left">Contraste 10 Medios</span>
+        </button>
+
+        <button onclick="switchTab('trends')" id="nav-trends" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-2xl text-xs sm:text-sm font-medium transition text-slate-400 hover:text-white hover:bg-slate-800/60 min-h-[46px]">
+          <i data-lucide="flame" class="w-4 h-4 text-rose-400"></i>
+          <span class="flex-1 text-left">Tendencias Top 5</span>
+          <span class="text-[10px] font-bold bg-rose-500/20 text-rose-300 px-1.5 py-0.5 rounded-full">Top</span>
+        </button>
+
+        <button onclick="switchTab('reports')" id="nav-reports" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-2xl text-xs sm:text-sm font-medium transition text-slate-400 hover:text-white hover:bg-slate-800/60 min-h-[46px]">
+          <i data-lucide="file-check-2" class="w-4 h-4 text-emerald-400"></i>
+          <span class="flex-1 text-left">Informe en Pantalla</span>
+        </button>
+      </nav>
+
+      <!-- Sync Button & Footer -->
+      <div class="p-4 border-t border-slate-800 bg-slate-950/60 text-xs text-slate-400 space-y-2.5 flex-shrink-0">
+        <div class="flex items-center justify-between text-[11px]">
+          <span>Último rastreo:</span>
+          <span class="font-mono text-emerald-400 font-semibold">Hace 10 min</span>
+        </div>
+        <button onclick="triggerFeedUpdate()" id="btn-sync" class="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-md shadow-indigo-600/30 transition min-h-[44px]">
+          <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+          <span id="sync-text">Sincronizar Feeds</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- CONTENT WRAPPER -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+
+      <!-- TOP BAR WITH HAMBURGER BUTTON -->
+      <header class="h-16 bg-white border-b border-slate-200/90 sticky top-0 z-20 px-3 sm:px-6 lg:px-8 flex items-center justify-between shadow-xs">
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- HAMBURGER BUTTON (MIN 44x44 TOUCH TARGET) -->
+          <button onclick="toggleSidebar(true)" class="p-2.5 rounded-2xl text-slate-700 hover:bg-slate-100 active:bg-slate-200 transition focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Abrir Menú de Navegación">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+
+          <div class="flex items-center gap-2 truncate">
+            <span id="current-section-title" class="font-display font-extrabold text-base sm:text-lg text-slate-900 truncate">
+              Dashboard Principal
+            </span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- Search box (Hidden on very small screens, responsive expand) -->
+          <div class="relative hidden md:block">
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-2.5"></i>
+            <input type="text" id="quick-search-input" onkeyup="filterMasterTable()" placeholder="Buscar noticia o tema..." class="pl-9 pr-3 py-1.5 text-xs bg-slate-100 border border-slate-200 rounded-xl focus:outline-none focus:border-indigo-500 w-48 sm:w-60 transition">
+          </div>
+
+          <button onclick="toggleModal('modal-ethics', true)" class="px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 hover:bg-slate-100 flex items-center gap-1.5 min-h-[38px]">
+            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+            <span class="hidden sm:inline">Ética & Alcance</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- PAGE CONTENT AREA -->
+      <div class="p-3.5 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto space-y-6 sm:space-y-8">
+
+        <!-- ========================================== -->
+        <!-- TAB 1: DASHBOARD -->
+        <!-- ========================================== -->
+        <div id="tab-dashboard" class="tab-content active space-y-6 sm:space-y-8">
+          <!-- Hero Banner -->
+          <div class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-indigo-950 to-violet-900 rounded-3xl p-5 sm:p-8 lg:p-10 text-white shadow-xl">
+            <div class="relative z-10 space-y-3 sm:space-y-4 max-w-3xl">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-white/10 backdrop-blur-md text-cyan-300 border border-white/10">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                <span>Plataforma Adaptativa Móvil & Computador</span>
+              </div>
+              <h1 class="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                Decodifica los encuadres de la agenda informativa.
+              </h1>
+              <p class="text-slate-300 text-xs sm:text-sm lg:text-base leading-relaxed">
+                PRISMA monitorea diez medios líderes (5 colombianos y 5 internacionales). Mide volumen de atención, analiza encuadres narrativos y detecta tendencias sin emitir juicios de valor.
+              </p>
+
+              <div class="pt-2 flex flex-col sm:flex-row gap-2.5 sm:gap-3">
+                <button onclick="switchTab('coverage')" class="w-full sm:w-auto px-5 py-3 rounded-2xl bg-indigo-500 hover:bg-indigo-400 text-white text-xs font-bold shadow-lg shadow-indigo-500/30 transition flex items-center justify-center gap-2 min-h-[46px]">
+                  <span>Explorar Cobertura & Subtemas</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+                <button onclick="switchTab('contrast')" class="w-full sm:w-auto px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold backdrop-blur-md transition flex items-center justify-center gap-2 min-h-[46px]">
+                  <i data-lucide="split" class="w-4 h-4 text-violet-300"></i>
+                  <span>Ver Contraste 10 Medios</span>
+                </button>
+              </div>
+            </div>
+            <div class="absolute -right-10 -bottom-10 w-72 sm:w-96 h-72 sm:h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+          </div>
+
+          <!-- KPI Cards (1-col on mobile, 2 on tablet, 4 on desktop) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+              <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase">
+                <span>Total Noticias</span>
+                <i data-lucide="newspaper" class="w-4 h-4 text-indigo-500"></i>
+              </div>
+              <div class="text-3xl font-black text-slate-900 mt-2 font-display">161</div>
+              <div class="text-[11px] text-slate-400 mt-1">
+                <span class="text-emerald-600 font-bold">96 Nacionales</span> • <span class="text-cyan-600 font-bold">65 Internac.</span>
+              </div>
+            </div>
+
+            <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+              <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase">
+                <span>Tema Dominante</span>
+                <i data-lucide="flame" class="w-4 h-4 text-rose-500"></i>
+              </div>
+              <div class="text-3xl font-black text-indigo-600 mt-2 font-display">Política</div>
+              <div class="text-[11px] text-slate-400 mt-1">42 publicaciones (26.1% agenda)</div>
+            </div>
+
+            <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+              <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase">
+                <span>Departamentos</span>
+                <i data-lucide="map" class="w-4 h-4 text-amber-500"></i>
+              </div>
+              <div class="text-3xl font-black text-amber-600 mt-2 font-display">6 Zonas</div>
+              <div class="text-[11px] text-slate-400 mt-1">Foco en Bogotá, Antioquia & Caribe</div>
+            </div>
+
+            <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
+              <div class="flex items-center justify-between text-slate-500 text-xs font-semibold uppercase">
+                <span>Acontecimientos</span>
+                <i data-lucide="sparkles" class="w-4 h-4 text-cyan-500"></i>
+              </div>
+              <div class="text-3xl font-black text-slate-900 mt-2 font-display">18 Eventos</div>
+              <div class="text-[11px] text-slate-400 mt-1">Clustering multilingüe por PLN</div>
+            </div>
+          </div>
+
+          <!-- 10 Monitored Media Outlets Grid (Responsive 1-col on mobile, 2-col on tablet, 5-col on desktop) -->
+          <div class="bg-white p-4 sm:p-6 lg:p-8 rounded-3xl border border-slate-200 shadow-xs space-y-4 sm:space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+              <div>
+                <h2 class="font-display text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-2">
+                  <i data-lucide="radio" class="w-5 h-5 text-indigo-600"></i>
+                  Panel de los 10 Medios Monitoreados
+                </h2>
+                <p class="text-xs text-slate-500 mt-0.5">5 salas de redacción nacionales y 5 internacionales.</p>
+              </div>
+              <div class="flex gap-2">
+                <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-200">5 Nacionales</span>
+                <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-cyan-50 text-cyan-800 border border-cyan-200">5 Internacionales</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+              <!-- El Espectador -->
+              <div class="p-3.5 rounded-2xl bg-amber-50/50 border border-amber-200/80 flex sm:flex-col justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span class="text-[9px] font-bold text-amber-800 uppercase px-1.5 py-0.5 rounded bg-amber-100">Nacional</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <div class="font-display font-bold text-slate-900 text-sm">El Espectador</div>
+                  <div class="text-[11px] text-slate-500">Bogotá • Prensa Libre</div>
+                </div>
+                <div class="text-[11px] text-indigo-700 font-bold sm:mt-2">24 noticias</div>
+              </div>
+
+              <!-- RTVC -->
+              <div class="p-3.5 rounded-2xl bg-amber-50/50 border border-amber-200/80 flex sm:flex-col justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span class="text-[9px] font-bold text-amber-800 uppercase px-1.5 py-0.5 rounded bg-amber-100">Nacional</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <div class="font-display font-bold text-slate-900 text-sm">RTVC Noticias</div>
+                  <div class="text-[11px] text-slate-500">Colombia • Medio Público</div>
+                </div>
+                <div class="text-[11px] text-indigo-700 font-bold sm:mt-2">21 noticias</div>
+              </div>
+
+              <!-- El Tiempo -->
+              <div class="p-3.5 rounded-2xl bg-amber-50/50 border border-amber-200/80 flex sm:flex-col justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span class="text-[9px] font-bold text-amber-800 uppercase px-1.5 py-0.5 rounded bg-amber-100">Nacional</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <div class="font-display font-bold text-slate-900 text-sm">El Tiempo</div>
+                  <div class="text-[11px] text-slate-500">Bogotá • Gran Circulación</div>
+                </div>
+                <div class="text-[11px] text-indigo-700 font-bold sm:mt-2">26 noticias</div>
+              </div>
+
+              <!-- El Heraldo -->
+              <div class="p-3.5 rounded-2xl bg-amber-50/50 border border-amber-200/80 flex sm:flex-col justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span class="text-[9px] font-bold text-amber-800 uppercase px-1.5 py-0.5 rounded bg-amber-100">Nacional</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <div class="font-display font-bold text-slate-900 text-sm">El Heraldo</div>
+                  <div class="text-[11px] text-slate-500">Barranquilla • Costa Caribe</div>
+                </div>
+                <div class="text-[11px] text-indigo-700 font-bold sm:mt-2">18 noticias</div>
+              </div>
+
+              <!-- El Colombiano -->
+              <div class="p-3.5 rounded-2xl bg-amber-50/50 border border-amber-200/80 flex sm:flex-col justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span class="text-[9px] font-bold text-amber-800 uppercase px-1.5 py-0.5 rounded bg-amber-100">Nacional</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <div class="font-display font-bold text-slate-900 text-sm">El Colombiano</div>
+                  <div class="text-[11px] text-slate-500">Medellín • Región Andina</div>
+                </div>
+                <div class="text-[11px] text-indigo-700 font-bold sm:mt-2">19 noticias</div>
+              </div>
+
+              <!-- Reuters -->
+              <div class="p-3.5 rounded-2xl bg-cyan-50/50 border border-cyan-200/80 flex sm:flex-col justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span class="text-[9px] font-bold text-cyan-800 uppercase px-1.5 py-0.5 rounded bg-cyan-100">Internacional</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <div class="font-display font-bold text-slate-900 text-sm">Reuters</div>
+                  <div class="text-[11px] text-slate-500">Global • Mercados & Finanzas</div>
+                </div>
+                <div class="text-[11px] text-indigo-700 font-bold sm:mt-2">15 noticias</div>
+              </div>
+
+              <!-- BBC News -->
+              <div class="p-3.5 rounded-2xl bg-cyan-50/50 border border-cyan-200/80 flex sm:flex-col justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span class="text-[9px] font-bold text-cyan-800 uppercase px-1.5 py-0.5 rounded bg-cyan-100">Internacional</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <div class="font-display font-bold text-slate-900 text-sm">BBC News</div>
+                  <div class="text-[11px] text-slate-500">Reino Unido • BBC Mundo</div>
+                </div>
+                <div class="text-[11px] text-indigo-700 font-bold sm:mt-2">14 noticias</div>
+              </div>
+
+              <!-- AP News -->
+              <div class="p-3.5 rounded-2xl bg-cyan-50/50 border border-cyan-200/80 flex sm:flex-col justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span class="text-[9px] font-bold text-cyan-800 uppercase px-1.5 py-0.5 rounded bg-cyan-100">Internacional</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <div class="font-display font-bold text-slate-900 text-sm">AP News</div>
+                  <div class="text-[11px] text-slate-500">EE.UU. • Associated Press</div>
+                </div>
+                <div class="text-[11px] text-indigo-700 font-bold sm:mt-2">12 noticias</div>
+              </div>
+
+              <!-- AFP -->
+              <div class="p-3.5 rounded-2xl bg-cyan-50/50 border border-cyan-200/80 flex sm:flex-col justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span class="text-[9px] font-bold text-cyan-800 uppercase px-1.5 py-0.5 rounded bg-cyan-100">Internacional</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <div class="font-display font-bold text-slate-900 text-sm">AFP</div>
+                  <div class="text-[11px] text-slate-500">Francia • Agence France-Presse</div>
+                </div>
+                <div class="text-[11px] text-indigo-700 font-bold sm:mt-2">11 noticias</div>
+              </div>
+
+              <!-- NYT -->
+              <div class="p-3.5 rounded-2xl bg-cyan-50/50 border border-cyan-200/80 flex sm:flex-col justify-between items-start">
+                <div>
+                  <div class="flex items-center gap-1.5 mb-1">
+                    <span class="text-[9px] font-bold text-cyan-800 uppercase px-1.5 py-0.5 rounded bg-cyan-100">Internacional</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  </div>
+                  <div class="font-display font-bold text-slate-900 text-sm">NY Times</div>
+                  <div class="text-[11px] text-slate-500">EE.UU. • The New York Times</div>
+                </div>
+                <div class="text-[11px] text-indigo-700 font-bold sm:mt-2">10 noticias</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 2: COBERTURA, TEMAS Y SUBTEMAS -->
+        <!-- ========================================== -->
+        <div id="tab-coverage" class="tab-content space-y-6 sm:space-y-8">
+          <div class="pb-4 sm:pb-6 border-b border-slate-200">
+            <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Módulo 2</span>
+            <h1 class="font-display text-xl sm:text-3xl font-extrabold text-slate-900">
+              Cobertura Mediática, Temas y Subtemas
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">
+              Jerarquía estructurada por Tema General y Subtemas, con balance por sector Nacional vs Internacional.
+            </p>
+          </div>
+
+          <!-- Sector Summary (Single-col mobile, 2-col desktop) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5">
+            <div class="bg-gradient-to-br from-amber-500/10 via-amber-50 to-white p-5 sm:p-6 rounded-3xl border border-amber-200/80 shadow-xs flex items-center justify-between">
+              <div>
+                <span class="text-[11px] sm:text-xs font-bold text-amber-800 uppercase tracking-wider">Cobertura Nacional (Colombia)</span>
+                <div class="text-3xl sm:text-4xl font-black text-slate-900 font-display mt-1">96 <span class="text-xs sm:text-sm font-medium text-slate-500">noticias</span></div>
+                <p class="text-[11px] sm:text-xs text-slate-600 mt-1">59.6% de la atención total monitoreada</p>
+              </div>
+              <div class="w-12 sm:w-14 h-12 sm:h-14 rounded-2xl bg-amber-500 text-white flex items-center justify-center font-display font-black text-lg sm:text-xl shadow-md shadow-amber-500/30 flex-shrink-0">
+                🇨🇴
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-cyan-500/10 via-cyan-50 to-white p-5 sm:p-6 rounded-3xl border border-cyan-200/80 shadow-xs flex items-center justify-between">
+              <div>
+                <span class="text-[11px] sm:text-xs font-bold text-cyan-800 uppercase tracking-wider">Cobertura Internacional (Mundo)</span>
+                <div class="text-3xl sm:text-4xl font-black text-slate-900 font-display mt-1">65 <span class="text-xs sm:text-sm font-medium text-slate-500">noticias</span></div>
+                <p class="text-[11px] sm:text-xs text-slate-600 mt-1">40.4% de la atención total monitoreada</p>
+              </div>
+              <div class="w-12 sm:w-14 h-12 sm:h-14 rounded-2xl bg-cyan-600 text-white flex items-center justify-center font-display font-black text-lg sm:text-xl shadow-md shadow-cyan-600/30 flex-shrink-0">
+                🌍
+              </div>
+            </div>
+          </div>
+
+          <!-- Hierarchy Accordion (Topics & Subtopics) -->
+          <div class="bg-white p-4 sm:p-6 lg:p-8 rounded-3xl border border-slate-200/90 shadow-xs space-y-4 sm:space-y-6">
+            <h2 class="font-display text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+              <i data-lucide="layers" class="w-5 h-5 text-indigo-600"></i>
+              Jerarquía de Temas y Despliegue de Subtemas
+            </h2>
+
+            <div class="space-y-3.5">
+              <!-- Tema 1 -->
+              <div class="border border-slate-200 rounded-2xl p-4 sm:p-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-7 h-7 rounded-xl bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center">1</span>
+                    <div>
+                      <h3 class="font-display font-bold text-slate-900 text-sm sm:text-base">Política</h3>
+                      <div class="text-[11px] text-slate-500">42 noticias • 26.1% de la cobertura</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-1.5 self-start sm:self-auto">
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-50 text-amber-800">28 Nac</span>
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-800">14 Int</span>
+                  </div>
+                </div>
+                <div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="text-xs font-bold text-slate-800">Reforma Laboral & Pensional</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">18 noticias (Recargos, acuerdos)</div>
+                  </div>
+                  <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="text-xs font-bold text-slate-800">Elecciones & Gobernabilidad</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">14 noticias (Encuestas, pactos)</div>
+                  </div>
+                  <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="text-xs font-bold text-slate-800">Relaciones Diplomáticas</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">10 noticias (Cumbres bilaterales)</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tema 2 -->
+              <div class="border border-slate-200 rounded-2xl p-4 sm:p-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-7 h-7 rounded-xl bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center">2</span>
+                    <div>
+                      <h3 class="font-display font-bold text-slate-900 text-sm sm:text-base">Economía & Finanzas</h3>
+                      <div class="text-[11px] text-slate-500">35 noticias • 21.7% de la cobertura</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-1.5 self-start sm:self-auto">
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-50 text-amber-800">20 Nac</span>
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-800">15 Int</span>
+                  </div>
+                </div>
+                <div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="text-xs font-bold text-slate-800">Inflación & Tasas de Interés</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">15 noticias (BanRep, Fed, IPC)</div>
+                  </div>
+                  <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="text-xs font-bold text-slate-800">Tarifas Energéticas Caribe</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">11 noticias (CREG, subsidios)</div>
+                  </div>
+                  <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="text-xs font-bold text-slate-800">Petróleo & Divisas</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">9 noticias (Ecopetrol, TRM)</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tema 3 -->
+              <div class="border border-slate-200 rounded-2xl p-4 sm:p-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-7 h-7 rounded-xl bg-rose-100 text-rose-700 font-bold text-xs flex items-center justify-center">3</span>
+                    <div>
+                      <h3 class="font-display font-bold text-slate-900 text-sm sm:text-base">Conflicto y Paz</h3>
+                      <div class="text-[11px] text-slate-500">19 noticias • 11.8% de la cobertura</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-1.5 self-start sm:self-auto">
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-50 text-amber-800">16 Nac</span>
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-800">3 Int</span>
+                  </div>
+                </div>
+                <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="text-xs font-bold text-slate-800">Mesas de Diálogo & Cese al Fuego</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">11 noticias (Negociaciones, veeduría)</div>
+                  </div>
+                  <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="text-xs font-bold text-slate-800">Seguridad Rural y Comunidades</div>
+                    <div class="text-[11px] text-slate-500 mt-0.5">8 noticias (Antioquia, Cauca, alertas)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FULL MASTER LIST OF MONITORED NEWS (RESPONSIVE CARDS ON MOBILE + TABLE ON DESKTOP) -->
+          <div class="bg-white rounded-3xl border border-slate-200/90 shadow-xs space-y-4 p-4 sm:p-6 lg:p-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+              <div>
+                <h2 class="font-display text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+                  <i data-lucide="list-filter" class="w-5 h-5 text-indigo-600"></i>
+                  Monitoreo Completo de Noticias
+                </h2>
+                <p class="text-xs text-slate-500">Toca cualquier noticia para abrir su Ficha de Análisis Individual.</p>
+              </div>
+
+              <!-- Filter Pills (Touch friendly scroll on mobile) -->
+              <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs">
+                <button onclick="filterMasterCategory('all')" class="cat-pill active px-3 py-2 rounded-xl bg-indigo-600 text-white font-bold whitespace-nowrap min-h-[38px]">Todas (161)</button>
+                <button onclick="filterMasterCategory('nacional')" class="cat-pill px-3 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold whitespace-nowrap min-h-[38px]">Nacionales</button>
+                <button onclick="filterMasterCategory('internacional')" class="cat-pill px-3 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold whitespace-nowrap min-h-[38px]">Internacionales</button>
+                <button onclick="filterMasterCategory('politica')" class="cat-pill px-3 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold whitespace-nowrap min-h-[38px]">Política</button>
+                <button onclick="filterMasterCategory('economia')" class="cat-pill px-3 py-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold whitespace-nowrap min-h-[38px]">Economía</button>
+              </div>
+            </div>
+
+            <!-- MOBILE CARD FEED (Single column on mobile, avoids horizontal scrolling) -->
+            <div id="master-cards-mobile" class="block sm:hidden space-y-3">
+              <!-- Populated by JS for mobile -->
+            </div>
+
+            <!-- DESKTOP TABLE VIEW (Visible only on sm: and up) -->
+            <div class="hidden sm:block overflow-x-auto">
+              <table class="w-full text-left text-sm text-slate-700">
+                <thead class="bg-slate-50 text-xs uppercase text-slate-400 font-semibold border-b border-slate-200">
+                  <tr>
+                    <th class="px-4 py-3">Medio</th>
+                    <th class="px-4 py-3">Titular</th>
+                    <th class="px-4 py-3">Tema & Subtema</th>
+                    <th class="px-4 py-3">Alcance</th>
+                    <th class="px-4 py-3 text-center">Ficha de Análisis</th>
+                  </tr>
+                </thead>
+                <tbody id="master-table-body" class="divide-y divide-slate-100 text-xs">
+                  <!-- Populated by JS for desktop -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 3: AGENDA NACIONAL (DEPARTAMENTOS) -->
+        <!-- ========================================== -->
+        <div id="tab-national" class="tab-content space-y-6 sm:space-y-8">
+          <div class="pb-4 sm:pb-6 border-b border-slate-200">
+            <span class="text-xs font-bold text-amber-700 uppercase tracking-wider">Módulo Geográfico 1</span>
+            <h1 class="font-display text-xl sm:text-3xl font-extrabold text-slate-900">
+              Agenda Nacional: Cobertura por Departamentos
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">
+              Desglose territorial de las publicaciones en Colombia con resúmenes dinámicos y focos temáticos regionales.
+            </p>
+          </div>
+
+          <!-- Department Selector Bar (Touch Scrollable on mobile) -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+            <button onclick="selectDepartment('antioquia')" id="dept-btn-antioquia" class="dept-btn active px-4 py-2.5 rounded-2xl bg-slate-900 text-white font-bold text-xs whitespace-nowrap shadow-xs min-h-[44px]">
+              Antioquia (19)
+            </button>
+            <button onclick="selectDepartment('bogota')" id="dept-btn-bogota" class="dept-btn px-4 py-2.5 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-semibold text-xs whitespace-nowrap min-h-[44px]">
+              Bogotá D.C. & Cundinamarca (32)
+            </button>
+            <button onclick="selectDepartment('atlantico')" id="dept-btn-atlantico" class="dept-btn px-4 py-2.5 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-semibold text-xs whitespace-nowrap min-h-[44px]">
+              Atlántico / Caribe (18)
+            </button>
+            <button onclick="selectDepartment('valle')" id="dept-btn-valle" class="dept-btn px-4 py-2.5 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-semibold text-xs whitespace-nowrap min-h-[44px]">
+              Valle del Cauca (12)
+            </button>
+            <button onclick="selectDepartment('boyaca')" id="dept-btn-boyaca" class="dept-btn px-4 py-2.5 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-semibold text-xs whitespace-nowrap min-h-[44px]">
+              Boyacá & Santanderes (9)
+            </button>
+            <button onclick="selectDepartment('cauca')" id="dept-btn-cauca" class="dept-btn px-4 py-2.5 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-semibold text-xs whitespace-nowrap min-h-[44px]">
+              Cauca & Nariño (6)
+            </button>
+          </div>
+
+          <!-- Dynamic Department Content Container -->
+          <div id="dept-display-container" class="space-y-6"></div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 4: AGENDA INTERNACIONAL (CONTINENTES) -->
+        <!-- ========================================== -->
+        <div id="tab-international" class="tab-content space-y-6 sm:space-y-8">
+          <div class="pb-4 sm:pb-6 border-b border-slate-200">
+            <span class="text-xs font-bold text-cyan-700 uppercase tracking-wider">Módulo Geográfico 2</span>
+            <h1 class="font-display text-xl sm:text-3xl font-extrabold text-slate-900">
+              Agenda Internacional: Continentes y Países Clave
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">
+              Monitoreo de la cobertura global organizada por continentes y principales polos de interés internacional.
+            </p>
+          </div>
+
+          <!-- Continents Selector Bar (Touch Scrollable on mobile) -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+            <button onclick="selectContinent('latam')" id="cont-btn-latam" class="cont-btn active px-4 py-2.5 rounded-2xl bg-slate-900 text-white font-bold text-xs whitespace-nowrap shadow-xs min-h-[44px]">
+              América Latina (24)
+            </button>
+            <button onclick="selectContinent('northam')" id="cont-btn-northam" class="cont-btn px-4 py-2.5 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-semibold text-xs whitespace-nowrap min-h-[44px]">
+              Norteamérica (18)
+            </button>
+            <button onclick="selectContinent('europe')" id="cont-btn-europe" class="cont-btn px-4 py-2.5 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-semibold text-xs whitespace-nowrap min-h-[44px]">
+              Europa (11)
+            </button>
+            <button onclick="selectContinent('mideast')" id="cont-btn-mideast" class="cont-btn px-4 py-2.5 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-semibold text-xs whitespace-nowrap min-h-[44px]">
+              Medio Oriente (8)
+            </button>
+            <button onclick="selectContinent('asia')" id="cont-btn-asia" class="cont-btn px-4 py-2.5 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-semibold text-xs whitespace-nowrap min-h-[44px]">
+              Asia & Pacífico (4)
+            </button>
+          </div>
+
+          <!-- Dynamic Continent Content Container -->
+          <div id="continent-display-container" class="space-y-6"></div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 5: CONTRASTE DE MEDIOS (10 OUTLETS) -->
+        <!-- ========================================== -->
+        <div id="tab-contrast" class="tab-content space-y-6 sm:space-y-8">
+          <div class="pb-4 sm:pb-6 border-b border-slate-200">
+            <span class="text-xs font-bold text-violet-700 uppercase tracking-wider">Módulo 6</span>
+            <h1 class="font-display text-xl sm:text-3xl font-extrabold text-slate-900">
+              Contraste Mediático Completo: 10 Medios
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">
+              Matriz comparativa directa entre los 5 medios nacionales y los 5 internacionales sobre el mismo acontecimiento.
+            </p>
+          </div>
+
+          <!-- Event Summary Banner -->
+          <div class="bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white rounded-3xl p-5 sm:p-7 border border-slate-800 shadow-xl space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Acontecimiento Analizado</span>
+              <span class="text-[11px] font-mono bg-white/10 px-2.5 py-0.5 rounded-full text-slate-300 self-start sm:self-auto">ID: #2026-REF-01</span>
+            </div>
+            <h2 class="font-display text-lg sm:text-2xl font-bold">
+              Debate de la Reforma Laboral en Colombia y Tensión Fiscal
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <strong>Síntesis del contraste:</strong> Los medios nacionales priorizan los impactos en costos de nómina empresarial y los acuerdos parlamentarios, mientras las agencias internacionales sitúan el debate en la sostenibilidad fiscal, el déficit público y el apetito de los mercados emergentes.
+            </p>
+          </div>
+
+          <!-- Single-column stack on mobile, 2-column on desktop -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
+            <!-- Columna Nacionales (5 medios) -->
+            <div class="space-y-3 sm:space-y-4">
+              <div class="flex items-center justify-between px-1">
+                <h3 class="font-display font-bold text-amber-800 text-sm sm:text-base flex items-center gap-2">
+                  <span>🇨🇴</span> Medios Nacionales (5)
+                </h3>
+                <span class="text-[11px] text-slate-500">Enfoque local e institucional</span>
+              </div>
+
+              <!-- El Tiempo -->
+              <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-slate-900 text-sm">El Tiempo</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-800">Crítico</span>
+                </div>
+                <div class="text-xs font-semibold text-slate-800 leading-snug">"Empresarios advierten freno a la contratación por nuevos costos de reforma laboral"</div>
+                <div class="text-[11px] text-slate-500"><strong>Enfoque:</strong> Sobrecostos de nómina nocturna y riesgo de informalidad gremial.</div>
+              </div>
+
+              <!-- El Espectador -->
+              <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-slate-900 text-sm">El Espectador</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-800">Institucional</span>
+                </div>
+                <div class="text-xs font-semibold text-slate-800 leading-snug">"Congreso retoma debate de reforma laboral con acuerdos en recargo nocturno"</div>
+                <div class="text-[11px] text-slate-500"><strong>Enfoque:</strong> Trámite legislativo, votación de artículos y consensos multipartidistas.</div>
+              </div>
+
+              <!-- RTVC Noticias -->
+              <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-slate-900 text-sm">RTVC Noticias</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800">Optimista</span>
+                </div>
+                <div class="text-xs font-semibold text-slate-800 leading-snug">"Trabajadores respaldan recuperación de la jornada nocturna desde las 7:00 p.m."</div>
+                <div class="text-[11px] text-slate-500"><strong>Enfoque:</strong> Restitución de derechos laborales y justicia social distributiva.</div>
+              </div>
+
+              <!-- El Heraldo -->
+              <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-slate-900 text-sm">El Heraldo</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-800">Regional</span>
+                </div>
+                <div class="text-xs font-semibold text-slate-800 leading-snug">"Comercio de Barranquilla alerta sobre impacto en empleos por jornada nocturna"</div>
+                <div class="text-[11px] text-slate-500"><strong>Enfoque:</strong> Afectación directa en comercio, turismo y hostelería en el Caribe.</div>
+              </div>
+
+              <!-- El Colombiano -->
+              <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-slate-900 text-sm">El Colombiano</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-rose-50 text-rose-800">Alarma</span>
+                </div>
+                <div class="text-xs font-semibold text-slate-800 leading-snug">"Alerta en PYMES antioqueñas por alza de costos operativos tras reforma"</div>
+                <div class="text-[11px] text-slate-500"><strong>Enfoque:</strong> Resistencia del empresariado antioqueño y sobrecostos de producción.</div>
+              </div>
+            </div>
+
+            <!-- Columna Internacionales (5 medios) -->
+            <div class="space-y-3 sm:space-y-4">
+              <div class="flex items-center justify-between px-1">
+                <h3 class="font-display font-bold text-cyan-800 text-sm sm:text-base flex items-center gap-2">
+                  <span>🌍</span> Medios Internacionales (5)
+                </h3>
+                <span class="text-[11px] text-slate-500">Enfoque macro y geopolítico</span>
+              </div>
+
+              <!-- Reuters -->
+              <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-slate-900 text-sm">Reuters</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-cyan-50 text-cyan-800">Técnico / Neutro</span>
+                </div>
+                <div class="text-xs font-semibold text-slate-800 leading-snug">"Colombia congress debates labor reform bill amid fiscal deficit scrutiny"</div>
+                <div class="text-[11px] text-slate-500"><strong>Enfoque:</strong> Déficit fiscal consolidado, comportamiento del peso y deuda soberana.</div>
+              </div>
+
+              <!-- BBC News -->
+              <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-slate-900 text-sm">BBC News</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-800">Contextual</span>
+                </div>
+                <div class="text-xs font-semibold text-slate-800 leading-snug">"Reforma laboral en Colombia: los puntos de choque entre el gobierno y los gremios"</div>
+                <div class="text-[11px] text-slate-500"><strong>Enfoque:</strong> Polarización de fuerzas y comparación con modelos laborales regionales.</div>
+              </div>
+
+              <!-- AP News -->
+              <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-slate-900 text-sm">AP News</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-800">Fáctico</span>
+                </div>
+                <div class="text-xs font-semibold text-slate-800 leading-snug">"Colombia advances labor changes aiming to restore overtime benefits"</div>
+                <div class="text-[11px] text-slate-500"><strong>Enfoque:</strong> Cumplimiento de promesas de campaña y resistencia en el legislativo.</div>
+              </div>
+
+              <!-- AFP -->
+              <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-slate-900 text-sm">AFP</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-800">Social</span>
+                </div>
+                <div class="text-xs font-semibold text-slate-800 leading-snug">"Colombia vota ley laboral entre respaldo sindical y temores empresariales"</div>
+                <div class="text-[11px] text-slate-500"><strong>Enfoque:</strong> Movilizaciones de sindicatos y declaraciones de cámaras de comercio.</div>
+              </div>
+
+              <!-- NYT -->
+              <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-slate-900 text-sm">The New York Times</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-800">Estratégico</span>
+                </div>
+                <div class="text-xs font-semibold text-slate-800 leading-snug">"In Colombia, a Test of Leftist Economic Policies in the Legislature"</div>
+                <div class="text-[11px] text-slate-500"><strong>Enfoque:</strong> Prueba de fuego de los gobiernos de izquierda en América Latina.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 6: TENDENCIAS (TOP 5 INTERACTIVO) -->
+        <!-- ========================================== -->
+        <div id="tab-trends" class="tab-content space-y-6 sm:space-y-8">
+          <div class="pb-4 sm:pb-6 border-b border-slate-200">
+            <span class="text-xs font-bold text-rose-600 uppercase tracking-wider">Módulo 7</span>
+            <h1 class="font-display text-xl sm:text-3xl font-extrabold text-slate-900">
+              Tendencias: Top 5 Interactivo
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">
+              Toca cualquier tendencia para desplegar sus 5 artículos más representativos con sus enfoques específicos.
+            </p>
+          </div>
+
+          <!-- Stacks vertically on mobile, side-by-side on desktop -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
+            <!-- Left: Top 5 Selector -->
+            <div class="lg:col-span-1 space-y-2.5">
+              <h3 class="font-display font-bold text-slate-900 text-xs sm:text-sm uppercase tracking-wider">
+                Ranking de Tendencias (Toca para explorar):
+              </h3>
+
+              <div id="trend-list-container" class="space-y-2">
+                <!-- Top 1 -->
+                <div onclick="selectTrendItem(1)" id="trend-card-1" class="trend-selector-card active p-3.5 sm:p-4 rounded-2xl border-2 border-indigo-600 bg-indigo-50/60 cursor-pointer transition min-h-[50px]">
+                  <div class="flex items-center justify-between">
+                    <span class="font-display font-black text-base sm:text-lg text-indigo-900">#1 Política</span>
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">+52.6%</span>
+                  </div>
+                  <div class="text-[11px] text-slate-600 mt-1">58 publicaciones • Velocidad: +2.85 arts/día</div>
+                </div>
+
+                <!-- Top 2 -->
+                <div onclick="selectTrendItem(2)" id="trend-card-2" class="trend-selector-card p-3.5 sm:p-4 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 cursor-pointer transition min-h-[50px]">
+                  <div class="flex items-center justify-between">
+                    <span class="font-display font-black text-base sm:text-lg text-slate-900">#2 Economía</span>
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">+37.5%</span>
+                  </div>
+                  <div class="text-[11px] text-slate-600 mt-1">44 publicaciones • Velocidad: +1.71 arts/día</div>
+                </div>
+
+                <!-- Top 3 -->
+                <div onclick="selectTrendItem(3)" id="trend-card-3" class="trend-selector-card p-3.5 sm:p-4 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 cursor-pointer transition min-h-[50px]">
+                  <div class="flex items-center justify-between">
+                    <span class="font-display font-black text-base sm:text-lg text-slate-900">#3 Conflicto y Paz</span>
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">-8.3%</span>
+                  </div>
+                  <div class="text-[11px] text-slate-600 mt-1">22 publicaciones • Cobertura sostenida</div>
+                </div>
+
+                <!-- Top 4 -->
+                <div onclick="selectTrendItem(4)" id="trend-card-4" class="trend-selector-card p-3.5 sm:p-4 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 cursor-pointer transition min-h-[50px]">
+                  <div class="flex items-center justify-between">
+                    <span class="font-display font-black text-base sm:text-lg text-slate-900">#4 Medio Ambiente</span>
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800">-22.5%</span>
+                  </div>
+                  <div class="text-[11px] text-slate-600 mt-1">14 publicaciones • Descenso post-cumbre</div>
+                </div>
+
+                <!-- Top 5 -->
+                <div onclick="selectTrendItem(5)" id="trend-card-5" class="trend-selector-card p-3.5 sm:p-4 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 cursor-pointer transition min-h-[50px]">
+                  <div class="flex items-center justify-between">
+                    <span class="font-display font-black text-base sm:text-lg text-slate-900">#5 Salud</span>
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800">-46.7%</span>
+                  </div>
+                  <div class="text-[11px] text-slate-600 mt-1">8 publicaciones • Menor espacio editorial</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Display of 5 Associated Articles -->
+            <div class="lg:col-span-2 space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 id="trend-detail-heading" class="font-display font-bold text-slate-900 text-sm sm:text-base">
+                  Top 5 Artículos Relevantes en: Política
+                </h3>
+                <span class="text-[11px] text-slate-500 font-mono">Algoritmo PRISMA</span>
+              </div>
+
+              <div id="trend-articles-container" class="space-y-2.5">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 7: INFORME GENERAL EN PANTALLA -->
+        <!-- ========================================== -->
+        <div id="tab-reports" class="tab-content space-y-6 sm:space-y-8">
+          <div class="pb-4 sm:pb-6 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Módulo 8</span>
+              <h1 class="font-display text-xl sm:text-3xl font-extrabold text-slate-900">
+                Informe General Integrado en Pantalla
+              </h1>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                Visualización analítica completa con ranking temático, titulares clave y tratamiento de los 10 medios.
+              </p>
+            </div>
+            <button onclick="downloadFullMarkdownReport()" class="px-4 py-2.5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold shadow-sm transition flex items-center justify-center gap-2 self-start sm:self-auto min-h-[44px]">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Exportar Reporte (.md)</span>
+            </button>
+          </div>
+
+          <!-- Color Chart & Visual Summary Panel -->
+          <div class="bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white rounded-3xl p-5 sm:p-8 shadow-xl space-y-5 sm:space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
+              <div>
+                <span class="text-xs font-mono text-cyan-400 uppercase font-semibold">Resumen Cuantitativo y Cualitativo</span>
+                <h2 class="font-display text-xl sm:text-2xl font-bold mt-0.5">Balance General de la Agenda Informativa</h2>
+              </div>
+              <div class="text-xs text-slate-400 font-mono">Muestra verificada: 161 artículos</div>
+            </div>
+
+            <!-- Colorful Progress Visuals (Stacked on mobile) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
+              <div class="space-y-3">
+                <span class="text-xs font-bold text-slate-300 uppercase tracking-wider block">Distribución de Frecuencia por Tema</span>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="font-semibold text-slate-200">1. Política</span>
+                    <span class="text-cyan-400 font-bold">26.1% (42 arts)</span>
+                  </div>
+                  <div class="w-full bg-white/10 rounded-full h-3 overflow-hidden">
+                    <div class="bg-gradient-to-r from-indigo-500 to-cyan-400 h-full rounded-full" style="width: 26.1%;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="font-semibold text-slate-200">2. Economía</span>
+                    <span class="text-emerald-400 font-bold">21.7% (35 arts)</span>
+                  </div>
+                  <div class="w-full bg-white/10 rounded-full h-3 overflow-hidden">
+                    <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full" style="width: 21.7%;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="font-semibold text-slate-200">3. Sociedad</span>
+                    <span class="text-amber-400 font-bold">17.4% (28 arts)</span>
+                  </div>
+                  <div class="w-full bg-white/10 rounded-full h-3 overflow-hidden">
+                    <div class="bg-gradient-to-r from-amber-500 to-yellow-400 h-full rounded-full" style="width: 17.4%;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="font-semibold text-slate-200">4. Conflicto & Paz</span>
+                    <span class="text-rose-400 font-bold">11.8% (19 arts)</span>
+                  </div>
+                  <div class="w-full bg-white/10 rounded-full h-3 overflow-hidden">
+                    <div class="bg-gradient-to-r from-rose-500 to-pink-400 h-full rounded-full" style="width: 11.8%;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="font-semibold text-slate-200">5. Internacional</span>
+                    <span class="text-violet-400 font-bold">9.9% (16 arts)</span>
+                  </div>
+                  <div class="w-full bg-white/10 rounded-full h-3 overflow-hidden">
+                    <div class="bg-gradient-to-r from-violet-500 to-purple-400 h-full rounded-full" style="width: 9.9%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Qualitative Insight Box -->
+              <div class="bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-5 space-y-3 flex flex-col justify-between">
+                <div>
+                  <span class="text-[11px] font-bold text-cyan-300 uppercase tracking-wider">Hallazgo Cualitativo</span>
+                  <h4 class="font-display font-bold text-white text-sm sm:text-base mt-1">Divergencia entre la Macroeconomía y el Bolsillo Regional</h4>
+                  <p class="text-xs text-slate-300 leading-relaxed mt-1.5">
+                    Las agencias internacionales y los diarios de Bogotá concentran su atención en las presiones de déficit fiscal y la tasa de cambio. Por el contrario, los medios regionales (Barranquilla y Medellín) priorizan los costos directos de tarifas energéticas y la supervivencia de pequeños negocios.
+                  </p>
+                </div>
+                <div class="pt-3 border-t border-white/10 text-[11px] text-slate-400 flex items-center justify-between">
+                  <span>Metodología: PLN Supervisado</span>
+                  <span class="text-emerald-400 font-bold">10/10 Medios</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RANKING DE TEMAS CON LOS TITULARES MÁS IMPORTANTES -->
+          <div class="bg-white p-4 sm:p-6 lg:p-8 rounded-3xl border border-slate-200/90 shadow-xs space-y-5">
+            <div>
+              <h2 class="font-display text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="list-ordered" class="w-5 h-5 text-indigo-600"></i>
+                Ranking de Temas con los Titulares Más Importantes
+              </h2>
+              <p class="text-xs text-slate-500 mt-0.5">
+                Jerarquización de los temas de mayor impacto y los titulares emblemáticos publicados por los medios.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <!-- #1 Política -->
+              <div class="p-4 sm:p-5 rounded-2xl border border-indigo-100 bg-indigo-50/30 space-y-3">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">1</span>
+                    <h3 class="font-display font-bold text-slate-900 text-sm sm:text-base">Política (42 noticias • 26.1%)</h3>
+                  </div>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">Tema Dominante</span>
+                </div>
+                <div class="space-y-2 text-xs">
+                  <div class="p-2.5 bg-white rounded-xl border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold text-slate-900 text-[11px] bg-slate-100 px-1.5 py-0.5 rounded">El Tiempo</span>
+                      <span class="text-slate-800 font-medium">"Empresarios advierten freno a la contratación por nuevos costos de reforma laboral"</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400 flex-shrink-0">2026-10-18</span>
+                  </div>
+                  <div class="p-2.5 bg-white rounded-xl border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold text-slate-900 text-[11px] bg-slate-100 px-1.5 py-0.5 rounded">El Espectador</span>
+                      <span class="text-slate-800 font-medium">"Congreso retoma debate de reforma laboral con acuerdos en recargo nocturno"</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400 flex-shrink-0">2026-10-18</span>
+                  </div>
+                  <div class="p-2.5 bg-white rounded-xl border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold text-slate-900 text-[11px] bg-slate-100 px-1.5 py-0.5 rounded">NY Times</span>
+                      <span class="text-slate-800 font-medium">"In Colombia, a Test of Leftist Economic Policies in the Legislature"</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400 flex-shrink-0">2026-10-17</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- #2 Economía -->
+              <div class="p-4 sm:p-5 rounded-2xl border border-emerald-100 bg-emerald-50/30 space-y-3">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-lg bg-emerald-600 text-white font-bold text-xs flex items-center justify-center">2</span>
+                    <h3 class="font-display font-bold text-slate-900 text-sm sm:text-base">Economía & Finanzas (35 noticias • 21.7%)</h3>
+                  </div>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Alta Aceleración</span>
+                </div>
+                <div class="space-y-2 text-xs">
+                  <div class="p-2.5 bg-white rounded-xl border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold text-slate-900 text-[11px] bg-slate-100 px-1.5 py-0.5 rounded">Reuters</span>
+                      <span class="text-slate-800 font-medium">"Colombia congress debates labor reform bill amid fiscal deficit scrutiny"</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400 flex-shrink-0">2026-10-18</span>
+                  </div>
+                  <div class="p-2.5 bg-white rounded-xl border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold text-slate-900 text-[11px] bg-slate-100 px-1.5 py-0.5 rounded">El Heraldo</span>
+                      <span class="text-slate-800 font-medium">"Tarifas de energía en el Caribe: alcaldes insisten en intervención ante la CREG"</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400 flex-shrink-0">2026-10-18</span>
+                  </div>
+                  <div class="p-2.5 bg-white rounded-xl border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold text-slate-900 text-[11px] bg-slate-100 px-1.5 py-0.5 rounded">El Colombiano</span>
+                      <span class="text-slate-800 font-medium">"Alerta en PYMES antioqueñas por alza de costos operativos tras reforma"</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400 flex-shrink-0">2026-10-18</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- #3 Conflicto y Paz -->
+              <div class="p-4 sm:p-5 rounded-2xl border border-rose-100 bg-rose-50/30 space-y-3">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-lg bg-rose-600 text-white font-bold text-xs flex items-center justify-center">3</span>
+                    <h3 class="font-display font-bold text-slate-900 text-sm sm:text-base">Conflicto y Paz (19 noticias • 11.8%)</h3>
+                  </div>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">Cobertura Sostenida</span>
+                </div>
+                <div class="space-y-2 text-xs">
+                  <div class="p-2.5 bg-white rounded-xl border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold text-slate-900 text-[11px] bg-slate-100 px-1.5 py-0.5 rounded">El Colombiano</span>
+                      <span class="text-slate-800 font-medium">"Conflicto en Antioquia: Defensoría alerta por confinamiento en Bajo Cauca"</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400 flex-shrink-0">2026-10-18</span>
+                  </div>
+                  <div class="p-2.5 bg-white rounded-xl border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold text-slate-900 text-[11px] bg-slate-100 px-1.5 py-0.5 rounded">RTVC Noticias</span>
+                      <span class="text-slate-800 font-medium">"Mesas territoriales de diálogo logran acuerdos de convivencia comunitaria"</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400 flex-shrink-0">2026-10-17</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DOSSIER DE TRATAMIENTO DE LA INFORMACIÓN POR CADA MEDIO (10 MEDIOS) -->
+          <div class="bg-white p-4 sm:p-6 lg:p-8 rounded-3xl border border-slate-200/90 shadow-xs space-y-5">
+            <div>
+              <h2 class="font-display text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="award" class="w-5 h-5 text-indigo-600"></i>
+                Tratamiento Editorial de Cada uno de los 10 Medios
+              </h2>
+              <p class="text-xs text-slate-500 mt-0.5">
+                Evaluación cualitativa de encuadres, fuentes citadas y tono de las 10 salas de redacción.
+              </p>
+            </div>
+
+            <!-- Single col on mobile, 2 cols on desktop -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <span class="font-display font-bold text-slate-900 text-sm">1. El Tiempo (Colombia)</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-100 text-amber-800">Nacional</span>
+                </div>
+                <div class="text-xs text-slate-700 leading-relaxed">
+                  <strong>Tratamiento:</strong> Enfoque corporativo e institucional. Privilegia fuentes gremiales (Fenalco, ANDI) y análisis de costos fiscales. Tono sobrio con alertas frecuentes en temas laborales.
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <span class="font-display font-bold text-slate-900 text-sm">2. El Espectador (Colombia)</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-100 text-amber-800">Nacional</span>
+                </div>
+                <div class="text-xs text-slate-700 leading-relaxed">
+                  <strong>Tratamiento:</strong> Énfasis en la técnica legislativa, derechos humanos y consensos multipartidistas. Cobertura equilibrada entre posturas de gobierno y bancadas independientes.
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <span class="font-display font-bold text-slate-900 text-sm">3. RTVC Noticias (Colombia)</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800">Nacional Público</span>
+                </div>
+                <div class="text-xs text-slate-700 leading-relaxed">
+                  <strong>Tratamiento:</strong> Encuadre centrado en justicia social, reivindicación laboral y voz de sindicatos y comunidades rurales. Alineación con las iniciativas gubernamentales y tono optimista.
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <span class="font-display font-bold text-slate-900 text-sm">4. El Heraldo (Barranquilla)</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-100 text-amber-800">Nacional Caribe</span>
+                </div>
+                <div class="text-xs text-slate-700 leading-relaxed">
+                  <strong>Tratamiento:</strong> Fuerte agenda regional centrada en tarifas eléctricas, infraestructura portuaria y comercio local. Cobertura crítica hacia el centralismo de las entidades regulatorias.
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <span class="font-display font-bold text-slate-900 text-sm">5. El Colombiano (Medellín)</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-rose-100 text-rose-800">Nacional Andino</span>
+                </div>
+                <div class="text-xs text-slate-700 leading-relaxed">
+                  <strong>Tratamiento:</strong> Cobertura rigurosa de seguridad regional en Antioquia, alertas de la Defensoría del Pueblo y defensa del tejido productivo frente a regulaciones nacionales.
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <span class="font-display font-bold text-slate-900 text-sm">6. Reuters (Agencia)</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-cyan-100 text-cyan-800">Internacional</span>
+                </div>
+                <div class="text-xs text-slate-700 leading-relaxed">
+                  <strong>Tratamiento:</strong> Estilo estricto de agencia de noticias financiera: datos duros, metas de déficit fiscal, TRM, commodities e impacto en mercados de bonos soberanos. Tono neutral.
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <span class="font-display font-bold text-slate-900 text-sm">7. BBC News (Mundo)</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-cyan-100 text-cyan-800">Internacional</span>
+                </div>
+                <div class="text-xs text-slate-700 leading-relaxed">
+                  <strong>Tratamiento:</strong> Formato explicativo enfocado en contextualizar los choques políticos y las transformaciones ambientales para una audiencia panregional hispanohablante.
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <span class="font-display font-bold text-slate-900 text-sm">8. Associated Press (AP)</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-cyan-100 text-cyan-800">Internacional</span>
+                </div>
+                <div class="text-xs text-slate-700 leading-relaxed">
+                  <strong>Tratamiento:</strong> Despachos fácticos con foco en estabilidad política de gobiernos latinoamericanos, políticas migratorias y acuerdos bilaterales con Estados Unidos.
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <span class="font-display font-bold text-slate-900 text-sm">9. Agence France-Presse (AFP)</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-cyan-100 text-cyan-800">Internacional</span>
+                </div>
+                <div class="text-xs text-slate-700 leading-relaxed">
+                  <strong>Tratamiento:</strong> Destaca elementos sociales y culturales junto a las negociaciones de paz. Buen balance entre despachos de agencias y perfiles humanos.
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-1.5">
+                <div class="flex justify-between items-center">
+                  <span class="font-display font-bold text-slate-900 text-sm">10. The New York Times</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-cyan-100 text-cyan-800">Internacional</span>
+                </div>
+                <div class="text-xs text-slate-700 leading-relaxed">
+                  <strong>Tratamiento:</strong> Crónicas y análisis de largo aliento sobre las implicaciones ideológicas y geoestratégicas de los giros políticos en Colombia y América Latina.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: FICHA DE ANÁLISIS INDIVIDUAL DE NOTICIA (MOBILE-RESPONSIVE) -->
+  <div id="modal-article-analysis" class="fixed inset-0 bg-slate-950/70 backdrop-blur-xs z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all">
+    <div class="bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl max-w-2xl w-full border border-slate-200 overflow-hidden max-h-[90vh] sm:max-h-[85vh] flex flex-col">
+      <!-- Modal Header -->
+      <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between flex-shrink-0">
+        <div class="flex items-center gap-2">
+          <i data-lucide="file-search" class="w-5 h-5 text-indigo-400"></i>
+          <span class="font-display font-bold text-sm sm:text-base">Ficha de Análisis Individual</span>
+        </div>
+        <button onclick="toggleModal('modal-article-analysis', false)" class="text-slate-400 hover:text-white p-2 min-w-[36px] min-h-[36px] flex items-center justify-center">✕</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-5 sm:p-6 space-y-4 overflow-y-auto text-xs text-slate-700 flex-1">
+        <div>
+          <div class="flex items-center justify-between text-slate-400 text-[11px] mb-1">
+            <span id="modal-source-name" class="font-bold text-indigo-600 uppercase">Medio</span>
+            <span id="modal-date">Fecha</span>
+          </div>
+          <h3 id="modal-title" class="font-display font-bold text-base sm:text-lg text-slate-900 leading-snug">
+            Titular de la noticia
+          </h3>
+        </div>
+
+        <!-- Section A: Enfoque Narrativo -->
+        <div class="p-4 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-2">
+          <div class="flex items-center gap-1.5 font-bold text-indigo-950 uppercase text-[11px]">
+            <i data-lucide="compass" class="w-4 h-4 text-indigo-600"></i>
+            <span>A) Enfoque Narrativo del Medio</span>
+          </div>
+          <p id="modal-narrative-angle" class="text-slate-700 leading-relaxed font-medium">
+            Detalle del ángulo discursivo...
+          </p>
+          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-indigo-200/50 text-[11px]">
+            <div><strong>Tono Emotivo:</strong> <span id="modal-tone" class="text-indigo-800">Neutro</span></div>
+            <div><strong>Marco Temático:</strong> <span id="modal-topic" class="text-indigo-800">General</span></div>
+          </div>
+        </div>
+
+        <!-- Section B: Tratamiento de Datos y Origen de Información -->
+        <div class="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-100 space-y-2">
+          <div class="flex items-center gap-1.5 font-bold text-emerald-950 uppercase text-[11px]">
+            <i data-lucide="database" class="w-4 h-4 text-emerald-600"></i>
+            <span>B) Tratamiento de Datos y Origen de la Información</span>
+          </div>
+          <div class="space-y-1.5 text-slate-700">
+            <div><strong>Tipo de Fuentes Citadas:</strong> <span id="modal-sources-type">Fuentes gremiales y oficiales</span></div>
+            <div><strong>Datos Empíricos Verificados:</strong> <span id="modal-data-evidence">Estadísticas de empleo del DANE</span></div>
+            <div><strong>Transparencia Documental:</strong> <span id="modal-transparency" class="text-emerald-700 font-semibold">Alta</span></div>
+          </div>
+        </div>
+
+        <!-- Direct link to source -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+          <span class="text-slate-400 text-center sm:text-left text-[11px]">Ver noticia original en el portal del medio:</span>
+          <a id="modal-external-link" href="#" target="_blank" class="w-full sm:w-auto px-5 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold flex items-center justify-center gap-2 min-h-[44px]">
+            <span>Visitar fuente original</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: MARCO ÉTICO (MOBILE-RESPONSIVE) -->
+  <div id="modal-ethics" class="fixed inset-0 bg-slate-950/70 backdrop-blur-xs z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all">
+    <div class="bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl max-w-2xl w-full border border-slate-200 overflow-hidden max-h-[90vh] sm:max-h-[85vh] flex flex-col">
+      <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between flex-shrink-0">
+        <div class="flex items-center gap-2 font-display font-bold text-sm sm:text-base">
+          <i data-lucide="shield-alert" class="w-5 h-5 text-indigo-400"></i>
+          <span>Límites de Alcance: Qué NO hace PRISMA</span>
+        </div>
+        <button onclick="toggleModal('modal-ethics', false)" class="text-slate-400 hover:text-white p-2 min-w-[36px] min-h-[36px] flex items-center justify-center">✕</button>
+      </div>
+      <div class="p-5 sm:p-6 space-y-3 text-xs text-slate-700 overflow-y-auto flex-1">
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200">
+          <strong class="text-slate-900 text-sm block mb-1">1. No determina si una noticia es verdadera o falsa</strong>
+          <p class="text-slate-600 leading-relaxed">Analiza encuadres y patrones de cobertura. Determinar la veracidad exige verificación forense sobre el terreno.</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200">
+          <strong class="text-slate-900 text-sm block mb-1">2. No mide la opinión pública ciudadana</strong>
+          <p class="text-slate-600 leading-relaxed">La frecuencia mediática mide la agenda de las salas de redacción, no el sentir de la ciudadanía.</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200">
+          <strong class="text-slate-900 text-sm block mb-1">3. Monitoreo acotado a 10 medios de referencia</strong>
+          <p class="text-slate-600 leading-relaxed">5 nacionales (El Espectador, RTVC, El Tiempo, El Heraldo, El Colombiano) y 5 internacionales (Reuters, BBC, AP, AFP, NYT).</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200">
+          <strong class="text-slate-900 text-sm block mb-1">4. No reemplaza el criterio del periodista</strong>
+          <p class="text-slate-600 leading-relaxed">Funciona como herramienta heurística de apoyo al trabajo analítico humano.</p>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200">
+          <strong class="text-slate-900 text-sm block mb-1">5. No redacta ni reescribe noticias</strong>
+          <p class="text-slate-600 leading-relaxed">No produce noticias sintéticas; solo genera análisis comparativo de fuentes.</p>
+        </div>
+      </div>
+      <div class="px-5 py-3.5 bg-slate-50 border-t border-slate-200 text-right flex-shrink-0">
+        <button onclick="toggleModal('modal-ethics', false)" class="w-full sm:w-auto px-5 py-2.5 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 min-h-[44px]">
+          Entendido
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC & SAMPLE DATABASE -->
+  <script>
+    const MASTER_NEWS = [
+      {
+        id: 1,
+        source: 'El Tiempo',
+        title: 'Empresarios advierten freno a la contratación por nuevos costos de reforma laboral',
+        topic: 'Política',
+        subtopic: 'Reforma Laboral & Pensional',
+        scope: 'nacional',
+        dept: 'bogota',
+        date: '2026-10-18 14:30',
+        url: 'https://www.eltiempo.com',
+        narrative_angle: 'Impacto fiscal y costo de nómina para empleadores privados con riesgo de informalidad.',
+        tone: 'Crítico',
+        sources_type: 'Fuentes gremiales (Fenalco, ANDI, Acopi)',
+        data_evidence: 'Cálculos proyectados de nómina y recargo nocturno desde las 7:00 p.m.',
+        transparency: 'Alta (Cita actas oficiales del Congreso y comunicados gremiales)'
+      },
+      {
+        id: 2,
+        source: 'El Espectador',
+        title: 'Congreso retoma debate de reforma laboral con acuerdos en recargo nocturno',
+        topic: 'Política',
+        subtopic: 'Reforma Laboral & Pensional',
+        scope: 'nacional',
+        dept: 'bogota',
+        date: '2026-10-18 13:45',
+        url: 'https://www.elespectador.com',
+        narrative_angle: 'Trámite parlamentario, acuerdos de bancadas independientes y concertación.',
+        tone: 'Institucional',
+        sources_type: 'Voceros de comisiones parlamentarias y ponentes',
+        data_evidence: 'Votación del articulado en segundo debate',
+        transparency: 'Alta (Gaceta del Congreso y registros de votación)'
+      },
+      {
+        id: 3,
+        source: 'RTVC Noticias',
+        title: 'Trabajadores respaldan recuperación de la jornada nocturna desde las 7:00 p.m.',
+        topic: 'Política',
+        subtopic: 'Reforma Laboral & Pensional',
+        scope: 'nacional',
+        dept: 'bogota',
+        date: '2026-10-18 12:00',
+        url: 'https://rtvcnoticias.com',
+        narrative_angle: 'Restitución de derechos laborales históricos y justicia distributiva para asalariados.',
+        tone: 'Optimista',
+        sources_type: 'Centrales obreras (CUT, CTC) y voceros gubernamentales',
+        data_evidence: 'Estimación de 1.3 millones de trabajadores beneficiados con recargo',
+        transparency: 'Media-Alta (Declaraciones públicas en Plaza de Bolívar)'
+      },
+      {
+        id: 4,
+        source: 'El Heraldo',
+        title: 'Tarifas de energía en el Caribe: alcaldes insisten en intervención ante la CREG',
+        topic: 'Economía',
+        subtopic: 'Tarifas Energéticas Regionales',
+        scope: 'nacional',
+        dept: 'atlantico',
+        date: '2026-10-18 10:15',
+        url: 'https://www.elheraldo.co',
+        narrative_angle: 'Carga económica para los hogares de la Costa y reclamo por inacción del gobierno central.',
+        tone: 'Crítico / Reclamo regional',
+        sources_type: 'Alcaldes de ciudades capitales del Caribe y Asocapitales',
+        data_evidence: 'Facturación promedio de kilovatio/hora en Barranquilla vs interior',
+        transparency: 'Alta (Resoluciones de CREG y cartas de alcaldes)'
+      },
+      {
+        id: 5,
+        source: 'El Colombiano',
+        title: 'Conflicto en Antioquia: Defensoría alerta por confinamiento de comunidades en el Bajo Cauca',
+        topic: 'Conflicto y Paz',
+        subtopic: 'Seguridad Rural y Comunidades',
+        scope: 'nacional',
+        dept: 'antioquia',
+        date: '2026-10-18 09:30',
+        url: 'https://www.elcolombiano.com',
+        narrative_angle: 'Vulneración de derechos humanos por disputas entre grupos armados ilegales.',
+        tone: 'Alarma humanitaria',
+        sources_type: 'Alertas tempranas de la Defensoría del Pueblo y líderes comunitarios',
+        data_evidence: 'Censo de 420 familias confinadas sin acceso a víveres',
+        transparency: 'Alta (Alertas tempranas 014-2026 verificadas)'
+      },
+      {
+        id: 6,
+        source: 'Reuters',
+        title: 'Colombia congress debates labor reform bill amid fiscal deficit scrutiny',
+        topic: 'Economía',
+        subtopic: 'Inflación & Tasas de Interés',
+        scope: 'internacional',
+        dept: 'international',
+        date: '2026-10-18 16:15',
+        url: 'https://www.reuters.com',
+        narrative_angle: 'Riesgo macroeconómico, metas fiscales del Estado y tasa de cambio del peso colombiano.',
+        tone: 'Técnico / Neutro',
+        sources_type: 'Analistas de Wall Street, Ministerio de Hacienda y agencias de riesgo',
+        data_evidence: 'Proyección de déficit fiscal consolidado en 5.6% del PIB',
+        transparency: 'Muy alta (Informes de bancos de inversión)'
+      },
+      {
+        id: 7,
+        source: 'BBC News',
+        title: 'COP de biodiversidad: Los desafíos de América Latina frente a la transición verde',
+        topic: 'Medio Ambiente',
+        subtopic: 'Transición Ecológica',
+        scope: 'internacional',
+        dept: 'international',
+        date: '2026-10-17 18:20',
+        url: 'https://www.bbc.com/mundo',
+        narrative_angle: 'Financiamiento climático y tensiones entre desarrollo extractivo y preservación ecológica.',
+        tone: 'Contextual',
+        sources_type: 'Científicos del IPCC, ministros de medio ambiente de la región',
+        data_evidence: 'Pérdida de hectáreas de bosque tropical y compromisos financieros',
+        transparency: 'Alta (Metas del Marco Kunming-Montreal)'
+      },
+      {
+        id: 8,
+        source: 'The New York Times',
+        title: 'In Colombia, a Test of Leftist Economic Policies in the Legislature',
+        topic: 'Política',
+        subtopic: 'Elecciones & Gobernabilidad',
+        scope: 'internacional',
+        dept: 'international',
+        date: '2026-10-17 11:00',
+        url: 'https://www.nytimes.com',
+        narrative_angle: 'Viabilidad de proyectos progresistas en democracias divididas de América Latina.',
+        tone: 'Analítico',
+        sources_type: 'Politólogos, congresistas independientes y encuestadoras',
+        data_evidence: 'Porcentajes de aprobación del ejecutivo y composición parlamentaria',
+        transparency: 'Alta (Encuestas ponderadas de Invamer y Gallup)'
+      }
+    ];
+
+    const DEPARTMENTS_DATA = {
+      antioquia: {
+        name: 'Antioquia (Medellín & Subregiones)',
+        total: 19,
+        summary: 'La agenda informativa antioqueña se concentra en dos frentes: el impacto de los sobrecostos en las PYMES manufactureras y las alertas tempranas de orden público en el Bajo Cauca y Nordeste.',
+        topics: [
+          { name: 'Conflicto & Seguridad Rural', count: 8, share: '42%' },
+          { name: 'Economía & Tejido Empresarial', count: 7, share: '37%' },
+          { name: 'Infraestructura & Vías 4G', count: 4, share: '21%' }
+        ],
+        articles: [
+          { title: 'Alerta en PYMES antioqueñas por alza de costos operativos tras reforma', media: 'El Colombiano', date: '2026-10-18' },
+          { title: 'Defensoría alerta por confinamiento de comunidades en el Bajo Cauca', media: 'El Colombiano', date: '2026-10-18' },
+          { title: 'Gobernación solicita celeridad en recursos para el Túnel del Toyo', media: 'El Espectador', date: '2026-10-17' }
+        ]
+      },
+      bogota: {
+        name: 'Bogotá D.C. & Cundinamarca',
+        total: 32,
+        summary: 'Bogotá concentra el mayor volumen de noticias de carácter político y legislativo, con alta cobertura del Congreso, Cortes y discusiones de movilidad distrital.',
+        topics: [
+          { name: 'Política Legislativa & Reformas', count: 18, share: '56%' },
+          { name: 'Movilidad & Obras de Transporte', count: 8, share: '25%' },
+          { name: 'Finanzas Públicas Distritales', count: 6, share: '19%' }
+        ],
+        articles: [
+          { title: 'Empresarios advierten freno a la contratación por reforma laboral', media: 'El Tiempo', date: '2026-10-18' },
+          { title: 'Congreso retoma debate de reforma con acuerdos en recargo nocturno', media: 'El Espectador', date: '2026-10-18' },
+          { title: 'Trabajadores respaldan recuperación de jornada nocturna', media: 'RTVC Noticias', date: '2026-10-18' }
+        ]
+      },
+      atlantico: {
+        name: 'Atlántico & Región Caribe',
+        total: 18,
+        summary: 'La agenda del Caribe está dominada por la crisis tarifaria de energía eléctrica y las reclamaciones de los mandatarios regionales ante el Ministerio de Minas.',
+        topics: [
+          { name: 'Tarifas Eléctricas & Energía', count: 11, share: '61%' },
+          { name: 'Comercio & Puertos', count: 4, share: '22%' },
+          { name: 'Seguridad Ciudadana', count: 3, share: '17%' }
+        ],
+        articles: [
+          { title: 'Tarifas de energía en el Caribe: alcaldes insisten en intervención', media: 'El Heraldo', date: '2026-10-18' },
+          { title: 'Comercio de Barranquilla alerta sobre impacto en empleos nocturnos', media: 'El Heraldo', date: '2026-10-17' }
+        ]
+      },
+      valle: {
+        name: 'Valle del Cauca (Cali & Pacífico)',
+        total: 12,
+        summary: 'Foco en preparación de foros ambientales, seguridad portuaria en Buenaventura y reactivación del tejido agroindustrial de la caña y biocombustibles.',
+        topics: [
+          { name: 'Medio Ambiente & Biodiversidad', count: 6, share: '50%' },
+          { name: 'Seguridad Portuaria', count: 4, share: '33%' },
+          { name: 'Agroindustria', count: 2, share: '17%' }
+        ],
+        articles: [
+          { title: 'Valle del Cauca lidera iniciativas de conservación para la cuenca del Pacífico', media: 'El Tiempo', date: '2026-10-17' },
+          { title: 'Refuerzan monitoreo militar en corredores hacia Buenaventura', media: 'El Espectador', date: '2026-10-16' }
+        ]
+      },
+      boyaca: {
+        name: 'Boyacá & Santanderes',
+        total: 9,
+        summary: 'Atención a la producción agrícola campesina, protección de páramos y el dinamismo de la frontera colombo-venezolana.',
+        topics: [
+          { name: 'Agricultura & Alivios Crediticios', count: 5, share: '55%' },
+          { name: 'Frontera & Comercio Binacional', count: 4, share: '45%' }
+        ],
+        articles: [
+          { title: 'Campesinos de Boyacá solicitan precios de sustentación para insumos', media: 'RTVC Noticias', date: '2026-10-16' },
+          { title: 'Puente Tienditas registra incremento en flujo de transporte de carga', media: 'El Tiempo', date: '2026-10-15' }
+        ]
+      },
+      cauca: {
+        name: 'Cauca & Nariño',
+        total: 6,
+        summary: 'Cobertura orientada a los diálogos humanitarios territoriales y la defensa de los derechos de resguardos indígenas.',
+        topics: [
+          { name: 'Comunidades Indígenas & Tierras', count: 4, share: '66%' },
+          { name: 'Cese al Fuego Humanitario', count: 2, share: '34%' }
+        ],
+        articles: [
+          { title: 'Mesas territoriales de diálogo logran acuerdos de convivencia en Cauca', media: 'RTVC Noticias', date: '2026-10-17' }
+        ]
+      }
+    };
+
+    const CONTINENTS_DATA = {
+      latam: {
+        name: 'América Latina & Caribe',
+        total: 24,
+        summary: 'Atención centrada en las reformas económicas de Colombia, la situación política en Venezuela y cumbres de integración regional.',
+        countries: [
+          { country: 'Colombia (Visión Exterior)', count: 12, topics: 'Economía, Reforma Laboral, Déficit' },
+          { country: 'Venezuela', count: 6, topics: 'Elecciones, Diálogo, Migración' },
+          { country: 'Brasil & Cono Sur', count: 6, topics: 'Transición Verde, Mercado Común' }
+        ],
+        articles: [
+          { title: 'Colombia congress debates labor reform bill amid fiscal deficit scrutiny', media: 'Reuters', date: '2026-10-18' },
+          { title: 'In Colombia, a Test of Leftist Economic Policies in Legislature', media: 'NY Times', date: '2026-10-17' },
+          { title: 'Tensiones diplomáticas en cumbre latinoamericana por transición energética', media: 'AFP', date: '2026-10-16' }
+        ]
+      },
+      northam: {
+        name: 'Norteamérica (EE.UU. & Canadá)',
+        total: 18,
+        summary: 'Foco en decisiones de tasas de la Reserva Federal (Fed), comicios electorales y relaciones de cooperación económica hemisférica.',
+        countries: [
+          { country: 'Estados Unidos', count: 15, topics: 'Tasas Fed, Elecciones, Cooperación' },
+          { country: 'Canadá', count: 3, topics: 'Tratados comerciales y energía' }
+        ],
+        articles: [
+          { title: 'Federal Reserve signals cautious approach to future interest rate adjustments', media: 'AP News', date: '2026-10-18' },
+          { title: 'U.S. inflation metrics show gradual easing in consumer prices', media: 'Reuters', date: '2026-10-17' }
+        ]
+      },
+      europe: {
+        name: 'Europa (Unión Europea & Reino Unido)',
+        total: 11,
+        summary: 'Cobertura focalizada en los marcos de soberanía en defensa, seguridad energética y regulación de Inteligencia Artificial.',
+        countries: [
+          { country: 'Unión Europea', count: 8, topics: 'Regulación de IA, Fondos de Defensa' },
+          { country: 'Reino Unido', count: 3, topics: 'Crecimiento Económico y Empleo' }
+        ],
+        articles: [
+          { title: 'European Parliament advances framework for sovereign defense manufacturing', media: 'BBC News', date: '2026-10-17' }
+        ]
+      },
+      mideast: {
+        name: 'Medio Oriente',
+        total: 8,
+        summary: 'Reportes de conflicto y negociaciones diplomáticas para corredores de ayuda humanitaria.',
+        countries: [
+          { country: 'Franja de Gaza / Israel', count: 6, topics: 'Treguas Humanitarias, ONU' },
+          { country: 'Países del Golfo', count: 2, topics: 'Producción de Crudo OPEP+' }
+        ],
+        articles: [
+          { title: 'Diplomats push for extended humanitarian corridors in Middle East', media: 'AP News', date: '2026-10-18' }
+        ]
+      },
+      asia: {
+        name: 'Asia & Pacífico',
+        total: 4,
+        summary: 'Tendencias en tecnología de semiconductores y metas de exportación en China y Japón.',
+        countries: [
+          { country: 'China & Sudeste Asiático', count: 4, topics: 'Semiconductores, Cadenas de Suministro' }
+        ],
+        articles: [
+          { title: 'Asian markets react positively to technological manufacturing reports', media: 'Reuters', date: '2026-10-16' }
+        ]
+      }
+    };
+
+    const TREND_ARTICLES = {
+      1: [
+        { title: 'Empresarios advierten freno a contratación por costos laborales', media: 'El Tiempo', framing: 'Riesgo económico', url: 'https://www.eltiempo.com' },
+        { title: 'Congreso retoma debate con acuerdos en recargo nocturno', media: 'El Espectador', framing: 'Concertación legislativa', url: 'https://www.elespectador.com' },
+        { title: 'Trabajadores respaldan recuperación de jornada nocturna', media: 'RTVC Noticias', framing: 'Justicia social', url: 'https://rtvcnoticias.com' },
+        { title: 'In Colombia, a Test of Leftist Economic Policies in Legislature', media: 'The New York Times', framing: 'Análisis político global', url: 'https://www.nytimes.com' },
+        { title: 'Colombia congress debates labor reform bill amid fiscal deficit', media: 'Reuters', framing: 'Equilibrio fiscal', url: 'https://www.reuters.com' }
+      ],
+      2: [
+        { title: 'Tarifas de energía en el Caribe: alcaldes insisten en intervención', media: 'El Heraldo', framing: 'Carga de tarifas', url: 'https://www.elheraldo.co' },
+        { title: 'Ecopetrol reporta resultados de producción e inversiones offshore', media: 'El Tiempo', framing: 'Desempeño energético', url: 'https://www.eltiempo.com' },
+        { title: 'Alerta en PYMES antioqueñas por alza de costos operativos', media: 'El Colombiano', framing: 'Vulnerabilidad empresarial', url: 'https://www.elcolombiano.com' },
+        { title: 'Federal Reserve signals cautious approach to future interest rates', media: 'AP News', framing: 'Política monetaria', url: 'https://apnews.com' },
+        { title: 'Dólar en Colombia mantiene estabilidad tras anuncios del Banco Central', media: 'Reuters', framing: 'Mercados cambiarios', url: 'https://www.reuters.com' }
+      ],
+      3: [
+        { title: 'Defensoría alerta por confinamiento de comunidades en Antioquia', media: 'El Colombiano', framing: 'Alarma humanitaria', url: 'https://www.elcolombiano.com' },
+        { title: 'Mesas territoriales de diálogo logran acuerdos de convivencia', media: 'RTVC Noticias', framing: 'Paz comunitaria', url: 'https://rtvcnoticias.com' },
+        { title: 'Fuerzas Militares refuerzan monitoreo en corredores hacia el Pacífico', media: 'El Espectador', framing: 'Seguridad institucional', url: 'https://www.elespectador.com' },
+        { title: 'Naciones Unidas presenta balance trimestral de verificación en Colombia', media: 'AFP', framing: 'Observación internacional', url: 'https://www.afp.com' },
+        { title: 'Comunidades del Cauca reclaman garantías de no repetición', media: 'El Tiempo', framing: 'Testimonio de víctimas', url: 'https://www.eltiempo.com' }
+      ],
+      4: [
+        { title: 'COP de biodiversidad: Los retos de América Latina en transición verde', media: 'BBC News', framing: 'Desafío ecológico', url: 'https://www.bbc.com' },
+        { title: 'Valle del Cauca lidera iniciativas de conservación para el Pacífico', media: 'El Tiempo', framing: 'Liderazgo regional', url: 'https://www.eltiempo.com' },
+        { title: 'Deforestación en la Amazonía registra reducción del 36% según ministerio', media: 'RTVC Noticias', framing: 'Logro ambiental', url: 'https://rtvcnoticias.com' },
+        { title: 'Transición energética y minerales críticos en la agenda latinoamericana', media: 'Reuters', framing: 'Mercado de minerales', url: 'https://www.reuters.com' },
+        { title: 'Pacto por los páramos: campesinos y MinAmbiente firman acuerdos', media: 'El Espectador', framing: 'Concertación ecológica', url: 'https://www.elespectador.com' }
+      ],
+      5: [
+        { title: 'Minsalud y agremiaciones médicas analizan escasez de medicamentos', media: 'El Espectador', framing: 'Alerta sanitaria', url: 'https://www.elespectador.com' },
+        { title: 'Avances científicos en terapias génicas abren nueva era en medicina', media: 'AFP', framing: 'Innovación global', url: 'https://www.afp.com' },
+        { title: 'Hospitales del Caribe reclaman giro de recursos pendientes de EPS', media: 'El Heraldo', framing: 'Crisis financiera de salud', url: 'https://www.elheraldo.co' },
+        { title: 'Organización Mundial de la Salud actualiza guía de prevención vacunal', media: 'AP News', framing: 'Guía técnica internacional', url: 'https://apnews.com' },
+        { title: 'SuperSalud interviene red prestadora en el occidente del país', media: 'El Tiempo', framing: 'Acción de control', url: 'https://www.eltiempo.com' }
+      ]
+    };
+
+    // Mobile Drawer Navigation Toggle
+    function toggleSidebar(forceState) {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('drawer-backdrop');
+      
+      const isOpen = !sidebar.classList.contains('-translate-x-full');
+      const shouldOpen = forceState !== undefined ? forceState : !isOpen;
+
+      if (shouldOpen) {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+      }
+    }
+
+    // Tab Switching
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-slate-800', 'text-indigo-400');
+        btn.classList.add('text-slate-400');
+      });
+
+      const target = document.getElementById('tab-' + tabId);
+      if (target) target.classList.add('active');
+
+      const activeBtn = document.getElementById('nav-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-slate-800', 'text-indigo-400');
+        activeBtn.classList.remove('text-slate-400');
+      }
+
+      const titles = {
+        dashboard: 'Dashboard Principal',
+        coverage: 'Cobertura Mediática & Subtemas',
+        national: 'Agenda Nacional: Departamentos',
+        international: 'Agenda Internacional: Continentes',
+        contrast: 'Contraste 10 Medios',
+        trends: 'Tendencias Top 5',
+        reports: 'Informe General en Pantalla'
+      };
+      document.getElementById('current-section-title').textContent = titles[tabId] || 'PRISMA';
+
+      // Auto close drawer on mobile upon tab selection
+      if (window.innerWidth < 1024) {
+        toggleSidebar(false);
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+
+    // Modals
+    function toggleModal(modalId, show) {
+      const m = document.getElementById(modalId);
+      if (m) {
+        if (show) m.classList.remove('hidden');
+        else m.classList.add('hidden');
+      }
+    }
+
+    function openArticleAnalysisModal(articleId) {
+      const art = MASTER_NEWS.find(a => a.id === articleId) || MASTER_NEWS[0];
+      document.getElementById('modal-source-name').textContent = art.source + ' (' + (art.scope === 'nacional' ? 'Colombia' : 'Internacional') + ')';
+      document.getElementById('modal-date').textContent = art.date;
+      document.getElementById('modal-title').textContent = `"${art.title}"`;
+      document.getElementById('modal-narrative-angle').textContent = art.narrative_angle;
+      document.getElementById('modal-tone').textContent = art.tone;
+      document.getElementById('modal-topic').textContent = `${art.topic} • ${art.subtopic}`;
+      document.getElementById('modal-sources-type').textContent = art.sources_type;
+      document.getElementById('modal-data-evidence').textContent = art.data_evidence;
+      document.getElementById('modal-transparency').textContent = art.transparency;
+      document.getElementById('modal-external-link').href = art.url;
+
+      toggleModal('modal-article-analysis', true);
+      lucide.createIcons();
+    }
+
+    // Populate News (Mobile Cards + Desktop Table)
+    function renderMasterNews(items) {
+      // 1. Mobile Card Feed (Stacked 1-column cards)
+      const mobileContainer = document.getElementById('master-cards-mobile');
+      mobileContainer.innerHTML = '';
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-2.5';
+        card.innerHTML = `
+          <div class="flex items-center justify-between text-[11px]">
+            <span class="font-bold text-slate-900 inline-flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full ${item.scope === 'nacional' ? 'bg-amber-500' : 'bg-cyan-500'}"></span>
+              ${item.source}
+            </span>
+            <span class="px-2 py-0.5 rounded-md font-bold uppercase text-[9px] ${item.scope === 'nacional' ? 'bg-amber-50 text-amber-800 border border-amber-200' : 'bg-cyan-50 text-cyan-800 border border-cyan-200'}">
+              ${item.scope}
+            </span>
+          </div>
+          <h4 class="font-semibold text-xs sm:text-sm text-slate-900 leading-snug">"${item.title}"</h4>
+          <div class="text-[11px] text-slate-500">
+            <strong>${item.topic}:</strong> ${item.subtopic}
+          </div>
+          <button onclick="openArticleAnalysisModal(${item.id})" class="w-full py-2.5 px-3 rounded-xl bg-indigo-50 active:bg-indigo-600 text-indigo-700 active:text-white font-bold text-xs transition flex items-center justify-center gap-1.5 min-h-[44px]">
+            <i data-lucide="eye" class="w-4 h-4"></i>
+            <span>Ver Ficha Técnica y Enfoque</span>
+          </button>
+        `;
+        mobileContainer.appendChild(card);
+      });
+
+      // 2. Desktop Table Body
+      const tbody = document.getElementById('master-table-body');
+      tbody.innerHTML = '';
+      items.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50/80 transition';
+        tr.innerHTML = `
+          <td class="px-4 py-3.5 font-bold text-slate-900 whitespace-nowrap">
+            <span class="inline-flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full ${item.scope === 'nacional' ? 'bg-amber-500' : 'bg-cyan-500'}"></span>
+              ${item.source}
+            </span>
+          </td>
+          <td class="px-4 py-3.5 font-medium text-slate-800 max-w-md">
+            "${item.title}"
+          </td>
+          <td class="px-4 py-3.5">
+            <span class="font-semibold text-slate-900 block">${item.topic}</span>
+            <span class="text-slate-400 text-[10px]">${item.subtopic}</span>
+          </td>
+          <td class="px-4 py-3.5 whitespace-nowrap">
+            <span class="px-2 py-0.5 rounded-md font-bold uppercase text-[10px] ${item.scope === 'nacional' ? 'bg-amber-50 text-amber-800 border border-amber-200' : 'bg-cyan-50 text-cyan-800 border border-cyan-200'}">
+              ${item.scope}
+            </span>
+          </td>
+          <td class="px-4 py-3.5 text-center">
+            <button onclick="openArticleAnalysisModal(${item.id})" class="px-3 py-1.5 rounded-xl bg-indigo-50 hover:bg-indigo-600 hover:text-white text-indigo-600 font-bold text-xs transition inline-flex items-center gap-1 min-h-[38px]">
+              <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+              <span>Ficha Técnica</span>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      lucide.createIcons();
+    }
+
+    function filterMasterCategory(cat) {
+      document.querySelectorAll('.cat-pill').forEach(b => {
+        b.classList.remove('bg-indigo-600', 'text-white', 'font-bold');
+        b.classList.add('bg-slate-100', 'text-slate-600', 'font-semibold');
+      });
+      event.target.classList.add('bg-indigo-600', 'text-white', 'font-bold');
+      event.target.classList.remove('bg-slate-100', 'text-slate-600');
+
+      if (cat === 'all') {
+        renderMasterNews(MASTER_NEWS);
+      } else if (cat === 'nacional' || cat === 'internacional') {
+        renderMasterNews(MASTER_NEWS.filter(n => n.scope === cat));
+      } else if (cat === 'politica') {
+        renderMasterNews(MASTER_NEWS.filter(n => n.topic === 'Política'));
+      } else if (cat === 'economia') {
+        renderMasterNews(MASTER_NEWS.filter(n => n.topic === 'Economía'));
+      }
+    }
+
+    function filterMasterTable() {
+      const q = document.getElementById('quick-search-input').value.toLowerCase();
+      const filtered = MASTER_NEWS.filter(n => 
+        n.title.toLowerCase().includes(q) ||
+        n.source.toLowerCase().includes(q) ||
+        n.topic.toLowerCase().includes(q) ||
+        n.subtopic.toLowerCase().includes(q)
+      );
+      renderMasterNews(filtered);
+    }
+
+    // National Departments Rendering
+    function selectDepartment(deptKey) {
+      document.querySelectorAll('.dept-btn').forEach(b => {
+        b.classList.remove('bg-slate-900', 'text-white', 'font-bold');
+        b.classList.add('bg-white', 'border', 'border-slate-200', 'text-slate-700');
+      });
+      const activeBtn = document.getElementById('dept-btn-' + deptKey);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-slate-900', 'text-white', 'font-bold');
+        activeBtn.classList.remove('bg-white', 'border', 'border-slate-200', 'text-slate-700');
+      }
+
+      const d = DEPARTMENTS_DATA[deptKey];
+      const container = document.getElementById('dept-display-container');
+      container.innerHTML = `
+        <div class="bg-white p-4 sm:p-6 lg:p-8 rounded-3xl border border-slate-200/90 shadow-xs space-y-4 sm:space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+            <div>
+              <span class="text-[11px] font-bold text-amber-700 uppercase tracking-wider">Región Seleccionada</span>
+              <h2 class="font-display text-lg sm:text-2xl font-bold text-slate-900 mt-0.5">${d.name}</h2>
+            </div>
+            <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-200 self-start sm:self-auto">
+              ${d.total} publicaciones registradas
+            </span>
+          </div>
+
+          <div class="p-3.5 sm:p-4 rounded-2xl bg-amber-50/50 border border-amber-100 text-xs text-slate-700 leading-relaxed space-y-1">
+            <strong class="text-amber-900 font-semibold block">Resumen Dinámico Regional:</strong>
+            <p>${d.summary}</p>
+          </div>
+
+          <div>
+            <h4 class="font-display font-bold text-slate-900 text-xs sm:text-sm mb-2.5">Focos Temáticos Regionales:</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              ${d.topics.map(t => `
+                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100">
+                  <div class="text-xs font-bold text-slate-900">${t.name}</div>
+                  <div class="text-[11px] text-slate-500 mt-0.5">${t.count} noticias (${t.share})</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-display font-bold text-slate-900 text-xs sm:text-sm mb-2.5">Noticias de la Región:</h4>
+            <div class="space-y-2">
+              ${d.articles.map(a => `
+                <div class="p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-xs">
+                  <div class="flex items-center gap-2">
+                    <span class="font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded text-[11px]">${a.media}</span>
+                    <span class="text-slate-800 font-medium">"${a.title}"</span>
+                  </div>
+                  <span class="text-slate-400 text-[10px] self-end sm:self-auto">${a.date}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    // International Continents Rendering
+    function selectContinent(contKey) {
+      document.querySelectorAll('.cont-btn').forEach(b => {
+        b.classList.remove('bg-slate-900', 'text-white', 'font-bold');
+        b.classList.add('bg-white', 'border', 'border-slate-200', 'text-slate-700');
+      });
+      const activeBtn = document.getElementById('cont-btn-' + contKey);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-slate-900', 'text-white', 'font-bold');
+        activeBtn.classList.remove('bg-white', 'border', 'border-slate-200', 'text-slate-700');
+      }
+
+      const c = CONTINENTS_DATA[contKey];
+      const container = document.getElementById('continent-display-container');
+      container.innerHTML = `
+        <div class="bg-white p-4 sm:p-6 lg:p-8 rounded-3xl border border-slate-200/90 shadow-xs space-y-4 sm:space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+            <div>
+              <span class="text-[11px] font-bold text-cyan-700 uppercase tracking-wider">Continente / Región Global</span>
+              <h2 class="font-display text-lg sm:text-2xl font-bold text-slate-900 mt-0.5">${c.name}</h2>
+            </div>
+            <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-cyan-50 text-cyan-800 border border-cyan-200 self-start sm:self-auto">
+              ${c.total} despachos internacionales
+            </span>
+          </div>
+
+          <div class="p-3.5 sm:p-4 rounded-2xl bg-cyan-50/50 border border-cyan-100 text-xs text-slate-700 leading-relaxed">
+            <strong class="text-cyan-900 font-semibold block mb-1">Resumen Internacional:</strong>
+            <p>${c.summary}</p>
+          </div>
+
+          <div>
+            <h4 class="font-display font-bold text-slate-900 text-xs sm:text-sm mb-2.5">Países con Mayor Cobertura:</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              ${c.countries.map(p => `
+                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-100">
+                  <div class="flex justify-between items-center">
+                    <span class="text-xs font-bold text-slate-900">${p.country}</span>
+                    <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-cyan-100 text-cyan-800">${p.count}</span>
+                  </div>
+                  <div class="text-[11px] text-slate-500 mt-1">${p.topics}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-display font-bold text-slate-900 text-xs sm:text-sm mb-2.5">Despachos Noticiosos:</h4>
+            <div class="space-y-2">
+              ${c.articles.map(a => `
+                <div class="p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-xs">
+                  <div class="flex items-center gap-2">
+                    <span class="font-bold text-cyan-900 bg-cyan-50 px-2 py-0.5 rounded border border-cyan-200 text-[11px]">${a.media}</span>
+                    <span class="text-slate-800 font-medium">"${a.title}"</span>
+                  </div>
+                  <span class="text-slate-400 text-[10px] self-end sm:self-auto">${a.date}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    // Top 5 Trend Selector
+    function selectTrendItem(trendId) {
+      document.querySelectorAll('.trend-selector-card').forEach(c => {
+        c.classList.remove('border-2', 'border-indigo-600', 'bg-indigo-50/60', 'active');
+        c.classList.add('border', 'border-slate-200', 'bg-white');
+      });
+      const selected = document.getElementById('trend-card-' + trendId);
+      if (selected) {
+        selected.classList.add('border-2', 'border-indigo-600', 'bg-indigo-50/60', 'active');
+        selected.classList.remove('border-slate-200', 'bg-white');
+      }
+
+      const names = { 1: 'Política', 2: 'Economía', 3: 'Conflicto y Paz', 4: 'Medio Ambiente', 5: 'Salud' };
+      document.getElementById('trend-detail-heading').textContent = `Top 5 Artículos Relevantes en: ${names[trendId]}`;
+
+      const articles = TREND_ARTICLES[trendId] || TREND_ARTICLES[1];
+      const container = document.getElementById('trend-articles-container');
+      container.innerHTML = articles.map((art, idx) => `
+        <div class="p-3.5 sm:p-4 rounded-2xl bg-white border border-slate-200 hover:border-indigo-300 transition shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-slate-900 text-white font-black text-[10px] flex items-center justify-center">${idx + 1}</span>
+              <span class="font-bold text-slate-900 text-xs">${art.media}</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold">${art.framing}</span>
+            </div>
+            <div class="text-xs font-semibold text-slate-800 leading-snug">"${art.title}"</div>
+          </div>
+          <a href="${art.url}" target="_blank" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center gap-1 min-h-[38px] transition flex-shrink-0">
+            <span>Ver fuente</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function triggerFeedUpdate() {
+      const btn = document.getElementById('btn-sync');
+      const text = document.getElementById('sync-text');
+      btn.disabled = true;
+      text.textContent = 'Actualizando...';
+      btn.classList.add('opacity-75');
+
+      setTimeout(() => {
+        btn.disabled = false;
+        text.textContent = 'Sincronizar Feeds';
+        btn.classList.remove('opacity-75');
+        alert('¡Feeds sincronizados con éxito! 161 noticias analizadas.');
+      }, 1200);
+    }
+
+    function downloadFullMarkdownReport() {
+      const mdContent = `# PRISMA - INFORME GENERAL DE COBERTURA Y AGENDA MEDIÁTICA
+Fecha de corte: 2026-10-18 | Muestra: 161 noticias (10 medios de referencia)
+
+## 1. RESUMEN CUANTITATIVO (DATOS EMPÍRICOS)
+- Cobertura Nacional: 96 artículos (59.6%)
+- Cobertura Internacional: 65 artículos (40.4%)
+
+## 2. RANKING DE TEMAS Y TITULARES MÁS IMPORTANTES
+1. Política (42 noticias)
+   - El Tiempo: "Empresarios advierten freno a la contratación por nuevos costos de reforma laboral"
+   - El Espectador: "Congreso retoma debate de reforma laboral con acuerdos en recargo nocturno"
+   - NY Times: "In Colombia, a Test of Leftist Economic Policies in the Legislature"
+2. Economía (35 noticias)
+   - Reuters: "Colombia congress debates labor reform bill amid fiscal deficit scrutiny"
+   - El Heraldo: "Tarifas de energía en el Caribe: alcaldes insisten en intervención ante la CREG"
+   - El Colombiano: "Alerta en PYMES antioqueñas por alza de costos operativos tras reforma"
+
+## 3. DOSSIER DE TRATAMIENTO EDITORIAL POR CADA UNO DE LOS 10 MEDIOS
+(Detalle completo por medio: El Tiempo, El Espectador, RTVC, El Heraldo, El Colombiano, Reuters, BBC, AP, AFP, NYT)
+
+---
+*Generado por PRISMA - Radar de Medios para periodismo e investigación académica.*`;
+
+      const blob = new Blob([mdContent], { type: 'text/markdown;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'informe_general_prisma.md';
+      a.click();
+    }
+
+    // Initialize application on load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderMasterNews(MASTER_NEWS);
+      selectDepartment('antioquia');
+      selectContinent('latam');
+      selectTrendItem(1);
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
