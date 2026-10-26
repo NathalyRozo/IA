@@ -1,90 +1,109 @@
 'use client';
 
-import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Newspaper, BarChart3, SplitSquareVertical, TrendingUp, FileText, RefreshCw } from 'lucide-react';
-import { triggerScraping } from '@/lib/api';
+import React, { useState } from 'react';
 
-export default function Navbar() {
-  const pathname = usePathname();
-  const [syncing, setSyncing] = React.useState(false);
-  const [syncMessage, setSyncMessage] = React.useState<string | null>(null);
+interface NavbarProps {
+  territory?: 'nacional' | 'internacional';
+  onTerritoryChange?: (territory: 'nacional' | 'internacional') => void;
+  onOpenDisclaimer?: () => void;
+}
 
-  const navLinks = [
-    { href: '/', label: 'Inicio', icon: Newspaper },
-    { href: '/coverage', label: '1. Cobertura Mediática', icon: BarChart3 },
-    { href: '/contrast', label: '2. Contraste de Medios', icon: SplitSquareVertical },
-    { href: '/trends', label: '3. Tendencias', icon: TrendingUp },
-    { href: '/reports', label: '4. Informes', icon: FileText },
-  ];
+export default function Navbar({ 
+  territory = 'nacional', 
+  onTerritoryChange,
+  onOpenDisclaimer 
+}: NavbarProps) {
+  const [selectedTerritory, setSelectedTerritory] = useState<'nacional' | 'internacional'>(territory);
 
-  const handleSync = async () => {
-    try {
-      setSyncing(true);
-      await triggerScraping();
-      setSyncMessage('Ingesta iniciada en segundo plano...');
-      setTimeout(() => setSyncMessage(null), 4000);
-    } catch (err) {
-      setSyncMessage('Error al sincronizar');
-      setTimeout(() => setSyncMessage(null), 3000);
-    } finally {
-      setSyncing(false);
-    }
+  const handleTerritory = (t: 'nacional' | 'internacional') => {
+    setSelectedTerritory(t);
+    if (onTerritoryChange) onTerritoryChange(t);
   };
 
   return (
-    <header className="bg-slate-900 border-b border-slate-800 text-white sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-9 h-9 rounded-lg bg-sky-500 flex items-center justify-center font-bold text-slate-900 group-hover:bg-sky-400 transition-colors">
-                M
-              </div>
-              <div>
-                <span className="font-bold text-lg tracking-tight block leading-none">MEDIATRIX</span>
-                <span className="text-[10px] text-slate-400 uppercase tracking-widest font-mono">Observatorio de Medios</span>
-              </div>
-            </Link>
+    <header className="fixed top-0 left-72 right-0 h-20 bg-surface/80 backdrop-blur-xl z-40 px-space-lg flex items-center justify-between gap-space-md shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-outline-variant/20">
+      {/* Search Bar & Fast Scope Switcher */}
+      <div className="flex items-center gap-space-md flex-1 max-w-xl">
+        <div className="relative w-full flex items-center">
+          <span className="material-symbols-outlined absolute left-space-md text-on-surface-variant text-[20px]">
+            search
+          </span>
+          <input 
+            className="w-full bg-surface-container-low rounded-full pl-11 pr-14 py-space-sm text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm outline-none focus:bg-surface-container-high transition-colors border border-outline-variant/20 focus:border-primary-fixed/40"
+            placeholder="Buscar fuentes, temas clave o perspectivas..." 
+            type="text"
+          />
+          <kbd className="absolute right-space-md px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase">
+            ⌘K
+          </kbd>
+        </div>
+
+        <div className="inline-flex p-1 bg-surface-container-low rounded-full border border-outline-variant/20 shrink-0">
+          <button 
+            type="button"
+            onClick={() => handleTerritory('nacional')}
+            className={`px-space-md py-space-xs rounded-full font-label-sm text-label-sm uppercase transition-all ${
+              selectedTerritory === 'nacional'
+                ? 'bg-primary-container text-on-primary-container font-bold shadow-[0_0_10px_rgba(253,228,0,0.3)]'
+                : 'text-on-surface-variant hover:text-on-surface'
+            }`}
+          >
+            Nacional
+          </button>
+          <button 
+            type="button"
+            onClick={() => handleTerritory('internacional')}
+            className={`px-space-md py-space-xs rounded-full font-label-sm text-label-sm uppercase transition-all ${
+              selectedTerritory === 'internacional'
+                ? 'bg-primary-container text-on-primary-container font-bold shadow-[0_0_10px_rgba(253,228,0,0.3)]'
+                : 'text-on-surface-variant hover:text-on-surface'
+            }`}
+          >
+            Internacional
+          </button>
+        </div>
+      </div>
+
+      {/* Right User Bar */}
+      <div className="flex items-center gap-space-md">
+        {/* Ethical disclaimer shortcut */}
+        <button
+          onClick={onOpenDisclaimer}
+          className="px-space-sm py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant hover:text-primary-fixed flex items-center gap-1 font-label-sm text-label-sm uppercase transition-all border border-outline-variant/30"
+          title="Ver límites de alcance y principios deontológicos"
+        >
+          <span className="material-symbols-outlined text-[16px] text-primary-fixed">verified</span>
+          <span className="hidden sm:inline">Qué NO hace</span>
+        </button>
+
+        {/* Dark mode indicator */}
+        <div className="flex items-center bg-surface-container-low rounded-full p-1 border border-outline-variant/20">
+          <div className="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-primary-fixed">
+            <span className="material-symbols-outlined text-[16px]">dark_mode</span>
           </div>
+        </div>
 
-          <nav className="hidden md:flex items-center space-x-1">
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    isActive
-                      ? 'bg-slate-800 text-sky-400'
-                      : 'text-slate-300 hover:bg-slate-800 hover:text-white'
-                  }`}
-                >
-                  <Icon className="w-4 h-4" />
-                  <span>{link.label}</span>
-                </Link>
-              );
-            })}
-          </nav>
+        {/* Notifications */}
+        <button 
+          type="button"
+          className="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-full transition-colors"
+        >
+          <span className="material-symbols-outlined text-[22px]">notifications</span>
+          <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(255,74,141,0.6)]"></span>
+        </button>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={handleSync}
-              disabled={syncing}
-              className="flex items-center gap-2 px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition"
-              title="Sincronizar noticias de los 10 medios"
-            >
-              <RefreshCw className={`w-3.5 h-3.5 ${syncing ? 'animate-spin text-sky-400' : ''}`} />
-              <span>{syncing ? 'Sincronizando...' : 'Actualizar Feeds'}</span>
-            </button>
-            {syncMessage && (
-              <span className="text-xs text-sky-400 bg-sky-950/60 border border-sky-800 px-2 py-1 rounded">
-                {syncMessage}
-              </span>
-            )}
+        {/* User Persona Profile: Victoria León */}
+        <div className="flex items-center gap-space-sm pl-space-xs border-l border-outline-variant/30">
+          <div className="flex flex-col text-right">
+            <span className="font-label-md text-label-md text-on-surface leading-tight font-bold">
+              Victoria León
+            </span>
+            <span className="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider">
+              Periodista Pro
+            </span>
+          </div>
+          <div className="w-9 h-9 rounded-full bg-primary-container text-on-primary-container font-black flex items-center justify-center shadow-[0_0_12px_rgba(253,228,0,0.3)]">
+            VL
           </div>
         </div>
       </div>

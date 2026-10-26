@@ -1,282 +1,294 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { SplitSquareVertical, ExternalLink, Sparkles, AlertCircle, Bookmark } from 'lucide-react';
-import { fetchEventsForContrast, fetchEventContrast } from '@/lib/api';
-import { EventContrast } from '@/lib/types';
+import React, { useState } from 'react';
 
 export default function ContrastPage() {
-  const [events, setEvents] = useState<any[]>([]);
-  const [selectedEventId, setSelectedEventId] = useState<number | null>(1);
-  const [contrastData, setContrastData] = useState<EventContrast | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [activeFraming, setActiveFraming] = useState('all');
 
-  // Datos mock por defecto para garantizar funcionamiento inmediato si el backend está desconectado
-  const defaultContrast: EventContrast = {
-    event_id: 1,
-    canonical_title: 'Debate y votación del proyecto de reforma laboral en el Congreso',
-    topic: 'Política',
-    total_coverage_count: 4,
-    comparison_items: [
-      {
-        media_name: 'El Tiempo',
-        media_scope: 'nacional',
-        headline: 'Empresarios advierten freno a la contratación por nuevos costos de reforma laboral',
-        published_at: '2026-10-18T14:30:00Z',
-        url: 'https://www.eltiempo.com',
-        narrative_angle: 'Impacto fiscal y costo de nómina para empresarios',
-        tone: 'Crítico',
-        highlighted_aspects: ['Costos de recargos nocturnos', 'Riesgo de informalidad', 'Advertencias de gremios'],
-        omitted_aspects: ['Estándares internacionales de la OIT', 'Testimonios de centrales obreras']
-      },
-      {
-        media_name: 'El Espectador',
-        media_scope: 'nacional',
-        headline: 'Congreso retoma debate de reforma laboral con acuerdos en recargo nocturno',
-        published_at: '2026-10-18T13:45:00Z',
-        url: 'https://www.elespectador.com',
-        narrative_angle: 'Trámite parlamentario y búsqueda de consensos',
-        tone: 'Institucional',
-        highlighted_aspects: ['Votaciones de bancadas independientes', 'Puntos de concertación'],
-        omitted_aspects: ['Impacto detallado en PYMES regionales']
-      },
-      {
-        media_name: 'RTVC Noticias',
-        media_scope: 'nacional',
-        headline: 'Trabajadores respaldan recuperación de la jornada nocturna desde las 7:00 p.m.',
-        published_at: '2026-10-18T12:00:00Z',
-        url: 'https://rtvcnoticias.com',
-        narrative_angle: 'Reivindicación de derechos y justicia social',
-        tone: 'Optimista',
-        highlighted_aspects: ['Restitución de derechos históricos', 'Voz de los sindicatos'],
-        omitted_aspects: ['Postura de los gremios comerciales e industriales']
-      },
-      {
-        media_name: 'Reuters',
-        media_scope: 'internacional',
-        headline: 'Colombia congress debates labor reform bill amid fiscal deficit scrutiny',
-        published_at: '2026-10-18T16:15:00Z',
-        url: 'https://www.reuters.com',
-        narrative_angle: 'Riesgo soberano y estabilidad macroeconómica',
-        tone: 'Neutro',
-        highlighted_aspects: ['Reacción de mercados y tasa de cambio', 'Metas fiscales del gobierno'],
-        omitted_aspects: ['Tensión política partidista interna']
-      }
-    ],
-    ai_comparative_synthesis: {
-      overview: 'El Congreso de Colombia somete a votación los artículos neurálgicos de la reforma laboral. La cobertura muestra una profunda polarización en la jerarquización del hecho.',
-      outlet_frames: {
-        'El Tiempo': { angle: 'Económico / Empresarial', tone: 'Crítico', highlighted: ['Costos laborales'], omitted: ['Garantías sociales'] },
-        'El Espectador': { angle: 'Institucional / Legislativo', tone: 'Neutro', highlighted: ['Votación de artículos'], omitted: ['Efectos a largo plazo'] },
-        'RTVC Noticias': { angle: 'Social / Gubernamental', tone: 'Favorable', highlighted: ['Justicia social'], omitted: ['Objeciones gremiales'] },
-        'Reuters': { angle: 'Mercados / Macroeconomía', tone: 'Técnico', highlighted: ['Déficit e inversión'], omitted: ['Detalles del articulado'] }
-      },
-      divergencias: [
-        'El Tiempo y Reuters enfocan el hecho desde los riesgos de inversión y la carga sobre el sector productivo.',
-        'RTVC Noticias centra la narrativa en la justicia social y el cumplimiento del mandato popular.',
-        'El Espectador mantiene un encuadre procedural enfocado en las dinámicas de votación del Congreso.'
-      ]
+  const framingPills = [
+    { id: 'all', label: 'Todos los enfoques' },
+    { id: 'fiscal', label: 'Fiscal / Mercados' },
+    { id: 'social', label: 'Social / Laboral' },
+    { id: 'politico', label: 'Político / Gobierno' },
+  ];
+
+  const columns = [
+    {
+      id: 'espectador',
+      source: 'El Espectador',
+      scope: 'Prensa Nacional • Colombia',
+      abbr: 'EE',
+      framingType: 'social',
+      framingLabel: 'Enfoque Social / Derechos',
+      accentColor: 'text-secondary-fixed',
+      badgeBg: 'bg-secondary-container text-on-secondary-container shadow-[0_0_10px_rgba(255,74,141,0.4)]',
+      borderTop: 'bg-secondary-container',
+      headline: '“Con reparos en el régimen de transición laboral, avanza la reforma en primer debate”',
+      lead: 'La célula legislativa destrabó el articulado nuclear tras 14 horas de negociación, priorizando la jornada nocturna anticipada y contratos a término indefinido como norma general.',
+      toneLabel: 'Garantista Crítico',
+      tonePercent: 68,
+      toneBarColor: 'bg-secondary-container',
+      emphasisText: 'Protección prioritaria a trabajadores de plataformas digitales, formalización agropecuaria y recargo nocturno a partir de las 7:00 PM.',
+      omissionText: 'Minimiza la cuantificación del impacto en estructura de costos de micro y pequeñas empresas frente al incremento en la sobretasa dominical.',
+      link: '#'
     },
-    methodological_disclaimer: 'Este análisis contrasta enfoques editoriales y selección temática. No califica la veracidad de los hechos.'
-  };
-
-  useEffect(() => {
-    loadEvents();
-  }, []);
-
-  useEffect(() => {
-    if (selectedEventId) {
-      loadContrast(selectedEventId);
+    {
+      id: 'reuters',
+      source: 'Reuters LatAm',
+      scope: 'Agencia Global • Londres / Bogotá',
+      abbr: 'RE',
+      framingType: 'fiscal',
+      framingLabel: 'Económico / Mercados',
+      accentColor: 'text-tertiary-fixed',
+      badgeBg: 'bg-surface-container-high text-tertiary-fixed border border-tertiary-fixed/30',
+      borderTop: 'bg-tertiary-fixed-dim',
+      headline: '“Colombia labor reform clears committee hurdle amid private sector and rating scrutiny”',
+      lead: 'Las agencias crediticias y bancos de inversión advierten sobre presiones indexadas en costos operativos, mientras el peso colombiano registró volatilidad marginal durante la votación.',
+      toneLabel: 'Riesgo Financiero / Fiscal',
+      tonePercent: 74,
+      toneBarColor: 'bg-tertiary-fixed-dim',
+      emphasisText: 'Estimaciones de la ANDI y Fenalco que alertan sobre un posible sobrecosto laboral entre el 11.8% y el 14% en nómina.',
+      omissionText: 'Omite testimonios de centrales obreras (CUT, CTC) y datos sobre precarización histórica del trabajo nocturno desde la reforma del 2002.',
+      link: '#'
+    },
+    {
+      id: 'rtvc',
+      source: 'RTVC Noticias',
+      scope: 'Sistema Público Nacional • Colombia',
+      abbr: 'RT',
+      framingType: 'politico',
+      framingLabel: 'Político / Institucional',
+      accentColor: 'text-primary-fixed',
+      badgeBg: 'bg-primary-container text-on-primary-container shadow-[0_0_10px_rgba(253,228,0,0.4)]',
+      borderTop: 'bg-primary-container',
+      headline: '“Paso histórico en el Congreso hacia la restitución de derechos laborales del pueblo trabajador”',
+      lead: 'Con masiva movilización ciudadana en las barras del Capitolio, se aprobó el núcleo sustantivo que devuelve la dignidad a los trabajadores diurnos y nocturnos.',
+      toneLabel: 'Reivindicatorio Institucional',
+      tonePercent: 82,
+      toneBarColor: 'bg-primary-container',
+      emphasisText: 'Devolución de conquistas laborales arrebatadas hace más de dos décadas, equidad salarial de género y blindaje a la huelga.',
+      omissionText: 'Omite objeciones y reparos emitidos por el Banco de la República sobre riesgo de desincentivo al empleo juvenil y formalización.',
+      link: '#'
     }
-  }, [selectedEventId]);
+  ];
 
-  const loadEvents = async () => {
-    try {
-      const res = await fetchEventsForContrast();
-      if (res && res.length > 0) {
-        setEvents(res);
-        setSelectedEventId(res[0].id);
-      }
-    } catch {
-      // Backend desconectado
-      setEvents([
-        { id: 1, canonical_title: 'Debate de reforma laboral en el Congreso', topic: 'Política' },
-        { id: 2, canonical_title: 'Cumbre sobre transición energética y petróleo', topic: 'Economía' }
-      ]);
-    }
-  };
-
-  const loadContrast = async (id: number) => {
-    try {
-      setLoading(true);
-      const res = await fetchEventContrast(id);
-      setContrastData(res);
-    } catch {
-      setContrastData(defaultContrast);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const current = contrastData || defaultContrast;
+  const filteredColumns = columns.filter(c => {
+    if (activeFraming === 'all') return true;
+    return c.framingType === activeFraming;
+  });
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="pb-6 border-b border-slate-200">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-600 mb-1">
-          <SplitSquareVertical className="w-4 h-4" />
-          <span>Función 3: Análisis Comparativo</span>
+    <div className="flex flex-col w-full pb-space-xl">
+      {/* Breadcrumbs & Meta Bar */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-space-md mb-space-md">
+        <div className="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+          <span className="hover:text-on-surface cursor-pointer transition-colors font-bold">
+            Comparador de Medios
+          </span>
+          <span className="material-symbols-outlined text-[14px]">chevron_right</span>
+          <span className="text-primary-fixed font-bold">Acontecimiento Crítico</span>
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-secondary-container mx-space-xs animate-pulse"></span>
+          <span className="text-secondary-fixed font-semibold tracking-normal">En vivo</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-          Contraste de Información entre Medios
-        </h1>
-        <p className="text-sm text-slate-500 mt-1">
-          Visualiza los titulares de diferentes medios frente a un mismo acontecimiento y compara enfoques, aspectos destacados y omisiones.
-        </p>
+
+        <div className="flex items-center gap-space-sm bg-surface-container-low px-space-md py-1.5 rounded-full shadow-sm w-fit border border-outline-variant/30">
+          <span className="material-symbols-outlined text-[16px] text-tertiary-fixed">sync</span>
+          <span className="font-body-sm text-body-sm text-on-surface-variant">
+            Actualizado hace 15 minutos • <strong className="text-on-surface">48 artículos vinculados</strong>
+          </span>
+        </div>
       </div>
 
-      {/* Event Selector Pill Bar */}
-      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-          <Bookmark className="w-4 h-4 text-sky-600" />
-          <span>Seleccionar Acontecimiento para Contrastar:</span>
+      {/* Main Headline Block */}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-lg bg-surface-container-low p-space-lg rounded-2xl shadow-sm relative overflow-hidden border border-outline-variant/30">
+        <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-primary-container/5 blur-3xl pointer-events-none"></div>
+
+        <div className="flex flex-col gap-space-xs max-w-4xl z-10">
+          <div className="flex flex-wrap items-center gap-space-xs mb-1">
+            <span className="px-space-md py-1 rounded-full bg-surface-container-high text-primary-fixed font-label-sm text-label-sm uppercase tracking-wider shadow-sm flex items-center gap-1.5 font-bold">
+              <span className="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(253,228,0,0.8)]"></span>
+              10 medios analizados en simultáneo
+            </span>
+            <span className="px-space-md py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+              Congreso de la República • Comisión Séptima
+            </span>
+          </div>
+          <h1 className="font-headline-xl text-headline-xl text-primary font-extrabold tracking-tight">
+            Acontecimiento: Reforma Laboral y Régimen de Contratación Nocturna en el Congreso
+          </h1>
+          <p className="font-body-md text-body-md text-on-surface-variant">
+            Descomposición analítica de encuadres mediáticos (<em>framing</em>), sesgos léxicos y divergencias de cobertura editorial entre prensa corporativa, pública e internacional.
+          </p>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {events.map((ev) => (
+
+        {/* Framing Filter Pills */}
+        <div className="flex flex-wrap lg:flex-nowrap items-center gap-space-xs z-10 bg-surface-container-high p-1.5 rounded-full border border-outline-variant/30">
+          {framingPills.map(p => (
             <button
-              key={ev.id}
-              onClick={() => setSelectedEventId(ev.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition ${
-                selectedEventId === ev.id
-                  ? 'bg-sky-600 text-white shadow-sm'
-                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+              key={p.id}
+              onClick={() => setActiveFraming(p.id)}
+              className={`filter-pill px-space-md py-space-xs rounded-full font-label-md text-label-md uppercase transition-all ${
+                activeFraming === p.id
+                  ? 'bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(253,228,0,0.35)] font-bold'
+                  : 'text-on-surface-variant hover:text-on-surface'
               }`}
             >
-              {ev.canonical_title.slice(0, 45)}...
+              {p.label}
             </button>
           ))}
         </div>
       </div>
 
-      {/* AI Synthesis Box */}
-      <div className="bg-gradient-to-r from-sky-950 via-slate-900 to-slate-900 rounded-xl p-6 text-white border border-sky-800 shadow-lg space-y-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-sky-400 font-bold text-sm">
-            <Sparkles className="w-4 h-4" />
-            <span>Síntesis Comparativa de Enfoques (Asistida por PLN / IA)</span>
-          </div>
-          <span className="text-[11px] font-mono bg-sky-900/60 px-2 py-0.5 rounded border border-sky-700 text-sky-300">
-            {current.total_coverage_count} medios contrastados
-          </span>
-        </div>
+      {/* Side-by-Side 3-Column Comparative Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-space-lg mb-space-xl">
+        {filteredColumns.map(col => (
+          <article 
+            key={col.id}
+            className="flex flex-col justify-between bg-surface-container-low rounded-2xl p-space-lg shadow-md transition-all duration-300 hover:shadow-2xl relative overflow-hidden group border border-outline-variant/30"
+          >
+            <div className={`absolute top-0 left-0 right-0 h-1.5 ${col.borderTop}`}></div>
 
-        <p className="text-slate-200 text-sm leading-relaxed">
-          {current.ai_comparative_synthesis?.overview}
-        </p>
-
-        <div className="border-t border-slate-800 pt-3">
-          <div className="text-xs font-semibold text-sky-300 uppercase tracking-wider mb-2">
-            Principales Divergencias en el Tratamiento Informativo:
-          </div>
-          <ul className="space-y-1 text-xs text-slate-300 list-disc list-inside">
-            {current.ai_comparative_synthesis?.divergences?.map((div: string, idx: number) => (
-              <li key={idx} className="leading-relaxed">{div}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      {/* Side-by-Side Headline Cards Grid */}
-      <div>
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-base font-bold text-slate-900">
-            Titulares y Encuadres Paralelos
-          </h2>
-          <span className="text-xs text-slate-500">
-            Comparativa lado a lado
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {current.comparison_items.map((item, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between hover:border-sky-400 transition"
-            >
-              <div className="space-y-3">
-                {/* Media header */}
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-slate-900 text-sm">{item.media_name}</span>
-                  <span className={`text-[10px] font-semibold uppercase px-2 py-0.5 rounded ${
-                    item.media_scope === 'nacional' ? 'bg-amber-100 text-amber-800' : 'bg-sky-100 text-sky-800'
-                  }`}>
-                    {item.media_scope}
-                  </span>
-                </div>
-
-                {/* Headline */}
-                <h3 className="text-sm font-semibold text-slate-800 leading-snug">
-                  "{item.headline}"
-                </h3>
-
-                {/* Narrative Angle Tag */}
-                <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100 space-y-1">
-                  <div className="text-[11px] font-semibold text-slate-500 uppercase">Enfoque Narrativo</div>
-                  <div className="text-xs font-medium text-slate-800">{item.narrative_angle}</div>
-                  <div className="text-[11px] text-slate-500 mt-1">
-                    Tono: <span className="font-semibold text-slate-700">{item.tone}</span>
+            <div className="flex flex-col gap-space-md">
+              {/* Source Header & Framing Badge */}
+              <div className="flex items-start justify-between gap-space-sm pt-space-xs">
+                <div className="flex items-center gap-space-sm">
+                  <div className="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-bold font-headline-sm text-[16px] shadow-sm border border-outline-variant/20">
+                    {col.abbr}
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">
+                      {col.source}
+                    </span>
+                    <span className="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">
+                      {col.scope}
+                    </span>
                   </div>
                 </div>
 
-                {/* Highlighted Aspects */}
-                <div className="space-y-1">
-                  <div className="text-[11px] font-semibold text-emerald-700 uppercase">Aspectos que Destaca</div>
-                  <ul className="text-xs text-slate-600 space-y-0.5">
-                    {item.highlighted_aspects.map((h, i) => (
-                      <li key={i} className="flex items-start gap-1">
-                        <span className="text-emerald-500 font-bold">•</span>
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Omitted Aspects */}
-                {item.omitted_aspects.length > 0 && (
-                  <div className="space-y-1 pt-1">
-                    <div className="text-[11px] font-semibold text-rose-700 uppercase">Aspectos Omitidos</div>
-                    <ul className="text-xs text-slate-500 space-y-0.5">
-                      {item.omitted_aspects.map((o, i) => (
-                        <li key={i} className="flex items-start gap-1">
-                          <span className="text-rose-400 font-bold">•</span>
-                          <span>{o}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                <span className={`px-space-md py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider font-bold ${col.badgeBg}`}>
+                  {col.framingLabel}
+                </span>
               </div>
 
-              {/* Original Link */}
-              <div className="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs">
-                <span className="text-slate-400 text-[11px]">
-                  {new Date(item.published_at).toLocaleDateString()}
+              {/* Headline & Editorial Lead */}
+              <div className="flex flex-col gap-space-xs">
+                <span className={`font-label-sm text-label-sm uppercase tracking-wider font-bold ${col.accentColor}`}>
+                  Titular de portada
                 </span>
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sky-600 hover:text-sky-800 flex items-center gap-1 font-semibold"
-                >
-                  <span>Ver noticia</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
+                <h2 className="font-headline-md text-headline-md text-on-surface font-extrabold leading-snug group-hover:text-primary transition-colors">
+                  {col.headline}
+                </h2>
+                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  {col.lead}
+                </p>
+              </div>
+
+              {/* Media Sentiment & Bias Strip */}
+              <div className="bg-surface-container-high rounded-xl p-space-sm flex flex-col gap-1.5 border border-outline-variant/20">
+                <div className="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm">
+                  <span>Tono Interpretativo</span>
+                  <span className={`font-semibold ${col.accentColor}`}>{col.toneLabel} ({col.tonePercent}%)</span>
+                </div>
+                <div className="w-full h-2 rounded-full bg-surface-container flex overflow-hidden">
+                  <div className={`${col.toneBarColor} h-full`} style={{ width: `${col.tonePercent}%` }}></div>
+                  <div className="bg-surface-bright h-full flex-1"></div>
+                </div>
+              </div>
+
+              {/* Analytical Highlights Box */}
+              <div className="flex flex-col gap-space-sm pt-space-xs">
+                <span className="font-label-md text-label-md text-on-surface uppercase tracking-wider flex items-center gap-1.5 font-bold">
+                  <span className={`material-symbols-outlined text-[16px] ${col.accentColor}`}>fact_check</span>
+                  Deconstrucción de Puntos Clave
+                </span>
+
+                <div className="p-space-md rounded-xl bg-surface-container-highest/60 flex flex-col gap-space-xs border border-outline-variant/20">
+                  <div className={`flex items-center gap-space-xs font-label-sm text-label-sm uppercase font-bold ${col.accentColor}`}>
+                    <span className="material-symbols-outlined text-[16px]">visibility</span>
+                    Énfasis Declarado
+                  </div>
+                  <p className="font-body-sm text-body-sm text-on-surface leading-relaxed">
+                    {col.emphasisText}
+                  </p>
+                </div>
+
+                <div className="p-space-md rounded-xl bg-surface-container-highest/30 flex flex-col gap-space-xs border border-outline-variant/10">
+                  <div className="flex items-center gap-space-xs text-outline font-label-sm text-label-sm uppercase font-bold">
+                    <span className="material-symbols-outlined text-[16px]">visibility_off</span>
+                    Dimensión Omitida / Marginal
+                  </div>
+                  <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    {col.omissionText}
+                  </p>
+                </div>
               </div>
             </div>
-          ))}
-        </div>
+
+            {/* Action Footer */}
+            <div className="pt-space-lg flex items-center justify-between gap-space-sm border-t border-outline-variant/20 mt-space-md">
+              <div className="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+                <span className="material-symbols-outlined text-[16px] text-tertiary-fixed">verified</span>
+                Fuente Monitoreada
+              </div>
+              <button 
+                type="button"
+                className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface hover:bg-primary-container hover:text-on-primary-container font-label-md text-label-md uppercase transition-all shadow-sm font-bold"
+              >
+                <span>Ver fuente</span>
+                <span className="material-symbols-outlined text-[14px]">arrow_outward</span>
+              </button>
+            </div>
+          </article>
+        ))}
       </div>
+
+      {/* Lexical Divergence Matrix */}
+      <section className="bg-surface-container-low rounded-2xl p-space-lg shadow-md border border-outline-variant/30">
+        <div className="flex items-center justify-between mb-space-md">
+          <div className="flex items-center gap-space-xs">
+            <span className="material-symbols-outlined text-primary-fixed text-[22px]">spellcheck</span>
+            <h3 className="font-headline-sm text-headline-sm text-primary font-bold">
+              Matriz de Divergencia Léxica (Sesgos en la Titulación)
+            </h3>
+          </div>
+          <span className="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">
+            Extracción PLN Comparada
+          </span>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left font-body-sm text-body-sm">
+            <thead>
+              <tr className="border-b border-outline-variant/30 text-on-surface-variant font-label-sm text-label-sm uppercase">
+                <th className="py-space-sm pr-space-md">Eje Conceptual</th>
+                <th className="py-space-sm px-space-md text-secondary">El Espectador</th>
+                <th className="py-space-sm px-space-md text-tertiary-fixed">Reuters LatAm</th>
+                <th className="py-space-sm pl-space-md text-primary-fixed">RTVC Noticias</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-outline-variant/20">
+              <tr>
+                <td className="py-space-sm pr-space-md font-bold text-on-surface">Jornada y Recargos</td>
+                <td className="py-space-sm px-space-md text-on-surface">“Recuperación de horas nocturnas”</td>
+                <td className="py-space-sm px-space-md text-on-surface">“Sobrecosto en nómina nocturna”</td>
+                <td className="py-space-sm pl-space-md text-on-surface">“Restitución histórica al pueblo”</td>
+              </tr>
+              <tr>
+                <td className="py-space-sm pr-space-md font-bold text-on-surface">Tipo de Contratación</td>
+                <td className="py-space-sm px-space-md text-on-surface">“Estabilidad y contratos indefinidos”</td>
+                <td className="py-space-sm px-space-md text-on-surface">“Rigidez en el régimen laboral”</td>
+                <td className="py-space-sm pl-space-md text-on-surface">“Fin definitivo a la precarización”</td>
+              </tr>
+              <tr>
+                <td className="py-space-sm pr-space-md font-bold text-on-surface">Impacto Económico</td>
+                <td className="py-space-sm px-space-md text-on-surface">“Concertación y balance productivo”</td>
+                <td className="py-space-sm px-space-md text-on-surface">“Presión inflacionaria y rating crediticio”</td>
+                <td className="py-space-sm pl-space-md text-on-surface">“Distribución equitativa de riqueza”</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </div>
   );
 }

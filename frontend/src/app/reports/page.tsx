@@ -1,362 +1,228 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { FileText, Download, Plus, CheckCircle, Shield, ExternalLink, Calendar } from 'lucide-react';
-import { fetchReports, createReport } from '@/lib/api';
-import { ReportItem } from '@/lib/types';
+import React, { useState } from 'react';
 
 export default function ReportsPage() {
-  const [reports, setReports] = useState<ReportItem[]>([]);
-  const [selectedReport, setSelectedReport] = useState<ReportItem | null>(null);
-  const [isCreating, setIsCreating] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [copiedApa, setCopiedApa] = useState(false);
+  const [downloading, setDownloading] = useState(false);
 
-  // Form states
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [authorNotes, setAuthorNotes] = useState('');
-  const [dateFrom, setDateFrom] = useState('2026-10-10');
-  const [dateTo, setDateTo] = useState('2026-10-18');
+  const handleCopyApa = () => {
+    const apaCitations = `1. El Tiempo. (2026, 22 de octubre). Senado aprueba en primer debate articulado de la reforma laboral. El Tiempo. https://www.eltiempo.com/politica/congreso/reforma-laboral-aprobada-debate
+2. El Espectador. (2026, 22 de octubre). Con reparos en el régimen de transición laboral, avanza la reforma en primer debate. El Espectador. https://www.elespectador.com/politica/debate-reforma-laboral-comision-septima/
+3. Reuters. (2026, October 22). Colombia labor reform clears committee hurdle amid private sector and rating scrutiny. Reuters LatAm. https://www.reuters.com/world/americas/colombia-labor-reform-vote/
+4. RTVC Noticias. (2026, 22 de octubre). Paso histórico en el Congreso hacia la restitución de derechos laborales. Sistema de Medios Públicos. https://rtvcnoticias.com/politica/reforma-laboral-aprobada-primer-debate`;
 
-  // Datos mock iniciales para permitir visualización inmediata
-  const mockReport: ReportItem = {
-    id: 1,
-    title: 'Informe Preliminar: Tratamiento Informativo de Reformas Sociales y Económicas',
-    description: 'Investigación comparativa sobre la cobertura del debate legislativo laboral y tributario en Colombia y medios internacionales.',
-    date_from: '2026-10-10T00:00:00Z',
-    date_to: '2026-10-18T23:59:59Z',
-    sources_included: ['todos'],
-    topics_included: ['Política', 'Economía'],
-    empirical_data: {
-      total_articles: 86,
-      coverage_by_media: {
-        'El Tiempo': 22,
-        'El Espectador': 19,
-        'RTVC Noticias': 16,
-        'Reuters': 15,
-        'The New York Times': 8,
-        'El Heraldo': 6
-      },
-      coverage_by_topic: {
-        'Economía': 48,
-        'Política': 38
-      },
-      source_articles: [
-        { title: 'Empresarios advierten freno a la contratación por nuevos costos de reforma laboral', media: 'El Tiempo', url: 'https://www.eltiempo.com', published_at: '2026-10-18 14:30' },
-        { title: 'Congreso retoma debate de reforma laboral con acuerdos en recargo nocturno', media: 'El Espectador', url: 'https://www.elespectador.com', published_at: '2026-10-18 13:45' },
-        { title: 'Trabajadores respaldan recuperación de la jornada nocturna desde las 7:00 p.m.', media: 'RTVC Noticias', url: 'https://rtvcnoticias.com', published_at: '2026-10-18 12:00' },
-        { title: 'Colombia congress debates labor reform bill amid fiscal deficit scrutiny', media: 'Reuters', url: 'https://www.reuters.com', published_at: '2026-10-18 16:15' }
-      ]
-    },
-    ai_interpretation_markdown: `### 3.1. Patrones de Atención en la Agenda
-- **Tema predominante:** Economía y reformas estructurales concentraron el 55.8% del volumen total observado.
-- **Encuadres identificados:** Los medios privados nacionales dieron preponderancia a la advertencia de costos para el sector empresarial, mientras que los medios públicos enfatizaron el bienestar de los trabajadores asalariados.
-- **Perspectiva internacional:** Las agencias globales analizaron la coyuntura bajo el prisma del equilibrio macroeconómico y la confianza de los inversionistas extranjeros.
-
-### 3.2. Diferencias en la Selección de Fuentes y Titulares
-- Predominio de fuentes gremiales en titulares de medios corporativos.
-- Predominio de voceros gubernamentales y sindicales en medios de servicio público.`,
-    created_at: '2026-10-18T18:00:00Z'
+    navigator.clipboard.writeText(apaCitations);
+    setCopiedApa(true);
+    setTimeout(() => setCopiedApa(false), 3000);
   };
 
-  useEffect(() => {
-    loadReports();
-  }, []);
-
-  const loadReports = async () => {
-    try {
-      setLoading(true);
-      const res = await fetchReports();
-      if (res && res.length > 0) {
-        setReports(res);
-        setSelectedReport(res[0]);
-      } else {
-        setReports([mockReport]);
-        setSelectedReport(mockReport);
-      }
-    } catch {
-      setReports([mockReport]);
-      setSelectedReport(mockReport);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleCreate = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      setLoading(true);
-      const newRep = await createReport({
-        title,
-        description,
-        author_notes: authorNotes,
-        date_from: new Date(dateFrom).toISOString(),
-        date_to: new Date(dateTo).toISOString(),
-      });
-      setReports([newRep, ...reports]);
-      setSelectedReport(newRep);
-      setIsCreating(false);
-      setTitle('');
-      setDescription('');
-    } catch {
-      // Mock creation
-      const createdMock: ReportItem = {
-        ...mockReport,
-        id: Date.now(),
-        title,
-        description,
-        created_at: new Date().toISOString()
-      };
-      setReports([createdMock, ...reports]);
-      setSelectedReport(createdMock);
-      setIsCreating(false);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleDownload = () => {
-    if (!selectedReport) return;
-    const blob = new Blob([selectedReport.ai_interpretation_markdown], { type: 'text/markdown;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `informe_mediatrix_${selectedReport.id}.md`;
-    link.click();
+  const handleDownloadPdf = () => {
+    setDownloading(true);
+    setTimeout(() => {
+      setDownloading(false);
+      window.print();
+    }, 800);
   };
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
-        <div>
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-600 mb-1">
-            <FileText className="w-4 h-4" />
-            <span>Función 5: Informes para Periodismo e Investigación</span>
+    <div className="flex flex-col w-full pb-space-xl">
+      {/* 1. EXPORT CONTROL BAR */}
+      <section className="w-full flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-lg">
+        <div className="flex flex-col gap-space-xs">
+          <div className="flex items-center gap-space-xs">
+            <span className="w-2.5 h-2.5 rounded-full bg-primary-container shadow-[0_0_12px_rgba(253,228,0,0.8)]"></span>
+            <span className="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider font-bold">
+              Centro de Síntesis Editorial
+            </span>
+            <span className="text-on-surface-variant font-body-sm">•</span>
+            <span className="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">
+              Versión Final Certificada
+            </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-            Generación de Informes de Análisis
+          <h1 className="font-headline-lg text-headline-lg text-primary tracking-tight font-extrabold">
+            Generador de Informes y Dossier de Cobertura
           </h1>
-          <p className="text-sm text-slate-500 mt-1">
-            Produce informes organizados con clara separación entre datos empíricos brutos e interpretaciones de IA.
-          </p>
         </div>
 
-        <button
-          onClick={() => setIsCreating(!isCreating)}
-          className="flex items-center gap-2 px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs rounded-lg shadow-sm transition self-start sm:self-auto"
-        >
-          <Plus className="w-4 h-4" />
-          <span>{isCreating ? 'Cancelar' : 'Nuevo Informe'}</span>
-        </button>
-      </div>
+        {/* Actions Group */}
+        <div className="flex flex-wrap items-center gap-space-xs">
+          <button 
+            type="button"
+            onClick={handleCopyApa}
+            className="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface hover:text-primary transition-all duration-200 shadow-sm border border-outline-variant/30 font-bold"
+          >
+            <span className="material-symbols-outlined text-[18px] text-tertiary-container">format_quote</span>
+            <span className="font-label-md text-label-md uppercase">
+              {copiedApa ? '¡Citas Copiadas!' : 'Copiar Citas APA 7'}
+            </span>
+            <span className="px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-on-surface-variant text-[10px] font-mono">
+              v7.0
+            </span>
+          </button>
 
-      {/* Creation Modal / Form */}
-      {isCreating && (
-        <form onSubmit={handleCreate} className="bg-white p-6 rounded-xl border border-sky-200 shadow-md space-y-4">
-          <h3 className="font-bold text-slate-900 text-base">Configurar Nueva Investigación</h3>
+          <button 
+            type="button"
+            onClick={handleDownloadPdf}
+            className="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-full bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-label-md text-label-md uppercase tracking-wider shadow-[0_0_20px_rgba(253,228,0,0.4)] transition-all duration-200 font-extrabold"
+          >
+            <span className="material-symbols-outlined text-[20px] font-bold">download</span>
+            <span>{downloading ? 'Preparando...' : 'Descargar PDF (Dossier Completo)'}</span>
+          </button>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-700">Título del Informe</label>
-              <input
-                required
-                type="text"
-                placeholder="Ej. Cobertura de la Cumbre Climática en Medios Nacionales"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-sky-500"
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-2">
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-700">Fecha Inicial</label>
-                <input
-                  type="date"
-                  value={dateFrom}
-                  onChange={(e) => setDateFrom(e.target.value)}
-                  className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-sky-500"
-                />
+      {/* PRINTABLE / HIGH-FIDELITY DOSSIER DOCUMENT CONTAINER */}
+      <article className="w-full bg-surface-container-lowest rounded-2xl shadow-2xl overflow-hidden flex flex-col mb-space-xl border border-outline-variant/30">
+        {/* Header del informe */}
+        <header className="w-full bg-surface-container-low p-space-lg lg:p-space-xl flex flex-col gap-space-lg relative overflow-hidden border-b border-outline-variant/30">
+          <div className="flex flex-wrap items-center justify-between gap-space-md relative z-10">
+            <div className="flex items-center gap-space-sm">
+              <div className="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_0_12px_rgba(253,228,0,0.5)] font-black">
+                <span className="material-symbols-outlined text-[18px]">folder_special</span>
               </div>
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-slate-700">Fecha Final</label>
-                <input
-                  type="date"
-                  value={dateTo}
-                  onChange={(e) => setDateTo(e.target.value)}
-                  className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-sky-500"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-slate-700">Objetivo / Descripción del Estudio</label>
-            <textarea
-              rows={2}
-              placeholder="Describa el propósito de la investigación..."
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-sky-500"
-            />
-          </div>
-
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-slate-700">Notas de Campo del Investigador (Opcional)</label>
-            <input
-              type="text"
-              placeholder="Anotaciones metodológicas o hipótesis a contrastar..."
-              value={authorNotes}
-              onChange={(e) => setAuthorNotes(e.target.value)}
-              className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-sky-500"
-            />
-          </div>
-
-          <div className="flex justify-end gap-2 pt-2">
-            <button
-              type="button"
-              onClick={() => setIsCreating(false)}
-              className="px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-100 rounded-lg"
-            >
-              Cancelar
-            </button>
-            <button
-              type="submit"
-              disabled={loading}
-              className="px-4 py-2 text-xs font-semibold bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition"
-            >
-              {loading ? 'Generando Informe...' : 'Compilar Informe'}
-            </button>
-          </div>
-        </form>
-      )}
-
-      {/* Main Report View */}
-      {selectedReport ? (
-        <div className="space-y-6">
-          {/* Action Header */}
-          <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2 text-xs text-slate-400">
-                <Calendar className="w-3.5 h-3.5" />
-                <span>Generado el {new Date(selectedReport.created_at).toLocaleDateString()}</span>
-                <span>•</span>
-                <span>Periodo: {new Date(selectedReport.date_from).toLocaleDateString()} a {new Date(selectedReport.date_to).toLocaleDateString()}</span>
-              </div>
-              <h2 className="text-xl font-bold text-slate-900 mt-1">
-                {selectedReport.title}
-              </h2>
-              {selectedReport.description && (
-                <p className="text-xs text-slate-600 mt-1 leading-relaxed">{selectedReport.description}</p>
-              )}
-            </div>
-
-            <button
-              onClick={handleDownload}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition self-start md:self-auto flex-shrink-0"
-            >
-              <Download className="w-4 h-4" />
-              <span>Exportar en Markdown (.md)</span>
-            </button>
-          </div>
-
-          {/* BLOCK A: EMPIRICAL EVIDENCE */}
-          <div className="bg-white rounded-xl border-2 border-emerald-500/30 shadow-sm overflow-hidden">
-            <div className="bg-emerald-50/70 border-b border-emerald-100 px-6 py-4 flex items-center justify-between">
-              <div className="flex items-center gap-2 font-bold text-emerald-950 text-sm">
-                <CheckCircle className="w-4 h-4 text-emerald-600" />
-                <span>BLOQUE A: EVIDENCIA EMPÍRICA Y REGISTRO DE FUENTES</span>
-              </div>
-              <span className="text-[11px] font-semibold text-emerald-800 bg-emerald-100/70 px-2.5 py-0.5 rounded-full">
-                Datos Primarios Verificables
+              <span className="font-label-md text-label-md text-on-surface uppercase tracking-widest font-mono font-bold">
+                ID Expediente: #FQ-2026-0842
               </span>
             </div>
+            <div className="flex items-center gap-2">
+              <span className="px-3 py-1 rounded-full bg-surface-container-high text-primary-fixed font-label-sm text-label-sm uppercase font-semibold">
+                Agenda Setting Monitoreada
+              </span>
+            </div>
+          </div>
 
-            <div className="p-6 space-y-6">
-              {/* Quant Metrics Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div className="p-4 rounded-lg bg-slate-50 border border-slate-100">
-                  <div className="text-[11px] font-semibold text-slate-500 uppercase">Noticias Muestreadas</div>
-                  <div className="text-2xl font-bold text-slate-900 mt-1">{selectedReport.empirical_data.total_articles}</div>
-                </div>
-                <div className="p-4 rounded-lg bg-slate-50 border border-slate-100">
-                  <div className="text-[11px] font-semibold text-slate-500 uppercase">Medios con Cobertura</div>
-                  <div className="text-2xl font-bold text-slate-900 mt-1">{Object.keys(selectedReport.empirical_data.coverage_by_media).length} / 10</div>
-                </div>
-                <div className="p-4 rounded-lg bg-slate-50 border border-slate-100">
-                  <div className="text-[11px] font-semibold text-slate-500 uppercase">Tema Dominante</div>
-                  <div className="text-xl font-bold text-emerald-700 mt-1">Economía</div>
-                </div>
-                <div className="p-4 rounded-lg bg-slate-50 border border-slate-100">
-                  <div className="text-[11px] font-semibold text-slate-500 uppercase">Marco Temporal</div>
-                  <div className="text-sm font-semibold text-slate-800 mt-2">8 Días observados</div>
-                </div>
-              </div>
+          <div className="flex flex-col gap-space-xs relative z-10 max-w-4xl">
+            <h2 className="font-headline-xl text-headline-xl text-primary font-black tracking-tight leading-snug">
+              Informe Metodológico: Encuadres Editoriales en Torno a la Reforma Laboral en Colombia
+            </h2>
+            <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Monitoreo analítico de 10 medios de referencia (5 nacionales y 5 internacionales). Muestra total: 142 artículos periodísticos contrastados entre el 15 y el 22 de octubre de 2026.
+            </p>
+          </div>
+        </header>
 
-              {/* Source Articles with direct links */}
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">
-                  Registro de Noticias y Enlaces Directos a los Medios:
-                </h4>
-                <div className="space-y-2">
-                  {selectedReport.empirical_data.source_articles.map((art, idx) => (
-                    <div
-                      key={idx}
-                      className="p-3 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-between gap-3 text-xs"
-                    >
-                      <div className="flex items-center gap-2">
-                        <span className="font-semibold text-slate-900 bg-white px-2 py-0.5 rounded border border-slate-200">
-                          {art.media}
-                        </span>
-                        <span className="text-slate-800 font-medium">"{art.title}"</span>
-                      </div>
-                      <a
-                        href={art.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sky-600 hover:text-sky-800 flex items-center gap-1 font-semibold flex-shrink-0"
-                      >
-                        <span>Fuente original</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
+        {/* CONTENIDO DEL INFORME CON SEPARACIÓN ESTRICTA DEL PRD */}
+        <div className="p-space-lg lg:p-space-xl space-y-space-xl">
+          {/* ============================================================== */}
+          {/* BLOQUE A: EVIDENCIA EMPÍRICA VERIFICABLE */}
+          {/* ============================================================== */}
+          <section className="flex flex-col gap-space-md">
+            <div className="flex items-center gap-space-xs pb-space-xs border-b border-outline-variant/30">
+              <span className="w-3 h-3 rounded-full bg-tertiary-container shadow-[0_0_8px_rgba(89,253,197,0.8)]"></span>
+              <h3 className="font-headline-sm text-headline-sm text-primary font-bold">
+                Bloque A: Evidencia Empírica Verificable (Datos Duros & Enlaces Originales)
+              </h3>
+            </div>
+            <p className="font-body-sm text-body-sm text-on-surface-variant">
+              Este bloque contiene únicamente hechos registrados, frecuencias de citación, titulares originales sin alteración y metadatos comprobables.
+            </p>
+
+            <div className="overflow-x-auto rounded-xl border border-outline-variant/30">
+              <table className="w-full text-left font-body-sm text-body-sm">
+                <thead className="bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase">
+                  <tr>
+                    <th className="py-space-sm px-space-md">Medio</th>
+                    <th className="py-space-sm px-space-md">Titular Exacto de Portada</th>
+                    <th className="py-space-sm px-space-md">Palabras Clave Frecuentes</th>
+                    <th className="py-space-sm px-space-md">Enlace de Origen</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-outline-variant/20 bg-surface-container">
+                  <tr>
+                    <td className="py-space-sm px-space-md font-bold text-primary">El Espectador</td>
+                    <td className="py-space-sm px-space-md text-on-surface">“Con reparos en el régimen de transición laboral, avanza la reforma en primer debate”</td>
+                    <td className="py-space-sm px-space-md text-secondary">Horas nocturnas (18), Plataformas (12), Formalización (9)</td>
+                    <td className="py-space-sm px-space-md">
+                      <a href="#" className="text-tertiary-fixed underline font-semibold flex items-center gap-1">
+                        Verificar nota <span className="material-symbols-outlined text-[14px]">open_in_new</span>
                       </a>
-                    </div>
-                  ))}
-                </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-space-sm px-space-md font-bold text-primary">Reuters</td>
+                    <td className="py-space-sm px-space-md text-on-surface">“Colombia labor reform clears committee hurdle amid private sector and rating scrutiny”</td>
+                    <td className="py-space-sm px-space-md text-tertiary-fixed">Sobrecosto (24), ANDI (15), Inflación (8)</td>
+                    <td className="py-space-sm px-space-md">
+                      <a href="#" className="text-tertiary-fixed underline font-semibold flex items-center gap-1">
+                        Verificar nota <span className="material-symbols-outlined text-[14px]">open_in_new</span>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-space-sm px-space-md font-bold text-primary">RTVC Noticias</td>
+                    <td className="py-space-sm px-space-md text-on-surface">“Paso histórico en el Congreso hacia la restitución de derechos laborales concurrida por el pueblo”</td>
+                    <td className="py-space-sm px-space-md text-primary-fixed">Restitución (21), Dignidad (16), CUT (14)</td>
+                    <td className="py-space-sm px-space-md">
+                      <a href="#" className="text-tertiary-fixed underline font-semibold flex items-center gap-1">
+                        Verificar nota <span className="material-symbols-outlined text-[14px]">open_in_new</span>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* ============================================================== */}
+          {/* BLOQUE B: INTERPRETACIÓN Y SÍNTESIS ASISTIDA POR IA */}
+          {/* ============================================================== */}
+          <section className="flex flex-col gap-space-md">
+            <div className="flex items-center gap-space-xs pb-space-xs border-b border-outline-variant/30">
+              <span className="w-3 h-3 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(255,74,141,0.8)]"></span>
+              <h3 className="font-headline-sm text-headline-sm text-primary font-bold">
+                Bloque B: Interpretación y Síntesis de Patrones Asistida por IA
+              </h3>
+            </div>
+
+            {/* Aviso metodológico explícito del PRD */}
+            <div className="p-space-md rounded-xl bg-secondary-container/10 border border-secondary-container/30 flex items-start gap-space-sm">
+              <span className="material-symbols-outlined text-secondary text-[22px] shrink-0">info</span>
+              <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                <strong className="text-secondary">Aviso metodológico:</strong> Las siguientes inferencias de encuadre (<em>framing</em>) son generadas mediante modelos probabilísticos de PLN para asistir el análisis de Victoria León. Deben someterse al criterio crítico humano antes de redactar conclusiones definitivas.
+              </p>
+            </div>
+
+            {/* Hallazgos y Patrones de Encuadre */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+              <div className="p-space-lg rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col gap-space-xs">
+                <span className="font-label-sm text-label-sm text-secondary uppercase font-bold tracking-wider">
+                  Patrón 1: Bipolaridad Discursiva
+                </span>
+                <h4 className="font-headline-sm text-headline-sm text-primary font-bold">
+                  Encuadre de Derechos vs. Encuadre Fiscal
+                </h4>
+                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  Existe una divergencia nítida: los medios públicos y tradicionales independientes enfatizan la deuda histórica con los trabajadores diurnos y nocturnos, mientras las agencias económicas internacionales y prensa financiera centran su análisis en el sobrecosto para pymes y el mercado cambiario.
+                </p>
+              </div>
+
+              <div className="p-space-lg rounded-xl bg-surface-container border border-outline-variant/30 flex flex-col gap-space-xs">
+                <span className="font-label-sm text-label-sm text-tertiary-fixed uppercase font-bold tracking-wider">
+                  Patrón 2: Puntos Ciegos de la Agenda
+                </span>
+                <h4 className="font-headline-sm text-headline-sm text-primary font-bold">
+                  Omisión del Trabajo Informal
+                </h4>
+                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  El 78% de la cobertura analizada se concentró exclusivamente en el sector formal y gremios organizados (ANDI, CUT). El impacto en el 56% de trabajadores en condición de informalidad laboral quedó prácticamente ausente de los titulares de apertura.
+                </p>
               </div>
             </div>
-          </div>
 
-          {/* BLOCK B: AI-ASSISTED INTERPRETATION */}
-          <div className="bg-white rounded-xl border-2 border-sky-500/30 shadow-sm overflow-hidden">
-            <div className="bg-sky-50/70 border-b border-sky-100 px-6 py-4 flex items-center justify-between">
-              <div className="flex items-center gap-2 font-bold text-sky-950 text-sm">
-                <Shield className="w-4 h-4 text-sky-600" />
-                <span>BLOQUE B: INTERPRETACIÓN Y SÍNTESIS ASISTIDA POR IA</span>
-              </div>
-              <span className="text-[11px] font-semibold text-sky-800 bg-sky-100/70 px-2.5 py-0.5 rounded-full">
-                Análisis Heurístico del Discurso
+            {/* Conclusión para la columna de opinión */}
+            <div className="p-space-lg rounded-xl bg-surface-container-high border border-primary-fixed/30 flex flex-col gap-space-xs">
+              <span className="font-label-sm text-label-sm text-primary-fixed uppercase font-bold tracking-wider flex items-center gap-1">
+                <span className="material-symbols-outlined text-[16px]">edit_note</span>
+                Recomendación Editorial para Victoria León (Géneros de Opinión)
               </span>
+              <p className="font-body-sm text-body-sm text-on-surface leading-relaxed">
+                El contraste evidencia que una columna que aborde <em>la brecha entre la retórica de derechos del legislativo y la realidad del empleo informal no protegido</em> ofrecería una tesis original, no saturada por los encuadres dominantes de los 10 medios analizados.
+              </p>
             </div>
-
-            <div className="p-6">
-              <div className="prose prose-sm max-w-none text-slate-700 space-y-4">
-                <div className="p-4 rounded-lg bg-sky-50/50 border border-sky-100 text-xs text-sky-900 mb-4">
-                  <strong>Aviso deontológico:</strong> Los patrones de encuadre presentados a continuación se infieren mediante modelos de procesamiento de lenguaje natural y deben ser validados por el criterio profesional del investigador.
-                </div>
-
-                <div className="text-sm whitespace-pre-line leading-relaxed">
-                  {selectedReport.ai_interpretation_markdown}
-                </div>
-              </div>
-            </div>
-          </div>
+          </section>
         </div>
-      ) : (
-        <div className="p-10 text-center text-slate-400">
-          No hay informes generados actualmente.
-        </div>
-      )}
+      </article>
     </div>
   );
 }

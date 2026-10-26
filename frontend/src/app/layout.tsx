@@ -2,8 +2,8 @@ import '@/styles/globals.css';
 import AppShell from '@/components/layout/AppShell';
 
 export const metadata = {
-  title: 'PRISMA - Radar de Medios & Cobertura Informativa',
-  description: 'Observatorio dinámico y análisis de encuadres de 10 medios de comunicación nacionales e internacionales.',
+  title: 'FOQUÉ - Tu radar de noticias & agenda setting',
+  description: 'Observatorio de cobertura y contraste de encuadres mediáticos en 10 medios de Colombia y el mundo.',
 };
 
 export default function RootLayout({
@@ -12,8 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body className="min-h-screen bg-slate-50 text-slate-900">
+    <html lang="es" className="dark">
+      <body className="bg-surface-container-lowest font-body-md text-on-surface antialiased min-h-screen">
         <AppShell>
           {children}
         </AppShell>

@@ -1,94 +1,111 @@
 'use client';
 
-import React, { useState } from 'react';
-import { ShieldAlert, Info, X, ChevronRight } from 'lucide-react';
+import React from 'react';
 
-export default function ScopeDisclaimer() {
-  const [isOpen, setIsOpen] = useState(false);
+interface ScopeDisclaimerProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function ScopeDisclaimer({ isOpen, onClose }: ScopeDisclaimerProps) {
+  if (!isOpen) return null;
+
+  const limits = [
+    {
+      title: 'No determina si una noticia es verdadera o falsa',
+      desc: 'Analiza contenidos, frecuencias y encuadres discursivos (framing), no es un verificador forense de hechos.',
+      icon: 'gavel',
+      color: 'text-secondary-container',
+      border: 'border-secondary-container/30',
+      bg: 'bg-secondary-container/10'
+    },
+    {
+      title: 'No mide directamente la opinión pública',
+      desc: 'La frecuencia de publicación refleja la agenda editorial de los medios (media agenda setting), no el sentir ciudadano ni las audiencias.',
+      icon: 'groups',
+      color: 'text-tertiary-container',
+      border: 'border-tertiary-container/30',
+      bg: 'bg-tertiary-container/10'
+    },
+    {
+      title: 'No abarca la totalidad de internet',
+      desc: 'Se limita estrictamente a los 10 medios seleccionados (5 nacionales y 5 internacionales) para garantizar rigurosidad y estabilidad jurídica.',
+      icon: 'language',
+      color: 'text-primary-fixed',
+      border: 'border-primary-fixed/30',
+      bg: 'bg-primary-fixed/10'
+    },
+    {
+      title: 'No sustituye el juicio del periodista',
+      desc: 'Funciona como un instrumento de inteligencia asistida y síntesis crítica. El criterio editorial y la comprobación final pertenecen a la persona comunicadora.',
+      icon: 'psychology',
+      color: 'text-primary',
+      border: 'border-outline-variant',
+      bg: 'bg-surface-container-high'
+    },
+    {
+      title: 'No redacta ni reescribe noticias para publicación',
+      desc: 'No genera notas informativas sintéticas ni altera los textos originales; únicamente resume encuadres, citas y sesgos para facilitar la comparación.',
+      icon: 'edit_off',
+      color: 'text-secondary-fixed',
+      border: 'border-secondary-fixed/30',
+      bg: 'bg-secondary-fixed/10'
+    }
+  ];
 
   return (
-    <>
-      <div className="bg-amber-500/10 border-b border-amber-500/20 px-4 py-2 text-xs text-amber-900 flex items-center justify-between">
-        <div className="max-w-7xl mx-auto w-full flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <ShieldAlert className="w-4 h-4 text-amber-600 flex-shrink-0" />
-            <span>
-              <strong>Aviso Metodológico y Deontológico:</strong> Este observatorio compara patrones de atención y encuadres informativos de 10 medios. No califica veracidad ni mide la opinión pública ciudadana.
-            </span>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
+      <div className="bg-surface-container rounded-2xl max-w-2xl w-full border border-outline-variant shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        {/* Header */}
+        <div className="p-space-lg bg-surface-container-low border-b border-outline-variant/50 flex items-center justify-between">
+          <div className="flex items-center gap-space-sm">
+            <span className="material-symbols-outlined text-primary-fixed text-[26px]">verified_user</span>
+            <div>
+              <h2 className="font-headline-sm text-headline-sm text-primary font-bold">
+                Límites de Alcance y Principios Éticos
+              </h2>
+              <p className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+                Qué NO hace FOQUÉ y por qué metodológicamente
+              </p>
+            </div>
           </div>
-          <button
-            onClick={() => setIsOpen(true)}
-            className="text-amber-700 font-semibold underline hover:text-amber-900 flex items-center gap-1 flex-shrink-0"
+          <button 
+            onClick={onClose}
+            className="w-9 h-9 rounded-full bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"
           >
-            Ver límites de alcance <ChevronRight className="w-3.5 h-3.5" />
+            <span className="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+
+        {/* Body list */}
+        <div className="p-space-lg overflow-y-auto space-y-space-md">
+          {limits.map((limit, idx) => (
+            <div key={idx} className={`p-space-md rounded-xl ${limit.bg} border ${limit.border} flex items-start gap-space-md`}>
+              <div className={`p-2 rounded-lg bg-surface-container-lowest shrink-0 ${limit.color}`}>
+                <span className="material-symbols-outlined text-[20px]">{limit.icon}</span>
+              </div>
+              <div className="flex-1">
+                <h3 className={`font-label-md text-label-md font-bold uppercase tracking-wide mb-1 ${limit.color}`}>
+                  {limit.title}
+                </h3>
+                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  {limit.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div className="p-space-md bg-surface-container-low border-t border-outline-variant/40 flex justify-end">
+          <button
+            onClick={onClose}
+            className="px-space-lg py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase font-bold shadow-[0_0_12px_rgba(253,228,0,0.35)] hover:scale-105 transition-all"
+          >
+            Entendido
           </button>
         </div>
       </div>
-
-      {isOpen && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full border border-slate-200 overflow-hidden">
-            <div className="px-6 py-4 bg-slate-900 text-white flex items-center justify-between">
-              <div className="flex items-center gap-2 font-bold text-base">
-                <Info className="w-5 h-5 text-sky-400" />
-                <span>Principios Metodológicos y Límites de Alcance</span>
-              </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-slate-400 hover:text-white p-1 rounded-md"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="p-6 space-y-4 text-sm text-slate-700 max-h-[75vh] overflow-y-auto">
-              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-                <h4 className="font-semibold text-slate-900 mb-1">1. No determina automáticamente si una noticia es verdadera o falsa</h4>
-                <p className="text-xs text-slate-600">
-                  La aplicación analiza contenidos, compara enfoques y mide patrones de cobertura, pero no realiza verificación periodística exhaustiva. Determinar la veracidad exige contrastar fuentes directas y evidencias forenses.
-                </p>
-              </div>
-
-              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-                <h4 className="font-semibold text-slate-900 mb-1">2. No mide directamente la opinión pública</h4>
-                <p className="text-xs text-slate-600">
-                  La frecuencia con la que los medios publican sobre un tema refleja las prioridades de las salas de redacción (agenda mediática), no lo que piensa la ciudadanía. Para evaluar la opinión pública es imperativo acudir a encuestas y estudios de audiencia.
-                </p>
-              </div>
-
-              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-                <h4 className="font-semibold text-slate-900 mb-1">3. No incluye todos los medios ni todo el internet</h4>
-                <p className="text-xs text-slate-600">
-                  El análisis se circunscribe a 10 medios de referencia: 5 nacionales (El Espectador, RTVC Noticias, El Tiempo, El Heraldo, El Colombiano) y 5 internacionales (Reuters, BBC News, Associated Press, AFP, The New York Times).
-                </p>
-              </div>
-
-              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-                <h4 className="font-semibold text-slate-900 mb-1">4. No reemplaza el criterio del periodista</h4>
-                <p className="text-xs text-slate-600">
-                  Los resultados arrojados por los modelos de PLN son herramientas de asistencia al análisis heurístico, nunca un sustituto del juicio crítico profesional y académico.
-                </p>
-              </div>
-
-              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-                <h4 className="font-semibold text-slate-900 mb-1">5. No redacta ni reescribe noticias para su publicación</h4>
-                <p className="text-xs text-slate-600">
-                  El propósito es puramente investigativo. Genera resúmenes analíticos de encuadres y divergencias, pero no produce noticias sintéticas ni altera los contenidos originales.
-                </p>
-              </div>
-            </div>
-
-            <div className="px-6 py-3 bg-slate-50 border-t border-slate-200 flex justify-end">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-2 bg-slate-900 text-white text-xs font-semibold rounded-lg hover:bg-slate-800 transition"
-              >
-                Entendido
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
+    </div>
   );
 }

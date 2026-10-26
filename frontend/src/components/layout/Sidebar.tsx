@@ -1,155 +1,91 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { 
-  LayoutGrid, 
-  BarChart2, 
-  MapPin, 
-  Globe, 
-  Split, 
-  Flame, 
-  FileCheck2, 
-  RefreshCw,
-  X,
-  Radio
-} from 'lucide-react';
-import { triggerScraping } from '@/lib/api';
 
 interface SidebarProps {
-  isOpen: boolean;
-  onClose: () => void;
+  onOpenDisclaimer?: () => void;
 }
 
-export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+export default function Sidebar({ onOpenDisclaimer }: SidebarProps) {
   const pathname = usePathname();
-  const [syncing, setSyncing] = useState(false);
-  const [syncMessage, setSyncMessage] = useState<string | null>(null);
 
   const navLinks = [
-    { href: '/', label: 'Dashboard Principal', icon: LayoutGrid },
-    { href: '/coverage', label: 'Cobertura & Subtemas', icon: BarChart2, badge: '161' },
-    { href: '/national', label: 'Agenda Nacional (Deptos)', icon: MapPin, color: 'text-amber-400' },
-    { href: '/international', label: 'Agenda Internacional', icon: Globe, color: 'text-cyan-400' },
-    { href: '/contrast', label: 'Contraste 10 Medios', icon: Split, color: 'text-violet-400' },
-    { href: '/trends', label: 'Tendencias Top 5', icon: Flame, color: 'text-rose-400', badge: 'Hot' },
-    { href: '/reports', label: 'Informe en Pantalla', icon: FileCheck2, color: 'text-emerald-400' },
+    { href: '/', label: 'Inicio', icon: 'radar' },
+    { href: '/coverage', label: 'Medición de Cobertura', icon: 'compare_arrows' },
+    { href: '/contrast', label: 'Contraste de Información', icon: 'splitscreen' },
+    { href: '/trends', label: 'Detección de Tendencias', icon: 'trending_up' },
+    { href: '/reports', label: 'Generación de Informes', icon: 'auto_awesome' },
+    { href: '#', label: 'Favoritos', icon: 'bookmark' },
   ];
 
-  const handleSync = async () => {
-    try {
-      setSyncing(true);
-      await triggerScraping();
-      setSyncMessage('Feeds actualizados');
-      setTimeout(() => setSyncMessage(null), 3000);
-    } catch {
-      setSyncMessage('Sincronizado');
-      setTimeout(() => setSyncMessage(null), 2000);
-    } finally {
-      setSyncing(false);
-    }
-  };
-
   return (
-    <>
-      {/* Mobile Backdrop */}
-      {isOpen && (
-        <div 
-          onClick={onClose} 
-          className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-30 lg:hidden"
-        />
-      )}
-
-      <aside className={`bg-slate-900 text-slate-300 w-72 flex-shrink-0 flex flex-col border-r border-slate-800 transition-all duration-300 ease-in-out fixed lg:static inset-y-0 left-0 z-40 ${
-        isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-      }`}>
+    <aside className="fixed left-0 top-0 h-screen w-72 bg-surface-container-lowest z-50 flex flex-col justify-between p-space-md shadow-[0_1px_8px_rgba(0,0,0,0.25)] border-r border-outline-variant/20">
+      <div className="flex flex-col gap-space-lg">
         {/* Brand Header */}
-        <div className="h-16 flex items-center justify-between px-5 border-b border-slate-800/80 bg-slate-950/40">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-violet-500 to-cyan-400 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform">
-              P
-            </div>
-            <div>
-              <div className="font-display font-extrabold text-xl tracking-tight text-white flex items-center gap-1">
-                PRISMA<span className="text-indigo-400 text-2xl leading-none">.</span>
-              </div>
-              <div className="text-[10px] text-slate-400 uppercase tracking-widest font-mono -mt-1 font-semibold">
-                Radar de Medios
-              </div>
+        <div className="px-space-sm pt-space-xs">
+          <Link href="/" className="flex items-center gap-space-xs group">
+            <span className="font-headline-lg text-headline-lg tracking-tight text-primary font-bold">
+              FOQUÉ
+            </span>
+            <div className="flex items-center gap-1.5 ml-1">
+              <span className="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(253,228,0,0.6)]"></span>
+              <span className="w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(255,74,141,0.6)]"></span>
+              <span className="w-2 h-2 rounded-full bg-tertiary-container shadow-[0_0_8px_rgba(89,253,197,0.6)]"></span>
+              <span className="w-2 h-2 rounded-full bg-inverse-surface"></span>
             </div>
           </Link>
-
-          <button onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 lg:hidden">
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        <!-- Monitoring status pill -->
-        <div className="p-4 border-b border-slate-800/60">
-          <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/60 flex items-center justify-between">
-            <div>
-              <div className="text-[11px] text-slate-400 uppercase font-semibold">Fuentes Activas</div>
-              <div className="text-sm font-bold text-white flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                10 Medios
-              </div>
-            </div>
-            <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">
-              5 Nac | 5 Int
-            </span>
-          </div>
+          <p className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">
+            Tu radar de noticias
+          </p>
         </div>
 
         {/* Navigation Items */}
-        <nav className="flex-1 px-3 py-4 space-y-1.5 overflow-y-auto">
+        <nav className="flex flex-col gap-space-xs">
           {navLinks.map((item) => {
-            const Icon = item.icon;
             const isActive = pathname === item.href;
-
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => {
-                  if (window.innerWidth < 1024) onClose();
-                }}
-                className={`flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium transition ${
+                className={`flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full ${
                   isActive
-                    ? 'bg-slate-800 text-indigo-400 font-bold'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                    ? 'bg-primary-container text-on-primary-container shadow-[0_0_16px_rgba(253,228,0,0.35)] font-bold'
+                    : 'text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${item.color || ''}`} />
-                <span className="flex-1 text-left">{item.label}</span>
-                {item.badge && (
-                  <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
-                    item.badge === 'Hot' ? 'bg-rose-500/20 text-rose-300' : 'bg-indigo-500/20 text-indigo-300'
-                  }`}>
-                    {item.badge}
-                  </span>
-                )}
+                <span className="material-symbols-outlined text-[20px]">{item.icon}</span>
+                <span>{item.label}</span>
               </Link>
             );
           })}
         </nav>
+      </div>
 
-        {/* Sync Footer */}
-        <div className="p-4 border-t border-slate-800 bg-slate-950/50 text-xs text-slate-400 space-y-2">
-          <div className="flex items-center justify-between">
-            <span>Último scraping:</span>
-            <span className="font-mono text-emerald-400 font-medium">Hace 12 min</span>
+      {/* Critical Focus / Scope Ethical Banner Card */}
+      <div 
+        onClick={onOpenDisclaimer}
+        className="p-space-md rounded-xl bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.1)] flex flex-col gap-space-xs border border-outline-variant/30 cursor-pointer hover:border-primary-fixed/50 transition-all group"
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-space-xs">
+            <span className="material-symbols-outlined text-primary-fixed text-[18px]">verified</span>
+            <span className="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider">
+              Enfoque Crítico
+            </span>
           </div>
-          <button
-            onClick={handleSync}
-            disabled={syncing}
-            className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold shadow-md shadow-indigo-600/30 transition text-xs disabled:opacity-60"
-          >
-            <RefreshCw className={`w-3.5 h-3.5 ${syncing ? 'animate-spin' : ''}`} />
-            <span>{syncing ? 'Actualizando 10 medios...' : syncMessage || 'Sincronizar Feeds'}</span>
-          </button>
+          <span className="material-symbols-outlined text-on-surface-variant text-[16px] group-hover:text-primary-fixed transition-colors">
+            info
+          </span>
         </div>
-      </aside>
-    </>
+        <p className="font-headline-sm text-headline-sm text-on-surface leading-tight font-bold">
+          La información también es poder.
+        </p>
+        <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Mira más allá de los titulares y detecta los sesgos editoriales.
+        </p>
+      </div>
+    </aside>
   );
 }
