@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700;800&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface": "#0f131d", "on-secondary-fixed": "#3f001a", "primary-fixed-dim": "#dec800", "tertiary-fixed": "#59fdc5", "inverse-surface": "#dfe2f1", "error-container": "#93000a", "on-surface-variant": "#cdc7aa", "primary-container": "#fde400", "on-secondary-container": "#590028", "outline-variant": "#4b4731", "surface-variant": "#313540", "surface-container-high": "#262a35", "outline": "#979177", "surface-dim": "#0f131d", "tertiary-container": "#59fdc5", "on-tertiary": "#003828", "inverse-primary": "#6a5f00", "tertiary-fixed-dim": "#2fe0aa", "surface-container-lowest": "#0a0e18", "primary-fixed": "#fde400", "secondary-container": "#ff4a8d", "background": "#0f131d", "on-error-container": "#ffdad6", "on-tertiary-container": "#007354", "on-primary-container": "#716500", "surface-container-low": "#171b26", "on-primary": "#373100", "on-secondary": "#65002e", "primary": "#ffffff", "on-secondary-fixed-variant": "#8f0044", "on-background": "#dfe2f1", "secondary-fixed": "#ffd9e1", "on-primary-fixed-variant": "#504700", "on-primary-fixed": "#201c00", "inverse-on-surface": "#2c303b", "error": "#ffb4ab", "secondary": "#ffb1c4", "on-surface": "#dfe2f1", "on-error": "#690005", "on-tertiary-fixed-variant": "#00513b", "surface-bright": "#353944", "surface-container-highest": "#313540", "surface-container": "#1c1f2a", "surface-tint": "#dec800", "secondary-fixed-dim": "#ffb1c4", "tertiary": "#ffffff", "on-tertiary-fixed": "#002116" }, "borderRadius": { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "margin-mobile": "1.25rem", "gutter": "1.5rem", "space-md": "1rem", "space-lg": "1.5rem", "gutter-mobile": "1rem", "space-xs": "0.25rem", "margin": "2rem", "space-xl": "2.5rem" }, "fontFamily": { "display-lg": [ "Plus Jakarta Sans" ], "label-md": [ "Montserrat" ], "body-lg": [ "Inter" ], "headline-sm": [ "Plus Jakarta Sans" ], "body-sm": [ "Inter" ], "label-sm": [ "Montserrat" ], "display-lg-mobile": [ "Plus Jakarta Sans" ], "headline-xl": [ "Plus Jakarta Sans" ], "headline-lg": [ "Plus Jakarta Sans" ], "body-md": [ "Inter" ], "headline-xl-mobile": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "label-lg": [ "Montserrat" ] }, "fontSize": { "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "800" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" } ], "body-lg": [ "18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "headline-sm": [ "18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-sm": [ "13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-sm": [ "10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" } ], "display-lg-mobile": [ "36px", { "lineHeight": "42px", "letterSpacing": "-0.025em", "fontWeight": "800" } ], "headline-xl": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.025em", "fontWeight": "800" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-md": [ "15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" } ], "headline-xl-mobile": [ "28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-md": [ "22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "label-lg": [ "14px", { "lineHeight": "18px", "letterSpacing": "0.04em", "fontWeight": "700" } ] } } } };</script></head><body class="bg-surface-container-lowest font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-72 bg-surface-container-lowest z-50 flex flex-col justify-between p-space-md shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="flex flex-col gap-space-lg"><div class="px-space-sm pt-space-xs"><div class="flex items-center gap-space-xs"><span class="font-headline-lg text-headline-lg tracking-tight text-primary font-bold">FOQUÉ</span><div class="flex items-center gap-1.5 ml-1"><span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(253,228,0,0.6)]"></span><span class="w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(255,74,141,0.6)]"></span><span class="w-2 h-2 rounded-full bg-tertiary-container shadow-[0_0_8px_rgba(89,253,197,0.6)]"></span><span class="w-2 h-2 rounded-full bg-inverse-surface"></span></div></div><p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">Tu radar de noticias</p></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-label-md text-label-md rounded-full shadow-[0_0_16px_rgba(253,228,0,0.35)]"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all bg-primary-container text-on-primary-container font-label-md text-label-md rounded-full shadow-[0_0_16px_rgba(253,228,0,0.35)]" data-path="inicio" href="#"><span class="material-symbols-outlined text-[20px]">radar</span>Inicio</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md uppercase transition-all" data-path="medicion-de-cobertura" href="#"><span class="material-symbols-outlined text-[20px]">compare_arrows</span>Medición de Cobertura</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md uppercase transition-all" data-path="contraste-de-informacion" href="#"><span class="material-symbols-outlined text-[20px]">splitscreen</span>Contraste de Información</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md uppercase transition-all" data-path="deteccion-de-tendencias" href="#"><span class="material-symbols-outlined text-[20px]">trending_up</span>Detección de Tendencias</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md uppercase transition-all" data-path="generacion-de-informes" href="#"><span class="material-symbols-outlined text-[20px]">auto_awesome</span>Generación de Informes</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md uppercase transition-all" data-path="favoritos" href="#"><span class="material-symbols-outlined text-[20px]">bookmark</span>Favoritos</a></nav></div><div class="p-space-md rounded-lg bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.1)] flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary-fixed text-[18px]">verified</span><span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider">Enfoque Crítico</span></div><p class="font-headline-sm text-headline-sm text-on-surface leading-tight">La información también es poder.</p><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Mira más allá de los titulares y detecta los sesgos del algoritmo.</p></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface/80 backdrop-blur-xl z-40 px-space-lg flex items-center justify-between gap-space-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-space-md text-on-surface-variant text-[20px]">search</span><input class="w-full bg-surface-container-low rounded-full pl-11 pr-14 py-space-sm text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm outline-none focus:bg-surface-container-high transition-colors" placeholder="Buscar fuentes, temas clave o perspectivas..." type="text"/><kbd class="absolute right-space-md px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase">⌘K</kbd></div><div class="inline-flex p-1 bg-surface-container-low rounded-full"><button class="px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm uppercase transition-colors" type="button">Nacional</button><button class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase transition-colors" type="button">Internacional</button></div></div><div class="flex items-center gap-space-md"><div class="flex items-center bg-surface-container-low rounded-full p-1"><div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-primary-fixed"><span class="material-symbols-outlined text-[16px]">dark_mode</span></div></div><button class="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-full transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(255,74,141,0.6)]"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface leading-tight">Valentina Q.</span><span class="font-label-sm text-label-sm text-primary-fixed uppercase">Periodista Pro</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_0_12px_rgba(255,255,255,0.2)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-20 w-full px-space-lg bg-surface-container-lowest min-h-screen"><div class="flex flex-col w-full pb-space-xl">
+<!-- Interactive Top Filters & Scope Selector -->
+<div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-md py-space-sm mb-space-lg">
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 text-on-surface" id="topic-filters">
+<button class="topic-pill px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_16px_rgba(253,228,0,0.35)] transition-all scale-100 active:scale-95" data-filter="all">
+<span class="w-2 h-2 rounded-full bg-on-primary-container"></span>
+        Todos los temas
+      </button>
+<button class="topic-pill px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all" data-filter="politica">
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(253,228,0,0.8)]"></span>
+        Política
+      </button>
+<button class="topic-pill px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all" data-filter="economia">
+<span class="w-2 h-2 rounded-full bg-tertiary-container shadow-[0_0_8px_rgba(89,253,197,0.8)]"></span>
+        Economía
+      </button>
+<button class="topic-pill px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all" data-filter="salud">
+<span class="w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(255,74,141,0.8)]"></span>
+        Salud
+      </button>
+<button class="topic-pill px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all" data-filter="deportes">
+<span class="w-2 h-2 rounded-full bg-primary-fixed shadow-[0_0_8px_rgba(254,107,0,0.8)]" style="background-color: #ff6b00;"></span>
+        Deportes
+      </button>
+<button class="topic-pill px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all" data-filter="tecnologia">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed shadow-[0_0_8px_rgba(0,102,255,0.8)]" style="background-color: #0066ff;"></span>
+        Tecnología
+      </button>
+</div>
+<!-- Territorial Scope Pill Switcher -->
+<div class="flex items-center gap-2 self-start md:self-auto bg-surface-container-low p-1 rounded-full shadow-sm">
+<button class="px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 shadow-[0_0_12px_rgba(253,228,0,0.3)] transition-all" id="toggle-colombia">
+<span class="material-symbols-outlined text-[16px]">flag</span>
+        Nacional (Colombia)
+      </button>
+<button class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 transition-all" id="toggle-global">
+<span class="material-symbols-outlined text-[16px]">public</span>
+        Internacional
+      </button>
+</div>
+</div>
+<!-- Main Hero Card: Radar Global de Portada -->
+<div class="relative w-full rounded-xl bg-surface-container-lowest overflow-hidden shadow-xl mb-space-xl p-space-lg md:p-space-xl">
+<!-- Ambient Backdrop Illumination -->
+<div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-secondary-container opacity-15 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 left-1/3 w-96 h-96 rounded-full bg-primary-container opacity-10 blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/2 left-0 w-72 h-72 rounded-full bg-tertiary-container opacity-10 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-xl">
+<!-- Left Content: Editorial Radar Data -->
+<div class="flex-1 flex flex-col gap-space-md">
+<!-- Tagline & Status Badges -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_12px_rgba(253,228,0,0.4)]">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+            Radar de Portada
+          </span>
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-primary-fixed-dim font-label-sm text-label-sm uppercase tracking-wider">
+            Política Nacional
+          </span>
+<span class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container">schedule</span>
+            Actualizado hace 12 min
+          </span>
+</div>
+<!-- Master Headline -->
+<h1 class="font-headline-xl text-headline-xl text-primary font-extrabold tracking-tight leading-tight max-w-3xl">
+          Reforma Laboral y Pensional: Senado aprueba artículos clave en medio de fuerte pulso gremial
+        </h1>
+<!-- Executive Narrative Contrast Context -->
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-2xl">
+          Mayoría de redacciones destacan la concertación de horas nocturnas, mientras periódicos económicos alertan por el impacto fiscal sobre pymes y fondos de retiro.
+        </p>
+<!-- Multi-Source Convergence Metric Bar -->
+<div class="p-space-md rounded-lg bg-surface-container-low max-w-2xl flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-tertiary-container">data_exploration</span>
+<span class="font-label-md text-label-md text-on-surface uppercase">Consenso de Portada</span>
+</div>
+<span class="font-label-md text-label-md text-primary-container font-bold">8 de 10 medios</span>
+</div>
+<!-- Segmented Alignment Indicator -->
+<div class="w-full h-2 rounded-full bg-surface-container-highest flex overflow-hidden gap-0.5">
+<div class="h-full bg-tertiary-container rounded-l-full w-[50%]" title="Enfoque social / concertación"></div>
+<div class="h-full bg-primary-container w-[30%]" title="Enfoque de trámite institucional"></div>
+<div class="h-full bg-secondary-container rounded-r-full w-[20%]" title="Enfoque de alerta macroeconómica"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>50% Enfoque Social</span>
+<span>30% Institucional</span>
+<span>20% Alerta Gremial</span>
+</div>
+</div>
+<!-- Sources Avatars Strip & CTA Trigger -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Fuentes clave:</span>
+<div class="flex items-center -space-x-2 overflow-hidden">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-bold shadow-md" title="El Tiempo">ET</div>
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm font-bold shadow-md" title="El Espectador">EE</div>
+<div class="w-9 h-9 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-bold shadow-md" title="Caracol TV">CC</div>
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm font-bold shadow-md" title="RTVC Noticias">RT</div>
+<div class="w-9 h-9 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-bold shadow-md" title="El Colombiano">EC</div>
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm font-bold shadow-md" title="Reuters">RE</div>
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-sm text-label-sm font-black shadow-md" title="2 más">+2</div>
+</div>
+</div>
+<button class="px-space-lg py-space-sm rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-extrabold flex items-center gap-space-xs shadow-[0_0_20px_rgba(253,228,0,0.45)] hover:shadow-[0_0_28px_rgba(253,228,0,0.65)] hover:scale-[1.02] active:scale-95 transition-all">
+<span>Ver análisis comparativo (8 medios)</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Right Visual Widget: Realtime Telemetry Perspective Divergence -->
+<div class="w-full lg:w-80 p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Dispersión de Tono</span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container animate-pulse shadow-[0_0_8px_rgba(255,74,141,0.8)]"></span>
+</div>
+<!-- Radial Divergence Gauge Inline SVG -->
+<div class="relative flex items-center justify-center py-2">
+<svg class="w-44 h-44 -rotate-90" viewbox="0 0 120 120">
+<circle cx="60" cy="60" fill="none" r="50" stroke="#262a35" stroke-width="8"></circle>
+<!-- High Contrast Arc Stops -->
+<circle cx="60" cy="60" fill="none" r="50" stroke="#59fdc5" stroke-dasharray="100 214" stroke-linecap="round" stroke-width="8"></circle>
+<circle cx="60" cy="60" fill="none" r="50" stroke="#fde400" stroke-dasharray="80 234" stroke-dashoffset="-105" stroke-linecap="round" stroke-width="8"></circle>
+<circle cx="60" cy="60" fill="none" r="50" stroke="#ff4a8d" stroke-dasharray="60 254" stroke-dashoffset="-190" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-headline-lg text-headline-lg font-black text-primary leading-none">68%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase mt-1">Divergencia</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs text-body-sm text-body-sm">
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span> Favorabilidad
+            </span>
+<span class="font-bold text-on-surface">42%</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span> Neutral / Descriptivo
+            </span>
+<span class="font-bold text-on-surface">32%</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span> Crítica Estructural
+            </span>
+<span class="font-bold text-on-surface">26%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Feed Section Header -->
+<div class="flex items-end justify-between gap-space-md mb-space-md">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed">Radar Dinámico</span>
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant"></span>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Cobertura Multi-Espectro</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary font-bold mt-1">
+        Noticias Analizadas en Tiempo Real
+      </h2>
+</div>
+<div class="hidden sm:flex items-center gap-2">
+<button class="w-9 h-9 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+<button class="w-9 h-9 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[18px]">density_medium</span>
+</button>
+</div>
+</div>
+<!-- Feed Grid: 3-Columns Dynamic Article Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+<!-- Card 1: Economía (Menta #00D09C / #59fdc5) -->
+<article class="news-card group flex flex-col justify-between rounded-xl bg-surface-container p-space-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-1" data-category="economia">
+<div class="flex flex-col gap-space-md">
+<!-- Media source bar & badges -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-label-sm text-label-sm font-extrabold shadow-sm">
+              EE
+            </div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold -ml-3 shadow-sm">
+              RE
+            </div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant font-bold ml-1">Espectador + Reuters</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm uppercase font-bold tracking-wider">
+            +4.2% Cobertura
+          </span>
+</div>
+<!-- Article visual snippet -->
+<div class="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-contrast financial stock ticker graph screens reflecting on sleek glass surfaces in a trading floor, glowing green mint numbers with dark obsidian ambiance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf1smMvVvX1fOYRQ6_WsqkjwxzVhSLVVGrT_4qnJPxrO5KAYo8SeBG_5B9ENW1yWoJRhxkXmRLr0bLqFg6HtzpBBEDSkuOQWpmUuY0blPgWzSG8Hlwl6u3DcNOPI06k2g154UTBvp7BjWcFo1qeUrE8yKLg5o5MH25RSoIWucK2eXay1ZgH784uFAhgi4eTEeCJDD2hO6_xrzlT2bWnBDb8ZdbeCD8RTpgKzvKLB_o"/>
+<div class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-surface/80 backdrop-blur-md text-tertiary-fixed font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+            Economía
+          </div>
+<span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/80 text-on-surface-variant font-label-sm text-label-sm">
+            Hace 35 min
+          </span>
+</div>
+<!-- Headline & Description -->
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold group-hover:text-tertiary-fixed transition-colors">
+            Dólar baja de la barrera de los $3.900 tras decisiones de tasas del Banco de la República
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 leading-relaxed">
+            La moneda estadounidense toca mínimos trimestrales. Analistas destacan la contención inflacionaria y el influjo de capital extranjero en bonos locales.
+          </p>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="pt-space-md mt-space-md flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>5 perspectivas</span>
+</div>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-tertiary-container hover:text-on-tertiary-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all group-hover:shadow-[0_0_12px_rgba(89,253,197,0.3)]">
+          Ver enfoques
+          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Card 2: Salud (Magenta #FF007F / #ff4a8d) -->
+<article class="news-card group flex flex-col justify-between rounded-xl bg-surface-container p-space-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-1" data-category="salud">
+<div class="flex flex-col gap-space-md">
+<!-- Media source bar & badges -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold shadow-sm">
+              ET
+            </div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold -ml-3 shadow-sm">
+              RT
+            </div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold -ml-3 shadow-sm">
+              EH
+            </div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant font-bold ml-1">3 Redacciones</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary font-label-sm text-label-sm uppercase font-bold tracking-wider shadow-[0_0_8px_rgba(255,74,141,0.3)]">
+            Tensión Alta
+          </span>
+</div>
+<!-- Article visual snippet -->
+<div class="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern medical center hall with clinical blue and soft ambient light, doctors in discussion with high tech medical monitors in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCawK7vCKju3p7v9Cl_r-_P8g844AZjUIasXrKalZV5we5iqv5GvYhyuizdI0HxiuV5frjsn7Rkerszx7FQec6xjdp2uxxlR78UgpZ8EQFP61Fq0mSBZd_pCYhFvM5793SNIMShFYuXAnvpff6EQYoWNTjSHuAtPn8OF0IC0AlxTOi3NDVla8t99AWYQw3_5B9sv0PhmdOedRUJwOr91mwWDlJXCuPoBAP6BfGzrPVZ"/>
+<div class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-surface/80 backdrop-blur-md text-secondary font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+            Salud
+          </div>
+<span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/80 text-on-surface-variant font-label-sm text-label-sm">
+            Hace 1h
+          </span>
+</div>
+<!-- Headline & Description -->
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold group-hover:text-secondary transition-colors">
+            Crisis de financiamiento en el sistema de salud: EPS solicitan mesas técnicas de emergencia
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 leading-relaxed">
+            Gremios aseguradores afirman insuficiencia en el cálculo de la UPC, mientras el Ministerio de Salud defiende los giros directos ejecutados.
+          </p>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="pt-space-md mt-space-md flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">compare_arrows</span>
+<span>Divergencia crítica</span>
+</div>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-secondary-container hover:text-on-secondary text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all group-hover:shadow-[0_0_12px_rgba(255,74,141,0.3)]">
+          Ver enfoques
+          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Card 3: Tecnología / Geopolítica (Azul Real #0066FF) -->
+<article class="news-card group flex flex-col justify-between rounded-xl bg-surface-container p-space-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-1" data-category="tecnologia">
+<div class="flex flex-col gap-space-md">
+<!-- Media source bar & badges -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold shadow-sm">
+              BBC
+            </div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold -ml-3 shadow-sm">
+              NYT
+            </div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold -ml-3 shadow-sm">
+              AFP
+            </div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant font-bold ml-1">Internacional</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm uppercase font-bold tracking-wider" style="background-color: #0066ff22; color: #59a6ff;">
+            Debate Global
+          </span>
+</div>
+<!-- Article visual snippet -->
+<div class="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Neural network nodes glowing in intense royal blue and neon cyan colors on dark matte glass panel with sleek cinematic depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtkJzQtGnSDP1gxE1HnYiV_92axcsiww0qi1ll9crhqsKhThi4TY6Vb7Nv0Z6XwIEuS-VgIsiAZeX5nYwhlSaH0rSloxsdMqzvqMwPSfgBz5Piitm2Dnb6XfIe69vxb7A767okfp71ny08wKnphu63c3N6t8KJQSKHvP2ke8ZJSeci1t_ABp4w60mqof_rxYTikTwm78Dccu_J2oNfr6-VgDhmhohkKVfpjEP4tNre"/>
+<div class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-surface/80 backdrop-blur-md font-label-sm text-label-sm uppercase font-bold flex items-center gap-1" style="color: #59a6ff;">
+<span class="w-1.5 h-1.5 rounded-full" style="background-color: #0066ff;"></span>
+            Tecnología
+          </div>
+<span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/80 text-on-surface-variant font-label-sm text-label-sm">
+            Hace 2h
+          </span>
+</div>
+<!-- Headline & Description -->
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold group-hover:text-tertiary-container transition-colors">
+            IA y regulación algorítmica: Cumbre global debate leyes de transparencia en medios
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 leading-relaxed">
+            Plataformas y líderes jurídicos concilian estándares de etiquetado para contenidos sintéticos y protección de derechos periodísticos.
+          </p>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="pt-space-md mt-space-md flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">language</span>
+<span>3 agendas divergentes</span>
+</div>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all">
+          Ver enfoques
+          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Card 4: Medio Ambiente / Energía (Regiones) -->
+<article class="news-card group flex flex-col justify-between rounded-xl bg-surface-container p-space-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-1" data-category="regiones">
+<div class="flex flex-col gap-space-md">
+<!-- Media source bar & badges -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold shadow-sm">
+              EH
+            </div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold -ml-3 shadow-sm">
+              EC
+            </div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold -ml-3 shadow-sm">
+              CC
+            </div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant font-bold ml-1">Caribe &amp; Antioquia</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold tracking-wider">
+            Consenso 78%
+          </span>
+</div>
+<!-- Article visual snippet -->
+<div class="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High power solar grid and clean wind turbines landscape along a sunny coastal horizon with sharp contrast lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDO6L4djA1sJ5XgxA7q2iv6d8j5UxBsf_cG-cenVs6S8pYVZ6H_--BhPPKso0EBED5lFl5QE6kfAT4OTw8WyQ14fGLvdpdtlL6fqXCW27Zi2ftnoXM0VAbrU6XnukDxGVM4igyxymfYDD7Z_u6V6Obnv0NFYratwoHG5I86O44iU9oA-VugaRNyFrmzyvk8v1ctw7catq4OJ5KA0FPPC_xSoBLIkIJekHH9GL4theQ"/>
+<div class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-surface/80 backdrop-blur-md text-primary-fixed-dim font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+            Energía Regional
+          </div>
+<span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/80 text-on-surface-variant font-label-sm text-label-sm">
+            Hace 2h 45m
+          </span>
+</div>
+<!-- Headline & Description -->
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold group-hover:text-primary-fixed transition-colors">
+            Tarifas de energía en el Caribe: Gobierno y distribuidoras firman acuerdo tarifario
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 leading-relaxed">
+            Pacto estipula una reducción paulatina del costo por kilovatio a través de la titularización de la opción tarifaria.
+          </p>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="pt-space-md mt-space-md flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span>Impacto regional</span>
+</div>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all group-hover:shadow-[0_0_12px_rgba(253,228,0,0.3)]">
+          Ver enfoques
+          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Card 5: Deportes (Naranja #FF6B00) -->
+<article class="news-card group flex flex-col justify-between rounded-xl bg-surface-container p-space-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-1" data-category="deportes">
+<div class="flex flex-col gap-space-md">
+<!-- Media source bar & badges -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold shadow-sm">
+              ET
+            </div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold -ml-3 shadow-sm">
+              CC
+            </div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant font-bold ml-1">Frecuencia Deportiva</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high font-label-sm text-label-sm uppercase font-bold tracking-wider" style="background-color: #ff6b0022; color: #ff9142;">
+            En Desarrollo
+          </span>
+</div>
+<!-- Article visual snippet -->
+<div class="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Dynamic football stadium pitch under radiant night floodlights with soccer ball on grass and atmospheric stadium mist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv4QMH94VkAcsbKGxoPhcJTEng5yqeGApAeDl-X8EpF_pgNgaJRFA-7sGuPfHPP_wipS29GfQTtaFBMB-vnU0egc1HpOsazmSVBlwLAUYoOHYnv9k1Jpe5oVcLjz4o69Ve4kFJQ_sI5zIdyI0rAqnB0aDu4lxY4-faG3fId1lPNPoLqf-AXi2nAm1DSJU6eKB3_7FqoGCATrTQO5kwKSapkebTeVIXSYWDI19S-qbu"/>
+<div class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-surface/80 backdrop-blur-md font-label-sm text-label-sm uppercase font-bold flex items-center gap-1" style="color: #ff9142;">
+<span class="w-1.5 h-1.5 rounded-full" style="background-color: #ff6b00;"></span>
+            Deportes
+          </div>
+<span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/80 text-on-surface-variant font-label-sm text-label-sm">
+            Hace 3h
+          </span>
+</div>
+<!-- Headline & Description -->
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold group-hover:text-primary-fixed transition-colors">
+            Clasificatorias y fixture continental: Selección prepara nómina de cara a la doble fecha
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 leading-relaxed">
+            Cuerpo técnico valora convocatorias mixtas entre figuras de ligas europeas y talentos emergentes del fútbol profesional local.
+          </p>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="pt-space-md mt-space-md flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">sports_soccer</span>
+<span>4 análisis tácticos</span>
+</div>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all">
+          Ver enfoques
+          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Card 6: Internacional / Geopolítica (Azul Real & Menta) -->
+<article class="news-card group flex flex-col justify-between rounded-xl bg-surface-container p-space-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-1" data-category="internacional">
+<div class="flex flex-col gap-space-md">
+<!-- Media source bar & badges -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold shadow-sm">
+              AP
+            </div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold -ml-3 shadow-sm">
+              RE
+            </div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-extrabold -ml-3 shadow-sm">
+              NYT
+            </div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant font-bold ml-1">Agencias Globales</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm uppercase font-bold tracking-wider">
+            Diplomacia
+          </span>
+</div>
+<!-- Article visual snippet -->
+<div class="relative w-full h-36 rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="International diplomatic summit round-table assembly with heads of state flags, warm architectural ambient spotlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHyClxiuNUT4Je1mbP0u9Iuq1bmmm6B_Fq7X3NsqsOzDJMIOp-gWQEMlKU76P06i9gu1SoKzEecby7BrQNEhfqUuGfR3PCO9sOljKRbO5ltjiBIEt-iNXWG6NJ2gxwiMCCTKqT_VmqsZD6lKMiXn_jZk1gNj6UGEXVqFDoYLAS3hGWaQYgaHbwkzO9sDKHlmjqglKavaRRm-4gTvdqooBqN5hpNPfZMrGjJMT0dC96"/>
+<div class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-surface/80 backdrop-blur-md font-label-sm text-label-sm uppercase font-bold flex items-center gap-1" style="color: #59a6ff;">
+<span class="w-1.5 h-1.5 rounded-full" style="background-color: #0066ff;"></span>
+            Internacional
+          </div>
+<span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/80 text-on-surface-variant font-label-sm text-label-sm">
+            Hace 3h 20m
+          </span>
+</div>
+<!-- Headline & Description -->
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold group-hover:text-tertiary-fixed transition-colors">
+            Acuerdo sobre minerales críticos y transición energética en cumbre regional
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 leading-relaxed">
+            Naciones andinas y delegaciones multilaterales firman marco regulatorio para la extracción sustentable de litio, níquel y cobre.
+          </p>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="pt-space-md mt-space-md flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">public</span>
+<span>Tratados cruzados</span>
+</div>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-tertiary-container hover:text-on-tertiary-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all">
+          Ver enfoques
+          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</article>
+</div>
+</div>
+<script>
+  (function initDashboardInteractivity() {
+    // Topic Pill Filtering Simulation
+    const pills = document.querySelectorAll('.topic-pill');
+    const cards = document.querySelectorAll('.news-card');
+
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        pills.forEach((p) => {
+          p.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_16px_rgba(253,228,0,0.35)]');
+          p.classList.add('bg-surface-container-low', 'text-on-surface');
+        });
+        pill.classList.remove('bg-surface-container-low', 'text-on-surface');
+        pill.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_16px_rgba(253,228,0,0.35)]');
+
+        const filter = pill.getAttribute('data-filter');
+        cards.forEach((card) => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.opacity = '1';
+            card.style.transform = 'scale(1)';
+            card.style.pointerEvents = 'auto';
+          } else {
+            card.style.opacity = '0.25';
+            card.style.transform = 'scale(0.98)';
+            card.style.pointerEvents = 'none';
+          }
+        });
+      });
+    });
+
+    // Territorial Scope Switcher
+    const btnNacional = document.getElementById('toggle-colombia');
+    const btnGlobal = document.getElementById('toggle-global');
+
+    if (btnNacional && btnGlobal) {
+      btnNacional.addEventListener('click', () => {
+        btnNacional.className = 'px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 shadow-[0_0_12px_rgba(253,228,0,0.3)] transition-all';
+        btnGlobal.className = 'px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 transition-all';
+      });
+
+      btnGlobal.addEventListener('click', () => {
+        btnGlobal.className = 'px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 shadow-[0_0_12px_rgba(253,228,0,0.3)] transition-all';
+        btnNacional.className = 'px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 transition-all';
+      });
+    }
+  })();
+</script></main></div></body></html>

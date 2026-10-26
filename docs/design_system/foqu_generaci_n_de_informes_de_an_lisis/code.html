@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@600;700;800&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface": "#0f131d", "on-secondary-fixed": "#3f001a", "primary-fixed-dim": "#dec800", "tertiary-fixed": "#59fdc5", "inverse-surface": "#dfe2f1", "error-container": "#93000a", "on-surface-variant": "#cdc7aa", "primary-container": "#fde400", "on-secondary-container": "#590028", "outline-variant": "#4b4731", "surface-variant": "#313540", "surface-container-high": "#262a35", "outline": "#979177", "surface-dim": "#0f131d", "tertiary-container": "#59fdc5", "on-tertiary": "#003828", "inverse-primary": "#6a5f00", "tertiary-fixed-dim": "#2fe0aa", "surface-container-lowest": "#0a0e18", "primary-fixed": "#fde400", "secondary-container": "#ff4a8d", "background": "#0f131d", "on-error-container": "#ffdad6", "on-tertiary-container": "#007354", "on-primary-container": "#716500", "surface-container-low": "#171b26", "on-primary": "#373100", "on-secondary": "#65002e", "primary": "#ffffff", "on-secondary-fixed-variant": "#8f0044", "on-background": "#dfe2f1", "secondary-fixed": "#ffd9e1", "on-primary-fixed-variant": "#504700", "on-primary-fixed": "#201c00", "inverse-on-surface": "#2c303b", "error": "#ffb4ab", "secondary": "#ffb1c4", "on-surface": "#dfe2f1", "on-error": "#690005", "on-tertiary-fixed-variant": "#00513b", "surface-bright": "#353944", "surface-container-highest": "#313540", "surface-container": "#1c1f2a", "surface-tint": "#dec800", "secondary-fixed-dim": "#ffb1c4", "tertiary": "#ffffff", "on-tertiary-fixed": "#002116" }, "borderRadius": { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "margin-mobile": "1.25rem", "gutter": "1.5rem", "space-md": "1rem", "space-lg": "1.5rem", "gutter-mobile": "1rem", "space-xs": "0.25rem", "margin": "2rem", "space-xl": "2.5rem" }, "fontFamily": { "display-lg": [ "Plus Jakarta Sans" ], "label-md": [ "Montserrat" ], "body-lg": [ "Inter" ], "headline-sm": [ "Plus Jakarta Sans" ], "body-sm": [ "Inter" ], "label-sm": [ "Montserrat" ], "display-lg-mobile": [ "Plus Jakarta Sans" ], "headline-xl": [ "Plus Jakarta Sans" ], "headline-lg": [ "Plus Jakarta Sans" ], "body-md": [ "Inter" ], "headline-xl-mobile": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "label-lg": [ "Montserrat" ] }, "fontSize": { "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "800" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" } ], "body-lg": [ "18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "headline-sm": [ "18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-sm": [ "13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-sm": [ "10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" } ], "display-lg-mobile": [ "36px", { "lineHeight": "42px", "letterSpacing": "-0.025em", "fontWeight": "800" } ], "headline-xl": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.025em", "fontWeight": "800" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-md": [ "15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" } ], "headline-xl-mobile": [ "28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-md": [ "22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "label-lg": [ "14px", { "lineHeight": "18px", "letterSpacing": "0.04em", "fontWeight": "700" } ] } } } };</script></head><body class="bg-surface-container-lowest font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-72 bg-surface-container-lowest z-50 flex flex-col justify-between p-space-md shadow-[0_1px_8px_rgba(0,0,0,0.25)]"><div class="flex flex-col gap-space-lg"><div class="px-space-sm pt-space-xs"><div class="flex items-center gap-space-xs"><span class="font-headline-lg text-headline-lg tracking-tight text-primary font-bold">FOQUÉ</span><div class="flex items-center gap-1.5 ml-1"><span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(253,228,0,0.6)]"></span><span class="w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(255,74,141,0.6)]"></span><span class="w-2 h-2 rounded-full bg-tertiary-container shadow-[0_0_8px_rgba(89,253,197,0.6)]"></span><span class="w-2 h-2 rounded-full bg-inverse-surface"></span></div></div><p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mt-1">Tu radar de noticias</p></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-label-md text-label-md rounded-full shadow-[0_0_16px_rgba(253,228,0,0.35)]"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md uppercase transition-all" data-path="inicio" href="#"><span class="material-symbols-outlined text-[20px]">radar</span>Inicio</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md uppercase transition-all" data-path="medicion-de-cobertura" href="#"><span class="material-symbols-outlined text-[20px]">compare_arrows</span>Medición de Cobertura</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md uppercase transition-all" data-path="contraste-de-informacion" href="#"><span class="material-symbols-outlined text-[20px]">splitscreen</span>Contraste de Información</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md uppercase transition-all" data-path="deteccion-de-tendencias" href="#"><span class="material-symbols-outlined text-[20px]">trending_up</span>Detección de Tendencias</a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all bg-primary-container text-on-primary-container font-label-md text-label-md rounded-full shadow-[0_0_16px_rgba(253,228,0,0.35)]" data-path="generacion-de-informes" href="#"><span class="material-symbols-outlined text-[20px]">auto_awesome</span>Generación de Informes</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-md text-label-md uppercase transition-all" data-path="favoritos" href="#"><span class="material-symbols-outlined text-[20px]">bookmark</span>Favoritos</a></nav></div><div class="p-space-md rounded-lg bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.1)] flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary-fixed text-[18px]">verified</span><span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider">Enfoque Crítico</span></div><p class="font-headline-sm text-headline-sm text-on-surface leading-tight">La información también es poder.</p><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Mira más allá de los titulares y detecta los sesgos del algoritmo.</p></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface/80 backdrop-blur-xl z-40 px-space-lg flex items-center justify-between gap-space-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-space-md text-on-surface-variant text-[20px]">search</span><input class="w-full bg-surface-container-low rounded-full pl-11 pr-14 py-space-sm text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm outline-none focus:bg-surface-container-high transition-colors" placeholder="Buscar fuentes, temas clave o perspectivas..." type="text"/><kbd class="absolute right-space-md px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase">⌘K</kbd></div><div class="inline-flex p-1 bg-surface-container-low rounded-full"><button class="px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm uppercase transition-colors" type="button">Nacional</button><button class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase transition-colors" type="button">Internacional</button></div></div><div class="flex items-center gap-space-md"><div class="flex items-center bg-surface-container-low rounded-full p-1"><div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-primary-fixed"><span class="material-symbols-outlined text-[16px]">dark_mode</span></div></div><button class="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-full transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(255,74,141,0.6)]"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface leading-tight">Valentina Q.</span><span class="font-label-sm text-label-sm text-primary-fixed uppercase">Periodista Pro</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_0_12px_rgba(255,255,255,0.2)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-20 w-full px-space-lg bg-surface-container-lowest min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive Feedback Toasts (Floating Container) -->
+<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-space-xs pointer-events-none" id="toast-container"></div>
+<!-- 1. EXPORT CONTROL BAR -->
+<section class="w-full flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container shadow-[0_0_12px_rgba(253,228,0,0.8)]"></span>
+<span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider">Centro de Síntesis Editorial</span>
+<span class="text-on-surface-variant font-body-sm">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Versión Final Certificada</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Generador de Informes y Dossier de Cobertura</h1>
+</div>
+<!-- Actions Group -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<!-- Secondary: Copiar Citas APA 7 -->
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface hover:text-primary transition-all duration-200 active:scale-95 shadow-sm" id="btn-copy-apa" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary-container">format_quote</span>
+<span class="font-label-md text-label-md uppercase">Copiar Citas APA 7</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-on-surface-variant text-[10px] font-mono">v7.0</span>
+</button>
+<!-- Secondary: Compartir Informe -->
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface hover:text-primary transition-all duration-200 active:scale-95 shadow-sm" id="btn-share-report" type="button">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span class="font-label-md text-label-md uppercase">Compartir Enlace</span>
+</button>
+<!-- Primary Action: Descargar PDF Dossier -->
+<button class="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-full bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-label-md text-label-md uppercase tracking-wider shadow-[0_0_20px_rgba(253,228,0,0.4)] transition-all duration-200 active:scale-95 hover:scale-[1.02]" id="btn-download-pdf" type="button">
+<span class="material-symbols-outlined text-[20px] font-bold">download</span>
+<span>Descargar PDF (Dossier Completo)</span>
+</button>
+</div>
+</section>
+<!-- PRINTABLE / HIGH-FIDELITY DOSSIER DOCUMENT CONTAINER -->
+<article class="w-full bg-surface-container-lowest rounded-xl shadow-2xl overflow-hidden flex flex-col mb-space-xl">
+<!-- 2. HEADER DEL INFORME (Slate Oscuro #0F172A / Refinada Editorial) -->
+<header class="w-full bg-surface-container-low p-space-lg lg:p-space-xl flex flex-col gap-space-lg relative overflow-hidden">
+<!-- Decorative Atmospheric Glow Ring -->
+<div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gradient-to-br from-primary-container/10 via-secondary-container/5 to-transparent blur-3xl pointer-events-none"></div>
+<!-- Top Metadata Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-md relative z-10">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_0_12px_rgba(253,228,0,0.5)]">
+<span class="material-symbols-outlined text-[18px]">folder_special</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-widest font-mono">ID Expediente: #FQ-2025-0842</span>
+</div>
+<!-- Pill Badge 10 Medios -->
+<div class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-surface-container-high text-on-surface shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary-container shadow-[0_0_8px_rgba(89,253,197,0.8)]"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wide">10 medios analizados: 5 nacionales, 5 internacionales</span>
+</div>
+</div>
+<!-- Title & Narrative Lead -->
+<div class="flex flex-col gap-space-xs max-w-4xl relative z-10">
+<div class="inline-flex items-center gap-space-xs text-secondary">
+<span class="material-symbols-outlined text-[16px]">stacked_line_chart</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-bold">Matriz de Agenda &amp; Framing Comparado</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary tracking-tight leading-none">
+          Informe de Cobertura y Matriz de Agenda: Reforma Laboral y Transición Energética
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 leading-relaxed">
+          Deconstrucción cruzada de agenda mediática, frecuencia semántica y brechas de encuadre editorial sobre el pliego legislativo en el Congreso de la República.
+        </p>
+</div>
+<!-- Bottom Metadata Row: Period & Analyst Details -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md pt-space-md relative z-10 bg-surface-container/60 p-space-md rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Período Analizado</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">15 al 22 de Marzo, 2025</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ventana móvil: 7 días de ciclo</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Analista Responsable</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Victoria León</span>
+<span class="font-body-sm text-body-sm text-primary-fixed">Comunicación Social &amp; NLP</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Corpus Documental</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">428 Unidades</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Cables, columnas, despachos</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Protocolo de Ingesta</span>
+<span class="font-headline-sm text-headline-sm text-tertiary-container font-semibold">RSS + API NewsWire</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Hash SHA-256 inmutable</span>
+</div>
+</div>
+<!-- Media Spectrum Logos / Pills Strip -->
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs text-on-surface-variant text-label-sm uppercase">
+<span class="text-on-surface-variant font-mono text-[11px] mr-1">Fuentes Muestreadas:</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-medium">El Tiempo</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-medium">El Espectador</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-medium">El Colombiano</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-medium">El Heraldo</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-medium">RTVC Noticias</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest text-secondary-fixed font-medium">Reuters LatAm</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest text-secondary-fixed font-medium">BBC News Mundo</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest text-secondary-fixed font-medium">Associated Press</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest text-secondary-fixed font-medium">AFP</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest text-secondary-fixed font-medium">The New York Times</span>
+</div>
+</header>
+<!-- 3. ESTRUCTURA EN DOS COLUMNAS RIGUROSAMENTE SEPARADAS -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg p-space-lg lg:p-space-xl bg-surface-container-lowest">
+<!-- ========================================== -->
+<!-- COLUMNA 1: DATOS RECOPILADOS (Raw Data)    -->
+<!-- ========================================== -->
+<div class="lg:col-span-6 flex flex-col gap-space-lg bg-surface-container-low/50 p-space-lg rounded-xl shadow-sm">
+<!-- Header Columna 1 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary-fixed shadow-inner">
+<span class="material-symbols-outlined text-[22px]">database</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider font-mono">Canal 01</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Datos Recopilados</h3>
+</div>
+</div>
+<span class="px-space-sm py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase">
+            Empírico Inalterable
+          </span>
+</div>
+<!-- Métrica Principal Destacada -->
+<div class="bg-surface-container rounded-lg p-space-md flex items-center justify-between shadow-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wide">Muestra Cuantitativa Total</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-lg text-display-lg text-primary tracking-tight font-black leading-none">428</span>
+<span class="font-label-lg text-label-lg text-tertiary-container font-mono">artículos &amp; cables</span>
+</div>
+</div>
+<div class="flex flex-col items-end text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Rango Frecuencial</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">61.1 arts / día</span>
+<span class="font-body-sm text-body-sm text-tertiary-container font-mono flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> 100% verificados
+            </span>
+</div>
+</div>
+<!-- Gráfico Resumen: Distribución de Fuentes por Medio (Barras Porcentuales) -->
+<div class="flex flex-col gap-space-sm bg-surface-container rounded-lg p-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-wide">Distribución de Cobertura por Redacción</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">428 Despachos (100%)</span>
+</div>
+<!-- Distribution Stack Bars -->
+<div class="flex flex-col gap-3 pt-space-xs">
+<!-- El Tiempo -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-body-sm text-on-surface">
+<span class="font-semibold">El Tiempo (Nacional)</span>
+<span class="font-mono text-on-surface-variant">78 notas • 18.2%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 18.2%"></div>
+</div>
+</div>
+<!-- Reuters LatAm -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-body-sm text-on-surface">
+<span class="font-semibold">Reuters América Latina (Agencia Int.)</span>
+<span class="font-mono text-on-surface-variant">64 despachos • 15.0%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full" style="width: 15.0%"></div>
+</div>
+</div>
+<!-- El Espectador -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-body-sm text-on-surface">
+<span class="font-semibold">El Espectador (Nacional)</span>
+<span class="font-mono text-on-surface-variant">52 notas • 12.1%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 12.1%"></div>
+</div>
+</div>
+<!-- RTVC Noticias -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-body-sm text-on-surface">
+<span class="font-semibold">RTVC Noticias (Medio Público)</span>
+<span class="font-mono text-on-surface-variant">49 coberturas • 11.4%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 11.4%"></div>
+</div>
+</div>
+<!-- BBC News Mundo & AP -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-body-sm text-on-surface">
+<span class="font-semibold">BBC Mundo / AP / AFP / NYT (Internacional)</span>
+<span class="font-mono text-on-surface-variant">112 cables • 26.2%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 26.2%"></div>
+</div>
+</div>
+<!-- Regionales: El Heraldo & El Colombiano -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-body-sm text-on-surface">
+<span class="font-semibold">El Heraldo &amp; El Colombiano (Regional)</span>
+<span class="font-mono text-on-surface-variant">73 artículos • 17.1%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-inverse-surface rounded-full" style="width: 17.1%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Citas Textuales Originales Verificadas -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-wide">Citas Textuales Originales Verificadas</span>
+<span class="font-label-sm text-label-sm text-primary-fixed font-mono">Trazabilidad Directa</span>
+</div>
+<!-- Cita 1: El Tiempo -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col gap-space-xs transition-colors hover:bg-surface-container-high">
+<div class="flex items-center justify-between flex-wrap gap-1">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-md text-label-md text-primary font-bold">El Tiempo</span>
+<span class="text-on-surface-variant text-label-sm font-mono">• 19 Mar 2025, 14:22 COT</span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary-fixed uppercase tracking-wide hover:underline" href="#">
+<span class="material-symbols-outlined text-[14px]">link</span>
+                [Enlace verificado]
+              </a>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic pl-space-sm border-l-2 border-primary-container">
+              “Comisión Séptima aprueba ponencia positiva con votos divididos tras intensa discusión sobre recargos nocturnos dominicales y flexibilidad de horarios comerciales.”
+            </p>
+<div class="flex items-center gap-space-sm text-on-surface-variant text-body-sm pt-1">
+<span class="text-label-sm font-mono text-on-surface-variant">Metadatos: Sección Economía / Pág. 4</span>
+<span>•</span>
+<span class="text-label-sm font-mono text-tertiary-container">Certificado SHA: #e8a9f0</span>
+</div>
+</div>
+<!-- Cita 2: Reuters -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col gap-space-xs transition-colors hover:bg-surface-container-high">
+<div class="flex items-center justify-between flex-wrap gap-1">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-md text-label-md text-primary font-bold">Reuters América Latina</span>
+<span class="text-on-surface-variant text-label-sm font-mono">• 19 Mar 2025, 16:05 GMT</span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary-fixed uppercase tracking-wide hover:underline" href="#">
+<span class="material-symbols-outlined text-[14px]">link</span>
+                [Enlace verificado]
+              </a>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic pl-space-sm border-l-2 border-secondary-container">
+              “Colombia labor reform clears committee hurdle amid investor scrutiny and corporate concerns regarding severance liability metrics in energy transitions.”
+            </p>
+<div class="flex items-center gap-space-sm text-on-surface-variant text-body-sm pt-1">
+<span class="text-label-sm font-mono text-on-surface-variant">Metadatos: Wire Feed LATAM / Financial Desk</span>
+<span>•</span>
+<span class="text-label-sm font-mono text-tertiary-container">Certificado SHA: #33b1c4</span>
+</div>
+</div>
+<!-- Cita 3: RTVC Noticias -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col gap-space-xs transition-colors hover:bg-surface-container-high">
+<div class="flex items-center justify-between flex-wrap gap-1">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-md text-label-md text-primary font-bold">RTVC Noticias</span>
+<span class="text-on-surface-variant text-label-sm font-mono">• 19 Mar 2025, 18:40 COT</span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary-fixed uppercase tracking-wide hover:underline" href="#">
+<span class="material-symbols-outlined text-[14px]">link</span>
+                [Enlace verificado]
+              </a>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic pl-space-sm border-l-2 border-tertiary-container">
+              “Histórico avance: Se aprueba informe que prioriza la atención preventiva y restituye derechos adquiridos de los trabajadores en sectores de hidrocarburos y minería.”
+            </p>
+<div class="flex items-center gap-space-sm text-on-surface-variant text-body-sm pt-1">
+<span class="text-label-sm font-mono text-on-surface-variant">Metadatos: Edición Central / Emisión 19H</span>
+<span>•</span>
+<span class="text-label-sm font-mono text-tertiary-container">Certificado SHA: #fa88c2</span>
+</div>
+</div>
+</div>
+<!-- Cronología de Publicaciones por Horas (SVG Chart) -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-wide">Cronología Horaria de Picos de Cobertura (19 Mar)</span>
+<span class="font-label-sm text-label-sm text-primary-fixed font-mono">Pico: 16:00 COT</span>
+</div>
+<!-- Inline Visual Timeline Chart (SVG) -->
+<div class="w-full pt-2">
+<svg class="w-full h-28 overflow-visible" preserveaspectratio="none" viewbox="0 0 500 100">
+<!-- Grid lines -->
+<line stroke="#313540" stroke-dasharray="4,4" stroke-width="1" x1="0" x2="500" y1="20" y2="20"></line>
+<line stroke="#313540" stroke-dasharray="4,4" stroke-width="1" x1="0" x2="500" y1="50" y2="50"></line>
+<line stroke="#313540" stroke-dasharray="4,4" stroke-width="1" x1="0" x2="500" y1="80" y2="80"></line>
+<!-- Frequency Area Curve -->
+<path d="M0,90 Q50,85 100,75 T200,60 T300,15 T380,45 T450,70 T500,85 L500,100 L0,100 Z" fill="rgba(253, 228, 0, 0.12)"></path>
+<!-- Frequency Trend Line -->
+<path d="M0,90 Q50,85 100,75 T200,60 T300,15 T380,45 T450,70 T500,85" fill="none" stroke="#fde400" stroke-width="3"></path>
+<!-- Secondary Curve (International Cable Echo) -->
+<path d="M0,95 Q70,92 140,88 T280,70 T350,25 T420,40 T500,60" fill="none" stroke="#ff4a8d" stroke-dasharray="2,2" stroke-width="2"></path>
+<!-- Beacon Peak Dot with Glow -->
+<circle class="filter drop-shadow-[0_0_8px_rgba(253,228,0,0.9)]" cx="300" cy="15" fill="#fde400" r="5"></circle>
+<text fill="#ffffff" font-family="Montserrat" font-size="9" font-weight="bold" text-anchor="middle" x="300" y="8">114 DESPACHOS</text>
+<!-- International Peak Dot -->
+<circle cx="350" cy="25" fill="#ff4a8d" r="4"></circle>
+</svg>
+<div class="flex justify-between items-center text-on-surface-variant font-mono text-[10px] mt-2">
+<span>06:00 AM (Apertura)</span>
+<span>10:00 AM</span>
+<span class="text-primary font-bold">14:00 PM (Votación)</span>
+<span>18:00 PM</span>
+<span>22:00 PM (Cierre)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- COLUMNA 2: INTERPRETACIÓN DE IA (Framing)  -->
+<!-- ========================================== -->
+<div class="lg:col-span-6 flex flex-col gap-space-lg bg-surface-container-low/50 p-space-lg rounded-xl shadow-sm">
+<!-- Header Columna 2 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-secondary shadow-inner">
+<span class="material-symbols-outlined text-[22px]">psychology</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-mono">Canal 02</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Interpretación de IA</h3>
+</div>
+</div>
+<!-- Badge Prominente Asistencia IA (Obligatorio Deontológico) -->
+<div class="inline-flex items-center gap-1 px-space-sm py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold uppercase shadow-[0_0_12px_rgba(255,74,141,0.35)]">
+<span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+<span>Algoritmo NLP FOQUÉ</span>
+</div>
+</div>
+<!-- Clarification Banner Deontológico Intra-Columna -->
+<div class="bg-surface-container rounded-lg p-space-md flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary-fixed text-[20px] shrink-0 mt-0.5">info</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface uppercase font-bold">Aislamiento Epistemológico</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Los patrones a continuación son construcciones heurísticas basadas en concordancias léxicas y agrupamiento vectorial (embedding TF-IDF). No constituyen juicios éticos de redacción.
+            </p>
+</div>
+</div>
+<!-- Resumen de Patrones Narrativos Detectados -->
+<div class="flex flex-col gap-space-md">
+<!-- Patrón 1: Polarización Fiscal vs Social -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col gap-space-xs transition-all hover:bg-surface-container-high">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high font-mono text-label-sm text-primary-fixed uppercase font-bold">
+                Patrón 01 • Léxico &amp; Framing
+              </span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-mono">Conflicto Alto</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary font-semibold mt-1">
+              Polarización de encuadre fiscal vs. social
+            </h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              La prensa económica y agencias internacionales centraron <span class="text-secondary font-bold font-mono">70%</span> de su léxico en costos operativos, sobretasa patronal e impacto inflacionario. En contraste, medios públicos y comunitarios concentraron el <span class="text-tertiary-container font-bold font-mono">82%</span> de sus piezas en restitución de derechos laborales y dignidad horaria.
+            </p>
+<!-- Dual Divergence Gauge Bar -->
+<div class="flex flex-col gap-1.5 pt-2">
+<div class="flex justify-between text-label-sm font-mono text-on-surface-variant">
+<span class="text-secondary-fixed">Enfoque Fiscal / Costos (70%)</span>
+<span class="text-tertiary-fixed">Enfoque Derechos / Social (82%)</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-high flex overflow-hidden p-0.5">
+<div class="h-full bg-secondary-container rounded-l-full" style="width: 50%"></div>
+<div class="w-1 bg-surface-container-lowest"></div>
+<div class="h-full bg-tertiary-container rounded-r-full" style="width: 50%"></div>
+</div>
+</div>
+</div>
+<!-- Patrón 2: Ausencia de Actores Técnicos -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col gap-space-xs transition-all hover:bg-surface-container-high">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high font-mono text-label-sm text-primary-fixed uppercase font-bold">
+                Patrón 02 • Fuentes Primarias
+              </span>
+<span class="font-label-sm text-label-sm text-error uppercase tracking-wider font-mono">Brecha Crítica</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary font-semibold mt-1">
+              Ausencia de actores técnicos e investigación
+            </h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Menos del <span class="text-error font-bold font-mono">15%</span> de las coberturas consultaron a institutos de investigación económica independientes (Fedesarrollo, ANIF) o sindicatos de base. La agenda dependió en <span class="text-on-surface font-semibold">85%</span> de vocerías parlamentarias oficiales y gremios cúpula (ANDI, Fenalco), generando un efecto cámara de eco partidista.
+            </p>
+<!-- Visual Segment Metric -->
+<div class="flex items-center gap-space-sm pt-2">
+<div class="flex-1 bg-surface-container-high h-2.5 rounded-full overflow-hidden flex">
+<div class="bg-error h-full" style="width: 15%"></div>
+<div class="bg-surface-variant h-full" style="width: 85%"></div>
+</div>
+<span class="font-mono text-label-sm text-error font-bold">14.6% citación técnica</span>
+</div>
+</div>
+<!-- Patrón 3: Brecha Regional Caribe -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col gap-space-xs transition-all hover:bg-surface-container-high">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high font-mono text-label-sm text-primary-fixed uppercase font-bold">
+                Patrón 03 • Geografía Editorial
+              </span>
+<span class="font-label-sm text-label-sm text-tertiary-container uppercase tracking-wider font-mono">Divergencia Local</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary font-semibold mt-1">
+              Brecha de enfoque regional y costos de energía
+            </h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              El diario <span class="text-primary font-semibold">El Heraldo (Barranquilla)</span> priorizó en sus portadas el impacto acumulativo de las tarifas eléctricas del Caribe como variable limitante de la reforma laboral, un ángulo prácticamente <span class="text-primary-container font-semibold">ausente en el 96%</span> de los editoriales radicados en Bogotá y corresponsalías extranjeras.
+            </p>
+<div class="flex items-center justify-between p-space-xs bg-surface-container-high rounded-full px-space-md text-label-sm font-mono mt-1">
+<span class="text-on-surface">Caribe: Alza de Tarifas Energéticas</span>
+<span class="text-tertiary-container font-bold">+68% densidad temática</span>
+</div>
+</div>
+</div>
+<!-- Radar Synthesizer Metric Box -->
+<div class="bg-surface-container rounded-lg p-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 text-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">balance</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Índice de Asimetría de Cobertura</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Diferencial cuadrático medio entre fuentes</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-headline-sm text-primary font-mono font-bold">0.68 / 1.0</span>
+<span class="block text-[10px] uppercase font-mono text-secondary-fixed">Dispersión Marcada</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. DISCLAIMER BANNER DEONTOLÓGICO INFERIOR -->
+<footer class="w-full bg-surface-container-high/60 p-space-lg lg:px-space-xl flex flex-col md:flex-row items-center gap-space-md">
+<!-- Escudo Informativo Icon Container -->
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-primary-fixed shrink-0 shadow-md">
+<span class="material-symbols-outlined text-[26px]">shield</span>
+</div>
+<!-- Disclaimer Text Body -->
+<div class="flex flex-col gap-1 text-center md:text-left flex-1">
+<div class="flex items-center justify-center md:justify-start gap-space-xs">
+<span class="font-label-md text-label-md text-primary uppercase font-bold tracking-wide">
+            Aviso Metodológico y Deontológico FOQUÉ
+          </span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest text-primary-fixed font-mono text-[10px] uppercase">
+            Cláusula de Transparencia
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Esta herramienta proporciona asistencia analítica descriptiva de <strong class="text-on-surface">agenda setting</strong> y encuadres periodísticos. No realiza verificación de veracidad de hechos (<em class="italic text-on-surface">fact-checking</em>) ni mide la opinión pública ciudadana; recopila y contrasta exclusivamente la oferta informativa publicada por las 10 redacciones de referencia.
+        </p>
+</div>
+<!-- Action Verification Stamp -->
+<div class="shrink-0 flex flex-col items-center md:items-end">
+<div class="inline-flex items-center gap-1.5 px-space-md py-1.5 rounded-full bg-surface-container-lowest text-tertiary-container font-mono text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span>Protocolo FOQUÉ v3.4</span>
+</div>
+<span class="text-[10px] font-mono text-on-surface-variant mt-1">Auditado: 22-03-2025</span>
+</div>
+</footer>
+</article>
+<!-- Interactive Client-Side Scripting for Report Controls -->
+<script>
+    (function initDossierController() {
+      const toastContainer = document.getElementById('toast-container');
+
+      function showNotification(message, iconName, bgClass, textClass) {
+        if (!toastContainer) return;
+        const toast = document.createElement('div');
+        toast.className = `pointer-events-auto flex items-center gap-space-xs px-space-md py-space-sm rounded-full ${bgClass} ${textClass} shadow-2xl transition-all duration-300 transform translate-y-4 opacity-0`;
+        toast.innerHTML = `
+          <span class="material-symbols-outlined text-[20px]">${iconName}</span>
+          <span class="font-label-md text-label-md uppercase tracking-wide">${message}</span>
+        `;
+        toastContainer.appendChild(toast);
+
+        // Animate entrance
+        requestAnimationFrame(() => {
+          toast.classList.remove('translate-y-4', 'opacity-0');
+          toast.classList.add('translate-y-0', 'opacity-100');
+        });
+
+        // Remove after 3.2s
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-4', 'opacity-0');
+          setTimeout(() => toast.remove(), 350);
+        }, 3200);
+      }
+
+      // 1. Download PDF Action
+      const btnDownload = document.getElementById('btn-download-pdf');
+      if (btnDownload) {
+        btnDownload.addEventListener('click', () => {
+          const originalText = btnDownload.innerHTML;
+          btnDownload.innerHTML = `
+            <span class="material-symbols-outlined text-[20px] animate-spin">sync</span>
+            <span>Generando Dossier...</span>
+          `;
+          btnDownload.disabled = true;
+
+          setTimeout(() => {
+            btnDownload.innerHTML = originalText;
+            btnDownload.disabled = false;
+            showNotification('Dossier PDF generado (#FQ-2025-0842)', 'picture_as_pdf', 'bg-primary-container', 'text-on-primary-container');
+          }, 1400);
+        });
+      }
+
+      // 2. Copy APA 7 Citations Action
+      const btnApa = document.getElementById('btn-copy-apa');
+      if (btnApa) {
+        btnApa.addEventListener('click', () => {
+          const apaString = `FOQUÉ Analytics. (2025). Informe de Cobertura y Matriz de Agenda: Reforma Laboral y Transición Energética (Expediente Núm. #FQ-2025-0842). Observatorio de Medios Digitales FOQUÉ. Recuperado de https://foque.radar/dossier/fq-2025-0842`;
+          
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(apaString).then(() => {
+              showNotification('Citas en formato APA 7 copiadas al portapapeles', 'assignment_turned_in', 'bg-surface-container-highest', 'text-tertiary-container');
+            }).catch(() => {
+              showNotification('Citas generadas en consola', 'content_copy', 'bg-surface-container-highest', 'text-on-surface');
+            });
+          } else {
+            showNotification('Citas generadas (Portapapeles restringido)', 'info', 'bg-surface-container-highest', 'text-on-surface');
+          }
+        });
+      }
+
+      // 3. Share Report Action
+      const btnShare = document.getElementById('btn-share-report');
+      if (btnShare) {
+        btnShare.addEventListener('click', () => {
+          const shareUrl = window.location.href;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(shareUrl).then(() => {
+              showNotification('Enlace seguro del informe copiado', 'link', 'bg-surface-container-highest', 'text-primary-fixed');
+            });
+          } else {
+            showNotification('Enlace del dossier listo para compartir', 'share', 'bg-surface-container-highest', 'text-primary-fixed');
+          }
+        });
+      }
+    })();
+  </script>
+</div></main></div></body></html>
