@@ -1,11 +1,29 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function HomePage() {
   const [activeTopic, setActiveTopic] = useState('all');
-  const [activeTerritory, setActiveTerritory] = useState<'nacional' | 'internacional'>('nacional');
+  const [activeTerritory, setActiveTerritory] = useState<'all' | 'nacional' | 'internacional'>('nacional');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    const handleTerritory = (e: any) => {
+      if (e.detail) setActiveTerritory(e.detail);
+    };
+    const handleSearch = (e: any) => {
+      if (typeof e.detail === 'string') setSearchQuery(e.detail.toLowerCase());
+    };
+
+    window.addEventListener('territoryChange', handleTerritory);
+    window.addEventListener('searchChange', handleSearch);
+
+    return () => {
+      window.removeEventListener('territoryChange', handleTerritory);
+      window.removeEventListener('searchChange', handleSearch);
+    };
+  }, []);
 
   const topics = [
     { id: 'all', label: 'Todos los temas', dot: 'bg-on-primary-container' },
@@ -139,10 +157,19 @@ export default function HomePage() {
     }
   ];
 
+  const handleTerritoryClick = (t: 'all' | 'nacional' | 'internacional') => {
+    setActiveTerritory(t);
+    window.dispatchEvent(new CustomEvent('territoryChange', { detail: t }));
+  };
+
   const filteredArticles = articles.filter(a => {
     const matchesTopic = activeTopic === 'all' || a.category === activeTopic;
-    const matchesTerritory = activeTerritory === 'nacional' ? a.territory === 'nacional' : true;
-    return matchesTopic && matchesTerritory;
+    const matchesTerritory = activeTerritory === 'all' || a.territory === activeTerritory;
+    const matchesSearch = searchQuery === '' || 
+      a.title.toLowerCase().includes(searchQuery) || 
+      a.description.toLowerCase().includes(searchQuery) ||
+      a.sourceName.toLowerCase().includes(searchQuery);
+    return matchesTopic && matchesTerritory && matchesSearch;
   });
 
   return (
@@ -157,7 +184,7 @@ export default function HomePage() {
               <button
                 key={t.id}
                 onClick={() => setActiveTopic(t.id)}
-                className={`topic-pill px-space-md py-space-xs rounded-full font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0 ${
+                className={`topic-pill px-space-md py-space-xs rounded-full font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0 cursor-pointer ${
                   isSelected
                     ? 'bg-primary-container text-on-primary-container shadow-[0_0_16px_rgba(253,228,0,0.35)] font-bold'
                     : 'bg-surface-container-low text-on-surface hover:bg-surface-container-high'
@@ -173,8 +200,18 @@ export default function HomePage() {
         {/* Territorial Scope Pill Switcher */}
         <div className="flex items-center gap-2 self-start md:self-auto bg-surface-container-low p-1 rounded-full shadow-sm shrink-0 border border-outline-variant/20">
           <button
-            onClick={() => setActiveTerritory('nacional')}
-            className={`px-space-md py-space-xs rounded-full font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 transition-all ${
+            onClick={() => handleTerritoryClick('all')}
+            className={`px-space-sm py-space-xs rounded-full font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 transition-all cursor-pointer ${
+              activeTerritory === 'all'
+                ? 'bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(253,228,0,0.3)]'
+                : 'text-on-surface-variant hover:text-on-surface'
+            }`}
+          >
+            Todos
+          </button>
+          <button
+            onClick={() => handleTerritoryClick('nacional')}
+            className={`px-space-md py-space-xs rounded-full font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 transition-all cursor-pointer ${
               activeTerritory === 'nacional'
                 ? 'bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(253,228,0,0.3)]'
                 : 'text-on-surface-variant hover:text-on-surface'
@@ -184,8 +221,8 @@ export default function HomePage() {
             Nacional (Colombia)
           </button>
           <button
-            onClick={() => setActiveTerritory('internacional')}
-            className={`px-space-md py-space-xs rounded-full font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 transition-all ${
+            onClick={() => handleTerritoryClick('internacional')}
+            className={`px-space-md py-space-xs rounded-full font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 transition-all cursor-pointer ${
               activeTerritory === 'internacional'
                 ? 'bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(253,228,0,0.3)]'
                 : 'text-on-surface-variant hover:text-on-surface'
@@ -199,7 +236,6 @@ export default function HomePage() {
 
       {/* Main Hero Card: Radar Global de Portada */}
       <div className="relative w-full rounded-2xl bg-surface-container-low overflow-hidden shadow-2xl mb-space-xl p-space-lg md:p-space-xl border border-outline-variant/30">
-        {/* Ambient Backdrop Illumination */}
         <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-secondary-container/15 blur-3xl pointer-events-none"></div>
         <div className="absolute -bottom-24 left-1/3 w-96 h-96 rounded-full bg-primary-container/10 blur-3xl pointer-events-none"></div>
         <div className="absolute top-1/2 left-0 w-72 h-72 rounded-full bg-tertiary-container/10 blur-3xl pointer-events-none"></div>
@@ -207,7 +243,6 @@ export default function HomePage() {
         <div className="relative z-10 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-xl">
           {/* Left Content */}
           <div className="flex-1 flex flex-col gap-space-md">
-            {/* Tagline & Status Badges */}
             <div className="flex flex-wrap items-center gap-space-sm">
               <span className="px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_12px_rgba(253,228,0,0.4)] font-bold">
                 <span className="material-symbols-outlined text-[14px]">bolt</span>
@@ -222,17 +257,14 @@ export default function HomePage() {
               </span>
             </div>
 
-            {/* Master Headline */}
             <h1 className="font-headline-xl text-headline-xl text-primary font-extrabold tracking-tight leading-tight max-w-3xl">
               Reforma Laboral y Pensional: Senado aprueba artículos clave en medio de fuerte pulso gremial
             </h1>
 
-            {/* Executive Narrative Contrast Context */}
             <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-2xl">
               Mayoría de redacciones destacan la concertación de horas nocturnas, mientras periódicos económicos alertan por el impacto fiscal sobre pymes y fondos de retiro.
             </p>
 
-            {/* Multi-Source Convergence Metric Bar */}
             <div className="p-space-md rounded-xl bg-surface-container max-w-2xl flex flex-col gap-space-sm border border-outline-variant/30">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-space-xs">
@@ -242,7 +274,6 @@ export default function HomePage() {
                 <span className="font-label-md text-label-md text-primary-container font-extrabold">8 de 10 medios</span>
               </div>
 
-              {/* Segmented Alignment Indicator */}
               <div className="w-full h-2 rounded-full bg-surface-container-highest flex overflow-hidden gap-0.5">
                 <div className="h-full bg-tertiary-container rounded-l-full w-[50%]" title="Enfoque social / concertación"></div>
                 <div className="h-full bg-primary-container w-[30%]" title="Enfoque de trámite institucional"></div>
@@ -256,7 +287,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Sources Avatars Strip & CTA Trigger */}
             <div className="flex flex-wrap items-center justify-between gap-space-md pt-space-xs">
               <div className="flex items-center gap-space-sm">
                 <span className="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider font-semibold">
@@ -282,7 +312,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right Visual Widget: Realtime Telemetry Perspective Divergence */}
+          {/* Right Visual Widget */}
           <div className="w-full lg:w-80 p-space-md rounded-2xl bg-surface-container flex flex-col gap-space-md border border-outline-variant/30 shrink-0">
             <div className="flex items-center justify-between">
               <span className="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider font-bold">
@@ -291,7 +321,6 @@ export default function HomePage() {
               <span className="w-2.5 h-2.5 rounded-full bg-secondary-container animate-pulse shadow-[0_0_8px_rgba(255,74,141,0.8)]"></span>
             </div>
 
-            {/* Radial Divergence Gauge Inline SVG */}
             <div className="relative flex items-center justify-center py-2">
               <svg className="w-44 h-44 -rotate-90" viewBox="0 0 120 120">
                 <circle cx="60" cy="60" fill="none" r="50" stroke="#262a35" strokeWidth="8"></circle>
@@ -355,7 +384,6 @@ export default function HomePage() {
             className={`news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 ${article.hoverBorder}`}
           >
             <div className="flex flex-col gap-space-md">
-              {/* Media source bar & badges */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="flex items-center -space-x-2">
@@ -377,7 +405,6 @@ export default function HomePage() {
                 </span>
               </div>
 
-              {/* Article visual snippet */}
               <div className="relative w-full h-36 rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant/20">
                 <img 
                   src={article.image} 
@@ -393,7 +420,6 @@ export default function HomePage() {
                 </span>
               </div>
 
-              {/* Headline & Description */}
               <div className="flex flex-col gap-space-xs">
                 <h3 className={`font-headline-sm text-headline-sm text-primary font-bold transition-colors ${article.accentColor}`}>
                   {article.title}
@@ -404,7 +430,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Action Footer */}
             <div className="pt-space-md mt-space-md flex items-center justify-between border-t border-outline-variant/20">
               <div className="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
                 <span className="material-symbols-outlined text-[16px]">{article.viewsIcon}</span>

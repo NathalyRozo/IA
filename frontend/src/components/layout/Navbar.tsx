@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 
 interface NavbarProps {
-  territory?: 'nacional' | 'internacional';
-  onTerritoryChange?: (territory: 'nacional' | 'internacional') => void;
+  territory?: 'all' | 'nacional' | 'internacional';
+  onTerritoryChange?: (territory: 'all' | 'nacional' | 'internacional') => void;
   onOpenDisclaimer?: () => void;
 }
 
@@ -13,11 +13,12 @@ export default function Navbar({
   onTerritoryChange,
   onOpenDisclaimer 
 }: NavbarProps) {
-  const [selectedTerritory, setSelectedTerritory] = useState<'nacional' | 'internacional'>(territory);
+  const [selectedTerritory, setSelectedTerritory] = useState<'all' | 'nacional' | 'internacional'>(territory);
 
-  const handleTerritory = (t: 'nacional' | 'internacional') => {
+  const handleTerritory = (t: 'all' | 'nacional' | 'internacional') => {
     setSelectedTerritory(t);
     if (onTerritoryChange) onTerritoryChange(t);
+    window.dispatchEvent(new CustomEvent('territoryChange', { detail: t }));
   };
 
   return (
@@ -32,6 +33,9 @@ export default function Navbar({
             className="w-full bg-surface-container-low rounded-full pl-11 pr-14 py-space-sm text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm outline-none focus:bg-surface-container-high transition-colors border border-outline-variant/20 focus:border-primary-fixed/40"
             placeholder="Buscar fuentes, temas clave o perspectivas..." 
             type="text"
+            onChange={(e) => {
+              window.dispatchEvent(new CustomEvent('searchChange', { detail: e.target.value }));
+            }}
           />
           <kbd className="absolute right-space-md px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase">
             ⌘K
@@ -39,6 +43,17 @@ export default function Navbar({
         </div>
 
         <div className="inline-flex p-1 bg-surface-container-low rounded-full border border-outline-variant/20 shrink-0">
+          <button 
+            type="button"
+            onClick={() => handleTerritory('all')}
+            className={`px-space-sm py-space-xs rounded-full font-label-sm text-label-sm uppercase transition-all ${
+              selectedTerritory === 'all'
+                ? 'bg-primary-container text-on-primary-container font-bold shadow-[0_0_10px_rgba(253,228,0,0.3)]'
+                : 'text-on-surface-variant hover:text-on-surface'
+            }`}
+          >
+            Todos
+          </button>
           <button 
             type="button"
             onClick={() => handleTerritory('nacional')}
@@ -69,7 +84,7 @@ export default function Navbar({
         {/* Ethical disclaimer shortcut */}
         <button
           onClick={onOpenDisclaimer}
-          className="px-space-sm py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant hover:text-primary-fixed flex items-center gap-1 font-label-sm text-label-sm uppercase transition-all border border-outline-variant/30"
+          className="px-space-sm py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant hover:text-primary-fixed flex items-center gap-1 font-label-sm text-label-sm uppercase transition-all border border-outline-variant/30 cursor-pointer"
           title="Ver límites de alcance y principios deontológicos"
         >
           <span className="material-symbols-outlined text-[16px] text-primary-fixed">verified</span>
@@ -86,7 +101,7 @@ export default function Navbar({
         {/* Notifications */}
         <button 
           type="button"
-          className="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-full transition-colors"
+          className="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-full transition-colors cursor-pointer"
         >
           <span className="material-symbols-outlined text-[22px]">notifications</span>
           <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(255,74,141,0.6)]"></span>

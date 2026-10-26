@@ -101,14 +101,12 @@
   </script>
   
   <style>
-    @layer base {
-      html, body {
-        margin: 0;
-        padding: 0;
-        background-color: #0a0e18;
-        color: #dfe2f1;
-        font-family: 'Inter', sans-serif;
-      }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #0a0e18;
+      color: #dfe2f1;
+      font-family: 'Inter', sans-serif;
     }
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -116,10 +114,17 @@
       line-height: 1;
     }
     ::-webkit-scrollbar { display: none; }
-    .tab-view { display: none; }
-    .tab-view.active { display: block; animation: fadeIn 0.25s ease-out; }
+    
+    /* CRITICAL FIX: Specificity rules so tab views hide and show cleanly */
+    .tab-view {
+      display: none !important;
+    }
+    .tab-view.active {
+      display: flex !important;
+      animation: fadeIn 0.25s ease-out;
+    }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
+      from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
@@ -134,7 +139,7 @@
     <div class="flex flex-col gap-space-lg">
       <!-- Brand Logo -->
       <div class="px-space-sm pt-space-xs">
-        <a href="javascript:switchView('inicio')" class="flex items-center gap-space-xs group">
+        <a href="javascript:void(0)" onclick="switchView('inicio')" class="flex items-center gap-space-xs group cursor-pointer">
           <span class="font-headline-lg text-headline-lg tracking-tight text-primary font-bold">FOQUÉ</span>
           <div class="flex items-center gap-1.5 ml-1">
             <span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(253,228,0,0.6)]"></span>
@@ -150,27 +155,27 @@
 
       <!-- Main Navigation Links -->
       <nav class="flex flex-col gap-space-xs" id="sidebar-nav">
-        <button onclick="switchView('inicio')" data-target="inicio" class="nav-item flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full bg-primary-container text-on-primary-container shadow-[0_0_16px_rgba(253,228,0,0.35)] font-bold text-left w-full">
+        <button type="button" onclick="switchView('inicio')" data-target="inicio" class="sidebar-nav-btn flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full bg-primary-container text-on-primary-container shadow-[0_0_16px_rgba(253,228,0,0.35)] font-bold text-left w-full cursor-pointer">
           <span class="material-symbols-outlined text-[20px]">radar</span>
           <span>Inicio</span>
         </button>
-        <button onclick="switchView('cobertura')" data-target="cobertura" class="nav-item flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-left w-full">
+        <button type="button" onclick="switchView('cobertura')" data-target="cobertura" class="sidebar-nav-btn flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-left w-full cursor-pointer">
           <span class="material-symbols-outlined text-[20px]">compare_arrows</span>
           <span>Medición de Cobertura</span>
         </button>
-        <button onclick="switchView('contraste')" data-target="contraste" class="nav-item flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-left w-full">
+        <button type="button" onclick="switchView('contraste')" data-target="contraste" class="sidebar-nav-btn flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-left w-full cursor-pointer">
           <span class="material-symbols-outlined text-[20px]">splitscreen</span>
           <span>Contraste de Información</span>
         </button>
-        <button onclick="switchView('tendencias')" data-target="tendencias" class="nav-item flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-left w-full">
+        <button type="button" onclick="switchView('tendencias')" data-target="tendencias" class="sidebar-nav-btn flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-left w-full cursor-pointer">
           <span class="material-symbols-outlined text-[20px]">trending_up</span>
           <span>Detección de Tendencias</span>
         </button>
-        <button onclick="switchView('informes')" data-target="informes" class="nav-item flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-left w-full">
+        <button type="button" onclick="switchView('informes')" data-target="informes" class="sidebar-nav-btn flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-left w-full cursor-pointer">
           <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
           <span>Generación de Informes</span>
         </button>
-        <button onclick="showToast('Favoritos guardados')" class="nav-item flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-left w-full">
+        <button type="button" onclick="showToast('Artículo añadido a tus marcadores favoritos')" class="sidebar-nav-btn flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-left w-full cursor-pointer">
           <span class="material-symbols-outlined text-[20px]">bookmark</span>
           <span>Favoritos</span>
         </button>
@@ -201,23 +206,32 @@
       <div class="flex items-center gap-space-md flex-1 max-w-xl">
         <div class="relative w-full flex items-center">
           <span class="material-symbols-outlined absolute left-space-md text-on-surface-variant text-[20px]">search</span>
-          <input class="w-full bg-surface-container-low rounded-full pl-11 pr-14 py-space-sm text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm outline-none focus:bg-surface-container-high transition-colors border border-outline-variant/20 focus:border-primary-fixed/40" placeholder="Buscar fuentes, temas clave o perspectivas..." type="text"/>
+          <input 
+            id="global-search-input"
+            oninput="handleSearch(this.value)"
+            class="w-full bg-surface-container-low rounded-full pl-11 pr-14 py-space-sm text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm outline-none focus:bg-surface-container-high transition-colors border border-outline-variant/20 focus:border-primary-fixed/40" 
+            placeholder="Buscar fuentes, temas clave o perspectivas..." 
+            type="text"
+          />
           <kbd class="absolute right-space-md px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase">⌘K</kbd>
         </div>
+        
+        <!-- Navbar Scope Filter -->
         <div class="inline-flex p-1 bg-surface-container-low rounded-full border border-outline-variant/20 shrink-0">
-          <button id="nav-btn-nac" onclick="toggleNavScope('nacional')" class="px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold transition-all shadow-sm" type="button">Nacional</button>
-          <button id="nav-btn-int" onclick="toggleNavScope('internacional')" class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold transition-all" type="button">Internacional</button>
+          <button id="nav-btn-all" onclick="setTerritoryFilter('all')" class="nav-scope-btn px-space-sm py-space-xs rounded-full font-label-sm text-label-sm uppercase font-bold transition-all text-on-surface-variant hover:text-on-surface" type="button">Todos</button>
+          <button id="nav-btn-nac" onclick="setTerritoryFilter('nacional')" class="nav-scope-btn px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold transition-all shadow-sm" type="button">Nacional</button>
+          <button id="nav-btn-int" onclick="setTerritoryFilter('internacional')" class="nav-scope-btn px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold transition-all" type="button">Internacional</button>
         </div>
       </div>
 
       <div class="flex items-center gap-space-md">
         <!-- PRD Ethical Limits Shortcut -->
-        <button onclick="openDisclaimerModal()" class="px-space-sm py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant hover:text-primary-fixed flex items-center gap-1 font-label-sm text-label-sm uppercase transition-all border border-outline-variant/30">
+        <button onclick="openDisclaimerModal()" class="px-space-sm py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant hover:text-primary-fixed flex items-center gap-1 font-label-sm text-label-sm uppercase transition-all border border-outline-variant/30 cursor-pointer">
           <span class="material-symbols-outlined text-[16px] text-primary-fixed">verified</span>
           <span class="hidden sm:inline font-bold">Qué NO hace</span>
         </button>
 
-        <!-- Dark Mode Toggle -->
+        <!-- Dark Mode Indicator -->
         <div class="flex items-center bg-surface-container-low rounded-full p-1 border border-outline-variant/20">
           <div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-primary-fixed">
             <span class="material-symbols-outlined text-[16px]">dark_mode</span>
@@ -225,7 +239,7 @@
         </div>
 
         <!-- Notification Bell -->
-        <button class="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-full transition-colors" type="button">
+        <button onclick="showToast('No tienes notificaciones pendientes')" class="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-full transition-colors cursor-pointer" type="button">
           <span class="material-symbols-outlined text-[22px]">notifications</span>
           <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(255,74,141,0.6)]"></span>
         </button>
@@ -254,38 +268,43 @@
       <section id="view-inicio" class="tab-view active flex flex-col w-full pb-space-xl">
         <!-- Interactive Top Filters & Scope Selector -->
         <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-md py-space-sm mb-space-lg">
-          <div class="flex items-center gap-space-xs overflow-x-auto pb-1 text-on-surface" id="topic-filters">
-            <button onclick="filterTopic('all', this)" class="topic-pill px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_16px_rgba(253,228,0,0.35)] font-bold transition-all shrink-0">
+          <!-- Topic Pills -->
+          <div class="flex items-center gap-space-xs overflow-x-auto pb-1 text-on-surface" id="topic-filters-container">
+            <button onclick="setTopicFilter('all', this)" data-topic="all" class="topic-filter-btn px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_16px_rgba(253,228,0,0.35)] font-bold transition-all shrink-0 cursor-pointer">
               <span class="w-2 h-2 rounded-full bg-on-primary-container"></span>
               Todos los temas
             </button>
-            <button onclick="filterTopic('politica', this)" class="topic-pill px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0">
+            <button onclick="setTopicFilter('politica', this)" data-topic="politica" class="topic-filter-btn px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0 cursor-pointer">
               <span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(253,228,0,0.8)]"></span>
               Política
             </button>
-            <button onclick="filterTopic('economia', this)" class="topic-pill px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0">
+            <button onclick="setTopicFilter('economia', this)" data-topic="economia" class="topic-filter-btn px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0 cursor-pointer">
               <span class="w-2 h-2 rounded-full bg-tertiary-container shadow-[0_0_8px_rgba(89,253,197,0.8)]"></span>
               Economía
             </button>
-            <button onclick="filterTopic('salud', this)" class="topic-pill px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0">
+            <button onclick="setTopicFilter('salud', this)" data-topic="salud" class="topic-filter-btn px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0 cursor-pointer">
               <span class="w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(255,74,141,0.8)]"></span>
               Salud
             </button>
-            <button onclick="filterTopic('deportes', this)" class="topic-pill px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0">
+            <button onclick="setTopicFilter('deportes', this)" data-topic="deportes" class="topic-filter-btn px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0 cursor-pointer">
               <span class="w-2 h-2 rounded-full bg-[#ff6b00]"></span>
               Deportes
             </button>
-            <button onclick="filterTopic('tecnologia', this)" class="topic-pill px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0">
+            <button onclick="setTopicFilter('tecnologia', this)" data-topic="tecnologia" class="topic-filter-btn px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0 cursor-pointer">
               <span class="w-2 h-2 rounded-full bg-[#0066ff]"></span>
               Tecnología
             </button>
           </div>
 
+          <!-- Territorial Scope Pill Switcher -->
           <div class="flex items-center gap-2 self-start md:self-auto bg-surface-container-low p-1 rounded-full shadow-sm shrink-0 border border-outline-variant/20">
-            <button class="px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 shadow-sm">
+            <button id="page-scope-all" onclick="setTerritoryFilter('all')" class="page-scope-btn px-space-sm py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 transition-all cursor-pointer">
+              Todos
+            </button>
+            <button id="page-scope-nac" onclick="setTerritoryFilter('nacional')" class="page-scope-btn px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 shadow-sm transition-all cursor-pointer">
               <span class="material-symbols-outlined text-[16px]">flag</span> Nacional (Colombia)
             </button>
-            <button class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+            <button id="page-scope-int" onclick="setTerritoryFilter('internacional')" class="page-scope-btn px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 transition-all cursor-pointer">
               <span class="material-symbols-outlined text-[16px]">public</span> Internacional
             </button>
           </div>
@@ -351,7 +370,7 @@
                   </div>
                 </div>
 
-                <button onclick="switchView('contraste')" class="px-space-lg py-space-sm rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-extrabold flex items-center gap-space-xs shadow-[0_0_20px_rgba(253,228,0,0.45)] hover:shadow-[0_0_28px_rgba(253,228,0,0.65)] hover:scale-[1.02] active:scale-95 transition-all">
+                <button type="button" onclick="switchView('contraste')" class="px-space-lg py-space-sm rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-extrabold flex items-center gap-space-xs shadow-[0_0_20px_rgba(253,228,0,0.45)] hover:shadow-[0_0_28px_rgba(253,228,0,0.65)] hover:scale-[1.02] active:scale-95 transition-all cursor-pointer">
                   <span>Ver análisis comparativo (8 medios)</span>
                   <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                 </button>
@@ -403,15 +422,15 @@
               <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Cobertura Multi-Espectro</span>
             </div>
             <h2 class="font-headline-lg text-headline-lg text-primary font-bold mt-1">
-              Noticias Analizadas en Tiempo Real
+              Noticias Analizadas en Tiempo Real (<span id="visible-news-count">6</span>)
             </h2>
           </div>
         </div>
 
         <!-- Feed Grid: 6 Article Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg" id="news-grid">
-          <!-- Card 1: Economía -->
-          <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-tertiary-container/40" data-category="economia">
+          <!-- Card 1: Economía (Nacional) -->
+          <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-tertiary-container/40" data-category="economia" data-territory="nacional">
             <div class="flex flex-col gap-space-md">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -444,14 +463,14 @@
                 <span class="material-symbols-outlined text-[16px]">visibility</span>
                 <span>5 perspectivas</span>
               </div>
-              <button onclick="switchView('contraste')" class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-tertiary-container hover:text-on-tertiary-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all">
+              <button onclick="switchView('contraste')" class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-tertiary-container hover:text-on-tertiary-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all cursor-pointer">
                 Ver enfoques <span class="material-symbols-outlined text-[16px]">chevron_right</span>
               </button>
             </div>
           </article>
 
-          <!-- Card 2: Salud -->
-          <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-secondary-container/40" data-category="salud">
+          <!-- Card 2: Salud (Nacional) -->
+          <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-secondary-container/40" data-category="salud" data-territory="nacional">
             <div class="flex flex-col gap-space-md">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -485,14 +504,14 @@
                 <span class="material-symbols-outlined text-[16px]">compare_arrows</span>
                 <span>Divergencia crítica</span>
               </div>
-              <button onclick="switchView('contraste')" class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-secondary-container hover:text-on-secondary text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all">
+              <button onclick="switchView('contraste')" class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-secondary-container hover:text-on-secondary text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all cursor-pointer">
                 Ver enfoques <span class="material-symbols-outlined text-[16px]">chevron_right</span>
               </button>
             </div>
           </article>
 
-          <!-- Card 3: Tecnología -->
-          <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-[#0066ff]/40" data-category="tecnologia">
+          <!-- Card 3: Tecnología (Internacional) -->
+          <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-[#0066ff]/40" data-category="tecnologia" data-territory="internacional">
             <div class="flex flex-col gap-space-md">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -526,14 +545,14 @@
                 <span class="material-symbols-outlined text-[16px]">language</span>
                 <span>3 agendas divergentes</span>
               </div>
-              <button onclick="switchView('contraste')" class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all">
+              <button onclick="switchView('contraste')" class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all cursor-pointer">
                 Ver enfoques <span class="material-symbols-outlined text-[16px]">chevron_right</span>
               </button>
             </div>
           </article>
 
-          <!-- Card 4: Política -->
-          <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-primary-fixed/40" data-category="politica">
+          <!-- Card 4: Política (Nacional) -->
+          <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-primary-fixed/40" data-category="politica" data-territory="nacional">
             <div class="flex flex-col gap-space-md">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -549,7 +568,7 @@
               <div class="relative w-full h-36 rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant/20">
                 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&auto=format&fit=crop&q=80"/>
                 <div class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-surface/80 backdrop-blur-md text-primary-fixed-dim font-label-sm font-bold flex items-center gap-1 uppercase">
-                  <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> Energía Regional
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> Política
                 </div>
                 <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/80 text-on-surface-variant font-label-sm">Hace 2h 45m</span>
               </div>
@@ -567,14 +586,14 @@
                 <span class="material-symbols-outlined text-[16px]">location_on</span>
                 <span>Impacto regional</span>
               </div>
-              <button onclick="switchView('contraste')" class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all">
+              <button onclick="switchView('contraste')" class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all cursor-pointer">
                 Ver enfoques <span class="material-symbols-outlined text-[16px]">chevron_right</span>
               </button>
             </div>
           </article>
 
-          <!-- Card 5: Deportes -->
-          <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-[#ff6b00]/40" data-category="deportes">
+          <!-- Card 5: Deportes (Nacional) -->
+          <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-[#ff6b00]/40" data-category="deportes" data-territory="nacional">
             <div class="flex flex-col gap-space-md">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -607,14 +626,14 @@
                 <span class="material-symbols-outlined text-[16px]">sports_soccer</span>
                 <span>4 análisis tácticos</span>
               </div>
-              <button onclick="switchView('contraste')" class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all">
+              <button onclick="switchView('contraste')" class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all cursor-pointer">
                 Ver enfoques <span class="material-symbols-outlined text-[16px]">chevron_right</span>
               </button>
             </div>
           </article>
 
-          <!-- Card 6: Internacional -->
-          <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-tertiary-container/40" data-category="politica">
+          <!-- Card 6: Política / Diplomacia (Internacional) -->
+          <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-tertiary-container/40" data-category="politica" data-territory="internacional">
             <div class="flex flex-col gap-space-md">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -630,7 +649,7 @@
               <div class="relative w-full h-36 rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant/20">
                 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=800&auto=format&fit=crop&q=80"/>
                 <div class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-surface/80 backdrop-blur-md text-[#59a6ff] font-label-sm font-bold flex items-center gap-1 uppercase">
-                  <span class="w-1.5 h-1.5 rounded-full bg-[#0066ff]"></span> Internacional
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#0066ff]"></span> Política
                 </div>
                 <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/80 text-on-surface-variant font-label-sm">Hace 3h 20m</span>
               </div>
@@ -648,7 +667,7 @@
                 <span class="material-symbols-outlined text-[16px]">public</span>
                 <span>Tratados cruzados</span>
               </div>
-              <button onclick="switchView('contraste')" class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-tertiary-container hover:text-on-tertiary-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all">
+              <button onclick="switchView('contraste')" class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-tertiary-container hover:text-on-tertiary-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-bold flex items-center gap-1 transition-all cursor-pointer">
                 Ver enfoques <span class="material-symbols-outlined text-[16px]">chevron_right</span>
               </button>
             </div>
@@ -682,33 +701,60 @@
         <!-- Controles y Filtros Dinámicos -->
         <section class="bg-surface-container-low rounded-2xl p-space-md md:p-space-lg shadow-md mb-space-lg border border-outline-variant/30">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-center">
+            <!-- Dropdown de Tema -->
             <div class="lg:col-span-5 relative">
               <label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1.5 pl-1 font-bold">Eje temático activo</label>
-              <div class="w-full bg-surface-container-high text-left px-space-md py-space-sm rounded-full flex items-center justify-between text-on-surface border border-outline-variant/20 cursor-pointer">
+              <div onclick="toggleThemeDropdown()" class="w-full bg-surface-container-high text-left px-space-md py-space-sm rounded-full flex items-center justify-between text-on-surface border border-outline-variant/20 cursor-pointer">
                 <div class="flex items-center gap-space-sm truncate">
-                  <span class="material-symbols-outlined text-primary-fixed text-[20px]">eco</span>
-                  <span class="font-headline-sm text-headline-sm truncate text-primary font-bold">Medio Ambiente y Transición Energética</span>
+                  <span id="coverage-theme-icon" class="material-symbols-outlined text-primary-fixed text-[20px]">eco</span>
+                  <span id="coverage-theme-label" class="font-headline-sm text-headline-sm truncate text-primary font-bold">Medio Ambiente y Transición Energética</span>
                 </div>
                 <span class="material-symbols-outlined text-on-surface-variant text-[20px] ml-2 shrink-0">expand_more</span>
               </div>
-            </div>
-
-            <div class="lg:col-span-4">
-              <label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1.5 pl-1 font-bold">Ventana temporal</label>
-              <div class="inline-flex w-full p-1 bg-surface-container-high rounded-full justify-between items-center text-center border border-outline-variant/20">
-                <button class="px-space-sm py-1.5 rounded-full font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface flex-1">24h</button>
-                <button class="px-space-sm py-1.5 rounded-full font-label-sm text-label-sm uppercase bg-primary-container text-on-primary-container font-bold shadow-[0_0_12px_rgba(253,228,0,0.35)] flex-1">7 días</button>
-                <button class="px-space-sm py-1.5 rounded-full font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface flex-1">30 días</button>
-                <button class="px-space-sm py-1.5 rounded-full font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface flex-1 truncate">Mes actual</button>
+              
+              <!-- Dropdown Menu -->
+              <div id="theme-dropdown-menu" class="hidden absolute top-full left-0 right-0 mt-2 bg-surface-container-high rounded-xl border border-outline-variant/40 shadow-2xl z-30 overflow-hidden py-1">
+                <button type="button" onclick="selectTheme('Medio Ambiente y Transición Energética', 'eco')" class="w-full px-space-md py-space-sm text-left flex items-center gap-2 hover:bg-surface-bright transition-colors text-on-surface font-body-sm text-body-sm cursor-pointer">
+                  <span class="material-symbols-outlined text-[18px]">eco</span>
+                  <span>Medio Ambiente y Transición Energética</span>
+                </button>
+                <button type="button" onclick="selectTheme('Política y Reformas Estructurales', 'account_balance')" class="w-full px-space-md py-space-sm text-left flex items-center gap-2 hover:bg-surface-bright transition-colors text-on-surface font-body-sm text-body-sm cursor-pointer">
+                  <span class="material-symbols-outlined text-[18px]">account_balance</span>
+                  <span>Política y Reformas Estructurales</span>
+                </button>
+                <button type="button" onclick="selectTheme('Economía, Finanzas y Empleo', 'trending_up')" class="w-full px-space-md py-space-sm text-left flex items-center gap-2 hover:bg-surface-bright transition-colors text-on-surface font-body-sm text-body-sm cursor-pointer">
+                  <span class="material-symbols-outlined text-[18px]">trending_up</span>
+                  <span>Economía, Finanzas y Empleo</span>
+                </button>
+                <button type="button" onclick="selectTheme('Salud y Protección Social', 'vital_signs')" class="w-full px-space-md py-space-sm text-left flex items-center gap-2 hover:bg-surface-bright transition-colors text-on-surface font-body-sm text-body-sm cursor-pointer">
+                  <span class="material-symbols-outlined text-[18px]">vital_signs</span>
+                  <span>Salud y Protección Social</span>
+                </button>
+                <button type="button" onclick="selectTheme('Conflicto, Paz y Seguridad Regional', 'shield')" class="w-full px-space-md py-space-sm text-left flex items-center gap-2 hover:bg-surface-bright transition-colors text-on-surface font-body-sm text-body-sm cursor-pointer">
+                  <span class="material-symbols-outlined text-[18px]">shield</span>
+                  <span>Conflicto, Paz y Seguridad Regional</span>
+                </button>
               </div>
             </div>
 
+            <!-- Ventana Temporal -->
+            <div class="lg:col-span-4">
+              <label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1.5 pl-1 font-bold">Ventana temporal</label>
+              <div class="inline-flex w-full p-1 bg-surface-container-high rounded-full justify-between items-center text-center border border-outline-variant/20">
+                <button type="button" onclick="setPeriodFilter('24h', this)" class="period-btn px-space-sm py-1.5 rounded-full font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface flex-1 cursor-pointer">24h</button>
+                <button type="button" onclick="setPeriodFilter('7 días', this)" class="period-btn px-space-sm py-1.5 rounded-full font-label-sm text-label-sm uppercase bg-primary-container text-on-primary-container font-bold shadow-[0_0_12px_rgba(253,228,0,0.35)] flex-1 cursor-pointer">7 días</button>
+                <button type="button" onclick="setPeriodFilter('30 días', this)" class="period-btn px-space-sm py-1.5 rounded-full font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface flex-1 cursor-pointer">30 días</button>
+                <button type="button" onclick="setPeriodFilter('Mes actual', this)" class="period-btn px-space-sm py-1.5 rounded-full font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface flex-1 truncate cursor-pointer">Mes actual</button>
+              </div>
+            </div>
+
+            <!-- Filtrado Editorial en Cobertura -->
             <div class="lg:col-span-3">
               <label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1.5 pl-1 font-bold">Filtrado editorial</label>
               <div class="inline-flex w-full p-1 bg-surface-container-high rounded-full justify-between items-center text-center border border-outline-variant/20">
-                <button class="px-space-xs py-1.5 rounded-full font-label-sm text-label-sm uppercase bg-primary-container text-on-primary-container shadow-sm flex-1 font-bold">Todos (10)</button>
-                <button class="px-space-xs py-1.5 rounded-full font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface flex-1 font-bold">Nac. (5)</button>
-                <button class="px-space-xs py-1.5 rounded-full font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface flex-1 font-bold">Int. (5)</button>
+                <button type="button" onclick="filterCoverageScope('all', this)" class="cov-scope-btn px-space-xs py-1.5 rounded-full font-label-sm text-label-sm uppercase bg-primary-container text-on-primary-container shadow-sm flex-1 font-bold cursor-pointer">Todos (10)</button>
+                <button type="button" onclick="filterCoverageScope('nacional', this)" class="cov-scope-btn px-space-xs py-1.5 rounded-full font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface flex-1 font-bold cursor-pointer">Nac. (5)</button>
+                <button type="button" onclick="filterCoverageScope('internacional', this)" class="cov-scope-btn px-space-xs py-1.5 rounded-full font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface flex-1 font-bold cursor-pointer">Int. (5)</button>
               </div>
             </div>
           </div>
@@ -725,10 +771,10 @@
               <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Ordenado por % volumen</span>
             </div>
 
-            <!-- List of Media Rows -->
-            <div class="flex flex-col gap-space-sm">
+            <!-- List of Media Rows with data-scope -->
+            <div class="flex flex-col gap-space-sm" id="coverage-media-list">
               <!-- El Tiempo -->
-              <article class="media-row bg-surface-container-low hover:bg-surface-container transition-all rounded-2xl p-space-md shadow-sm border border-outline-variant/30">
+              <article class="media-row bg-surface-container-low hover:bg-surface-container transition-all rounded-2xl p-space-md shadow-sm border border-outline-variant/30" data-scope="nacional">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-sm">
                   <div class="flex items-center gap-space-sm">
                     <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-bold shadow-sm">ET</div>
@@ -748,12 +794,12 @@
                   </div>
                 </div>
                 <div class="w-full bg-surface-container-highest rounded-full h-3 overflow-hidden p-0.5">
-                  <div class="h-full rounded-full bg-primary-fixed shadow-[0_0_12px_rgba(253,228,0,0.5)]" style="width: 28%;"></div>
+                  <div class="h-full rounded-full bg-primary-fixed shadow-[0_0_12px_rgba(253,228,0,0.5)] transition-all duration-700" style="width: 28%;"></div>
                 </div>
               </article>
 
               <!-- El Espectador -->
-              <article class="media-row bg-surface-container-low hover:bg-surface-container transition-all rounded-2xl p-space-md shadow-sm border border-outline-variant/30">
+              <article class="media-row bg-surface-container-low hover:bg-surface-container transition-all rounded-2xl p-space-md shadow-sm border border-outline-variant/30" data-scope="nacional">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-sm">
                   <div class="flex items-center gap-space-sm">
                     <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-bold shadow-sm">EE</div>
@@ -773,12 +819,12 @@
                   </div>
                 </div>
                 <div class="w-full bg-surface-container-highest rounded-full h-3 overflow-hidden p-0.5">
-                  <div class="h-full rounded-full bg-secondary-container shadow-[0_0_12px_rgba(255,74,141,0.5)]" style="width: 22%;"></div>
+                  <div class="h-full rounded-full bg-secondary-container shadow-[0_0_12px_rgba(255,74,141,0.5)] transition-all duration-700" style="width: 22%;"></div>
                 </div>
               </article>
 
               <!-- Reuters -->
-              <article class="media-row bg-surface-container-low hover:bg-surface-container transition-all rounded-2xl p-space-md shadow-sm border border-outline-variant/30">
+              <article class="media-row bg-surface-container-low hover:bg-surface-container transition-all rounded-2xl p-space-md shadow-sm border border-outline-variant/30" data-scope="internacional">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-sm">
                   <div class="flex items-center gap-space-sm">
                     <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-bold shadow-sm">RE</div>
@@ -798,12 +844,12 @@
                   </div>
                 </div>
                 <div class="w-full bg-surface-container-highest rounded-full h-3 overflow-hidden p-0.5">
-                  <div class="h-full rounded-full bg-tertiary-container shadow-[0_0_12px_rgba(89,253,197,0.5)]" style="width: 16%;"></div>
+                  <div class="h-full rounded-full bg-tertiary-container shadow-[0_0_12px_rgba(89,253,197,0.5)] transition-all duration-700" style="width: 16%;"></div>
                 </div>
               </article>
 
               <!-- RTVC Noticias -->
-              <article class="media-row bg-surface-container-low hover:bg-surface-container transition-all rounded-2xl p-space-md shadow-sm border border-outline-variant/30">
+              <article class="media-row bg-surface-container-low hover:bg-surface-container transition-all rounded-2xl p-space-md shadow-sm border border-outline-variant/30" data-scope="nacional">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-sm">
                   <div class="flex items-center gap-space-sm">
                     <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-bold shadow-sm">RT</div>
@@ -823,7 +869,57 @@
                   </div>
                 </div>
                 <div class="w-full bg-surface-container-highest rounded-full h-3 overflow-hidden p-0.5">
-                  <div class="h-full rounded-full bg-primary-fixed-dim shadow-[0_0_12px_rgba(222,200,0,0.4)]" style="width: 14%;"></div>
+                  <div class="h-full rounded-full bg-primary-fixed-dim shadow-[0_0_12px_rgba(222,200,0,0.4)] transition-all duration-700" style="width: 14%;"></div>
+                </div>
+              </article>
+
+              <!-- The New York Times -->
+              <article class="media-row bg-surface-container-low hover:bg-surface-container transition-all rounded-2xl p-space-md shadow-sm border border-outline-variant/30" data-scope="internacional">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-sm">
+                  <div class="flex items-center gap-space-sm">
+                    <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-bold shadow-sm">NYT</div>
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <h3 class="font-headline-sm text-headline-sm text-primary font-bold">The New York Times</h3>
+                        <span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant uppercase font-semibold">Internacional</span>
+                      </div>
+                      <p class="font-body-sm text-body-sm text-on-surface-variant">Cobertura climática hemisférica • 37 publicaciones</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-space-md self-end sm:self-auto">
+                    <span class="inline-flex items-center gap-1 font-label-md text-label-md px-space-sm py-0.5 rounded-full bg-tertiary-container/10 text-tertiary-fixed font-bold">
+                      <span class="material-symbols-outlined text-[14px]">arrow_downward</span> -2% vs ant.
+                    </span>
+                    <span class="font-headline-lg text-headline-lg font-bold text-primary">11%</span>
+                  </div>
+                </div>
+                <div class="w-full bg-surface-container-highest rounded-full h-3 overflow-hidden p-0.5">
+                  <div class="h-full rounded-full bg-[#59a6ff] shadow-[0_0_12px_rgba(0,102,255,0.4)] transition-all duration-700" style="width: 11%;"></div>
+                </div>
+              </article>
+
+              <!-- El Colombiano -->
+              <article class="media-row bg-surface-container-low hover:bg-surface-container transition-all rounded-2xl p-space-md shadow-sm border border-outline-variant/30" data-scope="nacional">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-sm">
+                  <div class="flex items-center gap-space-sm">
+                    <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-bold shadow-sm">EC</div>
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <h3 class="font-headline-sm text-headline-sm text-primary font-bold">El Colombiano</h3>
+                        <span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant uppercase font-semibold">Nacional</span>
+                      </div>
+                      <p class="font-body-sm text-body-sm text-on-surface-variant">Enfoque empresarial y regional • 31 publicaciones</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-space-md self-end sm:self-auto">
+                    <span class="inline-flex items-center gap-1 font-label-md text-label-md px-space-sm py-0.5 rounded-full bg-tertiary-container/10 text-tertiary-fixed font-bold">
+                      <span class="material-symbols-outlined text-[14px]">arrow_upward</span> +1% vs ant.
+                    </span>
+                    <span class="font-headline-lg text-headline-lg font-bold text-primary">9%</span>
+                  </div>
+                </div>
+                <div class="w-full bg-surface-container-highest rounded-full h-3 overflow-hidden p-0.5">
+                  <div class="h-full rounded-full bg-primary-container shadow-[0_0_10px_rgba(253,228,0,0.3)] transition-all duration-700" style="width: 9%;"></div>
                 </div>
               </article>
             </div>
@@ -882,7 +978,7 @@
       <section id="view-contraste" class="tab-view flex flex-col w-full pb-space-xl">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md mb-space-md">
           <div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider font-bold">
-            <span>Comparador de Medios</span>
+            <span class="cursor-pointer hover:text-on-surface" onclick="switchView('inicio')">Comparador de Medios</span>
             <span class="material-symbols-outlined text-[14px]">chevron_right</span>
             <span class="text-primary-fixed">Acontecimiento Crítico</span>
             <span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary-container mx-space-xs animate-pulse"></span>
@@ -913,18 +1009,19 @@
             </p>
           </div>
 
+          <!-- Framing Filter Pills -->
           <div class="flex flex-wrap lg:flex-nowrap items-center gap-space-xs z-10 bg-surface-container-high p-1.5 rounded-full border border-outline-variant/30">
-            <button class="px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase font-bold shadow-[0_0_12px_rgba(253,228,0,0.35)]">Todos los enfoques</button>
-            <button class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase">Fiscal / Mercados</button>
-            <button class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase">Social / Laboral</button>
-            <button class="px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase">Político / Gobierno</button>
+            <button type="button" onclick="filterFraming('all', this)" class="framing-btn px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase font-bold shadow-[0_0_12px_rgba(253,228,0,0.35)] cursor-pointer">Todos los enfoques</button>
+            <button type="button" onclick="filterFraming('social', this)" class="framing-btn px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase cursor-pointer">Social / Laboral</button>
+            <button type="button" onclick="filterFraming('fiscal', this)" class="framing-btn px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase cursor-pointer">Fiscal / Mercados</button>
+            <button type="button" onclick="filterFraming('politico', this)" class="framing-btn px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase cursor-pointer">Político / Gobierno</button>
           </div>
         </div>
 
         <!-- 3 Side-by-Side Columns -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg mb-space-xl">
-          <!-- Col 1: El Espectador -->
-          <article class="flex flex-col justify-between bg-surface-container-low rounded-2xl p-space-lg shadow-md hover:shadow-2xl relative overflow-hidden group border border-outline-variant/30">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg mb-space-xl" id="contrast-columns">
+          <!-- Col 1: El Espectador (Social) -->
+          <article class="contrast-col flex flex-col justify-between bg-surface-container-low rounded-2xl p-space-lg shadow-md hover:shadow-2xl relative overflow-hidden group border border-outline-variant/30" data-framing="social">
             <div class="absolute top-0 left-0 right-0 h-1.5 bg-secondary-container"></div>
             <div class="flex flex-col gap-space-md">
               <div class="flex items-start justify-between gap-space-sm pt-space-xs">
@@ -983,12 +1080,12 @@
               <span class="text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1">
                 <span class="material-symbols-outlined text-[16px] text-tertiary-fixed">verified</span> Fuente Verificada
               </span>
-              <button class="px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface hover:bg-secondary-container hover:text-on-secondary font-label-md text-label-md uppercase font-bold transition-all">Ver original</button>
+              <button onclick="showToast('Abriendo enlace a la fuente original')" class="px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface hover:bg-secondary-container hover:text-on-secondary font-label-md text-label-md uppercase font-bold transition-all cursor-pointer">Ver original</button>
             </div>
           </article>
 
-          <!-- Col 2: Reuters LatAm -->
-          <article class="flex flex-col justify-between bg-surface-container-low rounded-2xl p-space-lg shadow-md hover:shadow-2xl relative overflow-hidden group border border-outline-variant/30">
+          <!-- Col 2: Reuters LatAm (Fiscal) -->
+          <article class="contrast-col flex flex-col justify-between bg-surface-container-low rounded-2xl p-space-lg shadow-md hover:shadow-2xl relative overflow-hidden group border border-outline-variant/30" data-framing="fiscal">
             <div class="absolute top-0 left-0 right-0 h-1.5 bg-tertiary-fixed-dim"></div>
             <div class="flex flex-col gap-space-md">
               <div class="flex items-start justify-between gap-space-sm pt-space-xs">
@@ -1047,12 +1144,12 @@
               <span class="text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1">
                 <span class="material-symbols-outlined text-[16px] text-tertiary-fixed">verified</span> Fuente Verificada
               </span>
-              <button class="px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface hover:bg-tertiary-container hover:text-on-tertiary-container font-label-md text-label-md uppercase font-bold transition-all">Ver original</button>
+              <button onclick="showToast('Abriendo enlace a la fuente original')" class="px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface hover:bg-tertiary-container hover:text-on-tertiary-container font-label-md text-label-md uppercase font-bold transition-all cursor-pointer">Ver original</button>
             </div>
           </article>
 
-          <!-- Col 3: RTVC Noticias -->
-          <article class="flex flex-col justify-between bg-surface-container-low rounded-2xl p-space-lg shadow-md hover:shadow-2xl relative overflow-hidden group border border-outline-variant/30">
+          <!-- Col 3: RTVC Noticias (Político) -->
+          <article class="contrast-col flex flex-col justify-between bg-surface-container-low rounded-2xl p-space-lg shadow-md hover:shadow-2xl relative overflow-hidden group border border-outline-variant/30" data-framing="politico">
             <div class="absolute top-0 left-0 right-0 h-1.5 bg-primary-container"></div>
             <div class="flex flex-col gap-space-md">
               <div class="flex items-start justify-between gap-space-sm pt-space-xs">
@@ -1111,7 +1208,7 @@
               <span class="text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1">
                 <span class="material-symbols-outlined text-[16px] text-tertiary-fixed">verified</span> Fuente Verificada
               </span>
-              <button class="px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface hover:bg-primary-container hover:text-on-primary-container font-label-md text-label-md uppercase font-bold transition-all">Ver original</button>
+              <button onclick="showToast('Abriendo enlace a la fuente original')" class="px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface hover:bg-primary-container hover:text-on-primary-container font-label-md text-label-md uppercase font-bold transition-all cursor-pointer">Ver original</button>
             </div>
           </article>
         </div>
@@ -1182,10 +1279,10 @@
 
           <div class="flex flex-wrap items-center gap-space-sm bg-surface-container-low p-1.5 rounded-full shadow-sm border border-outline-variant/30">
             <div class="inline-flex items-center gap-1 bg-surface-container px-1 py-1 rounded-full">
-              <button class="px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase">Hoy</button>
-              <button class="px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase font-bold shadow-[0_0_16px_rgba(253,228,0,0.35)]">7 Días</button>
-              <button class="px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase">30 Días</button>
-              <button class="px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase">Trimestre</button>
+              <button type="button" onclick="setTrendsPeriod('Hoy', this)" class="trends-time-btn px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase cursor-pointer">Hoy</button>
+              <button type="button" onclick="setTrendsPeriod('7 Días', this)" class="trends-time-btn px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase font-bold shadow-[0_0_16px_rgba(253,228,0,0.35)] cursor-pointer">7 Días</button>
+              <button type="button" onclick="setTrendsPeriod('30 Días', this)" class="trends-time-btn px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase cursor-pointer">30 Días</button>
+              <button type="button" onclick="setTrendsPeriod('Trimestre', this)" class="trends-time-btn px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase cursor-pointer">Trimestre</button>
             </div>
           </div>
         </div>
@@ -1210,9 +1307,9 @@
               <line x1="0" y1="50" x2="800" y2="50" stroke="#262a35" stroke-dasharray="4 4" />
               <line x1="0" y1="100" x2="800" y2="100" stroke="#262a35" stroke-dasharray="4 4" />
               <line x1="0" y1="150" x2="800" y2="150" stroke="#262a35" stroke-dasharray="4 4" />
-              <path d="M 0,160 Q 200,150 400,110 T 800,20" fill="none" stroke="#fde400" stroke-width="4" />
-              <path d="M 0,180 Q 250,170 500,120 T 800,60" fill="none" stroke="#59fdc5" stroke-width="3" />
-              <path d="M 0,40 Q 250,70 500,130 T 800,180" fill="none" stroke="#ff4a8d" stroke-width="2.5" stroke-dasharray="6 3" />
+              <path id="trend-path-1" d="M 0,160 Q 200,150 400,110 T 800,20" fill="none" stroke="#fde400" stroke-width="4" />
+              <path id="trend-path-2" d="M 0,180 Q 250,170 500,120 T 800,60" fill="none" stroke="#59fdc5" stroke-width="3" />
+              <path id="trend-path-3" d="M 0,40 Q 250,70 500,130 T 800,180" fill="none" stroke="#ff4a8d" stroke-width="2.5" stroke-dasharray="6 3" />
             </svg>
           </div>
 
@@ -1326,14 +1423,14 @@
           </div>
 
           <div class="flex flex-wrap items-center gap-space-xs">
-            <button onclick="copyApaCitations()" class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface font-bold transition-all border border-outline-variant/30">
+            <button type="button" onclick="copyApaCitations()" class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface font-bold transition-all border border-outline-variant/30 cursor-pointer">
               <span class="material-symbols-outlined text-[18px] text-tertiary-container">format_quote</span>
               <span class="font-label-md text-label-md uppercase" id="btn-text-apa">Copiar Citas APA 7</span>
               <span class="px-1.5 py-0.5 rounded-full bg-surface-container-lowest text-on-surface-variant text-[10px] font-mono">v7.0</span>
             </button>
-            <button onclick="window.print()" class="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-full bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-extrabold shadow-[0_0_20px_rgba(253,228,0,0.4)] transition-all">
+            <button type="button" onclick="downloadPdfDossier()" class="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-full bg-primary-container hover:bg-primary-fixed-dim text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-extrabold shadow-[0_0_20px_rgba(253,228,0,0.4)] transition-all cursor-pointer">
               <span class="material-symbols-outlined text-[20px] font-bold">download</span>
-              <span>Descargar PDF (Dossier Completo)</span>
+              <span id="btn-text-pdf">Descargar PDF (Dossier Completo)</span>
             </button>
           </div>
         </div>
@@ -1387,19 +1484,19 @@
                       <td class="py-space-sm px-space-md font-bold text-primary">El Espectador</td>
                       <td class="py-space-sm px-space-md text-on-surface">“Con reparos en el régimen de transición laboral, avanza la reforma en primer debate”</td>
                       <td class="py-space-sm px-space-md text-secondary">Horas nocturnas (18), Plataformas (12), Formalización (9)</td>
-                      <td class="py-space-sm px-space-md"><a href="#" class="text-tertiary-fixed underline font-semibold flex items-center gap-1">Verificar nota <span class="material-symbols-outlined text-[14px]">open_in_new</span></a></td>
+                      <td class="py-space-sm px-space-md"><a href="#" onclick="showToast('Verificando fuente original de El Espectador')" class="text-tertiary-fixed underline font-semibold flex items-center gap-1">Verificar nota <span class="material-symbols-outlined text-[14px]">open_in_new</span></a></td>
                     </tr>
                     <tr>
                       <td class="py-space-sm px-space-md font-bold text-primary">Reuters</td>
                       <td class="py-space-sm px-space-md text-on-surface">“Colombia labor reform clears committee hurdle amid private sector and rating scrutiny”</td>
                       <td class="py-space-sm px-space-md text-tertiary-fixed">Sobrecosto (24), ANDI (15), Inflación (8)</td>
-                      <td class="py-space-sm px-space-md"><a href="#" class="text-tertiary-fixed underline font-semibold flex items-center gap-1">Verificar nota <span class="material-symbols-outlined text-[14px]">open_in_new</span></a></td>
+                      <td class="py-space-sm px-space-md"><a href="#" onclick="showToast('Verificando fuente original de Reuters')" class="text-tertiary-fixed underline font-semibold flex items-center gap-1">Verificar nota <span class="material-symbols-outlined text-[14px]">open_in_new</span></a></td>
                     </tr>
                     <tr>
                       <td class="py-space-sm px-space-md font-bold text-primary">RTVC Noticias</td>
                       <td class="py-space-sm px-space-md text-on-surface">“Paso histórico en el Congreso hacia la restitución de derechos laborales concurrida por el pueblo”</td>
                       <td class="py-space-sm px-space-md text-primary-fixed">Restitución (21), Dignidad (16), CUT (14)</td>
-                      <td class="py-space-sm px-space-md"><a href="#" class="text-tertiary-fixed underline font-semibold flex items-center gap-1">Verificar nota <span class="material-symbols-outlined text-[14px]">open_in_new</span></a></td>
+                      <td class="py-space-sm px-space-md"><a href="#" onclick="showToast('Verificando fuente original de RTVC')" class="text-tertiary-fixed underline font-semibold flex items-center gap-1">Verificar nota <span class="material-symbols-outlined text-[14px]">open_in_new</span></a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -1468,7 +1565,7 @@
             <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Qué NO hace FOQUÉ y por qué metodológicamente</p>
           </div>
         </div>
-        <button onclick="closeDisclaimerModal()" class="w-9 h-9 rounded-full bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+        <button onclick="closeDisclaimerModal()" class="w-9 h-9 rounded-full bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer">
           <span class="material-symbols-outlined text-[20px]">close</span>
         </button>
       </div>
@@ -1536,64 +1633,239 @@
       </div>
 
       <div class="p-space-md bg-surface-container-low border-t border-outline-variant/40 flex justify-end">
-        <button onclick="closeDisclaimerModal()" class="px-space-lg py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase font-bold shadow-[0_0_12px_rgba(253,228,0,0.35)] hover:scale-105 transition-all">
+        <button onclick="closeDisclaimerModal()" class="px-space-lg py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase font-bold shadow-[0_0_12px_rgba(253,228,0,0.35)] hover:scale-105 transition-all cursor-pointer">
           Entendido
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Toast Notification Container -->
+  <!-- Toast Notification Box -->
   <div id="toast-box" class="fixed bottom-6 right-6 z-50 hidden bg-primary-container text-on-primary-container px-space-lg py-space-sm rounded-full font-label-md text-label-md uppercase font-bold shadow-2xl transition-all">
     <span id="toast-message">Notificación</span>
   </div>
 
-  <!-- Interactive JavaScript -->
+  <!-- ========================================== -->
+  <!-- ROBUST INTERACTIVE JAVASCRIPT LOGIC        -->
+  <!-- ========================================== -->
   <script>
+    // Global filter states
+    let currentActiveView = 'inicio';
+    let currentSelectedTopic = 'all';
+    let currentSelectedTerritory = 'nacional';
+    let currentSearchQuery = '';
+
+    // 1. TAB / SECTION NAVIGATION
     function switchView(viewName) {
-      document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
+      console.log('Switching to view:', viewName);
+      currentActiveView = viewName;
+      
+      // Hide all views and show only target
+      const views = document.querySelectorAll('.tab-view');
+      views.forEach(v => {
+        v.classList.remove('active');
+        v.style.setProperty('display', 'none', 'important');
+      });
+
       const target = document.getElementById('view-' + viewName);
-      if (target) target.classList.add('active');
+      if (target) {
+        target.classList.add('active');
+        target.style.setProperty('display', 'flex', 'important');
+      }
 
-      document.querySelectorAll('.nav-item').forEach(btn => {
+      // Update sidebar nav styling
+      const navButtons = document.querySelectorAll('.sidebar-nav-btn');
+      navButtons.forEach(btn => {
         if (btn.getAttribute('data-target') === viewName) {
-          btn.className = 'nav-item flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full bg-primary-container text-on-primary-container shadow-[0_0_16px_rgba(253,228,0,0.35)] font-bold text-left w-full';
+          btn.className = 'sidebar-nav-btn flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full bg-primary-container text-on-primary-container shadow-[0_0_16px_rgba(253,228,0,0.35)] font-bold text-left w-full cursor-pointer';
         } else {
-          btn.className = 'nav-item flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-left w-full';
+          btn.className = 'sidebar-nav-btn flex items-center gap-space-sm px-space-md py-space-sm uppercase transition-all font-label-md text-label-md rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface text-left w-full cursor-pointer';
         }
       });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Strict scroll reset to top
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
     }
 
-    function filterTopic(topic, element) {
-      document.querySelectorAll('.topic-pill').forEach(p => {
-        p.className = 'topic-pill px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0';
-      });
-      element.className = 'topic-pill px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_16px_rgba(253,228,0,0.35)] font-bold transition-all shrink-0';
+    // 2. TOPIC FILTERING
+    function setTopicFilter(topic, element) {
+      currentSelectedTopic = topic;
 
+      // Update button visual states
+      const buttons = document.querySelectorAll('.topic-filter-btn');
+      buttons.forEach(btn => {
+        btn.className = 'topic-filter-btn px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 transition-all shrink-0 cursor-pointer';
+      });
+
+      if (element) {
+        element.className = 'topic-filter-btn px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_16px_rgba(253,228,0,0.35)] font-bold transition-all shrink-0 cursor-pointer';
+      }
+
+      applyFilters();
+    }
+
+    // 3. TERRITORY FILTERING (ALL / NACIONAL / INTERNACIONAL)
+    function setTerritoryFilter(territory) {
+      currentSelectedTerritory = territory;
+
+      // Update Header Buttons
+      const navAll = document.getElementById('nav-btn-all');
+      const navNac = document.getElementById('nav-btn-nac');
+      const navInt = document.getElementById('nav-btn-int');
+
+      const activeClass = 'px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold transition-all shadow-sm';
+      const inactiveClass = 'px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold transition-all';
+      const inactiveSmall = 'px-space-sm py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold transition-all';
+      const activeSmall = 'px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold transition-all shadow-sm';
+
+      if (navAll) navAll.className = territory === 'all' ? activeSmall : inactiveSmall;
+      if (navNac) navNac.className = territory === 'nacional' ? activeClass : inactiveClass;
+      if (navInt) navInt.className = territory === 'internacional' ? activeClass : inactiveClass;
+
+      // Update In-Page Hero Scope Buttons
+      const pageAll = document.getElementById('page-scope-all');
+      const pageNac = document.getElementById('page-scope-nac');
+      const pageInt = document.getElementById('page-scope-int');
+
+      const pageActiveNac = 'page-scope-btn px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 shadow-sm transition-all cursor-pointer';
+      const pageInactiveNac = 'page-scope-btn px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 transition-all cursor-pointer';
+      const pageActiveAll = 'page-scope-btn px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold transition-all shadow-sm cursor-pointer';
+      const pageInactiveAll = 'page-scope-btn px-space-sm py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold transition-all cursor-pointer';
+
+      if (pageAll) pageAll.className = territory === 'all' ? pageActiveAll : pageInactiveAll;
+      if (pageNac) pageNac.className = territory === 'nacional' ? pageActiveNac : pageInactiveNac;
+      if (pageInt) pageInt.className = territory === 'internacional' ? pageActiveNac : pageInactiveNac;
+
+      applyFilters();
+
+      const label = territory === 'all' ? 'Todas las fuentes' : territory === 'nacional' ? 'Cobertura Nacional (5 medios)' : 'Cobertura Internacional (5 agencias)';
+      showToast(`Ámbito territorial: ${label}`);
+    }
+
+    // 4. GENERAL FILTER APPLICATION LOGIC
+    function applyFilters() {
       const cards = document.querySelectorAll('#news-grid .news-card');
+      let visibleCount = 0;
+
       cards.forEach(card => {
-        if (topic === 'all' || card.getAttribute('data-category') === topic) {
-          card.style.display = 'flex';
-          card.style.opacity = '1';
+        const cardCategory = card.getAttribute('data-category');
+        const cardTerritory = card.getAttribute('data-territory');
+        const cardText = card.innerText.toLowerCase();
+
+        const matchTopic = (currentSelectedTopic === 'all' || cardCategory === currentSelectedTopic);
+        const matchTerritory = (currentSelectedTerritory === 'all' || cardTerritory === currentSelectedTerritory);
+        const matchSearch = (currentSearchQuery === '' || cardText.includes(currentSearchQuery));
+
+        if (matchTopic && matchTerritory && matchSearch) {
+          card.style.setProperty('display', 'flex', 'important');
+          card.classList.remove('hidden');
+          visibleCount++;
         } else {
-          card.style.display = 'none';
+          card.style.setProperty('display', 'none', 'important');
+          card.classList.add('hidden');
         }
       });
+
+      const counter = document.getElementById('visible-news-count');
+      if (counter) counter.innerText = visibleCount;
     }
 
-    function toggleNavScope(scope) {
-      const btnNac = document.getElementById('nav-btn-nac');
-      const btnInt = document.getElementById('nav-btn-int');
-      if (scope === 'nacional') {
-        btnNac.className = 'px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold transition-all shadow-sm';
-        btnInt.className = 'px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold transition-all';
-      } else {
-        btnInt.className = 'px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold transition-all shadow-sm';
-        btnNac.className = 'px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase font-bold transition-all';
+    // 5. SEARCH INPUT
+    function handleSearch(query) {
+      currentSearchQuery = query.toLowerCase().trim();
+      applyFilters();
+    }
+
+    // 6. COVERAGE SCOPE FILTER (Todos, Nac, Int)
+    function filterCoverageScope(scope, btn) {
+      const rows = document.querySelectorAll('#coverage-media-list .media-row');
+      rows.forEach(row => {
+        const rowScope = row.getAttribute('data-scope');
+        if (scope === 'all' || rowScope === scope) {
+          row.style.setProperty('display', 'block', 'important');
+        } else {
+          row.style.setProperty('display', 'none', 'important');
+        }
+      });
+
+      const buttons = document.querySelectorAll('.cov-scope-btn');
+      buttons.forEach(b => {
+        b.className = 'cov-scope-btn px-space-xs py-1.5 rounded-full font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface flex-1 font-bold cursor-pointer';
+      });
+      if (btn) {
+        btn.className = 'cov-scope-btn px-space-xs py-1.5 rounded-full font-label-sm text-label-sm uppercase bg-primary-container text-on-primary-container shadow-sm flex-1 font-bold cursor-pointer';
       }
     }
 
+    // 7. THEME DROPDOWN IN COVERAGE
+    function toggleThemeDropdown() {
+      const menu = document.getElementById('theme-dropdown-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    function selectTheme(name, icon) {
+      document.getElementById('coverage-theme-label').innerText = name;
+      document.getElementById('coverage-theme-icon').innerText = icon;
+      document.getElementById('theme-dropdown-menu').classList.add('hidden');
+      showToast(`Eje temático seleccionado: ${name}`);
+
+      // Re-trigger animated bar width for dynamic feeling
+      const bars = document.querySelectorAll('#coverage-media-list [style*="width"]');
+      bars.forEach(b => {
+        const w = b.style.width;
+        b.style.width = '0%';
+        setTimeout(() => b.style.width = w, 100);
+      });
+    }
+
+    // 8. PERIOD FILTER IN COVERAGE
+    function setPeriodFilter(period, btn) {
+      const buttons = document.querySelectorAll('.period-btn');
+      buttons.forEach(b => {
+        b.className = 'period-btn px-space-sm py-1.5 rounded-full font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface flex-1 cursor-pointer';
+      });
+      if (btn) {
+        btn.className = 'period-btn px-space-sm py-1.5 rounded-full font-label-sm text-label-sm uppercase bg-primary-container text-on-primary-container font-bold shadow-[0_0_12px_rgba(253,228,0,0.35)] flex-1 cursor-pointer';
+      }
+      showToast(`Período de corte: ${period}`);
+    }
+
+    // 9. FRAMING FILTER IN CONTRASTE
+    function filterFraming(type, btn) {
+      const cols = document.querySelectorAll('#contrast-columns .contrast-col');
+      cols.forEach(col => {
+        const framing = col.getAttribute('data-framing');
+        if (type === 'all' || framing === type) {
+          col.style.setProperty('display', 'flex', 'important');
+        } else {
+          col.style.setProperty('display', 'none', 'important');
+        }
+      });
+
+      const buttons = document.querySelectorAll('.framing-btn');
+      buttons.forEach(b => {
+        b.className = 'framing-btn px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase cursor-pointer';
+      });
+      if (btn) {
+        btn.className = 'framing-btn px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase font-bold shadow-[0_0_12px_rgba(253,228,0,0.35)] cursor-pointer';
+      }
+    }
+
+    // 10. TRENDS PERIOD FILTER
+    function setTrendsPeriod(period, btn) {
+      const buttons = document.querySelectorAll('.trends-time-btn');
+      buttons.forEach(b => {
+        b.className = 'trends-time-btn px-4 py-1.5 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase cursor-pointer';
+      });
+      if (btn) {
+        btn.className = 'trends-time-btn px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase font-bold shadow-[0_0_16px_rgba(253,228,0,0.35)] cursor-pointer';
+      }
+      showToast(`Tendencias actualizadas a ventana: ${period}`);
+    }
+
+    // 11. DISCLAIMER MODAL
     function openDisclaimerModal() {
       const modal = document.getElementById('disclaimer-modal');
       modal.classList.remove('hidden');
@@ -1606,18 +1878,35 @@
       modal.classList.remove('flex');
     }
 
+    // 12. APA CITATIONS COPYING
     function copyApaCitations() {
-      const citations = "1. El Tiempo. (2026, 22 de octubre). Senado aprueba en primer debate articulado de la reforma laboral.\\n2. El Espectador. (2026, 22 de octubre). Con reparos en el régimen de transición laboral, avanza la reforma en primer debate.\\n3. Reuters. (2026, October 22). Colombia labor reform clears committee hurdle amid private sector scrutiny.";
+      const citations = `1. El Tiempo. (2026, 22 de octubre). Senado aprueba en primer debate articulado de la reforma laboral. El Tiempo. https://www.eltiempo.com/politica/congreso/reforma-laboral
+2. El Espectador. (2026, 22 de octubre). Con reparos en el régimen de transición laboral, avanza la reforma en primer debate. El Espectador. https://www.elespectador.com/politica/reforma-laboral
+3. Reuters. (2026, October 22). Colombia labor reform clears committee hurdle amid private sector and rating scrutiny. Reuters LatAm. https://www.reuters.com/world/americas/colombia-labor-reform
+4. RTVC Noticias. (2026, 22 de octubre). Paso histórico en el Congreso hacia la restitución de derechos laborales. Sistema de Medios Públicos. https://rtvcnoticias.com/politica/reforma-laboral`;
+
       navigator.clipboard.writeText(citations).then(() => {
         showToast("¡Citas APA 7 copiadas al portapapeles!");
         const txt = document.getElementById('btn-text-apa');
         if (txt) {
-          txt.innerText = "¡Copiadas!";
+          txt.innerText = "¡Citas Copiadas!";
           setTimeout(() => txt.innerText = "Copiar Citas APA 7", 3000);
         }
       });
     }
 
+    // 13. PDF DOWNLOAD DOSSIER
+    function downloadPdfDossier() {
+      const btn = document.getElementById('btn-text-pdf');
+      if (btn) btn.innerText = "Generando Dossier...";
+      showToast("Preparando dossier editorial para impresión / PDF...");
+      setTimeout(() => {
+        if (btn) btn.innerText = "Descargar PDF (Dossier Completo)";
+        window.print();
+      }, 700);
+    }
+
+    // 14. TOAST NOTIFICATIONS
     function showToast(msg) {
       const box = document.getElementById('toast-box');
       const text = document.getElementById('toast-message');
@@ -1625,6 +1914,13 @@
       box.classList.remove('hidden');
       setTimeout(() => box.classList.add('hidden'), 3500);
     }
+
+    // On Load Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      // Ensure only inicio view is displayed initially
+      switchView('inicio');
+      applyFilters();
+    });
   </script>
 </body>
 </html>
