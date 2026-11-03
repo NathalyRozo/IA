@@ -2,26 +2,54 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { fetchDailyCache, triggerDailyUpdate } from '@/lib/api';
 
 export default function HomePage() {
   const [activeTopic, setActiveTopic] = useState('all');
   const [activeTerritory, setActiveTerritory] = useState<'all' | 'nacional' | 'internacional'>('nacional');
   const [searchQuery, setSearchQuery] = useState('');
+  const [liveArticles, setLiveArticles] = useState<any[]>([]);
+  const [featuredStory, setFeaturedStory] = useState<any>(null);
+
+  const loadData = () => {
+    fetchDailyCache()
+      .then((data) => {
+        if (data?.feed?.all_articles?.length) {
+          setLiveArticles(data.feed.all_articles);
+          if (data.feed.featured_headline) {
+            setFeaturedStory(data.feed.featured_headline);
+          }
+        }
+      })
+      .catch((err) => console.log('Caché no cargada:', err));
+  };
 
   useEffect(() => {
+    loadData();
+
     const handleTerritory = (e: any) => {
       if (e.detail) setActiveTerritory(e.detail);
     };
     const handleSearch = (e: any) => {
       if (typeof e.detail === 'string') setSearchQuery(e.detail.toLowerCase());
     };
+    const handleSync = async () => {
+      try {
+        await triggerDailyUpdate(true);
+        loadData();
+      } catch (e) {
+        loadData();
+      }
+    };
 
     window.addEventListener('territoryChange', handleTerritory);
     window.addEventListener('searchChange', handleSearch);
+    window.addEventListener('triggerGeminiSync', handleSync);
 
     return () => {
       window.removeEventListener('territoryChange', handleTerritory);
       window.removeEventListener('searchChange', handleSearch);
+      window.removeEventListener('triggerGeminiSync', handleSync);
     };
   }, []);
 
@@ -29,9 +57,14 @@ export default function HomePage() {
     { id: 'all', label: 'Todos los temas', dot: 'bg-on-primary-container' },
     { id: 'politica', label: 'Política', dot: 'bg-primary-container' },
     { id: 'economia', label: 'Economía', dot: 'bg-tertiary-container' },
+    { id: 'sociedad', label: 'Sociedad', dot: 'bg-indigo-400' },
+    { id: 'conflicto-y-paz', label: 'Conflicto y Paz', dot: 'bg-amber-400' },
     { id: 'salud', label: 'Salud', dot: 'bg-secondary-container' },
-    { id: 'deportes', label: 'Deportes', dot: 'bg-[#ff6b00]' },
+    { id: 'medio-ambiente', label: 'Medio Ambiente', dot: 'bg-emerald-400' },
+    { id: 'internacional', label: 'Internacional', dot: 'bg-sky-400' },
     { id: 'tecnologia', label: 'Tecnología', dot: 'bg-[#0066ff]' },
+    { id: 'deportes', label: 'Deportes', dot: 'bg-[#ff6b00]' },
+    { id: 'cultura', label: 'Cultura', dot: 'bg-purple-400' },
   ];
 
   const articles = [
@@ -162,7 +195,45 @@ export default function HomePage() {
     window.dispatchEvent(new CustomEvent('territoryChange', { detail: t }));
   };
 
-  const filteredArticles = articles.filter(a => {
+  const slugMap: Record<string, string> = {
+    'política': 'politica',
+    'politica': 'politica',
+    'economía': 'economia',
+    'economia': 'economia',
+    'sociedad': 'sociedad',
+    'conflicto y paz': 'conflicto-y-paz',
+    'salud': 'salud',
+    'medio ambiente': 'medio-ambiente',
+    'internacional': 'internacional',
+    'tecnología': 'tecnologia',
+    'tecnologia': 'tecnologia',
+    'deportes': 'deportes',
+    'cultura': 'cultura'
+  };
+
+  const currentArticles = liveArticles.length > 0 ? liveArticles.map(art => ({
+    id: art.id,
+    category: slugMap[art.topic?.toLowerCase()] || 'sociedad',
+    categoryLabel: art.topic,
+    categoryColor: 'text-primary-fixed',
+    categoryDot: 'bg-primary-container',
+    sources: [art.source_name ? art.source_name.slice(0, 2).toUpperCase() : 'MD'],
+    sourceName: art.source_name,
+    badge: art.tone || 'Neutro',
+    badgeClass: 'bg-surface-container-high text-on-surface',
+    time: 'Hoy',
+    title: art.title,
+    description: art.narrative_angle || art.excerpt || '',
+    image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&auto=format&fit=crop&q=80',
+    viewsCount: 'Encuadre analizado',
+    viewsIcon: 'visibility',
+    hoverBorder: 'group-hover:border-primary-fixed/40',
+    accentColor: 'text-primary-fixed',
+    territory: art.source_scope || 'nacional',
+    url: art.url
+  })) : articles;
+
+  const filteredArticles = currentArticles.filter(a => {
     const matchesTopic = activeTopic === 'all' || a.category === activeTopic;
     const matchesTerritory = activeTerritory === 'all' || a.territory === activeTerritory;
     const matchesSearch = searchQuery === '' || 
@@ -432,8 +503,17 @@ export default function HomePage() {
 
             <div className="pt-space-md mt-space-md flex items-center justify-between border-t border-outline-variant/20">
               <div className="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
-                <span className="material-symbols-outlined text-[16px]">{article.viewsIcon}</span>
-                <span>{article.viewsCount}</span>
+                {(article as any).url ? (
+                  <a href={(article as any).url} target="_blank" rel="noopener noreferrer" className="hover:text-primary-fixed flex items-center gap-1 transition-colors">
+                    <span className="material-symbols-outlined text-[16px]">open_in_new</span>
+                    <span>Leer en medio</span>
+                  </a>
+                ) : (
+                  <>
+                    <span className="material-symbols-outlined text-[16px]">{article.viewsIcon}</span>
+                    <span>{article.viewsCount}</span>
+                  </>
+                )}
               </div>
               <Link 
                 href="/contrast"

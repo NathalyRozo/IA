@@ -1,6 +1,6 @@
 from typing import List, Dict, Any
 
-# Configuración exhaustiva de los 10 medios de comunicación requeridos:
+# Configuración exhaustiva de los 10 medios de comunicación requeridos por el PRD:
 # 5 Nacionales (Colombia) y 5 Internacionales
 DEFAULT_MEDIA_SOURCES: List[Dict[str, Any]] = [
     # --- MEDIOS NACIONALES (COLOMBIA) ---
@@ -11,6 +11,7 @@ DEFAULT_MEDIA_SOURCES: List[Dict[str, Any]] = [
         "country": "Colombia",
         "website_url": "https://www.elespectador.com",
         "rss_url": "https://www.elespectador.com/arc/outboundfeeds/rss/",
+        "fallback_rss_url": "https://news.google.com/rss/search?q=site:elespectador.com&hl=es-419&gl=CO&ceid=CO:es-419",
         "is_active": True,
     },
     {
@@ -20,6 +21,7 @@ DEFAULT_MEDIA_SOURCES: List[Dict[str, Any]] = [
         "country": "Colombia",
         "website_url": "https://rtvcnoticias.com",
         "rss_url": "https://rtvcnoticias.com/feed",
+        "fallback_rss_url": "https://news.google.com/rss/search?q=site:rtvcnoticias.com&hl=es-419&gl=CO&ceid=CO:es-419",
         "is_active": True,
     },
     {
@@ -29,6 +31,7 @@ DEFAULT_MEDIA_SOURCES: List[Dict[str, Any]] = [
         "country": "Colombia",
         "website_url": "https://www.eltiempo.com",
         "rss_url": "https://www.eltiempo.com/rss",
+        "fallback_rss_url": "https://news.google.com/rss/search?q=site:eltiempo.com&hl=es-419&gl=CO&ceid=CO:es-419",
         "is_active": True,
     },
     {
@@ -38,6 +41,7 @@ DEFAULT_MEDIA_SOURCES: List[Dict[str, Any]] = [
         "country": "Colombia",
         "website_url": "https://www.elheraldo.co",
         "rss_url": "https://www.elheraldo.co/rss.xml",
+        "fallback_rss_url": "https://news.google.com/rss/search?q=site:elheraldo.co&hl=es-419&gl=CO&ceid=CO:es-419",
         "is_active": True,
     },
     {
@@ -47,6 +51,7 @@ DEFAULT_MEDIA_SOURCES: List[Dict[str, Any]] = [
         "country": "Colombia",
         "website_url": "https://www.elcolombiano.com",
         "rss_url": "https://www.elcolombiano.com/rss",
+        "fallback_rss_url": "https://news.google.com/rss/search?q=site:elcolombiano.com&hl=es-419&gl=CO&ceid=CO:es-419",
         "is_active": True,
     },
 
@@ -58,6 +63,7 @@ DEFAULT_MEDIA_SOURCES: List[Dict[str, Any]] = [
         "country": "Internacional",
         "website_url": "https://www.reuters.com",
         "rss_url": "https://www.reutersagency.com/feed/?taxonomy=markets&post_type=best",
+        "fallback_rss_url": "https://news.google.com/rss/search?q=site:reuters.com&hl=es-419&gl=CO&ceid=CO:es-419",
         "is_active": True,
     },
     {
@@ -67,6 +73,7 @@ DEFAULT_MEDIA_SOURCES: List[Dict[str, Any]] = [
         "country": "Reino Unido / Internacional",
         "website_url": "https://www.bbc.com/mundo",
         "rss_url": "https://feeds.bbci.co.uk/mundo/rss.xml",
+        "fallback_rss_url": "https://news.google.com/rss/search?q=site:bbc.com/mundo&hl=es-419&gl=CO&ceid=CO:es-419",
         "is_active": True,
     },
     {
@@ -76,6 +83,7 @@ DEFAULT_MEDIA_SOURCES: List[Dict[str, Any]] = [
         "country": "Estados Unidos / Internacional",
         "website_url": "https://apnews.com",
         "rss_url": "https://apnews.com/rss",
+        "fallback_rss_url": "https://news.google.com/rss/search?q=site:apnews.com&hl=es-419&gl=CO&ceid=CO:es-419",
         "is_active": True,
     },
     {
@@ -85,15 +93,17 @@ DEFAULT_MEDIA_SOURCES: List[Dict[str, Any]] = [
         "country": "Francia / Internacional",
         "website_url": "https://www.afp.com/es",
         "rss_url": "https://www.afp.com/es/noticias/feed",
+        "fallback_rss_url": "https://news.google.com/rss/search?q=site:afp.com&hl=es-419&gl=CO&ceid=CO:es-419",
         "is_active": True,
     },
     {
         "slug": "new-york-times",
-        "name": "The New York Times (Español / World)",
+        "name": "The New York Times (World)",
         "scope": "internacional",
         "country": "Estados Unidos / Internacional",
         "website_url": "https://www.nytimes.com/es",
         "rss_url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+        "fallback_rss_url": "https://news.google.com/rss/search?q=site:nytimes.com&hl=es-419&gl=CO&ceid=CO:es-419",
         "is_active": True,
     },
 ]

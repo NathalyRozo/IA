@@ -41,7 +41,8 @@ dist/
 # Databases & local data
 *.db
 *.sqlite3
-data/
+backend/data/*.db
+data/*.db
 chroma_db/
 uploads/
 exports/

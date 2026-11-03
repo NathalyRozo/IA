@@ -1,4 +1,5 @@
 import logging
+import asyncio
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta
 from fastapi import FastAPI
@@ -8,7 +9,8 @@ from sqlalchemy import select
 from app.core.config import settings
 from app.core.database import engine, Base, AsyncSessionLocal
 from app.api.v1 import api_router
-from app.scheduler.jobs import init_media_sources
+from app.scheduler.jobs import init_media_sources, start_scheduler, shutdown_scheduler
+from app.services.daily_updater import daily_updater_service
 from app.models.media_source import MediaSource
 from app.models.news import Article, ArticleFraming
 from app.models.event import EventCluster
@@ -19,20 +21,17 @@ logger = logging.getLogger(__name__)
 
 async def seed_initial_demo_data():
     """
-    Inserta datos iniciales realistas para que el usuario pueda interactuar con
-    los 5 módulos funcionales (cobertura, contraste, tendencias e informes) desde el minuto cero.
+    Inserta datos iniciales de base para que el usuario pueda interactuar con
+    los 5 módulos funcionales (cobertura, contraste, tendencias e informes) inmediatamente.
     """
     async with AsyncSessionLocal() as session:
-        # Verificar si ya existen noticias
         res = await session.execute(select(Article))
         if res.scalars().first():
             return
 
-        logger.info("Cargando datos demostrativos iniciales de los 10 medios...")
-        # Obtener medios
+        logger.info("Cargando datos base de los 10 medios...")
         sources_res = await session.execute(select(MediaSource))
         sources_dict = {s.slug: s for s in sources_res.scalars().all()}
-
         if not sources_dict:
             return
 
@@ -83,7 +82,6 @@ async def seed_initial_demo_data():
         session.add(cluster1)
         await session.flush()
 
-        # Artículos para Acontecimiento 1
         arts_data = [
             {
                 "slug": "el-tiempo",
@@ -147,7 +145,6 @@ async def seed_initial_demo_data():
                 )
                 session.add(framing)
 
-        # Más artículos para enriquecer estadísticas de cobertura y tendencias
         extra_articles = [
             ("el-colombiano", "Conflicto en Antioquia: Defensoría alerta por confinamiento de comunidades", "Conflicto y Paz", 10),
             ("el-heraldo", "Tarifas de energía en el Caribe: alcaldes insisten en intervención tarifaria", "Economía", 14),
@@ -174,21 +171,29 @@ async def seed_initial_demo_data():
                 session.add(art)
 
         await session.commit()
-        logger.info("Datos demostrativos cargados exitosamente.")
+        logger.info("Datos base cargados exitosamente.")
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Inicialización de esquema de BD
+    # 1. Inicialización de esquema de base de datos
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
-    # Inicializar medios y datos demo
+    # 2. Inicializar medios y datos demostrativos
     await init_media_sources()
     await seed_initial_demo_data()
 
+    # 3. Iniciar planificador APScheduler (actualización diaria automática)
+    start_scheduler()
+
+    # 4. Asegurar que existe caché diaria para frontend
+    asyncio.create_task(daily_updater_service.get_or_create_daily_data())
+
     yield
 
+    # Detener tareas y conexiones
+    shutdown_scheduler()
     await engine.dispose()
 
 
@@ -196,21 +201,21 @@ app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
     description="""
-    ## Plataforma de Análisis de Cobertura y Agenda Mediática (Mediatrix)
+    ## FOQUÉ - Observatorio de Cobertura y Agenda Mediática
     
     Herramienta analítica para contrastar la cobertura de 10 medios nacionales e internacionales:
     - **Nacionales:** El Espectador, RTVC Noticias, El Tiempo, El Heraldo, El Colombiano.
     - **Internacionales:** Reuters, BBC News, Associated Press, AFP, The New York Times.
     
-    ### Principios Deontológicos y Límites de Alcance:
-    - **No determina veracidad:** Analiza contenidos y encuadres, no es un verificador de hechos.
+    ### Principios Deontológicos y Límites de Alcance (PRD):
+    - **No determina veracidad:** Analiza contenidos y encuadres narrativos; queda excluido el fact-checking.
     - **No mide opinión pública:** Cuantifica la agenda mediática editorial, no el pensamiento ciudadano.
-    - **Asistente heurístico:** No reemplaza el juicio crítico ni la labor del investigador/periodista.
+    - **Asistente heurístico:** Diseñado para la estudiante/periodista Victoria León (Human-in-the-loop).
     """,
     lifespan=lifespan
 )
 
-# CORS Middleware para integración con frontend Next.js / React
+# CORS Middleware para integración con frontend Next.js y GitHub Pages
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -225,11 +230,14 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 
 @app.get("/", tags=["Estado"])
 async def root():
+    status = daily_updater_service.get_status()
     return {
         "sistema": settings.PROJECT_NAME,
         "version": settings.VERSION,
         "docs_url": "/docs",
         "api_v1": settings.API_V1_STR,
         "medios_monitoreados": 10,
-        "aviso_metodologico": "Herramienta analítica de agenda mediática. No califica veracidad."
+        "gemini_disponible": status.get("gemini_active", False),
+        "cron_diario": f"{settings.DAILY_CRON_HOUR:02d}:{settings.DAILY_CRON_MINUTE:02d} UTC",
+        "aviso_metodologico": "Herramienta analítica de agenda mediática. No califica veracidad ni mide opinión pública."
     }

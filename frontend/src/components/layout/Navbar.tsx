@@ -81,6 +81,18 @@ export default function Navbar({
 
       {/* Right User Bar */}
       <div className="flex items-center gap-space-md">
+        {/* Gemini Daily Sync Button */}
+        <button
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent('triggerGeminiSync'));
+          }}
+          className="px-space-md py-1.5 rounded-full bg-primary-container text-on-primary-container hover:shadow-[0_0_18px_rgba(253,228,0,0.45)] flex items-center gap-1.5 font-label-sm text-label-sm uppercase font-bold transition-all border border-primary-fixed/40 cursor-pointer"
+          title="Sincronizar noticias del día con Gemini"
+        >
+          <span className="material-symbols-outlined text-[16px] text-on-primary-container">sync</span>
+          <span className="hidden md:inline">Sincronizar Gemini</span>
+        </button>
+
         {/* Ethical disclaimer shortcut */}
         <button
           onClick={onOpenDisclaimer}
