@@ -7,10 +7,11 @@ export default function ReportsPage() {
   const [downloading, setDownloading] = useState(false);
 
   const handleCopyApa = () => {
-    const apaCitations = `1. El Tiempo. (2026, 22 de octubre). Senado aprueba en primer debate articulado de la reforma laboral. El Tiempo. https://www.eltiempo.com/politica/congreso/reforma-laboral-aprobada-debate
-2. El Espectador. (2026, 22 de octubre). Con reparos en el régimen de transición laboral, avanza la reforma en primer debate. El Espectador. https://www.elespectador.com/politica/debate-reforma-laboral-comision-septima/
-3. Reuters. (2026, October 22). Colombia labor reform clears committee hurdle amid private sector and rating scrutiny. Reuters LatAm. https://www.reuters.com/world/americas/colombia-labor-reform-vote/
-4. RTVC Noticias. (2026, 22 de octubre). Paso histórico en el Congreso hacia la restitución de derechos laborales. Sistema de Medios Públicos. https://rtvcnoticias.com/politica/reforma-laboral-aprobada-primer-debate`;
+    const apaCitations = `1. El Tiempo. (2026, 3 de noviembre). Temblor en Colombia: réplica de magnitud 3.3 en Tolima. El Tiempo. https://www.eltiempo.com/colombia
+2. El Espectador. (2026, 3 de noviembre). Temblor hoy: registran sismo de 5,6 de magnitud en la madrugada. El Espectador. https://www.elespectador.com/politica/congreso/
+3. Reuters. (2026, 3 de noviembre). Mercados regionales evalúan proyecciones fiscales y decisiones de bancos centrales. Reuters LatAm. https://www.reuters.com/world/americas/
+4. RTVC Noticias. (2026, 3 de noviembre). Sistema de Medios Públicos entrega balance nacional de transporte e infraestructura. RTVC Noticias. https://rtvcnoticias.com/
+5. The New York Times. (2026, November 3). Global climate and financial policies encounter shifting economic headwinds. The New York Times. https://www.nytimes.com/es`;
 
     navigator.clipboard.writeText(apaCitations);
     setCopiedApa(true);
@@ -134,9 +135,13 @@ export default function ReportsPage() {
                     <td className="py-space-sm px-space-md text-on-surface">“Con reparos en el régimen de transición laboral, avanza la reforma en primer debate”</td>
                     <td className="py-space-sm px-space-md text-secondary">Horas nocturnas (18), Plataformas (12), Formalización (9)</td>
                     <td className="py-space-sm px-space-md">
-                      <a href="#" className="text-tertiary-fixed underline font-semibold flex items-center gap-1">
+                      <button 
+                        type="button" 
+                        onClick={() => window.open('https://www.elespectador.com/politica/congreso/', '_blank')}
+                        className="text-tertiary-fixed underline font-semibold flex items-center gap-1 cursor-pointer bg-transparent border-0 p-0"
+                      >
                         Verificar nota <span className="material-symbols-outlined text-[14px]">open_in_new</span>
-                      </a>
+                      </button>
                     </td>
                   </tr>
                   <tr>
@@ -144,9 +149,13 @@ export default function ReportsPage() {
                     <td className="py-space-sm px-space-md text-on-surface">“Colombia labor reform clears committee hurdle amid private sector and rating scrutiny”</td>
                     <td className="py-space-sm px-space-md text-tertiary-fixed">Sobrecosto (24), ANDI (15), Inflación (8)</td>
                     <td className="py-space-sm px-space-md">
-                      <a href="#" className="text-tertiary-fixed underline font-semibold flex items-center gap-1">
+                      <button 
+                        type="button" 
+                        onClick={() => window.open('https://www.reuters.com/world/americas/', '_blank')}
+                        className="text-tertiary-fixed underline font-semibold flex items-center gap-1 cursor-pointer bg-transparent border-0 p-0"
+                      >
                         Verificar nota <span className="material-symbols-outlined text-[14px]">open_in_new</span>
-                      </a>
+                      </button>
                     </td>
                   </tr>
                   <tr>
@@ -154,9 +163,13 @@ export default function ReportsPage() {
                     <td className="py-space-sm px-space-md text-on-surface">“Paso histórico en el Congreso hacia la restitución de derechos laborales concurrida por el pueblo”</td>
                     <td className="py-space-sm px-space-md text-primary-fixed">Restitución (21), Dignidad (16), CUT (14)</td>
                     <td className="py-space-sm px-space-md">
-                      <a href="#" className="text-tertiary-fixed underline font-semibold flex items-center gap-1">
+                      <button 
+                        type="button" 
+                        onClick={() => window.open('https://rtvcnoticias.com/', '_blank')}
+                        className="text-tertiary-fixed underline font-semibold flex items-center gap-1 cursor-pointer bg-transparent border-0 p-0"
+                      >
                         Verificar nota <span className="material-symbols-outlined text-[14px]">open_in_new</span>
-                      </a>
+                      </button>
                     </td>
                   </tr>
                 </tbody>

@@ -3,18 +3,23 @@
 import React, { useState } from 'react';
 
 export default function CoveragePage() {
-  const [selectedTheme, setSelectedTheme] = useState('Medio Ambiente y Transición Energética');
+  const [selectedTheme, setSelectedTheme] = useState('Todos los Temas');
   const [selectedPeriod, setSelectedPeriod] = useState('7 días');
   const [selectedScope, setSelectedScope] = useState<'all' | 'nacional' | 'internacional'>('all');
   const [isThemeOpen, setIsThemeOpen] = useState(false);
 
   const themes = [
-    { name: 'Medio Ambiente y Transición Energética', icon: 'eco' },
-    { name: 'Política y Reformas Estructurales', icon: 'account_balance' },
-    { name: 'Economía, Finanzas y Empleo', icon: 'trending_up' },
-    { name: 'Salud y Crisis de Financiamiento', icon: 'vital_signs' },
-    { name: 'Conflicto, Paz y Seguridad Regional', icon: 'shield' },
-    { name: 'Tecnología y Regulación de IA', icon: 'memory' }
+    { name: 'Todos los Temas', icon: 'view_stream' },
+    { name: 'Política', icon: 'account_balance' },
+    { name: 'Economía', icon: 'trending_up' },
+    { name: 'Conflicto y Paz', icon: 'shield' },
+    { name: 'Sociedad', icon: 'groups' },
+    { name: 'Salud', icon: 'vital_signs' },
+    { name: 'Medio Ambiente', icon: 'eco' },
+    { name: 'Internacional', icon: 'public' },
+    { name: 'Tecnología', icon: 'memory' },
+    { name: 'Deportes', icon: 'sports_soccer' },
+    { name: 'Cultura', icon: 'theater_comedy' },
   ];
 
   const mediaList = [

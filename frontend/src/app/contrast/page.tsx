@@ -3,7 +3,27 @@
 import React, { useState } from 'react';
 
 export default function ContrastPage() {
-  const [activeFraming, setActiveFraming] = useState('all');
+  const [selectedOutlets, setSelectedOutlets] = useState<string[]>([
+    'El Espectador', 'El Tiempo', 'RTVC Noticias', 'El Colombiano', 'El Heraldo',
+    'Reuters', 'BBC News Mundo', 'The New York Times', 'Associated Press (AP)', 'Agence France-Presse (AFP)'
+  ]);
+
+  const allAvailableOutlets = [
+    'El Espectador', 'El Tiempo', 'RTVC Noticias', 'El Colombiano', 'El Heraldo',
+    'Reuters', 'BBC News Mundo', 'The New York Times', 'Associated Press (AP)', 'Agence France-Presse (AFP)'
+  ];
+
+  const toggleOutlet = (name: string) => {
+    if (selectedOutlets.includes(name)) {
+      if (selectedOutlets.length <= 5) {
+        return; // Mínimo 5 medios según PRD
+      }
+      setSelectedOutlets(selectedOutlets.filter(o => o !== name));
+    } else {
+      if (selectedOutlets.length >= 10) return;
+      setSelectedOutlets([...selectedOutlets, name]);
+    }
+  };
 
   const framingPills = [
     { id: 'all', label: 'Todos los enfoques' },
@@ -100,47 +120,80 @@ export default function ContrastPage() {
       </div>
 
       {/* Main Headline Block */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-lg bg-surface-container-low p-space-lg rounded-2xl shadow-sm relative overflow-hidden border border-outline-variant/30">
+      <div className="flex flex-col gap-space-md mb-space-lg bg-surface-container-low p-space-lg rounded-2xl shadow-sm relative overflow-hidden border border-outline-variant/30">
         <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-primary-container/5 blur-3xl pointer-events-none"></div>
 
-        <div className="flex flex-col gap-space-xs max-w-4xl z-10">
-          <div className="flex flex-wrap items-center gap-space-xs mb-1">
-            <span className="px-space-md py-1 rounded-full bg-surface-container-high text-primary-fixed font-label-sm text-label-sm uppercase tracking-wider shadow-sm flex items-center gap-1.5 font-bold">
-              <span className="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(253,228,0,0.8)]"></span>
-              10 medios analizados en simultáneo
-            </span>
-            <span className="px-space-md py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider font-semibold">
-              Congreso de la República • Comisión Séptima
-            </span>
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+          <div className="flex flex-col gap-space-xs max-w-4xl z-10">
+            <div className="flex flex-wrap items-center gap-space-xs mb-1">
+              <span className="px-space-md py-1 rounded-full bg-surface-container-high text-primary-fixed font-label-sm text-label-sm uppercase tracking-wider shadow-sm flex items-center gap-1.5 font-bold">
+                <span className="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(253,228,0,0.8)]"></span>
+                10 medios analizados en simultáneo
+              </span>
+              <span className="px-space-md py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+                Congreso de la República • Comisión Séptima
+              </span>
+            </div>
+            <h1 className="font-headline-xl text-headline-xl text-primary font-extrabold tracking-tight">
+              Acontecimiento: Reforma Laboral y Régimen de Contratación Nocturna en el Congreso
+            </h1>
+            <p className="font-body-md text-body-md text-on-surface-variant">
+              Descomposición analítica de encuadres mediáticos (<em>framing</em>), sesgos léxicos y divergencias de cobertura editorial entre prensa corporativa, pública e internacional.
+            </p>
           </div>
-          <h1 className="font-headline-xl text-headline-xl text-primary font-extrabold tracking-tight">
-            Acontecimiento: Reforma Laboral y Régimen de Contratación Nocturna en el Congreso
-          </h1>
-          <p className="font-body-md text-body-md text-on-surface-variant">
-            Descomposición analítica de encuadres mediáticos (<em>framing</em>), sesgos léxicos y divergencias de cobertura editorial entre prensa corporativa, pública e internacional.
-          </p>
+
+          {/* Framing Filter Pills */}
+          <div className="flex flex-wrap lg:flex-nowrap items-center gap-space-xs z-10 bg-surface-container-high p-1.5 rounded-full border border-outline-variant/30">
+            {framingPills.map(p => (
+              <button
+                key={p.id}
+                onClick={() => setActiveFraming(p.id)}
+                className={`filter-pill px-space-md py-space-xs rounded-full font-label-md text-label-md uppercase transition-all ${
+                  activeFraming === p.id
+                    ? 'bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(253,228,0,0.35)] font-bold'
+                    : 'text-on-surface-variant hover:text-on-surface'
+                }`}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Framing Filter Pills */}
-        <div className="flex flex-wrap lg:flex-nowrap items-center gap-space-xs z-10 bg-surface-container-high p-1.5 rounded-full border border-outline-variant/30">
-          {framingPills.map(p => (
-            <button
-              key={p.id}
-              onClick={() => setActiveFraming(p.id)}
-              className={`filter-pill px-space-md py-space-xs rounded-full font-label-md text-label-md uppercase transition-all ${
-                activeFraming === p.id
-                  ? 'bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(253,228,0,0.35)] font-bold'
-                  : 'text-on-surface-variant hover:text-on-surface'
-              }`}
-            >
-              {p.label}
-            </button>
-          ))}
+        {/* Multi-outlet Selector (5 to 10 outlets) */}
+        <div className="flex flex-col gap-2 w-full pt-3 border-t border-outline-variant/20 z-10">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <span className="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider font-bold">
+              Seleccionar medios a contrastar (5 a 10 medios en columnas simultáneas):
+            </span>
+            <span className="font-label-sm text-label-sm text-on-surface-variant font-mono">
+              {selectedOutlets.length} seleccionados
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {allAvailableOutlets.map(outlet => {
+              const isSelected = selectedOutlets.includes(outlet);
+              return (
+                <button
+                  key={outlet}
+                  type="button"
+                  onClick={() => toggleOutlet(outlet)}
+                  className={`px-3 py-1 rounded-full text-xs uppercase tracking-wider transition-all border border-outline-variant/30 font-bold ${
+                    isSelected 
+                      ? 'bg-primary-container text-on-primary-container shadow-sm' 
+                      : 'bg-surface-container text-on-surface-variant hover:text-on-surface'
+                  }`}
+                >
+                  {outlet}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
       {/* Side-by-Side 3-Column Comparative Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-space-lg mb-space-xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-space-lg mb-space-xl overflow-x-auto pb-4">
         {filteredColumns.map(col => (
           <article 
             key={col.id}
@@ -232,10 +285,11 @@ export default function ContrastPage() {
               </div>
               <button 
                 type="button"
-                className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface hover:bg-primary-container hover:text-on-primary-container font-label-md text-label-md uppercase transition-all shadow-sm font-bold"
+                onClick={() => window.open(col.link && col.link !== '#' ? col.link : 'https://www.elespectador.com', '_blank')}
+                className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface hover:bg-primary-container hover:text-on-primary-container font-label-md text-label-md uppercase transition-all shadow-sm font-bold cursor-pointer"
               >
-                <span>Ver fuente</span>
-                <span className="material-symbols-outlined text-[14px]">arrow_outward</span>
+                <span>Ver fuente original</span>
+                <span className="material-symbols-outlined text-[14px]">open_in_new</span>
               </button>
             </div>
           </article>

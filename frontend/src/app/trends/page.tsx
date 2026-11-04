@@ -5,6 +5,17 @@ import React, { useState } from 'react';
 export default function TrendsPage() {
   const [selectedPeriod, setSelectedPeriod] = useState('7 Días');
 
+  const getMultiplier = (period: string) => {
+    switch (period) {
+      case 'Hoy': return 1.8;
+      case '30 Días': return 0.7;
+      case 'Trimestre': return 0.4;
+      default: return 1.0;
+    }
+  };
+
+  const mult = getMultiplier(selectedPeriod);
+
   const trendCards = [
     {
       topic: 'Reforma Laboral y Régimen Nocturno',
@@ -12,8 +23,8 @@ export default function TrendsPage() {
       status: 'En Auge',
       statusColor: 'bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(253,228,0,0.5)]',
       statusIcon: 'trending_up',
-      velocity: '18.4 notas/día',
-      acceleration: '+142%',
+      velocity: `${(18.4 * mult).toFixed(1)} notas/día`,
+      acceleration: `+${Math.round(142 * mult)}%`,
       accelColor: 'text-tertiary-fixed',
       sourcesCoverage: '10 de 10 medios',
       summary: 'Máxima aceleración tras la votación maratónica en Comisión Séptima. Concentra el 38% del debate editorial matutino.'
@@ -24,8 +35,8 @@ export default function TrendsPage() {
       status: 'En Auge',
       statusColor: 'bg-tertiary-container text-on-tertiary-container shadow-[0_0_12px_rgba(89,253,197,0.4)]',
       statusIcon: 'bolt',
-      velocity: '9.2 notas/día',
-      acceleration: '+86%',
+      velocity: `${(9.2 * mult).toFixed(1)} notas/día`,
+      acceleration: `+${Math.round(86 * mult)}%`,
       accelColor: 'text-tertiary-fixed',
       sourcesCoverage: '7 de 10 medios',
       summary: 'Tracción impulsada por las directivas internacionales de etiquetado de contenidos sintéticos y derechos de autor en redacciones.'
@@ -36,8 +47,8 @@ export default function TrendsPage() {
       status: 'Estable',
       statusColor: 'bg-surface-container-high text-on-surface border border-outline-variant/40',
       statusIcon: 'horizontal_rule',
-      velocity: '12.1 notas/día',
-      acceleration: '+4%',
+      velocity: `${(12.1 * mult).toFixed(1)} notas/día`,
+      acceleration: `+${Math.round(4 * mult)}%`,
       accelColor: 'text-on-surface-variant',
       sourcesCoverage: '9 de 10 medios',
       summary: 'Cobertura sostenida sin sobresaltos. Los medios mantienen columnas de análisis cambiario y proyecciones trimestrales.'
@@ -48,8 +59,8 @@ export default function TrendsPage() {
       status: 'En Declive',
       statusColor: 'bg-secondary-container/30 text-secondary border border-secondary-container/40',
       statusIcon: 'trending_down',
-      velocity: '3.6 notas/día',
-      acceleration: '-38%',
+      velocity: `${(3.6 * mult).toFixed(1)} notas/día`,
+      acceleration: `-${Math.round(38 * mult)}%`,
       accelColor: 'text-secondary',
       sourcesCoverage: '4 de 10 medios',
       summary: 'Pérdida paulatina de interés mediático tras el levantamiento de los bloqueos de transportadores hace dos semanas.'

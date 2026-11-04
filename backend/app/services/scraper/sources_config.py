@@ -20,7 +20,7 @@ DEFAULT_MEDIA_SOURCES: List[Dict[str, Any]] = [
         "scope": "nacional",
         "country": "Colombia",
         "website_url": "https://rtvcnoticias.com",
-        "rss_url": "https://rtvcnoticias.com/feed",
+        "rss_url": "https://rtvcnoticias.com/feed/",
         "fallback_rss_url": "https://news.google.com/rss/search?q=site:rtvcnoticias.com&hl=es-419&gl=CO&ceid=CO:es-419",
         "is_active": True,
     },
