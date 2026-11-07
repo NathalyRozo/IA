@@ -70,7 +70,7 @@ class FramingAnalyzer:
         """
 
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model=settings.GEMINI_MODEL,
             contents=prompt,
             config={"response_mime_type": "application/json"}
         )

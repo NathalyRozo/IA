@@ -277,44 +277,57 @@ def classify_with_gemini(articles: List[Dict[str, Any]], api_key: str) -> List[D
         }}
         """
 
+        GEMINI_MODELS = ["gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-3.8-flash"]
         gemini_response_json = None
+
         # Intento con google-genai
         if client:
-            try:
-                from google.genai import types
-                response = client.models.generate_content(
-                    model="gemini-2.5-flash",
-                    contents=prompt,
-                    config=types.GenerateContentConfig(
-                        response_mime_type="application/json",
-                        temperature=0.2
+            for m_name in GEMINI_MODELS:
+                try:
+                    from google.genai import types
+                    response = client.models.generate_content(
+                        model=m_name,
+                        contents=prompt,
+                        config=types.GenerateContentConfig(
+                            response_mime_type="application/json",
+                            temperature=0.2
+                        )
                     )
-                )
-                if response and response.text:
-                    cleaned = response.text.strip()
-                    if cleaned.startswith("```json"):
-                        cleaned = cleaned[7:]
-                    if cleaned.endswith("```"):
-                        cleaned = cleaned[:-3]
-                    gemini_response_json = json.loads(cleaned.strip())
-            except Exception as e:
-                logger.warning(f"Error llamando a google-genai: {e}")
+                    if response and response.text:
+                        cleaned = response.text.strip()
+                        if cleaned.startswith("```json"):
+                            cleaned = cleaned[7:]
+                        if cleaned.endswith("```"):
+                            cleaned = cleaned[:-3]
+                        gemini_response_json = json.loads(cleaned.strip())
+                        logger.info(f"Clasificación exitosa con {m_name}")
+                        break
+                except Exception as e:
+                    logger.warning(f"Error llamando a google-genai con {m_name}: {e}")
 
-        # Intento con REST si client falló
+        # Intento con REST directo si client falló
         if not gemini_response_json:
-            try:
-                url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
-                body = {
-                    "contents": [{"parts": [{"text": prompt}]}],
-                    "generationConfig": {"responseMimeType": "application/json", "temperature": 0.2}
-                }
-                res = requests.post(url, json=body, timeout=25)
-                if res.status_code == 200:
-                    data = res.json()
-                    text_out = data["candidates"][0]["content"]["parts"][0]["text"]
-                    gemini_response_json = json.loads(text_out)
-            except Exception as e:
-                logger.warning(f"Error en llamada REST a Gemini: {e}")
+            for m_name in GEMINI_MODELS:
+                for attempt in range(2):
+                    try:
+                        url = f"https://generativelanguage.googleapis.com/v1beta/models/{m_name}:generateContent?key={api_key}"
+                        body = {
+                            "contents": [{"parts": [{"text": prompt}]}],
+                            "generationConfig": {"responseMimeType": "application/json", "temperature": 0.2}
+                        }
+                        res = requests.post(url, json=body, timeout=25)
+                        if res.status_code == 200:
+                            data = res.json()
+                            text_out = data["candidates"][0]["content"]["parts"][0]["text"]
+                            gemini_response_json = json.loads(text_out)
+                            logger.info(f"Clasificación REST exitosa con {m_name}")
+                            break
+                        elif res.status_code in [503, 429]:
+                            time.sleep(2)
+                    except Exception as e:
+                        logger.warning(f"Error en llamada REST ({m_name}, intento {attempt}): {e}")
+                if gemini_response_json:
+                    break
 
         # Aplicar resultados
         results_map = {}
@@ -341,6 +354,84 @@ def classify_with_gemini(articles: List[Dict[str, Any]], api_key: str) -> List[D
     return articles
 
 
+
+def scrape_homepage_articles(source: Dict[str, Any], max_items: int = 8) -> List[Dict[str, Any]]:
+    """Extrae enlaces reales y títulos directamente de la portada cuando el feed RSS no está disponible."""
+    website_url = source.get("website_url", "")
+    slug = source.get("slug", "")
+    name = source.get("name", "")
+    origin_type = source.get("origin_type", "Nacional")
+    country = source.get("country", "Colombia")
+    items = []
+
+    try:
+        resp = requests.get(website_url, headers=HEADERS, timeout=8)
+        if resp.status_code != 200:
+            return items
+        soup = BeautifulSoup(resp.text, "html.parser")
+        seen_links = set()
+
+        for a_tag in soup.find_all("a", href=True):
+            href = a_tag["href"].strip()
+            title = a_tag.get_text().strip()
+            if not title or len(title) < 25 or len(title) > 220:
+                continue
+            # Descartar enlaces irrelevantes
+            if any(bad in href.lower() for bad in ["#", "javascript", "login", "registro", "suscribete", "terminos", "politicas", "podcast", "video", "autor"]):
+                continue
+
+            # Reconstruir URL absoluta
+            if href.startswith("/"):
+                base_domain = website_url.rstrip("/")
+                full_url = f"{base_domain}{href}"
+            elif href.startswith("http"):
+                full_url = href
+            else:
+                continue
+
+            if full_url in seen_links:
+                continue
+            seen_links.add(full_url)
+
+            # Validar que parezca una noticia real
+            is_valid_article = False
+            if slug == "el-espectador" and ("politica" in full_url or "colombia" in full_url or "judicial" in full_url or "economia" in full_url):
+                is_valid_article = True
+            elif slug == "el-tiempo" and ("politica" in full_url or "colombia" in full_url or "justicia" in full_url or "economia" in full_url):
+                is_valid_article = True
+            elif slug == "el-heraldo" and ("politica" in full_url or "economia" in full_url or "local" in full_url or "colombia" in full_url):
+                is_valid_article = True
+            elif slug == "el-colombiano" and ("politica" in full_url or "colombia" in full_url or "economia" in full_url or "internacional" in full_url):
+                is_valid_article = True
+            elif slug == "rtvc-noticias" and ("noticias" in full_url or "colombia" in full_url or "politica" in full_url):
+                is_valid_article = True
+            elif len(href) > 40 and "/" in href.strip("/"):
+                is_valid_article = True
+
+            if is_valid_article:
+                art_id = generate_article_id(full_url, title)
+                items.append({
+                    "id": art_id,
+                    "title": title,
+                    "url": full_url,
+                    "published_at": datetime.now(timezone.utc).isoformat(),
+                    "source_name": name,
+                    "source_slug": slug,
+                    "origin_type": origin_type,
+                    "source_scope": origin_type.lower(),
+                    "source_country": country,
+                    "raw_text": title,
+                    "excerpt": title,
+                    "category": "Sociedad",
+                    "topic": "Sociedad",
+                })
+                if len(items) >= max_items:
+                    break
+    except Exception as e:
+        logger.debug(f"Error raspando portada de {name}: {e}")
+
+    return items
+
 def collect_all_sources(max_items_per_source: int = 10) -> List[Dict[str, Any]]:
     """Recolecta noticias de los exactamente 10 medios usando RSS y respaldo en scraping."""
     collected = []
@@ -353,7 +444,15 @@ def collect_all_sources(max_items_per_source: int = 10) -> List[Dict[str, Any]]:
         # 1. Probar RSS principal
         entries = fetch_feed(source.get("rss_url"))
         
-        # 2. Si no hay entradas, probar RSS de respaldo
+        # 2. Si el feed RSS falla, intentar raspado directo de portada con URLs reales
+        if not entries:
+            scraped_items = scrape_homepage_articles(source, max_items_per_source)
+            if scraped_items:
+                logger.info(f"Raspado directo exitoso para {src_name}: {len(scraped_items)} notas con URLs reales.")
+                collected.extend(scraped_items)
+                continue
+
+        # 3. Respaldo terciario en Google News RSS si todo lo anterior falló
         if not entries and source.get("fallback_rss_url"):
             logger.info(f"Usando feed RSS de respaldo para {src_name}")
             entries = fetch_feed(source.get("fallback_rss_url"))
@@ -545,7 +644,7 @@ def update_cumulative_cache(new_articles: List[Dict[str, Any]], cache_path: str)
             "total_articles": total_articles,
             "active_sources": len(MEDIA_SOURCES),
             "gemini_enabled": bool(os.getenv("GEMINI_API_KEY")),
-            "model_used": "gemini-2.5-flash",
+            "model_used": "gemini-3.5-flash-lite",
             "ethical_disclaimer": "Herramienta analítica de encuadre y agenda setting. Queda excluido el fact-checking y la medición de opinión pública."
         },
         "feed": {
@@ -604,6 +703,21 @@ def update_cumulative_cache(new_articles: List[Dict[str, Any]], cache_path: str)
 
 def main():
     gemini_key = os.getenv("GEMINI_API_KEY", "").strip()
+    if not gemini_key:
+        env_paths = [".env", os.path.join(os.path.dirname(__file__), "..", ".env")]
+        for ep in env_paths:
+            if os.path.exists(ep):
+                try:
+                    with open(ep, "r", encoding="utf-8") as ef:
+                        for line in ef:
+                            if line.strip().startswith("GEMINI_API_KEY="):
+                                gemini_key = line.strip().split("=", 1)[1].strip().replace('"', '').replace("'", "")
+                                os.environ["GEMINI_API_KEY"] = gemini_key
+                                break
+                except Exception:
+                    pass
+            if gemini_key:
+                break
     cache_path = os.getenv("DAILY_CACHE_FILE", "data/daily_cache.json")
 
     logger.info("=== INICIANDO PIPELINE DE INGESTA DIARIA FOQUÉ ===")
