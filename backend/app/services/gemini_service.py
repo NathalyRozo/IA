@@ -156,23 +156,29 @@ class GeminiMediaService:
                 art["omitted_aspects"] = []
             return articles
 
-        # Procesar en lotes de hasta 8 noticias
+        # Procesar en lotes de hasta 8 noticias con identificador único estricto (id)
         batch_size = 8
         for i in range(0, len(articles), batch_size):
             batch = articles[i:i + batch_size]
             summarized_batch = [
                 {
-                    "idx": j,
+                    "id": art.get("id") or art.get("url"),
                     "media": art.get("source_name"),
                     "title": art.get("title"),
                     "excerpt": (art.get("excerpt") or art.get("raw_text", ""))[:200]
                 }
-                for j, art in enumerate(batch)
+                for art in batch
             ]
 
             prompt = f"""
-            Clasifica cada una de las siguientes noticias dentro de las 10 categorías canónicas del PRD:
+            Clasifica cada una de las siguientes noticias en EXACTAMENTE UNA de las 10 categorías canónicas del PRD:
             Categorías permitidas: {json.dumps(settings.CANONICAL_TOPICS, ensure_ascii=False)}
+
+            REGLAS METODOLÓGICAS:
+            1. Elige el tema según de qué trata el TITULAR y texto de la noticia, no según el medio.
+            2. "Medio Ambiente" es exclusivamente para clima, biodiversidad, energía, contaminación y recursos naturales.
+            3. Noticias sobre crisis política o juicios políticos en Paraguay son "Política" o "Internacional", jamás "Medio Ambiente".
+            4. highlighted_aspects debe contener 1-2 conceptos específicos del titular de ESA noticia.
 
             Noticias a clasificar:
             {json.dumps(summarized_batch, ensure_ascii=False, indent=2)}
@@ -181,8 +187,8 @@ class GeminiMediaService:
             {{
                 "results": [
                     {{
-                        "idx": 0,
-                        "topic": "Categoría exacta",
+                        "id": "identificador_exacto_de_la_noticia",
+                        "topic": "Categoría canónica exacta",
                         "narrative_angle": "Ángulo descriptivo",
                         "tone": "Neutro | Crítico | Institucional | Alarma | Optimista",
                         "highlighted_aspects": ["Punto 1", "Punto 2"],
@@ -194,30 +200,30 @@ class GeminiMediaService:
 
             resp = self._call_gemini_json(prompt)
             if resp and "results" in resp:
-                res_map = {item.get("idx"): item for item in resp["results"]}
-                for j, art in enumerate(batch):
-                    matched = res_map.get(j)
+                res_map = {item.get("id"): item for item in resp["results"] if "id" in item}
+                for art in batch:
+                    art_id = art.get("id") or art.get("url")
+                    matched = res_map.get(art_id)
                     if matched and matched.get("topic") in settings.CANONICAL_TOPICS:
                         art["topic"] = matched.get("topic")
+                        art["category"] = matched.get("topic")
                         art["narrative_angle"] = matched.get("narrative_angle", "Cobertura de agenda")
                         art["tone"] = matched.get("tone", "Neutro")
                         art["highlighted_aspects"] = matched.get("highlighted_aspects", [art.get("title")])
                         art["omitted_aspects"] = matched.get("omitted_aspects", [])
                     else:
-                        from app.services.nlp.classifier import classifier_service
-                        art["topic"] = classifier_service.classify_text(art.get("title", ""), art.get("raw_text", ""))
-                        art["narrative_angle"] = "Cobertura informativa"
-                        art["tone"] = "Neutro"
-                        art["highlighted_aspects"] = [art.get("title")]
-                        art["omitted_aspects"] = []
+                        art["topic"] = None
+                        art["category"] = None
+                        art["narrative_angle"] = None
+                        art["tone"] = None
+                        art["highlighted_aspects"] = None
             else:
-                from app.services.nlp.classifier import classifier_service
                 for art in batch:
-                    art["topic"] = classifier_service.classify_text(art.get("title", ""), art.get("raw_text", ""))
-                    art["narrative_angle"] = "Cobertura informativa"
-                    art["tone"] = "Neutro"
-                    art["highlighted_aspects"] = [art.get("title")]
-                    art["omitted_aspects"] = []
+                    art["topic"] = None
+                    art["category"] = None
+                    art["narrative_angle"] = None
+                    art["tone"] = None
+                    art["highlighted_aspects"] = None
 
         return articles
 

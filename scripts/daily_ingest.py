@@ -173,7 +173,7 @@ def fetch_feed(url: str) -> List[Any]:
     try:
         resp = requests.get(url, headers=HEADERS, timeout=12)
         if resp.status_code == 200:
-            parsed = feedparser.parse(resp.text)
+            parsed = feedparser.parse(resp.content)
             return parsed.entries
     except Exception as e:
         logger.warning(f"Error consultando RSS {url}: {e}")
@@ -241,24 +241,35 @@ def classify_with_gemini(articles: List[Dict[str, Any]], api_key: str) -> List[D
     except Exception:
         client = None
 
-    for i in range(0, len(articles), batch_size):
+        for i in range(0, len(articles), batch_size):
         batch = articles[i:i + batch_size]
         payload_items = [
-            {"idx": j, "media": a["source_name"], "title": a["title"], "excerpt": a.get("raw_text", "")[:250]}
-            for j, a in enumerate(batch)
+            {"id": a["id"], "media": a["source_name"], "title": a["title"], "excerpt": a.get("raw_text", "")[:250]}
+            for a in batch
         ]
 
         prompt = f"""
-        Actúa como el motor de clasificación y análisis del Observatorio FOQUÉ.
+        Actúa como clasificador temático estricto del Observatorio FOQUÉ.
         Clasifica cada una de las siguientes noticias en EXACTAMENTE UNA de estas 10 categorías canónicas:
         {json.dumps(CANONICAL_TOPICS, ensure_ascii=False)}
 
-        Extrae también:
-        - narrative_angle (1 frase describiendo el ángulo discursivo)
-        - tone (Neutro | Crítico | Institucional | Alarma | Optimista)
-        - highlighted_aspects (1 a 2 elementos principales)
+        DEFINICIONES OBLIGATORIAS:
+        - Política: Gobierno, congreso, partidos, elecciones, reformas de ley, tribunales, presidentes y funcionarios públicos.
+        - Economía: Finanzas, inflación, bancos, empresas, empleo, mercados, divisas, PIB y política fiscal.
+        - Salud: Hospitales, medicamentos, enfermedades, EPS, salud pública, vacunas y tratamientos médicos.
+        - Deportes: Fútbol, ciclismo, campeonatos, deportistas, torneos y competencias.
+        - Tecnología: Inteligencia artificial, telecomunicaciones, software, ciberseguridad, innovación digital.
+        - Sociedad: Educación, movilidad urbana, derechos sociales, comunidades, denuncias ciudadanas y accidentes.
+        - Conflicto y Paz: Procesos de paz, grupos armados, cese al fuego, víctimas, fuerza pública y seguridad territorial.
+        - Medio Ambiente: Clima, biodiversidad, deforestación, recursos naturales, contaminación, transición energética. REGLA ESTRICTA: Solo temas estrictamente ambientales o ecológicos. Nunca clasifiques noticias de política, economía o justicia aquí.
+        - Internacional: Asuntos diplomáticos, geopolítica mundial, guerras internacionales, elecciones y crisis políticas en otros países (incluyendo crisis de gobierno o juicios políticos en Paraguay, EE. UU., etc.).
+        - Cultura: Arte, cine, música, literatura, festivales, conciertos, premios artísticos y patrimonio cultural.
 
-        LÍMITES ÉTICOS ESTRICTOS: No juzgues veracidad de los hechos ni opines sobre voluntad ciudadana.
+        REGLAS METODOLÓGICAS:
+        1. Clasifica según de qué trata el TITULAR y el texto de la noticia, no según el medio.
+        2. "Medio Ambiente" es solo para clima, biodiversidad, energía, contaminación y recursos naturales.
+        3. Noticias sobre juicios políticos, destituciones presidenciales o detención de mandatarios en Paraguay son "Política" o "Internacional", jamás "Medio Ambiente".
+        4. Extrae también: narrative_angle (1 frase), tone (Neutro|Crítico|Institucional|Alarma|Optimista), y highlighted_aspects (1-2 elementos específicos del titular de ESA noticia).
 
         Noticias:
         {json.dumps(payload_items, ensure_ascii=False, indent=2)}
@@ -267,17 +278,17 @@ def classify_with_gemini(articles: List[Dict[str, Any]], api_key: str) -> List[D
         {{
             "results": [
                 {{
-                    "idx": 0,
+                    "id": "identificador_exacto_de_la_noticia",
                     "category": "Nombre exacto de categoría",
                     "narrative_angle": "Ángulo narrativo",
                     "tone": "Neutro",
-                    "highlighted_aspects": ["Aspecto 1"]
+                    "highlighted_aspects": ["Aspecto 1", "Aspecto 2"]
                 }}
             ]
         }}
         """
 
-        GEMINI_MODELS = ["gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-3.8-flash"]
+        GEMINI_MODELS = ["gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-3.7-flash"]
         gemini_response_json = None
 
         # Intento con google-genai
@@ -290,7 +301,7 @@ def classify_with_gemini(articles: List[Dict[str, Any]], api_key: str) -> List[D
                         contents=prompt,
                         config=types.GenerateContentConfig(
                             response_mime_type="application/json",
-                            temperature=0.2
+                            temperature=0.1
                         )
                     )
                     if response and response.text:
@@ -313,13 +324,17 @@ def classify_with_gemini(articles: List[Dict[str, Any]], api_key: str) -> List[D
                         url = f"https://generativelanguage.googleapis.com/v1beta/models/{m_name}:generateContent?key={api_key}"
                         body = {
                             "contents": [{"parts": [{"text": prompt}]}],
-                            "generationConfig": {"responseMimeType": "application/json", "temperature": 0.2}
+                            "generationConfig": {"responseMimeType": "application/json", "temperature": 0.1}
                         }
                         res = requests.post(url, json=body, timeout=25)
                         if res.status_code == 200:
                             data = res.json()
-                            text_out = data["candidates"][0]["content"]["parts"][0]["text"]
-                            gemini_response_json = json.loads(text_out)
+                            text_out = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+                            if text_out.startswith("```json"):
+                                text_out = text_out[7:]
+                            if text_out.endswith("```"):
+                                text_out = text_out[:-3]
+                            gemini_response_json = json.loads(text_out.strip())
                             logger.info(f"Clasificación REST exitosa con {m_name}")
                             break
                         elif res.status_code in [503, 429]:
@@ -329,13 +344,13 @@ def classify_with_gemini(articles: List[Dict[str, Any]], api_key: str) -> List[D
                 if gemini_response_json:
                     break
 
-        # Aplicar resultados
+        # Aplicar resultados estrictamente por identificador único
         results_map = {}
         if gemini_response_json and "results" in gemini_response_json:
-            results_map = {item["idx"]: item for item in gemini_response_json["results"]}
+            results_map = {item["id"]: item for item in gemini_response_json["results"] if "id" in item}
 
-        for j, art in enumerate(batch):
-            info = results_map.get(j)
+        for art in batch:
+            info = results_map.get(art["id"])
             cat = info.get("category") if info else None
             if cat in CANONICAL_TOPICS:
                 art["category"] = cat
@@ -344,12 +359,12 @@ def classify_with_gemini(articles: List[Dict[str, Any]], api_key: str) -> List[D
                 art["tone"] = info.get("tone", "Neutro")
                 art["highlighted_aspects"] = info.get("highlighted_aspects", [art["title"]])
             else:
-                fallback_cat = heuristic_classify(art["title"], art.get("raw_text", ""))
-                art["category"] = fallback_cat
-                art["topic"] = fallback_cat
-                art["narrative_angle"] = "Cobertura informativa"
-                art["tone"] = "Neutro"
-                art["highlighted_aspects"] = [art["title"]]
+                # Regla estricta: NO inventar categoría por defecto si Gemini no responde
+                art["category"] = None
+                art["topic"] = None
+                art["narrative_angle"] = None
+                art["tone"] = None
+                art["highlighted_aspects"] = None
 
     return articles
 
@@ -368,6 +383,8 @@ def scrape_homepage_articles(source: Dict[str, Any], max_items: int = 8) -> List
         resp = requests.get(website_url, headers=HEADERS, timeout=8)
         if resp.status_code != 200:
             return items
+        if resp.encoding.lower() in ["iso-8859-1", "latin1"] or not resp.encoding:
+            resp.encoding = resp.apparent_encoding or "utf-8"
         soup = BeautifulSoup(resp.text, "html.parser")
         seen_links = set()
 
