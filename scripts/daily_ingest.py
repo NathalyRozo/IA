@@ -377,7 +377,10 @@ def scrape_homepage_articles(source: Dict[str, Any], max_items: int = 8) -> List
             if not title or len(title) < 25 or len(title) > 220:
                 continue
             # Descartar enlaces irrelevantes
-            if any(bad in href.lower() for bad in ["#", "javascript", "login", "registro", "suscribete", "terminos", "politicas", "podcast", "video", "autor"]):
+            # Descartar enlaces irrelevantes, promociones de suscripción y menús
+            bad_tokens = ["#", "javascript", "login", "registro", "suscrib", "vea", "pauta", "para-ti", "beneficios", "tarjeta", "descuentos", "app_pages", "club", "tienda", "terminos", "politicas", "podcast", "video", "autor", "desde $"]
+            if any(bad in href.lower() for bad in bad_tokens) or any(bad in title.lower() for bad in ["suscriptor", "suscrip", "revista vea", "pauta con", "descuentos", "accede a"]):
+                continue
                 continue
 
             # Reconstruir URL absoluta
