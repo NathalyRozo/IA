@@ -1,9 +1,9 @@
 {
   "metadata": {
     "system": "FOQUÉ - Observatorio de Cobertura y Agenda Mediática",
-    "updated_at": "2026-11-07T18:00:00+00:00",
-    "date": "2026-11-07",
-    "total_articles": 335,
+    "updated_at": "2026-11-08T12:27:38.333182+00:00",
+    "date": "2026-11-08",
+    "total_articles": 394,
     "active_sources": 10,
     "gemini_enabled": true,
     "model_used": "gemini-3.5-flash-lite",
@@ -25,9 +25,9 @@
   "feed": {
     "featured_headline": {
       "id": "3de2e7d7765c3ab4",
-      "title": "Línea 2 del Metro de Bogotá: tres grupos pasan a fase final de licitación",
-      "url": "https://www.elespectador.com/bogota/linea-2-del-metro-de-bogota-tres-grupos-pasan-a-fase-final-de-licitacion/",
-      "published_at": "2026-11-07T17:00:00+00:00",
+      "title": "Emprendimiento y Liderazgo",
+      "url": "https://www.elespectador.com/economia/emprendimiento-y-liderazgo/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
+      "published_at": "2026-11-08T12:26:06.213660+00:00",
       "source_name": "El Espectador",
       "source_slug": "el-espectador",
       "origin_type": "Nacional",
@@ -37,8 +37,8 @@
       "excerpt": "Emprendimiento y Liderazgo",
       "category": "Economía",
       "topic": "Economía",
-      "narrative_angle": "Enfoque en la innovación empresarial y el desarrollo de habilidades de liderazgo.",
-      "tone": "Neutro",
+      "narrative_angle": "Promoción del desarrollo empresarial y las capacidades de liderazgo.",
+      "tone": "Optimista",
       "highlighted_aspects": [
         "Emprendimiento",
         "Liderazgo"
@@ -47,9 +47,9 @@
     "top_stories": [
       {
         "id": "3de2e7d7765c3ab4",
-        "title": "Línea 2 del Metro de Bogotá: tres grupos pasan a fase final de licitación",
-        "url": "https://www.elespectador.com/bogota/linea-2-del-metro-de-bogota-tres-grupos-pasan-a-fase-final-de-licitacion/",
-        "published_at": "2026-11-07T17:00:00+00:00",
+        "title": "Emprendimiento y Liderazgo",
+        "url": "https://www.elespectador.com/economia/emprendimiento-y-liderazgo/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
+        "published_at": "2026-11-08T12:26:06.213660+00:00",
         "source_name": "El Espectador",
         "source_slug": "el-espectador",
         "origin_type": "Nacional",
@@ -59,8 +59,8 @@
         "excerpt": "Emprendimiento y Liderazgo",
         "category": "Economía",
         "topic": "Economía",
-        "narrative_angle": "Enfoque en la innovación empresarial y el liderazgo directivo.",
-        "tone": "Neutro",
+        "narrative_angle": "Promoción del desarrollo empresarial y las capacidades de liderazgo.",
+        "tone": "Optimista",
         "highlighted_aspects": [
           "Emprendimiento",
           "Liderazgo"
@@ -68,9 +68,9 @@
       },
       {
         "id": "290a6abf84b10fe3",
-        "title": "Línea 2 del Metro de Bogotá: tres grupos pasan a fase final de licitación",
-        "url": "https://www.elespectador.com/bogota/linea-2-del-metro-de-bogota-tres-grupos-pasan-a-fase-final-de-licitacion/",
-        "published_at": "2026-11-07T16:00:00+00:00",
+        "title": "Informe Final Comisión de la Verdad",
+        "url": "https://www.elespectador.com/colombia-20/informe-final-comision-de-la-verdad/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
+        "published_at": "2026-11-08T12:26:06.213836+00:00",
         "source_name": "El Espectador",
         "source_slug": "el-espectador",
         "origin_type": "Nacional",
@@ -80,18 +80,18 @@
         "excerpt": "Informe Final Comisión de la Verdad",
         "category": "Conflicto y Paz",
         "topic": "Conflicto y Paz",
-        "narrative_angle": "Presentación y divulgación de las conclusiones oficiales sobre el conflicto armado.",
+        "narrative_angle": "Presentación de las conclusiones del proceso de la Comisión de la Verdad.",
         "tone": "Institucional",
         "highlighted_aspects": [
           "Comisión de la Verdad",
-          "Informe Final"
+          "Memoria histórica"
         ]
       },
       {
         "id": "4c9cdea5347c9c3a",
-        "title": "Línea 2 del Metro de Bogotá: tres grupos pasan a fase final de licitación",
-        "url": "https://www.elespectador.com/bogota/linea-2-del-metro-de-bogota-tres-grupos-pasan-a-fase-final-de-licitacion/",
-        "published_at": "2026-11-07T15:00:00+00:00",
+        "title": "De Colombia para el mundo",
+        "url": "https://www.elespectador.com/responsabilidad-social/region-en-accion/de-colombia-para-el-mundo/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
+        "published_at": "2026-11-08T12:26:06.213858+00:00",
         "source_name": "El Espectador",
         "source_slug": "el-espectador",
         "origin_type": "Nacional",
@@ -101,7 +101,7 @@
         "excerpt": "De Colombia para el mundo",
         "category": "Cultura",
         "topic": "Cultura",
-        "narrative_angle": "Destacar la proyección internacional de talento o productos colombianos.",
+        "narrative_angle": "Exaltación del talento y la proyección internacional de Colombia.",
         "tone": "Optimista",
         "highlighted_aspects": [
           "Talento nacional",
@@ -109,52 +109,115 @@
         ]
       },
       {
-        "id": "c59ad8f954013c9d",
-        "title": "Línea 2 del Metro de Bogotá: tres grupos pasan a fase final de licitación",
-        "url": "https://www.elespectador.com/bogota/linea-2-del-metro-de-bogota-tres-grupos-pasan-a-fase-final-de-licitacion/",
-        "published_at": "2026-11-07T14:00:00+00:00",
+        "id": "e858753b7e207cfa",
+        "title": "Noticias Caracol y Caracol Radio denunciaron amenaza de posible atentado",
+        "url": "https://www.elespectador.com/bogota/policia-de-bogota-descarto-amenaza-de-bomba-en-noticias-caracol/",
+        "published_at": "2026-11-08T12:26:06.214028+00:00",
         "source_name": "El Espectador",
         "source_slug": "el-espectador",
         "origin_type": "Nacional",
         "source_scope": "nacional",
         "source_country": "Colombia",
-        "raw_text": "Línea 2 del Metro de Bogotá: tres grupos pasan a fase final de licitación",
-        "excerpt": "Línea 2 del Metro de Bogotá: tres grupos pasan a fase final de licitación",
-        "category": "Economía",
-        "topic": "Economía",
-        "narrative_angle": "Avance en el proceso de contratación para infraestructura de transporte masivo.",
-        "tone": "Neutro",
+        "raw_text": "Noticias Caracol y Caracol Radio denunciaron amenaza de posible atentado",
+        "excerpt": "Noticias Caracol y Caracol Radio denunciaron amenaza de posible atentado",
+        "category": "Sociedad",
+        "topic": "Sociedad",
+        "narrative_angle": "Denuncia pública sobre riesgos a la seguridad de medios de comunicación.",
+        "tone": "Alarma",
         "highlighted_aspects": [
-          "Metro de Bogotá",
-          "Licitación"
+          "Amenazas",
+          "Libertad de prensa"
         ]
       },
       {
-        "id": "9734a7c213a1e74f",
-        "title": "Santiago Peña, expresidente de Paraguay, queda detenido en su casa tras ser destituido",
-        "url": "https://www.elespectador.com/mundo/america/santiago-pena-paraguay-detenido/",
-        "published_at": "2026-11-07T13:00:00+00:00",
+        "id": "421a43763eca3293",
+        "title": "Bula enfrenta ruidos en San Carlos: alertas enviadas a Palacio lo llaman “fundamentalista”",
+        "url": "https://www.elespectador.com/politica/omar-bula-enfrenta-ruidos-en-cancilleria-alertas-enviadas-al-presidente-de-la-espriella-lo-llaman-fundamentalista/",
+        "published_at": "2026-11-08T12:26:06.214052+00:00",
         "source_name": "El Espectador",
         "source_slug": "el-espectador",
         "origin_type": "Nacional",
         "source_scope": "nacional",
         "source_country": "Colombia",
-        "raw_text": "Santiago Peña, expresidente de Paraguay, queda detenido en su casa tras ser destituido",
-        "excerpt": "Santiago Peña, expresidente de Paraguay, queda detenido en su casa tras ser destituido",
-        "category": "Medio Ambiente",
-        "topic": "Medio Ambiente",
-        "narrative_angle": "Cobertura de un evento político institucional relevante en el ámbito regional sudamericano.",
-        "tone": "Neutro",
+        "raw_text": "Bula enfrenta ruidos en San Carlos: alertas enviadas a Palacio lo llaman “fundamentalista”",
+        "excerpt": "Bula enfrenta ruidos en San Carlos: alertas enviadas a Palacio lo llaman “fundamentalista”",
+        "category": "Política",
+        "topic": "Política",
+        "narrative_angle": "Tensión política en torno a nombramientos y alertas institucionales.",
+        "tone": "Crítico",
         "highlighted_aspects": [
-          "Santiago Peña",
-          "Destitución y detención"
+          "Gobierno",
+          "Controversia política"
+        ]
+      },
+      {
+        "id": "a7e4879598d30de3",
+        "title": "Financiación y autonomía: lo que está en juego para la cultura ante las medidas del Gobierno",
+        "url": "https://www.elespectador.com/el-magazin-cultural/financiacion-y-autonomia-lo-que-esta-en-juego-para-la-cultura-ante-las-medidas-del-gobierno/",
+        "published_at": "2026-11-08T12:26:06.214065+00:00",
+        "source_name": "El Espectador",
+        "source_slug": "el-espectador",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "Financiación y autonomía: lo que está en juego para la cultura ante las medidas del Gobierno",
+        "excerpt": "Financiación y autonomía: lo que está en juego para la cultura ante las medidas del Gobierno",
+        "category": "Cultura",
+        "topic": "Cultura",
+        "narrative_angle": "Debate sobre la financiación estatal y la autonomía en el sector cultural.",
+        "tone": "Crítico",
+        "highlighted_aspects": [
+          "Financiación cultural",
+          "Políticas gubernamentales"
+        ]
+      },
+      {
+        "id": "3092a86fefe561c3",
+        "title": "\"No dejen morir al deporte\": el pedido de la selección colombiana de levantamiento de pesas",
+        "url": "https://www.elespectador.com/deportes/mas-deportes/pedido-de-la-seleccion-colombiana-de-levantamiento-de-pesas/",
+        "published_at": "2026-11-08T12:26:06.214077+00:00",
+        "source_name": "El Espectador",
+        "source_slug": "el-espectador",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "\"No dejen morir al deporte\": el pedido de la selección colombiana de levantamiento de pesas",
+        "excerpt": "\"No dejen morir al deporte\": el pedido de la selección colombiana de levantamiento de pesas",
+        "category": "Deportes",
+        "topic": "Deportes",
+        "narrative_angle": "Reclamo de apoyo económico para la continuidad de disciplinas deportivas.",
+        "tone": "Crítico",
+        "highlighted_aspects": [
+          "Apoyo estatal",
+          "Levantamiento de pesas"
+        ]
+      },
+      {
+        "id": "540d5e4a0b0e2415",
+        "title": "“No es políticamente estratégico cortarle el tiempo a la JEP”: magistrado Danilo Rojas",
+        "url": "https://www.elespectador.com/judicial/no-es-politicamente-estrategico-cortarle-el-tiempo-a-la-jep-magistrado-danilo-rojas/",
+        "published_at": "2026-11-08T12:26:06.214091+00:00",
+        "source_name": "El Espectador",
+        "source_slug": "el-espectador",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "“No es políticamente estratégico cortarle el tiempo a la JEP”: magistrado Danilo Rojas",
+        "excerpt": "“No es políticamente estratégico cortarle el tiempo a la JEP”: magistrado Danilo Rojas",
+        "category": "Conflicto y Paz",
+        "topic": "Conflicto y Paz",
+        "narrative_angle": "Discusión sobre la vigencia y estrategia temporal de la justicia transicional.",
+        "tone": "Institucional",
+        "highlighted_aspects": [
+          "JEP",
+          "Justicia transicional"
         ]
       },
       {
         "id": "9037caaac40364d9",
         "title": "Calendario electoral 2027 en Colombia",
         "url": "https://www.rtvcnoticias.com/politica/calendario-electoral-2027-fechas-y-cuando-seran-las-votaciones",
-        "published_at": "2026-11-07T12:00:00+00:00",
+        "published_at": "2026-11-08T12:26:06.874016+00:00",
         "source_name": "RTVC Noticias",
         "source_slug": "rtvc-noticias",
         "origin_type": "Nacional",
@@ -164,8 +227,8 @@
         "excerpt": "Calendario electoral 2027 en Colombia",
         "category": "Política",
         "topic": "Política",
-        "narrative_angle": "Planificación y programación de los comicios electorales futuros.",
-        "tone": "Institucional",
+        "narrative_angle": "Planificación y fechas clave para los próximos procesos electorales.",
+        "tone": "Neutro",
         "highlighted_aspects": [
           "Calendario electoral",
           "Elecciones 2027"
@@ -175,7 +238,7 @@
         "id": "6738d14976295a2d",
         "title": "Corte Suprema ordena entregar celular de Deicy Jiménez",
         "url": "https://www.rtvcnoticias.com/politica/corte-suprema-ordena-entregar-celular-de-deicy-jimenez-la-fiscalia",
-        "published_at": "2026-11-07T11:00:00+00:00",
+        "published_at": "2026-11-08T12:26:06.874034+00:00",
         "source_name": "RTVC Noticias",
         "source_slug": "rtvc-noticias",
         "origin_type": "Nacional",
@@ -185,18 +248,18 @@
         "excerpt": "Corte Suprema ordena entregar celular de Deicy Jiménez",
         "category": "Política",
         "topic": "Política",
-        "narrative_angle": "Decisión judicial relacionada con el requerimiento de pruebas en una investigación.",
-        "tone": "Neutro",
+        "narrative_angle": "Decisión judicial de la Corte Suprema sobre entrega de elementos probatorios.",
+        "tone": "Institucional",
         "highlighted_aspects": [
           "Corte Suprema",
-          "Pruebas judiciales"
+          "Decisión judicial"
         ]
       },
       {
         "id": "40dd47bc04ebe8a4",
         "title": "Emisoras de la Reconciliación renuevan su programación",
         "url": "https://www.rtvcnoticias.com/actualidad/inravision/desde-este-lunes-7-de-septiembre-las-emisoras-de-la-reconciliacion-renuevan",
-        "published_at": "2026-11-07T10:00:00+00:00",
+        "published_at": "2026-11-08T12:26:06.874046+00:00",
         "source_name": "RTVC Noticias",
         "source_slug": "rtvc-noticias",
         "origin_type": "Nacional",
@@ -204,20 +267,20 @@
         "source_country": "Colombia",
         "raw_text": "Emisoras de la Reconciliación renuevan su programación",
         "excerpt": "Emisoras de la Reconciliación renuevan su programación",
-        "category": "Cultura",
-        "topic": "Cultura",
-        "narrative_angle": "Actualización de contenidos en medios de comunicación orientados a la paz.",
-        "tone": "Institucional",
+        "category": "Conflicto y Paz",
+        "topic": "Conflicto y Paz",
+        "narrative_angle": "Renovación de los contenidos en los medios dedicados a la pedagogía y construcción de paz.",
+        "tone": "Optimista",
         "highlighted_aspects": [
-          "Emisoras de la Reconciliación",
-          "Programación"
+          "Renovación de programación",
+          "Emisoras de la Reconciliación"
         ]
       },
       {
         "id": "d6db981fbf44691d",
         "title": "Funcionamiento normal en los aeropuertos de Bogotá y Medellín",
         "url": "https://www.rtvcnoticias.com/actualidad/se-normalizan-operaciones-en-aeropuertos-de-bogota-y-medellin",
-        "published_at": "2026-11-07T09:00:00+00:00",
+        "published_at": "2026-11-08T12:26:06.874061+00:00",
         "source_name": "RTVC Noticias",
         "source_slug": "rtvc-noticias",
         "origin_type": "Nacional",
@@ -227,18 +290,272 @@
         "excerpt": "Funcionamiento normal en los aeropuertos de Bogotá y Medellín",
         "category": "Sociedad",
         "topic": "Sociedad",
-        "narrative_angle": "Reporte sobre la normalidad en la operatividad aeroportuaria principal del país.",
+        "narrative_angle": "Reporte de estabilidad e itinerarios operacionales en la infraestructura aeroportuaria principal.",
+        "tone": "Institucional",
+        "highlighted_aspects": [
+          "Normalidad en la operación",
+          "Aeropuertos de Bogotá y Medellín"
+        ]
+      }
+    ],
+    "all_articles": [
+      {
+        "id": "3de2e7d7765c3ab4",
+        "title": "Emprendimiento y Liderazgo",
+        "url": "https://www.elespectador.com/economia/emprendimiento-y-liderazgo/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
+        "published_at": "2026-11-08T12:26:06.213660+00:00",
+        "source_name": "El Espectador",
+        "source_slug": "el-espectador",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "Emprendimiento y Liderazgo",
+        "excerpt": "Emprendimiento y Liderazgo",
+        "category": "Economía",
+        "topic": "Economía",
+        "narrative_angle": "Promoción del desarrollo empresarial y las capacidades de liderazgo.",
+        "tone": "Optimista",
+        "highlighted_aspects": [
+          "Emprendimiento",
+          "Liderazgo"
+        ]
+      },
+      {
+        "id": "290a6abf84b10fe3",
+        "title": "Informe Final Comisión de la Verdad",
+        "url": "https://www.elespectador.com/colombia-20/informe-final-comision-de-la-verdad/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
+        "published_at": "2026-11-08T12:26:06.213836+00:00",
+        "source_name": "El Espectador",
+        "source_slug": "el-espectador",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "Informe Final Comisión de la Verdad",
+        "excerpt": "Informe Final Comisión de la Verdad",
+        "category": "Conflicto y Paz",
+        "topic": "Conflicto y Paz",
+        "narrative_angle": "Presentación de las conclusiones del proceso de la Comisión de la Verdad.",
+        "tone": "Institucional",
+        "highlighted_aspects": [
+          "Comisión de la Verdad",
+          "Memoria histórica"
+        ]
+      },
+      {
+        "id": "4c9cdea5347c9c3a",
+        "title": "De Colombia para el mundo",
+        "url": "https://www.elespectador.com/responsabilidad-social/region-en-accion/de-colombia-para-el-mundo/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
+        "published_at": "2026-11-08T12:26:06.213858+00:00",
+        "source_name": "El Espectador",
+        "source_slug": "el-espectador",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "De Colombia para el mundo",
+        "excerpt": "De Colombia para el mundo",
+        "category": "Cultura",
+        "topic": "Cultura",
+        "narrative_angle": "Exaltación del talento y la proyección internacional de Colombia.",
+        "tone": "Optimista",
+        "highlighted_aspects": [
+          "Talento nacional",
+          "Proyección internacional"
+        ]
+      },
+      {
+        "id": "e858753b7e207cfa",
+        "title": "Noticias Caracol y Caracol Radio denunciaron amenaza de posible atentado",
+        "url": "https://www.elespectador.com/bogota/policia-de-bogota-descarto-amenaza-de-bomba-en-noticias-caracol/",
+        "published_at": "2026-11-08T12:26:06.214028+00:00",
+        "source_name": "El Espectador",
+        "source_slug": "el-espectador",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "Noticias Caracol y Caracol Radio denunciaron amenaza de posible atentado",
+        "excerpt": "Noticias Caracol y Caracol Radio denunciaron amenaza de posible atentado",
+        "category": "Sociedad",
+        "topic": "Sociedad",
+        "narrative_angle": "Denuncia pública sobre riesgos a la seguridad de medios de comunicación.",
+        "tone": "Alarma",
+        "highlighted_aspects": [
+          "Amenazas",
+          "Libertad de prensa"
+        ]
+      },
+      {
+        "id": "421a43763eca3293",
+        "title": "Bula enfrenta ruidos en San Carlos: alertas enviadas a Palacio lo llaman “fundamentalista”",
+        "url": "https://www.elespectador.com/politica/omar-bula-enfrenta-ruidos-en-cancilleria-alertas-enviadas-al-presidente-de-la-espriella-lo-llaman-fundamentalista/",
+        "published_at": "2026-11-08T12:26:06.214052+00:00",
+        "source_name": "El Espectador",
+        "source_slug": "el-espectador",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "Bula enfrenta ruidos en San Carlos: alertas enviadas a Palacio lo llaman “fundamentalista”",
+        "excerpt": "Bula enfrenta ruidos en San Carlos: alertas enviadas a Palacio lo llaman “fundamentalista”",
+        "category": "Política",
+        "topic": "Política",
+        "narrative_angle": "Tensión política en torno a nombramientos y alertas institucionales.",
+        "tone": "Crítico",
+        "highlighted_aspects": [
+          "Gobierno",
+          "Controversia política"
+        ]
+      },
+      {
+        "id": "a7e4879598d30de3",
+        "title": "Financiación y autonomía: lo que está en juego para la cultura ante las medidas del Gobierno",
+        "url": "https://www.elespectador.com/el-magazin-cultural/financiacion-y-autonomia-lo-que-esta-en-juego-para-la-cultura-ante-las-medidas-del-gobierno/",
+        "published_at": "2026-11-08T12:26:06.214065+00:00",
+        "source_name": "El Espectador",
+        "source_slug": "el-espectador",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "Financiación y autonomía: lo que está en juego para la cultura ante las medidas del Gobierno",
+        "excerpt": "Financiación y autonomía: lo que está en juego para la cultura ante las medidas del Gobierno",
+        "category": "Cultura",
+        "topic": "Cultura",
+        "narrative_angle": "Debate sobre la financiación estatal y la autonomía en el sector cultural.",
+        "tone": "Crítico",
+        "highlighted_aspects": [
+          "Financiación cultural",
+          "Políticas gubernamentales"
+        ]
+      },
+      {
+        "id": "3092a86fefe561c3",
+        "title": "\"No dejen morir al deporte\": el pedido de la selección colombiana de levantamiento de pesas",
+        "url": "https://www.elespectador.com/deportes/mas-deportes/pedido-de-la-seleccion-colombiana-de-levantamiento-de-pesas/",
+        "published_at": "2026-11-08T12:26:06.214077+00:00",
+        "source_name": "El Espectador",
+        "source_slug": "el-espectador",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "\"No dejen morir al deporte\": el pedido de la selección colombiana de levantamiento de pesas",
+        "excerpt": "\"No dejen morir al deporte\": el pedido de la selección colombiana de levantamiento de pesas",
+        "category": "Deportes",
+        "topic": "Deportes",
+        "narrative_angle": "Reclamo de apoyo económico para la continuidad de disciplinas deportivas.",
+        "tone": "Crítico",
+        "highlighted_aspects": [
+          "Apoyo estatal",
+          "Levantamiento de pesas"
+        ]
+      },
+      {
+        "id": "540d5e4a0b0e2415",
+        "title": "“No es políticamente estratégico cortarle el tiempo a la JEP”: magistrado Danilo Rojas",
+        "url": "https://www.elespectador.com/judicial/no-es-politicamente-estrategico-cortarle-el-tiempo-a-la-jep-magistrado-danilo-rojas/",
+        "published_at": "2026-11-08T12:26:06.214091+00:00",
+        "source_name": "El Espectador",
+        "source_slug": "el-espectador",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "“No es políticamente estratégico cortarle el tiempo a la JEP”: magistrado Danilo Rojas",
+        "excerpt": "“No es políticamente estratégico cortarle el tiempo a la JEP”: magistrado Danilo Rojas",
+        "category": "Conflicto y Paz",
+        "topic": "Conflicto y Paz",
+        "narrative_angle": "Discusión sobre la vigencia y estrategia temporal de la justicia transicional.",
+        "tone": "Institucional",
+        "highlighted_aspects": [
+          "JEP",
+          "Justicia transicional"
+        ]
+      },
+      {
+        "id": "9037caaac40364d9",
+        "title": "Calendario electoral 2027 en Colombia",
+        "url": "https://www.rtvcnoticias.com/politica/calendario-electoral-2027-fechas-y-cuando-seran-las-votaciones",
+        "published_at": "2026-11-08T12:26:06.874016+00:00",
+        "source_name": "RTVC Noticias",
+        "source_slug": "rtvc-noticias",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "Calendario electoral 2027 en Colombia",
+        "excerpt": "Calendario electoral 2027 en Colombia",
+        "category": "Política",
+        "topic": "Política",
+        "narrative_angle": "Planificación y fechas clave para los próximos procesos electorales.",
         "tone": "Neutro",
         "highlighted_aspects": [
-          "Aeropuertos",
-          "Bogotá y Medellín"
+          "Calendario electoral",
+          "Elecciones 2027"
+        ]
+      },
+      {
+        "id": "6738d14976295a2d",
+        "title": "Corte Suprema ordena entregar celular de Deicy Jiménez",
+        "url": "https://www.rtvcnoticias.com/politica/corte-suprema-ordena-entregar-celular-de-deicy-jimenez-la-fiscalia",
+        "published_at": "2026-11-08T12:26:06.874034+00:00",
+        "source_name": "RTVC Noticias",
+        "source_slug": "rtvc-noticias",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "Corte Suprema ordena entregar celular de Deicy Jiménez",
+        "excerpt": "Corte Suprema ordena entregar celular de Deicy Jiménez",
+        "category": "Política",
+        "topic": "Política",
+        "narrative_angle": "Decisión judicial de la Corte Suprema sobre entrega de elementos probatorios.",
+        "tone": "Institucional",
+        "highlighted_aspects": [
+          "Corte Suprema",
+          "Decisión judicial"
+        ]
+      },
+      {
+        "id": "40dd47bc04ebe8a4",
+        "title": "Emisoras de la Reconciliación renuevan su programación",
+        "url": "https://www.rtvcnoticias.com/actualidad/inravision/desde-este-lunes-7-de-septiembre-las-emisoras-de-la-reconciliacion-renuevan",
+        "published_at": "2026-11-08T12:26:06.874046+00:00",
+        "source_name": "RTVC Noticias",
+        "source_slug": "rtvc-noticias",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "Emisoras de la Reconciliación renuevan su programación",
+        "excerpt": "Emisoras de la Reconciliación renuevan su programación",
+        "category": "Conflicto y Paz",
+        "topic": "Conflicto y Paz",
+        "narrative_angle": "Renovación de los contenidos en los medios dedicados a la pedagogía y construcción de paz.",
+        "tone": "Optimista",
+        "highlighted_aspects": [
+          "Renovación de programación",
+          "Emisoras de la Reconciliación"
+        ]
+      },
+      {
+        "id": "d6db981fbf44691d",
+        "title": "Funcionamiento normal en los aeropuertos de Bogotá y Medellín",
+        "url": "https://www.rtvcnoticias.com/actualidad/se-normalizan-operaciones-en-aeropuertos-de-bogota-y-medellin",
+        "published_at": "2026-11-08T12:26:06.874061+00:00",
+        "source_name": "RTVC Noticias",
+        "source_slug": "rtvc-noticias",
+        "origin_type": "Nacional",
+        "source_scope": "nacional",
+        "source_country": "Colombia",
+        "raw_text": "Funcionamiento normal en los aeropuertos de Bogotá y Medellín",
+        "excerpt": "Funcionamiento normal en los aeropuertos de Bogotá y Medellín",
+        "category": "Sociedad",
+        "topic": "Sociedad",
+        "narrative_angle": "Reporte de estabilidad e itinerarios operacionales en la infraestructura aeroportuaria principal.",
+        "tone": "Institucional",
+        "highlighted_aspects": [
+          "Normalidad en la operación",
+          "Aeropuertos de Bogotá y Medellín"
         ]
       },
       {
         "id": "f101c88763898224",
         "title": "Ley de Sometimiento llega a sanción presidencial",
         "url": "https://www.rtvcnoticias.com/politica/gobierno/ley-de-sometimiento-llega-sancion-presidencial",
-        "published_at": "2026-11-07T08:00:00+00:00",
+        "published_at": "2026-11-08T12:26:06.874071+00:00",
         "source_name": "RTVC Noticias",
         "source_slug": "rtvc-noticias",
         "origin_type": "Nacional",
@@ -246,9 +563,9 @@
         "source_country": "Colombia",
         "raw_text": "Ley de Sometimiento llega a sanción presidencial",
         "excerpt": "Ley de Sometimiento llega a sanción presidencial",
-        "category": "Conflicto y Paz",
-        "topic": "Conflicto y Paz",
-        "narrative_angle": "Avance legislativo en el proceso de sanción presidencial de la ley de sometimiento.",
+        "category": "Política",
+        "topic": "Política",
+        "narrative_angle": "Avance legislativo de la Ley de Sometimiento hacia la etapa final de sanción por el Ejecutivo.",
         "tone": "Institucional",
         "highlighted_aspects": [
           "Ley de Sometimiento",
@@ -259,7 +576,7 @@
         "id": "daf4c73527979bfa",
         "title": "Movistar Arena cambia de nombre",
         "url": "https://www.rtvcnoticias.com/actualidad/cual-es-el-nuevo-nombre-del-movistar-arena",
-        "published_at": "2026-11-07T07:00:00+00:00",
+        "published_at": "2026-11-08T12:26:06.874079+00:00",
         "source_name": "RTVC Noticias",
         "source_slug": "rtvc-noticias",
         "origin_type": "Nacional",
@@ -269,18 +586,18 @@
         "excerpt": "Movistar Arena cambia de nombre",
         "category": "Cultura",
         "topic": "Cultura",
-        "narrative_angle": "Anuncio de modificación en la denominación comercial de un escenario de eventos.",
+        "narrative_angle": "Anuncio sobre la modificación comercial del nombre de uno de los escenarios de eventos más importantes.",
         "tone": "Neutro",
         "highlighted_aspects": [
-          "Movistar Arena",
-          "Cambio de nombre"
+          "Cambio de denominación",
+          "Movistar Arena"
         ]
       },
       {
         "id": "73d770bf8df6868f",
         "title": "OMS aprueba ensayos de dos nuevas vacunas contra el ébola",
         "url": "https://www.rtvcnoticias.com/actualidad/salud/oms-aprueba-ensayos-de-dos-nuevas-vacunas-contra-el-ebola",
-        "published_at": "2026-11-07T06:00:00+00:00",
+        "published_at": "2026-11-08T12:26:06.874088+00:00",
         "source_name": "RTVC Noticias",
         "source_slug": "rtvc-noticias",
         "origin_type": "Nacional",
@@ -8593,35 +8910,35 @@
     ]
   },
   "coverage": {
-    "total_articles": 335,
+    "total_articles": 394,
     "coverage_by_media": {
-      "El Espectador": 31,
+      "El Espectador": 36,
       "RTVC Noticias": 28,
-      "El Tiempo": 40,
-      "El Heraldo": 40,
-      "El Colombiano": 32,
-      "Reuters": 22,
-      "BBC News Mundo": 36,
-      "Associated Press (AP)": 21,
-      "Agence France-Presse (AFP)": 17,
-      "The New York Times": 33,
+      "El Tiempo": 53,
+      "El Heraldo": 54,
+      "El Colombiano": 43,
+      "Reuters": 26,
+      "BBC News Mundo": 48,
+      "Associated Press (AP)": 24,
+      "Agence France-Presse (AFP)": 24,
+      "The New York Times": 48,
       "BBC News (Mundo)": 5,
       "The New York Times (World)": 5
     },
     "coverage_by_topic": {
-      "Economía": 10,
-      "Conflicto y Paz": 14,
-      "Cultura": 16,
-      "Medio Ambiente": 34,
-      "Política": 48,
-      "Sociedad": 35,
-      "Salud": 19,
+      "Política": 95,
+      "Economía": 36,
+      "Conflicto y Paz": 48,
+      "Sociedad": 51,
+      "Salud": 34,
+      "Medio Ambiente": 52,
+      "Internacional": 24,
       "Tecnología": 29,
-      "Deportes": 89,
-      "Internacional": 16
+      "Deportes": 5,
+      "Cultura": 20
     },
-    "national_count": 186,
-    "international_count": 149,
+    "national_count": 214,
+    "international_count": 180,
     "media_sources": [
       {
         "slug": "el-espectador",
@@ -8717,6 +9034,1008 @@
   },
   "contrast": {
     "events": [
+      {
+        "id": 26,
+        "canonical_title": "Cobertura sobre economía: Emprendimiento y Liderazgo...",
+        "summary": "Emprendimiento y Liderazgo",
+        "topic": "Economía",
+        "article_count": 11,
+        "narrative_synthesis": {
+          "overview": "Acontecimiento multimedio en Economía cubierto por 7 salas de redacción.",
+          "divergences": [
+            "Variación en el encuadre institucional frente al impacto ciudadano."
+          ]
+        },
+        "articles": [
+          {
+            "title": "Emprendimiento y Liderazgo",
+            "source_name": "El Espectador",
+            "url": "https://www.elespectador.com/economia/emprendimiento-y-liderazgo/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
+            "narrative_angle": "Promoción del desarrollo empresarial y las capacidades de liderazgo.",
+            "tone": "Optimista",
+            "highlighted": [
+              "Emprendimiento",
+              "Liderazgo"
+            ]
+          },
+          {
+            "title": "Precio del dólar hoy en Colombia",
+            "source_name": "RTVC Noticias",
+            "url": "https://www.rtvcnoticias.com/economia/precio-del-dolar-hoy-en-colombia-trm-y-casas-de-cambio",
+            "narrative_angle": "Monitoreo del valor de la divisa extranjera en el mercado cambiario nacional.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Cotización del dólar",
+              "Mercado financiero en Colombia"
+            ]
+          },
+          {
+            "title": "Desde $900/Mes\n SUSCRÍBETE",
+            "source_name": "El Tiempo",
+            "url": "https://www.eltiempo.com/suscripcion-digital",
+            "narrative_angle": "Promoción comercial orientada a la adquisición de membresías de lectura digital.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Oferta de suscripción",
+              "Tarifa promocional"
+            ]
+          },
+          {
+            "title": "Bancadas plantearon este sábado sus propuestas sobre la Ley de Rescate",
+            "source_name": "El Heraldo",
+            "url": "https://www.elheraldo.co/politica/2026/11/08/bancadas-plantearon-este-sabado-sus-propuestas-sobre-la-ley-de-rescate/",
+            "narrative_angle": "Presentación de las iniciativas y propuestas económicas planteadas por los partidos políticos.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Propuestas legislativas",
+              "Bancadas"
+            ]
+          },
+          {
+            "title": "El âtalÃ³n de Aquilesâ de la Ley Fiscal para devolver el IVA a 19 millones de personas",
+            "source_name": "El Colombiano",
+            "url": "https://www.elcolombiano.com/negocios/efectiva-devolucion-iva-facturacion-electronica-KM43292549",
+            "narrative_angle": "Evaluación de los desafíos y debilidades de una ley fiscal relacionada con la devolución de impuestos.",
+            "tone": "Crítico",
+            "highlighted": [
+              "Ley fiscal",
+              "Devolución de IVA"
+            ]
+          },
+          {
+            "title": "Â¿Negocio con el lote de la FLA ayudarÃ­a a financiar el nuevo ferrocarril de Antioquia?",
+            "source_name": "El Colombiano",
+            "url": "https://www.elcolombiano.com/antioquia/lote-fla-financiaria-nuevo-tren-del-rio-de-antioquia-PF43314380",
+            "narrative_angle": "Exploración de alternativas financieras inmobiliarias para proyectos de infraestructura regional.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Financiación",
+              "Infraestructura"
+            ]
+          },
+          {
+            "title": "India's ONGC hopes to get rights to operate 2 Venezuelan oil projects in six months - Reuters",
+            "source_name": "Reuters",
+            "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQNFZRNmVFbFo3djg0OFVtZDdBNG8zOU9jNWtrWWJrQll5WlJrMmlkck9saTQtczBOZEhZNjY2Y3BnNnU5eHBndS1VMVV4WDUwek02R05sUjV0bjgxdzBqc0FUOGdXQTF5WnlGZUJDamtTLWk5SU1mN21OVVVCZjFjM3ZtZWQtLW9vWTZDbUlQUWtWcmRyVTBlOXdKT2JyZXJxRWRjTURRWlNxa0tNQmJ1RnQ4Z0dEeUVINnJBeUNyVVB4QjA?oc=5",
+            "narrative_angle": "Expectativa de la compañía india ONGC por obtener derechos de explotación petrolera en Venezuela.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Proyectos petroleros en Venezuela",
+              "Inversión de ONGC"
+            ]
+          },
+          {
+            "title": "Spain's Melia returns to profit after completing Cuba exit - Reuters",
+            "source_name": "Reuters",
+            "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOM3duTlYyeGo0a0p0cWpQSnFiSXVsT2wycVBKcFNPWjV1ZmxBbkZ6STN5enRHVmdNcE9LMk9aSUwydmNZdHlCOFJMWGUzdG1LbXB0QmpuZnF3eE5qRDFLcG8zRnhsNXBmWC03UnhSRldZQzVPZmVoQkVTMkZHMjJWY1ZxQS0wRTF6M0UtQmR5LTk5SVU2cExsQWx2NkxhdW5f?oc=5",
+            "narrative_angle": "Recuperación de la rentabilidad de Meliá tras concretar su salida definitiva de Cuba.",
+            "tone": "Optimista",
+            "highlighted": [
+              "Retorno a beneficios financieros",
+              "Salida operativa de Cuba"
+            ]
+          },
+          {
+            "title": "Venezuela eyes Qatar bridge loan to clear IDB arrears, sources say - Reuters",
+            "source_name": "Reuters",
+            "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQbzcxOU92RVJXd2JmQWs2Zk40dmRBdExvaFVkOXp6OGNkVkMwckwwRE94RjAydWtDc050QVVrMmV3WW5hT0QxdjN5b1RCMHZrUGpBZE5nRGRsNV85RHQydTRzS2RsdUR3WVc4SU9oMnE0RU44OThiNTRjdXFnZGk1RFhKTEx3YmxMS0F2RzJLa1o2aVZnQnFiQk9ReVF6YkhXczRKdGxUSHlRV1dWZXhFTmc3aw?oc=5",
+            "narrative_angle": "Gestión financiera de Venezuela para saldar deudas multilaterales mediante un préstamo de Catar.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Préstamo puente con Catar",
+              "Membresía y deudas con el BID"
+            ]
+          },
+          {
+            "title": "US Treasury drops Venezuela from countries facing outbound US investment restrictions - Reuters",
+            "source_name": "Reuters",
+            "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOOHpQWm5nQmJpYnlpNkloZEdBcWdKYmV2dkhOcFhuVEdtVUJBNlo4bVFZSkM0NmNVb3N3WEJ0QjYzekhrOEFvVmgzaEMtTUxtVnBpd0VIZm83RFpPOXpPV3FpVmtmZzNfRWphcjkwNURkMnk4MkhSQVI2NDgzRjFveWg3ang0VFlQY0thTzVybzdkYWRSeFUxdDYzMjBWU2k3UU1HamdFRVoySEJYeFJYd0h5X3hrY1l0dEtXelpCNA?oc=5",
+            "narrative_angle": "Alivio de las restricciones financieras estadounidenses para promover inversiones en Venezuela.",
+            "tone": "Optimista",
+            "highlighted": [
+              "Decisión del Tesoro de EE. UU.",
+              "Apertura a inversiones internacionales"
+            ]
+          },
+          {
+            "title": "Bugatti CEO to stop leaving keys inside cars after Chiron theft - AFP.com",
+            "source_name": "Agence France-Presse (AFP)",
+            "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQa09wTXQ0Z3RhU052TnZ2VHh5SzFxY0JCZG9CTEZVblVIejFnVjk2dERwbDFCTm1FdEJxVnBFR0d1UjlKYm9UejVwcFluSTVVUjE2TjNLWlJiTFEwZXpEQkNkWThQcVBqWF83cTIycHgyODBadFhkekNCYVhwZUJsQVViMTVrY0c1VGI0?oc=5",
+            "narrative_angle": "Anécdota corporativa sobre seguridad de bienes de lujo tras incidentes de robos.",
+            "tone": "Neutro",
+            "highlighted": [
+              "CEO de Bugatti",
+              "Seguridad automotriz"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "canonical_title": "Cobertura sobre conflicto y paz: Informe Final Comisión de la Verdad...",
+        "summary": "Informe Final Comisión de la Verdad",
+        "topic": "Conflicto y Paz",
+        "article_count": 9,
+        "narrative_synthesis": {
+          "overview": "Acontecimiento multimedio en Conflicto y Paz cubierto por 8 salas de redacción.",
+          "divergences": [
+            "Variación en el encuadre institucional frente al impacto ciudadano."
+          ]
+        },
+        "articles": [
+          {
+            "title": "Informe Final Comisión de la Verdad",
+            "source_name": "El Espectador",
+            "url": "https://www.elespectador.com/colombia-20/informe-final-comision-de-la-verdad/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
+            "narrative_angle": "Presentación de las conclusiones del proceso de la Comisión de la Verdad.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Comisión de la Verdad",
+              "Memoria histórica"
+            ]
+          },
+          {
+            "title": "“No es políticamente estratégico cortarle el tiempo a la JEP”: magistrado Danilo Rojas",
+            "source_name": "El Espectador",
+            "url": "https://www.elespectador.com/judicial/no-es-politicamente-estrategico-cortarle-el-tiempo-a-la-jep-magistrado-danilo-rojas/",
+            "narrative_angle": "Discusión sobre la vigencia y estrategia temporal de la justicia transicional.",
+            "tone": "Institucional",
+            "highlighted": [
+              "JEP",
+              "Justicia transicional"
+            ]
+          },
+          {
+            "title": "Emisoras de la Reconciliación renuevan su programación",
+            "source_name": "RTVC Noticias",
+            "url": "https://www.rtvcnoticias.com/actualidad/inravision/desde-este-lunes-7-de-septiembre-las-emisoras-de-la-reconciliacion-renuevan",
+            "narrative_angle": "Renovación de los contenidos en los medios dedicados a la pedagogía y construcción de paz.",
+            "tone": "Optimista",
+            "highlighted": [
+              "Renovación de programación",
+              "Emisoras de la Reconciliación"
+            ]
+          },
+          {
+            "title": "Caracol Radio informa que también recibió alerta de atentados contra sus instalaciones",
+            "source_name": "El Tiempo",
+            "url": "https://www.eltiempo.com/bogota/caracol-radio-informa-que-tambien-recibio-alerta-de-atentados-contra-sus-instalaciones-3599351",
+            "narrative_angle": "Se informa sobre las alertas de seguridad y posibles amenazas contra medios de comunicación.",
+            "tone": "Alarma",
+            "highlighted": [
+              "Seguridad",
+              "Medios de comunicación"
+            ]
+          },
+          {
+            "title": "CayÃ³ funcionario activo del DNI acusado de espionaje y âhackearâ sistema de inteligencia del Estado",
+            "source_name": "El Colombiano",
+            "url": "https://www.elcolombiano.com/colombia/funcionario-activo-dni-hackear-sistema-de-inteligencia-del-estado-LF43318506",
+            "narrative_angle": "Reporte sobre la captura de un agente estatal vinculado a delitos de espionaje e inteligencia.",
+            "tone": "Alarma",
+            "highlighted": [
+              "Espionaje",
+              "Seguridad nacional"
+            ]
+          },
+          {
+            "title": "Banks, buildings burn as Albania's capital Tirana erupts into student violence - Reuters",
+            "source_name": "Reuters",
+            "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOeTBNcXJGc2dDLUdFX3IwNGhPTi1MaXZkWnpHUll5c21FS2hCM1NYeVMtb2RkaUNkWEhiRXpqaWdWUUtuUjBfYzZrSVJfZHUzaW5SYTJXNi1kdVY0WHYxM054ZWZ0ck5XMFpNTGhGcHdUOFJzQXNsUzhGWjlNZENLWS0tSVJVbVJmNWx1OGE0VUZxS01LdE9Qd2U1Zm9aMlZkb3ZPTGppOWVlLWxt?oc=5",
+            "narrative_angle": "Escalada de violencia en Tirana debido a manifestaciones estudiantiles con destrozos e incendios.",
+            "tone": "Alarma",
+            "highlighted": [
+              "Protestas y violencia estudiantil",
+              "Daños a infraestructuras urbanas"
+            ]
+          },
+          {
+            "title": "Qué se sabe del ataque que dejó al menos 6 muertos y decenas de heridos en Polonia",
+            "source_name": "BBC News Mundo",
+            "url": "https://www.bbc.com/mundo/articles/c6d091e7jzz7o?at_medium=RSS&at_campaign=rss",
+            "narrative_angle": "Cobertura informativa sobre un ataque violento y la posterior investigación oficial en Polonia.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Investigación policial",
+              "Seguridad ciudadana"
+            ]
+          },
+          {
+            "title": "Ataque a un político búlgaro en 2013 circula falsamente como si hubiera sido contra Netanyahu en 2026 - AFP Factual",
+            "source_name": "Agence France-Presse (AFP)",
+            "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE45VjFERU0tMGE1Ml9xaWRvMnBDeVpJME5LVnRGYU9iVENUMkl4bjNrcVZhMXBZSHoxNTFxTU44SllKME5jSUZBejAwRmhsM0t1em5ZNXFB?oc=5",
+            "narrative_angle": "Desmentido sobre la circulación de material audiovisual manipulado de ataques políticos.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Desinformación",
+              "Ataques políticos históricos"
+            ]
+          },
+          {
+            "title": "More Than 50 Killed in Yemen in One of the Deadliest 24 Hours of the War",
+            "source_name": "The New York Times",
+            "url": "https://www.nytimes.com/2026/11/07/world/middleeast/more-than-50-killed-in-yemen.html",
+            "narrative_angle": "El alto coste humano y el recrudecimiento de la violencia armada sobre la población civil.",
+            "tone": "Crítico",
+            "highlighted": [
+              "Víctimas civiles",
+              "Escalada bélica"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "canonical_title": "Cobertura sobre cultura: De Colombia para el mundo...",
+        "summary": "De Colombia para el mundo",
+        "topic": "Cultura",
+        "article_count": 8,
+        "narrative_synthesis": {
+          "overview": "Acontecimiento multimedio en Cultura cubierto por 5 salas de redacción.",
+          "divergences": [
+            "Variación en el encuadre institucional frente al impacto ciudadano."
+          ]
+        },
+        "articles": [
+          {
+            "title": "De Colombia para el mundo",
+            "source_name": "El Espectador",
+            "url": "https://www.elespectador.com/responsabilidad-social/region-en-accion/de-colombia-para-el-mundo/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
+            "narrative_angle": "Exaltación del talento y la proyección internacional de Colombia.",
+            "tone": "Optimista",
+            "highlighted": [
+              "Talento nacional",
+              "Proyección internacional"
+            ]
+          },
+          {
+            "title": "Financiación y autonomía: lo que está en juego para la cultura ante las medidas del Gobierno",
+            "source_name": "El Espectador",
+            "url": "https://www.elespectador.com/el-magazin-cultural/financiacion-y-autonomia-lo-que-esta-en-juego-para-la-cultura-ante-las-medidas-del-gobierno/",
+            "narrative_angle": "Debate sobre la financiación estatal y la autonomía en el sector cultural.",
+            "tone": "Crítico",
+            "highlighted": [
+              "Financiación cultural",
+              "Políticas gubernamentales"
+            ]
+          },
+          {
+            "title": "Movistar Arena cambia de nombre",
+            "source_name": "RTVC Noticias",
+            "url": "https://www.rtvcnoticias.com/actualidad/cual-es-el-nuevo-nombre-del-movistar-arena",
+            "narrative_angle": "Anuncio sobre la modificación comercial del nombre de uno de los escenarios de eventos más importantes.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Cambio de denominación",
+              "Movistar Arena"
+            ]
+          },
+          {
+            "title": "photo_cameraReportajes grÃ¡ficos",
+            "source_name": "El Colombiano",
+            "url": "https://www.elcolombiano.com/multimedia/imagenes",
+            "narrative_angle": "Presentación de galerías fotográficas y contenidos visuales.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Reportajes gráficos"
+            ]
+          },
+          {
+            "title": "descriptionPeriÃ³dico impreso",
+            "source_name": "El Colombiano",
+            "url": "https://digitales.elcolombiano.com/",
+            "narrative_angle": "Difusión de la edición en formato impreso del periódico.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Periódico impreso"
+            ]
+          },
+          {
+            "title": "Las águilas gigantes que cazaban niños y moldearon la evolución humana",
+            "source_name": "BBC News Mundo",
+            "url": "https://www.bbc.com/mundo/articles/cm62yxpxv5kqo?at_medium=RSS&at_campaign=rss",
+            "narrative_angle": "Exploración histórica y evolutiva de la relación entre depredadores prehistóricos y la humanidad.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Evolución humana",
+              "Paleontología"
+            ]
+          },
+          {
+            "title": "\"Cuando hablamos del fin del mundo, todos piensan en meteoritos, virus o un supertsunami, pero pocos imaginan un choque ontológico\"",
+            "source_name": "BBC News Mundo",
+            "url": "https://www.bbc.com/mundo/articles/cr3wvvlp9vx1o?at_medium=RSS&at_campaign=rss",
+            "narrative_angle": "Reflexión sobre la ciencia ficción realista y los desafíos ontológicos de la tecnología moderna.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Literatura",
+              "Impacto tecnológico"
+            ]
+          },
+          {
+            "title": "Samoan Chef Brings Flavors of Home to New Zealand’s Fine-Dining Scene",
+            "source_name": "The New York Times",
+            "url": "https://www.nytimes.com/2026/11/08/world/asia/onesemo-new-zealand-chef-samoa.html",
+            "narrative_angle": "La difusión de la identidad cultural y culinaria de una región insular en la alta cocina internacional.",
+            "tone": "Optimista",
+            "highlighted": [
+              "Gastronomía",
+              "Identidad cultural"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "canonical_title": "Cobertura sobre sociedad: Noticias Caracol y Caracol Radio denunciaron amenaza de posible atentado...",
+        "summary": "Noticias Caracol y Caracol Radio denunciaron amenaza de posible atentado",
+        "topic": "Sociedad",
+        "article_count": 11,
+        "narrative_synthesis": {
+          "overview": "Acontecimiento multimedio en Sociedad cubierto por 8 salas de redacción.",
+          "divergences": [
+            "Variación en el encuadre institucional frente al impacto ciudadano."
+          ]
+        },
+        "articles": [
+          {
+            "title": "Noticias Caracol y Caracol Radio denunciaron amenaza de posible atentado",
+            "source_name": "El Espectador",
+            "url": "https://www.elespectador.com/bogota/policia-de-bogota-descarto-amenaza-de-bomba-en-noticias-caracol/",
+            "narrative_angle": "Denuncia pública sobre riesgos a la seguridad de medios de comunicación.",
+            "tone": "Alarma",
+            "highlighted": [
+              "Amenazas",
+              "Libertad de prensa"
+            ]
+          },
+          {
+            "title": "Funcionamiento normal en los aeropuertos de Bogotá y Medellín",
+            "source_name": "RTVC Noticias",
+            "url": "https://www.rtvcnoticias.com/actualidad/se-normalizan-operaciones-en-aeropuertos-de-bogota-y-medellin",
+            "narrative_angle": "Reporte de estabilidad e itinerarios operacionales en la infraestructura aeroportuaria principal.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Normalidad en la operación",
+              "Aeropuertos de Bogotá y Medellín"
+            ]
+          },
+          {
+            "title": "EL EDITORIALescúchalo en:Opens in new window",
+            "source_name": "El Heraldo",
+            "url": "https://open.spotify.com/show/70GnGwdNhEhx1rEGVvtUCX",
+            "narrative_angle": "Presentación del espacio editorial institucional del medio impreso.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Editorial",
+              "Opinión"
+            ]
+          },
+          {
+            "title": "Dos colombianas, dos países y una misma tragedia: morir a manos de sus parejas",
+            "source_name": "El Heraldo",
+            "url": "https://www.elheraldo.co/judicial/2026/11/08/dos-colombianas-dos-paises-y-una-misma-tragedia-morir-a-manos-de-sus-parejas/",
+            "narrative_angle": "Visibilización de la violencia de género y el feminicidio transnacional.",
+            "tone": "Crítico",
+            "highlighted": [
+              "Violencia de género",
+              "Feminicidios"
+            ]
+          },
+          {
+            "title": "Los 10 puntos claves para entender el nuevo POT que regirÃ¡ en MedellÃ­n",
+            "source_name": "El Colombiano",
+            "url": "https://www.elcolombiano.com/medellin/diez-puntos-claves-del-nuevo-pot-de-medellin-DF43316674",
+            "narrative_angle": "Explicación detallada de las normativas de ordenamiento territorial urbano.",
+            "tone": "Institucional",
+            "highlighted": [
+              "POT",
+              "Urbanismo"
+            ]
+          },
+          {
+            "title": "Verificación: Portada atribuida a The Economist de personas frente a un domo y pastel con el año 2027 es apócrifa - Reuters",
+            "source_name": "Reuters",
+            "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNbERBNmxKaURlTEg5bFJVczY1RzFfbXFqbWlocmJVVHdsczNoVk9Zem80eTNzRURQTG1Ja3V0azVEN2xBWVRjazJHVE9JeXhyRTAwazBiNlJHWmNoWW4tb2I4SWV0TlB1cHB5ZzBRUUQ4ZFBJRU1fckVnZXlGTktJbERfTFE4ZnBa?oc=5",
+            "narrative_angle": "Desmentido periodístico sobre una portada falsa atribuida a The Economist con profecías sobre 2027.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Verificación de desinformación",
+              "Portada apócrifa de The Economist"
+            ]
+          },
+          {
+            "title": "El reto que supone para el papa León XIV visitar Uruguay, el país menos católico de América Latina",
+            "source_name": "BBC News Mundo",
+            "url": "https://www.bbc.com/mundo/articles/ck7vpp3y5nypo?at_medium=RSS&at_campaign=rss",
+            "narrative_angle": "Desafíos pastorales y culturales de la visita papal a un país con fuerte tradición laica.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Religión",
+              "Secularización"
+            ]
+          },
+          {
+            "title": "El video de un incendio en una protesta no tiene relación con la crisis bancaria en Paraguay - AFP Factual",
+            "source_name": "Agence France-Presse (AFP)",
+            "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE83N0QwcGdtNmduMVNEQjZQMlR0MTRXeWhYYUJ3YmxPM0VUWXhmQkNOanoxNmxxekZETnpGTEw5eElQNHlqclNZVXFzWVZvTHBlbFFRZU5n?oc=5",
+            "narrative_angle": "Verificación de información errónea vinculada a eventos de protesta y crisis.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Verificación de hechos",
+              "Protestas en Paraguay"
+            ]
+          },
+          {
+            "title": "Centro de noticias | AFP.com - AFP.com",
+            "source_name": "Agence France-Presse (AFP)",
+            "url": "https://news.google.com/rss/articles/CBMiOkFVX3lxTE1INnNhUk5QakplZnZNOTd6NzBfZ05QOFNjNHpxOWo4bDZsU0Z2b1AtN2VyWWpSbC1SN0E?oc=5",
+            "narrative_angle": "Portal general de acceso a servicios informativos de agencias de noticias.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Centro de noticias",
+              "Actualidad general"
+            ]
+          },
+          {
+            "title": "Factual - AFP Factual",
+            "source_name": "Agence France-Presse (AFP)",
+            "url": "https://news.google.com/rss/articles/CBMiPEFVX3lxTE5wZmU0RUowTFVTZlBCVmxab3loV1RvVkhseEpzd0NlUnBRaC1aMmFhTjN6YXk1dERSVUxhbg?oc=5",
+            "narrative_angle": "Sección dedicada a la verificación de datos y combate a la desinformación.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Verificación de datos",
+              "Periodismo de investigación"
+            ]
+          },
+          {
+            "title": "At Least 6 Dead in Poland After Gunman Opens Fire in Krakow, Police Say",
+            "source_name": "The New York Times",
+            "url": "https://www.nytimes.com/2026/11/07/world/europe/krakow-poland-shooting.html",
+            "narrative_angle": "La conmoción pública y la rápida intervención policial ante un ataque armado urbano.",
+            "tone": "Alarma",
+            "highlighted": [
+              "Trote armado",
+              "Seguridad pública"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "canonical_title": "Cobertura sobre política: Bula enfrenta ruidos en San Carlos: alertas enviadas a Palacio lo llaman “f...",
+        "summary": "Bula enfrenta ruidos en San Carlos: alertas enviadas a Palacio lo llaman “fundamentalista”",
+        "topic": "Política",
+        "article_count": 25,
+        "narrative_synthesis": {
+          "overview": "Acontecimiento multimedio en Política cubierto por 9 salas de redacción.",
+          "divergences": [
+            "Variación en el encuadre institucional frente al impacto ciudadano."
+          ]
+        },
+        "articles": [
+          {
+            "title": "Bula enfrenta ruidos en San Carlos: alertas enviadas a Palacio lo llaman “fundamentalista”",
+            "source_name": "El Espectador",
+            "url": "https://www.elespectador.com/politica/omar-bula-enfrenta-ruidos-en-cancilleria-alertas-enviadas-al-presidente-de-la-espriella-lo-llaman-fundamentalista/",
+            "narrative_angle": "Tensión política en torno a nombramientos y alertas institucionales.",
+            "tone": "Crítico",
+            "highlighted": [
+              "Gobierno",
+              "Controversia política"
+            ]
+          },
+          {
+            "title": "Calendario electoral 2027 en Colombia",
+            "source_name": "RTVC Noticias",
+            "url": "https://www.rtvcnoticias.com/politica/calendario-electoral-2027-fechas-y-cuando-seran-las-votaciones",
+            "narrative_angle": "Planificación y fechas clave para los próximos procesos electorales.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Calendario electoral",
+              "Elecciones 2027"
+            ]
+          },
+          {
+            "title": "Corte Suprema ordena entregar celular de Deicy Jiménez",
+            "source_name": "RTVC Noticias",
+            "url": "https://www.rtvcnoticias.com/politica/corte-suprema-ordena-entregar-celular-de-deicy-jimenez-la-fiscalia",
+            "narrative_angle": "Decisión judicial de la Corte Suprema sobre entrega de elementos probatorios.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Corte Suprema",
+              "Decisión judicial"
+            ]
+          },
+          {
+            "title": "Ley de Sometimiento llega a sanción presidencial",
+            "source_name": "RTVC Noticias",
+            "url": "https://www.rtvcnoticias.com/politica/gobierno/ley-de-sometimiento-llega-sancion-presidencial",
+            "narrative_angle": "Avance legislativo de la Ley de Sometimiento hacia la etapa final de sanción por el Ejecutivo.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Ley de Sometimiento",
+              "Sanción presidencial"
+            ]
+          },
+          {
+            "title": "INVESTIGACIONES DE LA UNIDAD",
+            "source_name": "El Tiempo",
+            "url": "https://www.eltiempo.com/unidad-investigativa/investigaciones-de-la-unidad",
+            "narrative_angle": "Presentación de trabajos y reportajes especiales desarrollados por el equipo periodístico de investigación.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Unidad investigativa",
+              "Periodismo de análisis"
+            ]
+          },
+          {
+            "title": "La notaria que piden chequear para aclarar nexos del expresidente Petro con jóvenes y contratos estatales",
+            "source_name": "El Tiempo",
+            "url": "https://www.eltiempo.com/unidad-investigativa/la-notaria-que-piden-chequear-para-aclarar-nexos-del-expresidente-petro-con-jovenes-y-contratos-estatales-3599216",
+            "narrative_angle": "Escrutinio a actuaciones notariales relacionadas con presuntos vínculos políticos y contratos públicos.",
+            "tone": "Crítico",
+            "highlighted": [
+              "Revisión de notaría",
+              "Contratación estatal y vínculos políticos"
+            ]
+          },
+          {
+            "title": "El impacto en Colombia del estilo del presidente Abelardo De La Espriella en sus primeros 100 días de gobierno",
+            "source_name": "El Tiempo",
+            "url": "https://www.eltiempo.com/politica/abelardo-de-la-espriella/el-impacto-en-colombia-del-estilo-del-presidente-abelardo-de-la-espriella-en-sus-primeros-100-dias-de-gobierno-3599231",
+            "narrative_angle": "Análisis del estilo de gobierno y el impacto de los primeros cien días de administración presidencial.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Gobierno",
+              "Gestión presidencial"
+            ]
+          },
+          {
+            "title": "La dignidad presidencial, bajo la sombra de los escándalos sexuales",
+            "source_name": "El Heraldo",
+            "url": "https://www.elheraldo.co/colombia/2026/11/08/la-dignidad-presidencial-bajo-la-sombra-de-los-escandalos-sexuales/",
+            "narrative_angle": "Crítica sobre el impacto de controversias personales en la investidura presidencial.",
+            "tone": "Crítico",
+            "highlighted": [
+              "Escándalos",
+              "Presidencia"
+            ]
+          },
+          {
+            "title": "La Ley del Montes | Un asunto de Estado",
+            "source_name": "El Heraldo",
+            "url": "https://www.elheraldo.co/colombia/2026/11/08/la-ley-del-montes-un-asunto-de-estado/",
+            "narrative_angle": "Reflexión sobre asuntos de trascendencia nacional y toma de decisiones estatales.",
+            "tone": "Crítico",
+            "highlighted": [
+              "Asuntos de Estado",
+              "Análisis político"
+            ]
+          },
+          {
+            "title": "Las expectativas y los desafíos de la Ley de Sometimiento del gobierno de ADLE",
+            "source_name": "El Heraldo",
+            "url": "https://www.elheraldo.co/politica/2026/11/08/las-expectativas-y-los-desafios-de-la-ley-de-sometimiento-del-gobierno-de-adle/",
+            "narrative_angle": "Examen de los retos y perspectivas en torno a la propuesta de ley de sometimiento del actual gobierno.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Ley de Sometimiento",
+              "Política gubernamental"
+            ]
+          },
+          {
+            "title": "El rastro de Jessica GonzÃ¡lez en el Gobierno Petro",
+            "source_name": "El Colombiano",
+            "url": "https://www.elcolombiano.com/colombia/politica/el-rastro-de-jessica-gonzalez-en-el-gobierno-petro-millonarios-ingresos-prenden-alerta-en-medio-de-los-sexocontratos-PE43302683",
+            "narrative_angle": "Investigación o seguimiento sobre la participación y gestión de funcionarios en la administración actual.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Gobierno",
+              "Gestión pública"
+            ]
+          },
+          {
+            "title": "Ley de Rescate: las propuestas del CD",
+            "source_name": "El Colombiano",
+            "url": "https://www.elcolombiano.com/colombia/centro-democratico-propone-vender-acciones-de-ecopetrol-reducir-el-estado-FE43309509",
+            "narrative_angle": "Análisis de las propuestas legislativas presentadas por un partido político.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Propuestas legislativas",
+              "Partidos políticos"
+            ]
+          },
+          {
+            "title": "Un juez de Paraguay ordena la prisión preventiva para el expresidente Peña por el caso Ueno Bank",
+            "source_name": "BBC News Mundo",
+            "url": "https://www.bbc.com/mundo/articles/c64g1nd9qvn0o?at_medium=RSS&at_campaign=rss",
+            "narrative_angle": "Medidas judiciales drásticas contra el expresidente paraguayo imputado por corrupción administrativa.",
+            "tone": "Crítico",
+            "highlighted": [
+              "Prisión preventiva a expresidente",
+              "Delitos de abuso de confianza"
+            ]
+          },
+          {
+            "title": "El escándalo de Ueno Bank en Paraguay se salda con la detención de Santiago Peña y con Pedro Alliana como nuevo presidente del país",
+            "source_name": "BBC News Mundo",
+            "url": "https://www.bbc.com/mundo/articles/cwkg55edm8r7o?at_medium=RSS&at_campaign=rss",
+            "narrative_angle": "Crisis institucional en Paraguay derivada de un escándalo financiero y un juicio político.",
+            "tone": "Crítico",
+            "highlighted": [
+              "Juicio político",
+              "Corrupción financiera"
+            ]
+          },
+          {
+            "title": "Con la elección de Stephen Miller como jefe de gabinete, Trump se prepara para una batalla",
+            "source_name": "BBC News Mundo",
+            "url": "https://www.bbc.com/mundo/articles/cxzd669938y0o?at_medium=RSS&at_campaign=rss",
+            "narrative_angle": "Análisis de las tensiones políticas esperadas tras un nombramiento clave en la administración estadounidense.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Gabinete presidencial",
+              "Relaciones con el Congreso"
+            ]
+          },
+          {
+            "title": "Presidente de Paraguay destituido es puesto bajo arresto domiciliario tras colapso de banco - AP News",
+            "source_name": "Associated Press (AP)",
+            "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPY3VhNVNTaDFTakVsMEcwem81cmNSeDNod2Fjd2ZOY1RYSTVsc0tKbmgwX1l1b0k5X0V6TXdtRGpKZUNuWFduVmtLNm9FblZhQkllcHB4SEFJamgya3MzUUxZaDB3X1k5ZlctdnV4WVh4TW1qNzd1d21meTJHSHZwc0o2RkxtOG82MmVlNjFtc0ZJNkMwSzdGbjFzREtDZ0VIR0tSdVZ6SFp3Zzh5N1ZWNzFKcHo?oc=5",
+            "narrative_angle": "Consecuencias legales inmediatas para un mandatario destituido tras una crisis bancaria.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Arresto domiciliario",
+              "Crisis bancaria"
+            ]
+          },
+          {
+            "title": "Presidente de Paraguay bajo investigación fiscal; ante posible destitución por colapso de un banco - AP News",
+            "source_name": "Associated Press (AP)",
+            "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQcFBBbFNyM1FDQV9uN1ZXbG5EdGwzQ2M4QWh2QklweEhEbXlFTG81bjQ3aHZRR2NKb3Y2aWxPXy0wRU1BcEhPbHZLdk5ObmQ5VnM2eEEwLVQwYm1TZzZ0aFJhZ1dvUGFVT0QtUnJuVjNSR0RTaEotWVNUWkE3YlhfbThQSjZnaVN2UnZIRGNNVHFkVVNISks0a0NaNkZwek10aTUxQWxmSFNES19jeWc?oc=5",
+            "narrative_angle": "Proceso judicial y político contra un jefe de Estado vinculado al colapso de una entidad financiera.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Investigación fiscal",
+              "Inestabilidad política"
+            ]
+          },
+          {
+            "title": "Paraguay: tres altos funcionarios de Peña renuncian mientras el Senado retoma juicio sobre su futuro - AP News",
+            "source_name": "Associated Press (AP)",
+            "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPdGhsRVo1ZjBDY2F6REJFUXY2UWJUZmhSSWVZdnpHbmo1OXlEZ19ySVVBMEd6RDFuREpoUk1EN2dXVV8xZUc3U2JCSk5kRmdRZWF4UHF5UjhtemJNV2tZV2p5RHlfMWR0dG1zRUpxSThkZEg0SlV4d3FFUjYtS0tPc05zMWNjY1ItZ0w3TS1ocUJLNHVBLUpOZjVZNWtVT1lFRWNaU0tpeFdrY3FBM1E?oc=5",
+            "narrative_angle": "Inestabilidad institucional y crisis gubernamental en Paraguay.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Renuncia de funcionarios",
+              "Juicio político en el Senado"
+            ]
+          },
+          {
+            "title": "La embajadora de Trump en Grecia, Kimberly Guilfoyle, renuncia tras acusaciones de conducta indebida - AP News",
+            "source_name": "Associated Press (AP)",
+            "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOamZPb0wyeVpZbWxRR1RlSk0wYThFUHVhTHJHNHItdzlobWp1RHFFVzRuSmROVVAyb1NGN1dZZVI0UmNnaF9FMEZ3aEJMTXo5YXoyVTRUS2NhZ3ZnREl0cFgwZnU2Q2c3VjdrQUg5MDNxOXRiUmVkNlc0QkxnT1ptUlphSVYteTVka3Mxdi1UX3U4M2VYeEhR?oc=5",
+            "narrative_angle": "Consecuencias políticas y dimisiones diplomáticas por acusaciones de conducta indebida.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Renuncia de embajadora",
+              "Acusaciones de conducta indebida"
+            ]
+          },
+          {
+            "title": "Demócrata progresista El-Sayed gana carrera al Senado por Michigan, será el 1er senador musulmán - AP News",
+            "source_name": "Associated Press (AP)",
+            "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNeHowWXV0MTdVUkxpSlppbDZhdUhXN1dFQ1lJNmwwYVJsMnBhNzhjQTZMLWFtMXJUaV92N29RNko1bFRMX1M1VGZSU0dvTWZBeXBQdDdWcEJiZHladFpzNVZfc1dQQ2NET3RJWDFOWVdNNFB5Um5teFlxd0syVDVDZXlmUlRObUQ3WFNBV21jempyczRHS3hpeXljSHJnUWNlYTFGeXpPNGszREZKaDNr?oc=5",
+            "narrative_angle": "Hito histórico en la representación legislativa con la victoria de un candidato demócrata progresista.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Elecciones al Senado en Michigan",
+              "Primer senador musulmán"
+            ]
+          },
+          {
+            "title": "Brazil's Flavio Bolsonaro isolated, ridiculed after self-exile - AFP.com",
+            "source_name": "Agence France-Presse (AFP)",
+            "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQUmQ2M2UybFotZlRCdm14dHMzekhXVFJRcWFrclBhdXpiXzZSX0JvOVFXSmZfNnFrM00tY2ZaRF9LWlZ6dGJjWmxNQ3NnUFhCXzViRE16dFJ3bllTbUdSblBaNVNlc1NENm1LYk5yUXFxNEFqVGV6SlJQRklqN0JwMXVvTXowN1dYUW04?oc=5",
+            "narrative_angle": "El aislamiento político y el escarnio público de una figura relevante tras su autoexilio.",
+            "tone": "Crítico",
+            "highlighted": [
+              "Flavio Bolsonaro",
+              "Autoexilio"
+            ]
+          },
+          {
+            "title": "Polish riot police deployed as deposed court chief sets off crisis - AFP.com",
+            "source_name": "Agence France-Presse (AFP)",
+            "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFB6eXViNkRJN3l6N01OckdXYXVJSmJMM2FZaWtCNllRaTRJcXRvZ0xVRVozcjFlSmNxRy1GaFBsbXI5bnVuT20yTGFwRQ?oc=5",
+            "narrative_angle": "La escalada de tensión institucional y de seguridad por una crisis judicial en Polonia.",
+            "tone": "Alarma",
+            "highlighted": [
+              "Policía antidisturbios",
+              "Crisis judicial"
+            ]
+          },
+          {
+            "title": "South Africa’s Politics May Never Be the Same Again",
+            "source_name": "The New York Times",
+            "url": "https://www.nytimes.com/2026/11/08/world/africa/south-africa-election-african-national-congress.html",
+            "narrative_angle": "La transformación histórica del panorama político tras la pérdida de hegemonía del partido gobernante.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Elecciones locales",
+              "Pérdida de hegemonía"
+            ]
+          },
+          {
+            "title": "Who Is Gadi Eisenkot, Israel’s Opposition Leader?",
+            "source_name": "The New York Times",
+            "url": "https://www.nytimes.com/2026/11/08/world/middleeast/israel-eisenkot-netanyahu-what-to-know.html",
+            "narrative_angle": "El perfil y los retos de un nuevo líder opositor en su intento por articular una coalición de gobierno.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Liderazgo opositor",
+              "Formación de coalición"
+            ]
+          },
+          {
+            "title": "Prosecutors Charge Paraguay’s Former President With Corruption",
+            "source_name": "The New York Times",
+            "url": "https://www.nytimes.com/2026/11/06/world/americas/paraguay-president-removed-ueno.html",
+            "narrative_angle": "La rendición de cuentas judicial de un exmandatario por cargos de corrupción y enriquecimiento ilícito.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Corrupción",
+              "Proceso judicial"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 31,
+        "canonical_title": "Cobertura sobre deportes: \"No dejen morir al deporte\": el pedido de la selección colombiana de levant...",
+        "summary": "\"No dejen morir al deporte\": el pedido de la selección colombiana de levantamiento de pesas",
+        "topic": "Deportes",
+        "article_count": 4,
+        "narrative_synthesis": {
+          "overview": "Acontecimiento multimedio en Deportes cubierto por 4 salas de redacción.",
+          "divergences": [
+            "Variación en el encuadre institucional frente al impacto ciudadano."
+          ]
+        },
+        "articles": [
+          {
+            "title": "\"No dejen morir al deporte\": el pedido de la selección colombiana de levantamiento de pesas",
+            "source_name": "El Espectador",
+            "url": "https://www.elespectador.com/deportes/mas-deportes/pedido-de-la-seleccion-colombiana-de-levantamiento-de-pesas/",
+            "narrative_angle": "Reclamo de apoyo económico para la continuidad de disciplinas deportivas.",
+            "tone": "Crítico",
+            "highlighted": [
+              "Apoyo estatal",
+              "Levantamiento de pesas"
+            ]
+          },
+          {
+            "title": "Asuntos pendientes para Lorenzo: puestos sin dueño en la Selección Colombia",
+            "source_name": "El Tiempo",
+            "url": "https://www.eltiempo.com/deportes/futbol-internacional/asuntos-pendientes-para-lorenzo-puestos-sin-dueno-en-la-seleccion-colombia-3599315",
+            "narrative_angle": "Evaluación de las decisiones técnicas y los jugadores pendientes de consolidarse en la selección nacional.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Selección Colombia",
+              "Fútbol"
+            ]
+          },
+          {
+            "title": "William Contreras completes dream year with World Series MVP honor - Reuters",
+            "source_name": "Reuters",
+            "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNQTJFckEzT3U2TEphc283WmZlUWVQTEp1dHBGcVFKRTNQLXRiY1g3YmpFdTQxZ2NfdWxoVjZvZXZyMGdSTXRhLTFHeFpXTTJMcXYzdkNNbEZNR1hub0ZrRTUzQzhFdnotT1NhaVpsLVZJWGw1UGlZRmhsMXEtOFJjNUlzWlNhUTEyVlpDYnl5YkFXTjVjSmxocmhOREREc1hheG1MMy1XSi10RDluYzVPeW8yZXRzQQ?oc=5",
+            "narrative_angle": "Consagración de William Contreras al coronarse como el Jugador Más Valioso de la Serie Mundial.",
+            "tone": "Optimista",
+            "highlighted": [
+              "Premio MVP de la Serie Mundial",
+              "Éxito deportivo de William Contreras"
+            ]
+          },
+          {
+            "title": "Cristiano Ronaldo anuncia su retiro internacional con Portugal - AP News",
+            "source_name": "Associated Press (AP)",
+            "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNc3RZMGhHYmlOeWVpUGc0c09KZlpkNXNMc2NxNnZTLTYwaG1yY1JRcUNUQTFoaHBGeEdFSmtVUGpSN2FFZ2xXUGJLZXFoYmI0QjN5b1hMaHRtTURUOGpJUktrTjJsWXJxNjJ1UGFnNkdrUG1NeEdJU1ZidldpNFMxRmpnS0ZpLWp2NmNLSERCVnNsdlNYVER1SFhuSWdIRkI3NHpCb0xB?oc=5",
+            "narrative_angle": "Anuncio oficial de la retirada de un deportista destacado de su selección nacional.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Fútbol",
+              "Retirada deportiva"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 32,
+        "canonical_title": "Cobertura sobre salud: OMS aprueba ensayos de dos nuevas vacunas contra el ébola...",
+        "summary": "OMS aprueba ensayos de dos nuevas vacunas contra el ébola",
+        "topic": "Salud",
+        "article_count": 3,
+        "narrative_synthesis": {
+          "overview": "Acontecimiento multimedio en Salud cubierto por 3 salas de redacción.",
+          "divergences": [
+            "Variación en el encuadre institucional frente al impacto ciudadano."
+          ]
+        },
+        "articles": [
+          {
+            "title": "OMS aprueba ensayos de dos nuevas vacunas contra el ébola",
+            "source_name": "RTVC Noticias",
+            "url": "https://www.rtvcnoticias.com/actualidad/salud/oms-aprueba-ensayos-de-dos-nuevas-vacunas-contra-el-ebola",
+            "narrative_angle": "Aprobación de organismos internacionales para el ensayo clínico de nuevas alternativas biológicas contra el ébola.",
+            "tone": "Optimista",
+            "highlighted": [
+              "Aprobación de la OMS",
+              "Ensayos de vacunas contra el ébola"
+            ]
+          },
+          {
+            "title": "Dengue: lo que debe saber para prevenirlo y reconocer sus síntomas",
+            "source_name": "El Heraldo",
+            "url": "https://www.elheraldo.co/atlantico/2026/11/08/dengue-lo-que-debe-saber-para-prevenirlo-y-reconocer-sus-sintomas/",
+            "narrative_angle": "Información preventiva y divulgativa sobre los síntomas y la prevención del dengue.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Prevención",
+              "Síntomas"
+            ]
+          },
+          {
+            "title": "Ana donó sus órganos al morir en España por eutanasia: ahora un grupo de abogados cristianos quiere prohibir que vuelva a suceder",
+            "source_name": "BBC News Mundo",
+            "url": "https://www.bbc.com/mundo/articles/cqe9eegxvny2o?at_medium=RSS&at_campaign=rss",
+            "narrative_angle": "Intensificación del debate ético y legal sobre la donación de órganos en casos de eutanasia.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Donación de órganos y eutanasia",
+              "Acción judicial de colectivos religiosos"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "canonical_title": "Cobertura sobre internacional: ¿Qué cambia para Colombia con el nuevo Congreso de Estados Unidos tras las ...",
+        "summary": "¿Qué cambia para Colombia con el nuevo Congreso de Estados Unidos tras las elecciones?",
+        "topic": "Internacional",
+        "article_count": 6,
+        "narrative_synthesis": {
+          "overview": "Acontecimiento multimedio en Internacional cubierto por 5 salas de redacción.",
+          "divergences": [
+            "Variación en el encuadre institucional frente al impacto ciudadano."
+          ]
+        },
+        "articles": [
+          {
+            "title": "¿Qué cambia para Colombia con el nuevo Congreso de Estados Unidos tras las elecciones?",
+            "source_name": "El Tiempo",
+            "url": "https://www.eltiempo.com/mundo/eeuu-y-canada/que-cambia-para-colombia-con-el-nuevo-congreso-de-estados-unidos-tras-las-elecciones-democratas-mantendrian-la-ayuda-pero-con-condiciones-3599149",
+            "narrative_angle": "Evaluación del impacto geopolítico de la nueva composición del Congreso estadounidense en la agenda con Colombia.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Elecciones en Estados Unidos",
+              "Relaciones bilaterales Colombia-EE. UU."
+            ]
+          },
+          {
+            "title": "Rebeca Grynspan: 'Consejo de Seguridad de la ONU ganaría mucha legitimidad si representara al mundo de hoy'",
+            "source_name": "El Tiempo",
+            "url": "https://www.eltiempo.com/mundo/mas-regiones/rebeca-grynspan-consejo-de-seguridad-de-la-onu-ganaria-mucha-legitimidad-si-representara-al-mundo-de-hoy-y-no-al-de-3599150",
+            "narrative_angle": "Discusión sobre la necesidad de reformas y legitimidad en el Consejo de Seguridad de la ONU.",
+            "tone": "Institucional",
+            "highlighted": [
+              "ONU",
+              "Geopolítica"
+            ]
+          },
+          {
+            "title": "Verificación: Video antiguo de ataque a político búlgaro es erróneamente identificado como atentado contra Netanyahu - Reuters",
+            "source_name": "Reuters",
+            "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNOWhmTTFLbVh0SXNGN3NfQldlTjBJV2VpZzVvSFUybTk2ZVhobWZzQ0FvUWRxZ3dkT1BlaTQ0c05leHFRSEhjYU5fYmdpV1pXMkZ0eWN6cmd2blJhNmZCTmlzQVFQdEtSQ2c5VmUyQVd2cEJUTzU4RjdKTkhEdmpwYmFxN1pfTGV0?oc=5",
+            "narrative_angle": "Desarticulación de un bulo internacional que asignaba falsamente un video antiguo al primer ministro israelí.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Verificación de contenido engañoso",
+              "Falso atentado a Netanyahu"
+            ]
+          },
+          {
+            "title": "El rey Carlos III habla con jefes de gobierno en Antigua y expresa \"pesar\" por la esclavitud - AP News",
+            "source_name": "Associated Press (AP)",
+            "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQX0dHaHoteEhreWhGd3JLaE1SV01qNUxkN0dqZXN5cFRFTDdTdFZOcHVaZ3huU09iYldmWFlTbkNtNi1UZ2J6VVpRYi13WDRKN0lBR0pKNEtLMTY1V281ZUJkd0l0clFIRWVEUkZEeVBkLVc0aFBDQWFwU1FYYmJRaUkza3hBM0JPblV1NEFEakFmNl9OOHNxVVE1dW95Ym5QNFpFOQ?oc=5",
+            "narrative_angle": "Declaraciones diplomáticas sobre hechos históricos relacionados con la esclavitud.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Monarquía británica",
+              "Memoria histórica"
+            ]
+          },
+          {
+            "title": "Flight data, satellite images reveal growing US role at Ecuador base - AFP.com",
+            "source_name": "Agence France-Presse (AFP)",
+            "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPQmhEb2ZCek9DRVdpQ2s1bTNjQ3FXQ24teHVpQUw5eEp6YW1CZjBWWm9OOHBmcXpKVERHSlBZbEk4VFpjaWE0YWJSVkhzZ3BqMl9pWV9acUxLRHFWbDB4TWNPd1BQNkVaZloxTVFFbktwTlNsdWY2Z2hKUlRzSWUycnQwT2VoZFBRUjNiNm43S2s?oc=5",
+            "narrative_angle": "Monitoreo de la cooperación militar y presencia extranjera mediante datos de satélite.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Presencia militar de EE. UU.",
+              "Base en Ecuador"
+            ]
+          },
+          {
+            "title": "In Argentina, Pope Leo to Meet Church at Odds With President Milei",
+            "source_name": "The New York Times",
+            "url": "https://www.nytimes.com/2026/11/08/world/americas/pope-leo-argentina-milei.html",
+            "narrative_angle": "Las tensiones ideológicas y sociales en el marco de la visita papal frente a las políticas de un líder libertario.",
+            "tone": "Institucional",
+            "highlighted": [
+              "Iglesia católica",
+              "Gobierno de Argentina"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 34,
+        "canonical_title": "Cobertura sobre medio ambiente: La elección en Brasil podría definir el futuro de la Amazonía, advierten ci...",
+        "summary": "La elección en Brasil podría definir el futuro de la Amazonía, advierten científicos    AP News",
+        "topic": "Medio Ambiente",
+        "article_count": 2,
+        "narrative_synthesis": {
+          "overview": "Acontecimiento multimedio en Medio Ambiente cubierto por 2 salas de redacción.",
+          "divergences": [
+            "Variación en el encuadre institucional frente al impacto ciudadano."
+          ]
+        },
+        "articles": [
+          {
+            "title": "La elección en Brasil podría definir el futuro de la Amazonía, advierten científicos - AP News",
+            "source_name": "Associated Press (AP)",
+            "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOb0Q5R1NsNWtZUjdaaDNoc1FmM2tmM19wQ2xMVS1LX3hMclNuUHprSE56aUQ3d24wM05ZX3lrY2w4OTduQnp1bUplWElFYUczQnMzQmpEOENUX1RILWRqb25ValhKb0F3Rjd5bHlvSjZ6bU9RYWNXVlJycFdMMXU3QVdiaHpXMktsaGdMMFU3dnFBdWdIWkhCNThGZDg1bU1QcjdxTDVFWjVvaDhLMllUUGktN2ktZTcycUY4?oc=5",
+            "narrative_angle": "El impacto potencial de procesos electorales sobre la preservación de la Amazonía.",
+            "tone": "Alarma",
+            "highlighted": [
+              "Elecciones en Brasil",
+              "Futuro de la Amazonía"
+            ]
+          },
+          {
+            "title": "Polluted Delhi Tries ‘Green’ Fireworks to Clear the Air at Diwali",
+            "source_name": "The New York Times",
+            "url": "https://www.nytimes.com/2026/11/08/world/asia/delhi-pollution-green-fireworks-diwali.html",
+            "narrative_angle": "El debate sobre la efectividad de las medidas ecológicas frente a la grave contaminación del aire en festivales.",
+            "tone": "Neutro",
+            "highlighted": [
+              "Calidad del aire",
+              "Fuegos artificiales ecológicos"
+            ]
+          }
+        ]
+      },
       {
         "id": 26,
         "canonical_title": "Cobertura sobre sociedad: Suscriptor\n¡No te lo pierdas!\nAccede a descuentos, participa en eventos y m...",
@@ -10688,1281 +12007,6 @@
             ]
           }
         ]
-      },
-      {
-        "id": 26,
-        "canonical_title": "Cobertura sobre sociedad: Suscriptor\n¡No te lo pierdas!\nAccede a descuentos, participa en eventos y m...",
-        "summary": "Suscriptor\n¡No te lo pierdas!\nAccede a descuentos, participa en eventos y más.\nConoce cómo",
-        "topic": "Sociedad",
-        "article_count": 28,
-        "narrative_synthesis": {
-          "overview": "Acontecimiento multimedio en Sociedad cubierto por 8 salas de redacción.",
-          "divergences": [
-            "Variación en el encuadre institucional frente al impacto ciudadano."
-          ]
-        },
-        "articles": [
-          {
-            "title": "Suscriptor\n¡No te lo pierdas!\nAccede a descuentos, participa en eventos y más.\nConoce cómo",
-            "source_name": "El Espectador",
-            "url": "https://www.elespectador.com/para-ti/?utm_source=interno&utm_medium=boton&utm_campaign=producto&utm_content=tarjeta_menu_hamburguesa_adopcion_beneficios",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Emprendimiento y Liderazgo",
-            "source_name": "El Espectador",
-            "url": "https://www.elespectador.com/economia/emprendimiento-y-liderazgo/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Películas, series y novelas",
-            "source_name": "El Espectador",
-            "url": "https://www.elespectador.com/revista-vea/peliculas-series-y-novelas/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Informe Final Comisión de la Verdad",
-            "source_name": "El Espectador",
-            "url": "https://www.elespectador.com/colombia-20/informe-final-comision-de-la-verdad/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Pauta con nosotros en Vea",
-            "source_name": "El Espectador",
-            "url": "https://www.revistavea.com.co/paute-con-nosotros/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Línea 2 del Metro de Bogotá: tres grupos pasan a fase final de licitación",
-            "source_name": "El Espectador",
-            "url": "https://www.elespectador.com/bogota/linea-2-del-metro-de-bogota-tres-grupos-pasan-a-fase-final-de-licitacion/",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Funcionamiento normal en los aeropuertos de Bogotá y Medellín",
-            "source_name": "RTVC Noticias",
-            "url": "https://www.rtvcnoticias.com/actualidad/se-normalizan-operaciones-en-aeropuertos-de-bogota-y-medellin",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Desde $900/Mes\n SUSCRÍBETE",
-            "source_name": "El Tiempo",
-            "url": "https://www.eltiempo.com/suscripcion-digital",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "INVESTIGACIONES DE LA UNIDAD",
-            "source_name": "El Tiempo",
-            "url": "https://www.eltiempo.com/unidad-investigativa/investigaciones-de-la-unidad",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Así fueron los dos años de búsqueda de Arleth Carolina: su madre nunca perdió la esperanza de encontrarla",
-            "source_name": "El Tiempo",
-            "url": "https://www.eltiempo.com/colombia/barranquilla/leida-una-madre-inquebrantable-que-nunca-dio-a-su-hija-por-perdida-dos-anos-de-busqueda-hasta-encontrar-a-arleth-carolina-con-vida-3599144",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Hallan con vida en Bogotá a Arleth Carolina, la docente barranquillera desaparecida desde 2024: su madre la buscó durante dos años por todo el Caribe",
-            "source_name": "El Tiempo",
-            "url": "https://www.eltiempo.com/colombia/barranquilla/hallan-con-vida-en-bogota-a-arleth-carolina-la-docente-barranquillera-desaparecida-desde-2024-su-madre-la-busco-durante-dos-anos-por-todo-el-caribe-3599092",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "photo_cameraReportajes grÃ¡ficos",
-            "source_name": "El Colombiano",
-            "url": "https://www.elcolombiano.com/multimedia/imagenes",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "account_circleSuscrÃ­bete",
-            "source_name": "El Colombiano",
-            "url": "https://suscriptores.elcolombiano.com/App_Pages/publico/SelPlanExt.aspx",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "descriptionPeriÃ³dico impreso",
-            "source_name": "El Colombiano",
-            "url": "https://digitales.elcolombiano.com/",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Dos semanas despuÃ©s, finalmente el Pacto HistÃ³rico entrarÃ¡ a analizar los âsexocontratosâ",
-            "source_name": "El Colombiano",
-            "url": "https://www.elcolombiano.com/colombia/pacto-historico-analizara-sexocontratos-GC43276527",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Paraguay swears in new president as Peña is put under house arrest - Reuters",
-            "source_name": "Reuters",
-            "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPdXV6WEZCVmtNQW9RV3BEWDhvUWtqRlBoaGpMQ1ZqQkk4Y2g3QWRtXzhjQ2ZFRVE2VWVRUlE3MDNuZnJ2aWw1WEtsZG5YRGo1V01EMXhqRldTMkNmNGI2RFZkeHZLVWJuWV9aTDZVSHlTTm9NNVpQeF9CRGtBWkFScnE4aEtzTDRUbkxZb2pYbE1RQ3NFS3V2bHpFUUJvcmFYRlpoSThucjBKVmtveWRWdkFGaHZPdw?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Verificación: Video de carro alegórico chino fue grabado en México durante desfile de Día de Muertos - Reuters",
-            "source_name": "Reuters",
-            "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNUE5taUYyaWxIMVdfYXh4ZXU0RXBadjZuVHJ4WHpDWFdwYy01bUlWRUJVWm5kdW1rb2REWjN5aUJ1UlIxek9mVEU4dGdRYlZmQ1RFUjZYSUk0RTRDVmhsSDNvZ042VVVmb0pmSE1leVVsNlFtZGVGOVFzMWVncDRxOG8wMngzQm9k?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Verificación: Portada atribuida a The Economist de personas frente a un domo y pastel con el año 2027 es apócrifa - Reuters",
-            "source_name": "Reuters",
-            "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNbERBNmxKaURlTEg5bFJVczY1RzFfbXFqbWlocmJVVHdsczNoVk9Zem80eTNzRURQTG1Ja3V0azVEN2xBWVRjazJHVE9JeXhyRTAwazBiNlJHWmNoWW4tb2I4SWV0TlB1cHB5ZzBRUUQ4ZFBJRU1fckVnZXlGTktJbERfTFE4ZnBa?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "\"Perdí los ahorros de toda mi vida. Todos deben ir presos\": la angustiosa situación de miles de ahorradores en Paraguay por el cierre del Ueno Bank",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/cqe8llzx5j4yo?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Factual - AFP Factual",
-            "source_name": "Agence France-Presse (AFP)",
-            "url": "https://news.google.com/rss/articles/CBMiPEFVX3lxTE5wZmU0RUowTFVTZlBCVmxab3loV1RvVkhseEpzd0NlUnBRaC1aMmFhTjN6YXk1dERSVUxhbg?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Bugatti CEO to stop leaving keys inside cars after Chiron theft - AFP.com",
-            "source_name": "Agence France-Presse (AFP)",
-            "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQa09wTXQ0Z3RhU052TnZ2VHh5SzFxY0JCZG9CTEZVblVIejFnVjk2dERwbDFCTm1FdEJxVnBFR0d1UjlKYm9UejVwcFluSTVVUjE2TjNLWlJiTFEwZXpEQkNkWThQcVBqWF83cTIycHgyODBadFhkekNCYVhwZUJsQVViMTVrY0c1VGI0?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Resultados “imposibles” o “fraude”, las narrativas que desinformaron tras el balotaje en Brasil - AFP Factual",
-            "source_name": "Agence France-Presse (AFP)",
-            "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBiRW5VVmxFT01CbWRMaWRnWFhOY0Vhd01VZVdzQ1dvRmZFTm54ZFBXc3VnT2ZkdWZfM3Vqb1NybHllYmJFdTN4amR3V0lyM0loVUVMTWtR?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Flight data, satellite images reveal growing US role at Ecuador base - AFP.com",
-            "source_name": "Agence France-Presse (AFP)",
-            "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPQmhEb2ZCek9DRVdpQ2s1bTNjQ3FXQ24teHVpQUw5eEp6YW1CZjBWWm9OOHBmcXpKVERHSlBZbEk4VFpjaWE0YWJSVkhzZ3BqMl9pWV9acUxLRHFWbDB4TWNPd1BQNkVaZloxTVFFbktwTlNsdWY2Z2hKUlRzSWUycnQwT2VoZFBRUjNiNm43S2s?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Polish riot police deployed as deposed court chief sets off crisis - AFP.com",
-            "source_name": "Agence France-Presse (AFP)",
-            "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFB6eXViNkRJN3l6N01OckdXYXVJSmJMM2FZaWtCNllRaTRJcXRvZ0xVRVozcjFlSmNxRy1GaFBsbXI5bnVuT20yTGFwRQ?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Will New Zealand Join Voters’ Global Revolt Over Soaring Costs?",
-            "source_name": "The New York Times",
-            "url": "https://www.nytimes.com/2026/11/06/world/asia/new-zealand-election-vote.html",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "12 Planes in 12 Days: Pope Begins Major Latin America Tour, Weeks After Surgery",
-            "source_name": "The New York Times",
-            "url": "https://www.nytimes.com/2026/11/06/world/europe/pope-leo-visit-uruguay-argentina-peru.html",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Saudi-Led Forces Bombed Yemeni Home, Killing Nine Family Members, Relatives Say",
-            "source_name": "The New York Times",
-            "url": "https://www.nytimes.com/2026/11/06/world/middleeast/saudi-arabia-bombing-yemen-civilians-houthi-war.html",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Wave of Hoax Bomb Threats to Flights in Europe Leaves Travelers Frustrated",
-            "source_name": "The New York Times",
-            "url": "https://www.nytimes.com/2026/11/06/world/europe/bomb-threats-planes-flights-europe-travel.html",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          }
-        ]
-      },
-      {
-        "id": 27,
-        "canonical_title": "Cobertura sobre tecnología: De Colombia para el mundo...",
-        "summary": "De Colombia para el mundo",
-        "topic": "Tecnología",
-        "article_count": 19,
-        "narrative_synthesis": {
-          "overview": "Acontecimiento multimedio en Tecnología cubierto por 9 salas de redacción.",
-          "divergences": [
-            "Variación en el encuadre institucional frente al impacto ciudadano."
-          ]
-        },
-        "articles": [
-          {
-            "title": "De Colombia para el mundo",
-            "source_name": "El Espectador",
-            "url": "https://www.elespectador.com/responsabilidad-social/region-en-accion/de-colombia-para-el-mundo/?utm_source=interno&utm_medium=boton&utm_campaign=menu_hamburguesa&utm_content=boton_menu_hamburguesa",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Calendario electoral 2027 en Colombia",
-            "source_name": "RTVC Noticias",
-            "url": "https://www.rtvcnoticias.com/politica/calendario-electoral-2027-fechas-y-cuando-seran-las-votaciones",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Emisoras de la Reconciliación renuevan su programación",
-            "source_name": "RTVC Noticias",
-            "url": "https://www.rtvcnoticias.com/actualidad/inravision/desde-este-lunes-7-de-septiembre-las-emisoras-de-la-reconciliacion-renuevan",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Movistar Arena cambia de nombre",
-            "source_name": "RTVC Noticias",
-            "url": "https://www.rtvcnoticias.com/actualidad/cual-es-el-nuevo-nombre-del-movistar-arena",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Habló familia del joven de 21 años asesinado con machete en un conjunto en Soacha",
-            "source_name": "El Tiempo",
-            "url": "https://www.eltiempo.com/bogota/hablo-familia-de-joven-de-21-anos-asesinado-con-machete-cuando-paseaba-a-su-perro-en-un-conjunto-residencial-en-soacha-la-identidad-de-la-victima-3599111",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "EL EDITORIALescúchalo en:Opens in new window",
-            "source_name": "El Heraldo",
-            "url": "https://open.spotify.com/show/70GnGwdNhEhx1rEGVvtUCX",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "DEA y Comando Sur de EE. UU. destacan “el poder de las alianzas internacionales” tras operativo en aguas del Caribe colombiano",
-            "source_name": "El Heraldo",
-            "url": "https://www.elheraldo.co/colombia/2026/11/06/dea-y-comando-sur-de-ee-uu-destacan-el-poder-de-las-alianzas-internacionales-tras-operativo-en-aguas-del-caribe-colombiano/",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "El papa León XIV llegó a Uruguay para comenzar su gira por Latinoamérica: “Desde el primer día estuve convencido de que iba a realizar este viaje”",
-            "source_name": "El Heraldo",
-            "url": "https://www.elheraldo.co/mundo/2026/11/06/el-papa-leon-xiv-llego-a-uruguay-para-comenzar-su-gira-por-latinoamerica-desde-el-primer-dia-estuve-convencido-de-que-iba-a-realizar-este-viaje/",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Supermetro contará con cámaras de inteligencia artificial y conexión de internet modernizada",
-            "source_name": "El Heraldo",
-            "url": "https://www.elheraldo.co/atlantico/2026/11/06/supermetro-contara-con-camaras-de-inteligencia-artificial-y-conexion-de-internet-modernizada/",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Spain's Melia returns to profit after completing Cuba exit - Reuters",
-            "source_name": "Reuters",
-            "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOM3duTlYyeGo0a0p0cWpQSnFiSXVsT2wycVBKcFNPWjV1ZmxBbkZ6STN5enRHVmdNcE9LMk9aSUwydmNZdHlCOFJMWGUzdG1LbXB0QmpuZnF3eE5qRDFLcG8zRnhsNXBmWC03UnhSRldZQzVPZmVoQkVTMkZHMjJWY1ZxQS0wRTF6M0UtQmR5LTk5SVU2cExsQWx2NkxhdW5f?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Verificación: Video de una manifestación propalestina de 2025 se vincula con las protestas en Francia de 2026 - Reuters",
-            "source_name": "Reuters",
-            "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNTTh5eUNCdm1HdENfN0ExeWZkd3dtQUl5d0xwVVdtekFNRFdDelotVlBjUEw4RUJLOUwyWWhQaFpzUDg2UUVVQ3VmUE8xMlR6Rkw4T0YyTnBLU0gzWE1vMUFWWU0yeEM5ZzVPYURGWGdXcktQY2tCM25vTGRnZDhUdllLWkc4YXJv?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Quién es Miguel Vázquez, el banquero milenial y atleta en el centro de la crisis de Paraguay",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/cwzd6684mgv5o?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "\"Cuando vienes de una familia pobre que ha bregado tanto sientes la responsabilidad de salvar a tus padres\"",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/c5398ejlw7jro?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "El reto que supone para el papa León XIV visitar Uruguay, el país menos católico de América Latina",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/ck7vpp3y5nypo?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "\"El envío de tropas a Haití es una apuesta política de Bukele: demostrar que no es solo un actor nacional, sino uno mucho más poderoso a nivel regional\"",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/c6lykpx0284wo?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Cristiano Ronaldo anuncia su retiro internacional con Portugal - AP News",
-            "source_name": "Associated Press (AP)",
-            "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNc3RZMGhHYmlOeWVpUGc0c09KZlpkNXNMc2NxNnZTLTYwaG1yY1JRcUNUQTFoaHBGeEdFSmtVUGpSN2FFZ2xXUGJLZXFoYmI0QjN5b1hMaHRtTURUOGpJUktrTjJsWXJxNjJ1UGFnNkdrUG1NeEdJU1ZidldpNFMxRmpnS0ZpLWp2NmNLSERCVnNsdlNYVER1SFhuSWdIRkI3NHpCb0xB?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Los demócratas logran una victoria aplastante en Texas y retoman el poder por primera vez en décadas - AP News",
-            "source_name": "Associated Press (AP)",
-            "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPbm9aMTFhR05sT0o0dXVIa0doeWRhOEhDN2UybER3VGgxX0IxSGRhQndjRHAxbW5Yd0hJaWNZZmtaSUZuN19wQ1VzeVNmZTVfV0prWWlxQWxSWjE1VGkycEg0S2hyV05hNklzUjVUYnRVWTQtNHZrbzFVdGlwQVh5c3RvMXVOMDVrX0U1VHB2eENGSVZTTU9YcTRBc0RGQWRjOEdFeW1sUGM?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "La imagen de desmanes en una sede de Ueno Bank en Paraguay fue alterada con IA - AFP Factual",
-            "source_name": "Agence France-Presse (AFP)",
-            "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE4tejBoMWxqYjJKQXd1OVhGaWhJeHU4NXU2ak8xWkN1Vkp6bW5sQWc0ZXFFTTRzSjVacXpPTHRtTFg4WHNNRHprTkxsZGdtaWpsU3d4UVlB?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Tanzania’s Opposition Leader Gets a Four-Year Sentence",
-            "source_name": "The New York Times",
-            "url": "https://www.nytimes.com/2026/11/06/world/africa/tanzanias-opposition-leader-gets-a-four-year-sentence.html",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          }
-        ]
-      },
-      {
-        "id": 28,
-        "canonical_title": "Cobertura sobre política: Santiago Peña, expresidente de Paraguay, queda detenido en su casa tras ser...",
-        "summary": "Santiago Peña, expresidente de Paraguay, queda detenido en su casa tras ser destituido",
-        "topic": "Política",
-        "article_count": 20,
-        "narrative_synthesis": {
-          "overview": "Acontecimiento multimedio en Política cubierto por 8 salas de redacción.",
-          "divergences": [
-            "Variación en el encuadre institucional frente al impacto ciudadano."
-          ]
-        },
-        "articles": [
-          {
-            "title": "Santiago Peña, expresidente de Paraguay, queda detenido en su casa tras ser destituido",
-            "source_name": "El Espectador",
-            "url": "https://www.elespectador.com/mundo/america/santiago-pena-paraguay-detenido/",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Corte Suprema ordena entregar celular de Deicy Jiménez",
-            "source_name": "RTVC Noticias",
-            "url": "https://www.rtvcnoticias.com/politica/corte-suprema-ordena-entregar-celular-de-deicy-jimenez-la-fiscalia",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Ley de Sometimiento llega a sanción presidencial",
-            "source_name": "RTVC Noticias",
-            "url": "https://www.rtvcnoticias.com/politica/gobierno/ley-de-sometimiento-llega-sancion-presidencial",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Crisis en Paraguay: Pedro Alliana, nuevo presidente, promete compensar a afectados por cierre de Ueno Bank",
-            "source_name": "El Tiempo",
-            "url": "https://www.eltiempo.com/mundo/latinoamerica/crisis-en-paraguay-en-vivo-senado-destituye-a-santiago-pena-tras-juicio-politico-por-caso-de-ueno-bank-3599139",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Senado de Paraguay destituye a Santiago Peña como presidente en un juicio político tras el escándalo financiero de Ueno Bank",
-            "source_name": "El Tiempo",
-            "url": "https://www.eltiempo.com/mundo/latinoamerica/senado-de-paraguay-destituye-a-santiago-pena-como-presidente-tras-escandalo-por-ueno-bank-3599127",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "La Policía de Paraguay detiene al expresidente Santiago Peña tras su destitución",
-            "source_name": "El Heraldo",
-            "url": "https://www.elheraldo.co/mundo/2026/11/06/la-justicia-de-paraguay-ordena-detener-a-santiago-pena-tras-su-destitucion/",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Pedro Alliana jura como nuevo presidente de Paraguay y promete compensar a afectados por “descalabro financiero”",
-            "source_name": "El Heraldo",
-            "url": "https://www.elheraldo.co/mundo/2026/11/06/pedro-alliana-jura-como-nuevo-presidente-de-paraguay-y-promete-compensar-a-afectados-por-descalabro-financiero/",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Senado de Paraguay destituye a Santiago Peña como presidente tras escándalo de Ueno bank",
-            "source_name": "El Heraldo",
-            "url": "https://www.elheraldo.co/mundo/2026/11/06/senado-de-paraguay-destituye-a-santiago-pena-como-presidente-tras-escandalo-por-ueno-bank/",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Presidente de la Corte Suprema garantiza independencia judicial en investigaciones por presuntos ‘sexocontratos’ de Petro",
-            "source_name": "El Heraldo",
-            "url": "https://www.elheraldo.co/politica/2026/11/06/presidente-de-la-corte-suprema-garantiza-independencia-judicial-en-investigaciones-por-presuntos-sexocontratos-de-petro/",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Corte Suprema indaga caso de sexocontratos",
-            "source_name": "El Colombiano",
-            "url": "https://www.elcolombiano.com/colombia/corte-suprema-anuncia-coordinacion-fiscalia-camara-esclarecer-denuncias-petro-sexocontratos-HM43297176",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Gobierno busca tumbar fallo del Museo Nacional",
-            "source_name": "El Colombiano",
-            "url": "https://www.elcolombiano.com/cultura/museo-nacional-impunacion-fallo-retiro-piezas-IC43277483",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "MÃ¡s pruebas de los âsexocontratosâ y detalles de otros 6 episodios de la âagenda privadaâ de Petro",
-            "source_name": "El Colombiano",
-            "url": "https://www.elcolombiano.com/colombia/mas-pruebas-de-los-sexocontratos-petro-CA43251443",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Petro sumÃ³ 45 denuncias en cuatro meses en la ComisiÃ³n de AcusaciÃ³n, Â¿por quÃ© no avanzan los otros casos?",
-            "source_name": "El Colombiano",
-            "url": "https://www.elcolombiano.com/colombia/politica/gustavo-petro-335-denuncias-comision-acusacion-expresidentes-colombia-KM43292877",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "El escándalo de Ueno Bank en Paraguay se salda con la detención de Santiago Peña y con Pedro Alliana como nuevo presidente del país",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/cwkg55edm8r7o?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Quién es Pedro Alliana, el nuevo presidente de Paraguay con el que busca rearmarse el poderoso Partido Colorado",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/cmqjnn8jrqq0o?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Presidente de Paraguay bajo investigación fiscal; ante posible destitución por colapso de un banco - AP News",
-            "source_name": "Associated Press (AP)",
-            "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQcFBBbFNyM1FDQV9uN1ZXbG5EdGwzQ2M4QWh2QklweEhEbXlFTG81bjQ3aHZRR2NKb3Y2aWxPXy0wRU1BcEhPbHZLdk5ObmQ5VnM2eEEwLVQwYm1TZzZ0aFJhZ1dvUGFVT0QtUnJuVjNSR0RTaEotWVNUWkE3YlhfbThQSjZnaVN2UnZIRGNNVHFkVVNISks0a0NaNkZwek10aTUxQWxmSFNES19jeWc?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "El rey Carlos III habla con jefes de gobierno en Antigua y expresa \"pesar\" por la esclavitud - AP News",
-            "source_name": "Associated Press (AP)",
-            "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQX0dHaHoteEhreWhGd3JLaE1SV01qNUxkN0dqZXN5cFRFTDdTdFZOcHVaZ3huU09iYldmWFlTbkNtNi1UZ2J6VVpRYi13WDRKN0lBR0pKNEtLMTY1V281ZUJkd0l0clFIRWVEUkZEeVBkLVc0aFBDQWFwU1FYYmJRaUkza3hBM0JPblV1NEFEakFmNl9OOHNxVVE1dW95Ym5QNFpFOQ?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Paraguay: tres altos funcionarios de Peña renuncian mientras el Senado retoma juicio sobre su futuro - AP News",
-            "source_name": "Associated Press (AP)",
-            "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPdGhsRVo1ZjBDY2F6REJFUXY2UWJUZmhSSWVZdnpHbmo1OXlEZ19ySVVBMEd6RDFuREpoUk1EN2dXVV8xZUc3U2JCSk5kRmdRZWF4UHF5UjhtemJNV2tZV2p5RHlfMWR0dG1zRUpxSThkZEg0SlV4d3FFUjYtS0tPc05zMWNjY1ItZ0w3TS1ocUJLNHVBLUpOZjVZNWtVT1lFRWNaU0tpeFdrY3FBM1E?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Demócrata progresista El-Sayed gana carrera al Senado por Michigan, será el 1er senador musulmán - AP News",
-            "source_name": "Associated Press (AP)",
-            "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNeHowWXV0MTdVUkxpSlppbDZhdUhXN1dFQ1lJNmwwYVJsMnBhNzhjQTZMLWFtMXJUaV92N29RNko1bFRMX1M1VGZSU0dvTWZBeXBQdDdWcEJiZHladFpzNVZfc1dQQ2NET3RJWDFOWVdNNFB5Um5teFlxd0syVDVDZXlmUlRObUQ3WFNBV21jempyczRHS3hpeXljSHJnUWNlYTFGeXpPNGszREZKaDNr?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Videos antiguos de fallas en máquinas de votación son vinculados a las elecciones de EEUU en 2026 - AFP Factual",
-            "source_name": "Agence France-Presse (AFP)",
-            "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9fMGpvNU9tNHVzY0piUnZtdldfM1Y3bDBfaHVNeDRncndicW94dUg2bk1fY0FlcV85R29abkZseTVnSUhZaU01OGtSNHFCQUxYT0tHd0FR?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          }
-        ]
-      },
-      {
-        "id": 29,
-        "canonical_title": "Cobertura sobre salud: OMS aprueba ensayos de dos nuevas vacunas contra el ébola...",
-        "summary": "OMS aprueba ensayos de dos nuevas vacunas contra el ébola",
-        "topic": "Salud",
-        "article_count": 2,
-        "narrative_synthesis": {
-          "overview": "Acontecimiento multimedio en Salud cubierto por 2 salas de redacción.",
-          "divergences": [
-            "Variación en el encuadre institucional frente al impacto ciudadano."
-          ]
-        },
-        "articles": [
-          {
-            "title": "OMS aprueba ensayos de dos nuevas vacunas contra el ébola",
-            "source_name": "RTVC Noticias",
-            "url": "https://www.rtvcnoticias.com/actualidad/salud/oms-aprueba-ensayos-de-dos-nuevas-vacunas-contra-el-ebola",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Bomb Threats in Europe Probably a Coordinated Campaign, Ireland Says",
-            "source_name": "The New York Times",
-            "url": "https://www.nytimes.com/2026/11/06/world/europe/bomb-threats-flights-campaign-ireland.html",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          }
-        ]
-      },
-      {
-        "id": 30,
-        "canonical_title": "Cobertura sobre economía: Precio del dólar hoy en Colombia...",
-        "summary": "Precio del dólar hoy en Colombia",
-        "topic": "Economía",
-        "article_count": 3,
-        "narrative_synthesis": {
-          "overview": "Acontecimiento multimedio en Economía cubierto por 3 salas de redacción.",
-          "divergences": [
-            "Variación en el encuadre institucional frente al impacto ciudadano."
-          ]
-        },
-        "articles": [
-          {
-            "title": "Precio del dólar hoy en Colombia",
-            "source_name": "RTVC Noticias",
-            "url": "https://www.rtvcnoticias.com/economia/precio-del-dolar-hoy-en-colombia-trm-y-casas-de-cambio",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "La historia del robo a Bancolombia que habría orquestado uno de sus trabajadores",
-            "source_name": "El Tiempo",
-            "url": "https://www.eltiempo.com/justicia/delitos/la-historia-del-robo-a-bancolombia-que-habria-orquestado-uno-de-sus-trabajadores-esta-es-la-identidad-del-capturado-3599078",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Banco Central de Paraguay interviene importante banco digital y sacude a millones de clientes - AP News",
-            "source_name": "Associated Press (AP)",
-            "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQYWdreFBMcFczZVVlYnBGdWY3RjVmelJKa1h2cTRSVnp1cmNCdGpPZUt5ZWlEYVR6NHBPdXYwX2xET2tvc3JZMVFnU3plc3dVZHA4bTFIQnZfbGs5bG1LdWVfdFpTX2pPQVZKVGxIeE12eUl5QzFwYW1LVmFINl9WWnM1V1U2YXBXSnBBZmJZajFDT2poWVN4Z1N2OUswM3B2QmxqVw?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          }
-        ]
-      },
-      {
-        "id": 31,
-        "canonical_title": "Cobertura sobre internacional: India's ONGC hopes to get rights to operate 2 Venezuelan oil projects in si...",
-        "summary": "India's ONGC hopes to get rights to operate 2 Venezuelan oil projects in six months    Reuters",
-        "topic": "Internacional",
-        "article_count": 8,
-        "narrative_synthesis": {
-          "overview": "Acontecimiento multimedio en Internacional cubierto por 5 salas de redacción.",
-          "divergences": [
-            "Variación en el encuadre institucional frente al impacto ciudadano."
-          ]
-        },
-        "articles": [
-          {
-            "title": "India's ONGC hopes to get rights to operate 2 Venezuelan oil projects in six months - Reuters",
-            "source_name": "Reuters",
-            "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQNFZRNmVFbFo3djg0OFVtZDdBNG8zOU9jNWtrWWJrQll5WlJrMmlkck9saTQtczBOZEhZNjY2Y3BnNnU5eHBndS1VMVV4WDUwek02R05sUjV0bjgxdzBqc0FUOGdXQTF5WnlGZUJDamtTLWk5SU1mN21OVVVCZjFjM3ZtZWQtLW9vWTZDbUlQUWtWcmRyVTBlOXdKT2JyZXJxRWRjTURRWlNxa0tNQmJ1RnQ4Z0dEeUVINnJBeUNyVVB4QjA?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Venezuela eyes Qatar bridge loan to clear IDB arrears, sources say - Reuters",
-            "source_name": "Reuters",
-            "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQbzcxOU92RVJXd2JmQWs2Zk40dmRBdExvaFVkOXp6OGNkVkMwckwwRE94RjAydWtDc050QVVrMmV3WW5hT0QxdjN5b1RCMHZrUGpBZE5nRGRsNV85RHQydTRzS2RsdUR3WVc4SU9oMnE0RU44OThiNTRjdXFnZGk1RFhKTEx3YmxMS0F2RzJLa1o2aVZnQnFiQk9ReVF6YkhXczRKdGxUSHlRV1dWZXhFTmc3aw?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "US Treasury drops Venezuela from countries facing outbound US investment restrictions - Reuters",
-            "source_name": "Reuters",
-            "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOOHpQWm5nQmJpYnlpNkloZEdBcWdKYmV2dkhOcFhuVEdtVUJBNlo4bVFZSkM0NmNVb3N3WEJ0QjYzekhrOEFvVmgzaEMtTUxtVnBpd0VIZm83RFpPOXpPV3FpVmtmZzNfRWphcjkwNURkMnk4MkhSQVI2NDgzRjFveWg3ang0VFlQY0thTzVybzdkYWRSeFUxdDYzMjBWU2k3UU1HamdFRVoySEJYeFJYd0h5X3hrY1l0dEtXelpCNA?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Trump nombra a Stephen Miller, el \"arquitecto\" de su dura política migratoria, como nuevo jefe de gabinete de la Casa Blanca",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/c90k001drxxko?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Trump dice que EEUU frenará ayuda a Israel por $4.000 millones y ahora le venderá armas - AP News",
-            "source_name": "Associated Press (AP)",
-            "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9zZ0UtRFQwazFFanVOUGJmMkg5V0tuckV0UzI1eHBWZlBhU05pV0publRYeWQ3S1loam5TSjNtYWNJUlZoeDU1SnlFeHVUYVBXbWViN3pXS282dk5rMWRUc1VjdmZkRUczeGIwSWNKLWpGYUVNV1ZGaFFVNA?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Fallas aisladas en las máquinas para votar en EEUU no son prueba de un fraude electoral generalizado - AFP Factual",
-            "source_name": "Agence France-Presse (AFP)",
-            "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE04aUJIak9mZGhlU2xOVVV5bnRoamxVVTBkNi11eVhIT0dudWdDRGpXWHU3SjFXYVp4eUdEdXUyWUNsSzB4TGdvVWZrSXoybVVpeDB3T3JR?oc=5",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "After Israel’s Election, Who Will Get the First Chance to Form a Government?",
-            "source_name": "The New York Times",
-            "url": "https://www.nytimes.com/2026/11/06/world/middleeast/israel-election-government-herzog.html",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          },
-          {
-            "title": "Guarded Optimism, and Some Jokes, in Ukraine Over Trump’s Midterm Wipeout",
-            "source_name": "The New York Times",
-            "url": "https://www.nytimes.com/2026/11/06/world/europe/russia-ukraine-trump-midterms.html",
-            "narrative_angle": "Cobertura informativa de agenda",
-            "tone": "Neutro",
-            "highlighted": []
-          }
-        ]
-      },
-      {
-        "id": 25,
-        "canonical_title": "Cobertura sobre tecnología: Santiago Peña renunció a la presidencia de Paraguay tras escándalo de Ueno ...",
-        "summary": "Santiago Peña renunció a la presidencia de Paraguay tras escándalo de Ueno Bank    El Espectador",
-        "topic": "Tecnología",
-        "article_count": 25,
-        "narrative_synthesis": {
-          "overview": "Acontecimiento multimedio en Tecnología cubierto por 9 salas de redacción.",
-          "divergences": [
-            "Variación en el encuadre institucional frente al impacto ciudadano."
-          ]
-        },
-        "articles": [
-          {
-            "title": "Santiago Peña renunció a la presidencia de Paraguay tras escándalo de Ueno Bank - El Espectador",
-            "source_name": "El Espectador",
-            "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQaVVfZGtScnlsQU5TRnlBQ2xfV0VkWVlWMGV3MFB6RXAwejljZ3FFUUtPYTdnMF9aeTVzb2VxYjh1MGFoTTVJTXJJbG9xN056N1YyY2tMY3JVY3JGaHNKaW9mRFZLZDRIQnliUUFZUmxvbjM0Z0o2bm1jVWM1NHBfcm5BMmN0T19CaERrTkFn0gGiAUFVX3lxTE5xM1J5QnV6Uk8tdXZWX3RCYU4yTDhGV19mejBxYmtkZ0tYUUhNVjRPeXR0Nm9XV1FKZ0VFMzBmcUVJVWlwYVJNQzVLeDdOUVMwMUxVbmNtR0x4Qi1teUxmelZYUXJzSFNJa1ROdlZ2MUJEOUpsVWtZZWx0c3NTQTM0TTRTV3hWZXVFcDVXMXFHM2hndnIzN3RoYTQzZ1lPcDdIUQ?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Santiago Peña renunció a la presidencia de Paraguay tras escándalo de Ueno Bank - El Espectador"
-            ]
-          },
-          {
-            "title": "Tras millonario robo a estudiantes, la U. Javeriana anuncia medidas: ¿qué pasará ahora? - El Espectador",
-            "source_name": "El Espectador",
-            "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOa0duUS1pLVFCeUtNZElTWThXLUhNcW9qRklNRG1aamhiR1JnLVRudlZCZUw1UklIMk9kZ0RfNWlDS3V3LS1lNENVWDhINTdsZkp4WXBCWUFiWk1lakd4a2lpWC11RFNYNlFsU3BVa0FSX3ZCN1hESnVUY3lPU3RIRk9KMjFqdy1NUFJUVWJNbm1FVWNST29xeTNtb2JIaUxpWWtQU3N3YXJBc1NCSVVwQl9JcmQ2Uk5tUkx30gHPAUFVX3lxTE1EcExwMWw4MV92TnItcmpNT2FKc0VCbmtqMjV2QTd0S2l1TzZ0clQwQ3NTSjNGY2c5TmRZZzhrN2tQTnJ2RlpBV1hFQlI1UnVXRFIwZllXVEFNRGtrUThvZU9KOEY0dm9rU0JNY2NLYXp1VmN1MlFSRWJWc2RJOE1mVFdVeE5lY21RMEF0ZnIxcVFaTllhUWZHS1BhSDlwTGtjOERJOXNybWlxNDQxV3I2V2I0WEoyd0tXdkxrODBQZmwwR0hOZGlCTlJxUHVnTQ?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Tras millonario robo a estudiantes, la U. Javeriana anuncia medidas: ¿qué pasará ahora? - El Espectador"
-            ]
-          },
-          {
-            "title": "Niña de 8 años reportada como desaparecida en Italia fue encontrada en un parque de Bogotá - El Espectador",
-            "source_name": "El Espectador",
-            "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQY2pqdHZwY3BRaEJaY3IweDJtRlltVVlqWVFHV19oTHIxbmZsSVkwSk5vLTEzR3BVa2dkMkxSOUFsYWVRS0ttOGFiTlYwSU50bUJYelhlaEFUUW1Qb213R09aM01qQm0zVlVRZC04WnJEQThnaFVnNkJWUjVxVmRYMTc1Zmtxb280Wmh1UDI1OWs0SFl6UWJzZkZMM0dodVh4QUpGakZYdk1UV1Fjdk41WXNMcVd2X29fS25EeXBDdm10M0J6TWfSAdoBQVVfeXFMT0poYkRLUTZqTzU0YmNZNFdUOUFCTDRIbzdIdE8yRHN1MDJzMUxZZ1c4dWxuUzBPWHRpMndVOGJHUTRRVjRLMzNiVVZQaHUtYUI0NTE0QmpxRUVpSEFYSGwyelBtdlQzZ0UtOXFEWEdWOU9xS1c1bXBianZ1SVhBZ051cTlGdVQzeEcyZWFJWXh2SElXOG5RSDM5YzlVMGtocmFWZVVEOE9CeFc4aUtzVE1oNFhFcnFRTEZNLXNSSERWTUg5SGZiWnVnZEZaX1F4SmN3RGoteFNudmc?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Niña de 8 años reportada como desaparecida en Italia fue encontrada en un parque de Bogotá - El Espectador"
-            ]
-          },
-          {
-            "title": "En fotos: así fueron las exequias de Antonio Navarro Wolff en Bogotá - El Espectador",
-            "source_name": "El Espectador",
-            "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNSlkwN2pmZzJPV1Zwalk1ajFSNEJJYWp0MG1USnlHTzNkUnFaQnplZ3p1LS1mMkd2Sks5bXptY3dIeUhLeWNVVDZnR1Q0VkxTMmpCNTl2WEZvLVZhVlRLWmZ1WGUtUnpvSjkwaGk3cDJaLVJ2MW5oVXpveE1xRlFOSDlrU2VuOG5jVEc3MTItd2ptQVdGRTFKcXA4MVdwZ3g2WU9jeUNzZVpVd9IBvgFBVV95cUxPNW9OcXBzTUQ3MXpBRE9vaEQwbC1yeHdUQTE5OUpROUNJVDhqN0Z6c2xpNi01dFNUajZrTnFHWDVRUXhHWWdlbWk2VVU3MmJrZTY2aE0zU0dEd0xkRVY3UjhpR0VhMVFUMW5mR0QtUFllcTZ2SFJpYVlzRGNOLTl6eENzU28wZV9DMEFrcmw2YlVUNFpTM3Z0SGhqdHZXcUxQMlU1WFpUWjJ0NkdkazZ1MkFOLXA3ZUozMFNzVTJ3?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "En fotos: así fueron las exequias de Antonio Navarro Wolff en Bogotá - El Espectador"
-            ]
-          },
-          {
-            "title": "Movistar Arena cambia de nombre en Bogotá: así se llamará ahora uno de los escenarios más importantes de la ciudad - RTVC Noticias",
-            "source_name": "RTVC Noticias",
-            "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPQUJUdUhySmFOWUt5LV9fR3dlMTJjdldrbFR1U0RJV05WUG95QVNhT2F3YnkwTXNBdldGQW1Zc0NpRFdIcS1TdzlzMVBZM1dTdEpfRkp6X0xXUFo2bDhPMWxBeUthZE1RSWM1RlQ5aFpHMWJRR2NmTDNEdkFVWDI0cVFiNS1FUHlpUmc?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Movistar Arena cambia de nombre en Bogotá: así se llamará ahora uno de los escenarios más importantes de la ciudad - RTVC Noticias"
-            ]
-          },
-          {
-            "title": "Drummond señaló que Colombia está preparada para realizar fracking en 2027 - ELHERALDO.CO",
-            "source_name": "El Heraldo",
-            "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQc3ViaTNyYnlkX1NOdmRNNGhmTW56ZUZuMEFVNWVlRDBBdlI3RkNncGd4Q1pjQ2I1Sk41NnVDM3ZEYklKYVkzMnF5bDRObWE4OGk5TnpIb1NucURBMHl1X20tTF9PaWhDUzlfaEJJRElYd2xYakxCeHlJLUZ1RFlBM1I4QWVacE5HdnZFN0FuenllbDdQazNCOVFBbXNxQjVjVEtnODdQQUduNmxQSnA1SE44dmQ1TC1hMDNabw?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Drummond señaló que Colombia está preparada para realizar fracking en 2027 - ELHERALDO.CO"
-            ]
-          },
-          {
-            "title": "De Messi a Cristiano, el final de una era - ELHERALDO.CO",
-            "source_name": "El Heraldo",
-            "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOWTVlN1pQY29McS1BMkVDbWlSY3lOLWEwTkx5N2xnSGhaNUVFUmRIZ2I5ODBQY0ZfNHphVDQ5aVhDaFVIN1BXblNjOUhBekZuVjI4NERtLVg1TXZYODN4VjM3aUNiRHpSczVpek5semZVLVhkcEk3OXI3V28xU0otWURtQnc1aWdmWlNjb1VRZw?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "De Messi a Cristiano, el final de una era - ELHERALDO.CO"
-            ]
-          },
-          {
-            "title": "María Fernanda Mena logra un nuevo bronce para Colombia en Ningbo - ELHERALDO.CO",
-            "source_name": "El Heraldo",
-            "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQZ3BlQkRYTVFBUzY4cFY1WjVYTGJ6SjhYZ1Y2UFJSRWlrOEVmZjVRem1MYkhweU1wckY3a0UxZGMzQWtlYkFOVnZ4YWtGLWJjY0xNcVFvdHkxdGl0STMzSTZLNDFsZDNZTnhKUmpvMTZFVi0tdkxhcGY1WFA3QzhHaVQ4Q1dDR0FTWkdyZnRDQm1nd0U0ZEVZaG16NmVMM1VrS3NYT2F1RjVRMnlzUFZWMg?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "María Fernanda Mena logra un nuevo bronce para Colombia en Ningbo - ELHERALDO.CO"
-            ]
-          },
-          {
-            "title": "Mataron a hombre que intentó meter en su habitación de hotel a dos niñas para abusarlas sexualmente | El Colombiano - El Colombiano",
-            "source_name": "El Colombiano",
-            "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPTXVNd0k0TjgxNzEyczV6Z2hZWWk5MTVlUV8yd0dYakdDWEx1NU1mQkVKbE91LWNEWGRyQWNURmJLY0cybnJGUnZNNTlYUEpidW95VXp2OWZCU003OGtDYVR2V3JmNGR1MDJGMUVvRW53Y0FIN3IxVldwQlBwSWhNV2x2SlVVZllxNGJpQ1ZtZ2Q2cFJkcmfSAZsBQVVfeXFMTmZhNmxMVGY5eDFQd0IyZWxTZjV2RmlmZFctaDdtUXBsN3FUdFJpYlYzUU1IUmVubHR2RlZTa1dlQTVGM2tNd1JqdURhRTRsR3ZpREhvU09xcEpZRTFYRzd4cTNZMzZoZlhXcXJmZm16OHFhakhOUmM3Nm04R3RzMTlGVExwUk1fVzdiVjRzUnZSSkRBeXlfMjhtVnc?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Mataron a hombre que intentó meter en su habitación de hotel a dos niñas para abusarlas sexualmente | El Colombiano - El Colombiano"
-            ]
-          },
-          {
-            "title": "Nacional recupera soldados, pero pierde otros para la etapa más decisiva del semestre | El Colombiano - El Colombiano",
-            "source_name": "El Colombiano",
-            "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOZzU3a1c5QXJJLS0xOFdSeW5KRWxjd0dLYll0TnRPRHd5Y0VPSDhVdHZPRWdpY3QxeFYwaG9GS0N3dEFqX0NrYVZHTUxKb0k4LUhlUnA1VlYwdG85Z2JycXBqanZZNWgwd09sZXJNdWZGUERUdVBvcWpOS05uV25hckdHOFhZeUV0NlpYM1FkbDJNZ3JHczAxdkNQclBpT2pzOFRJQdIBqgFBVV95cUxOZTd3OVhnWENrTE15Ym9VTTY0czA2WUlxbWhGRk1nQU9HcS1NNXZvS0pHRHUxdlYwUWpDOXd3ZnBxcldobTRMd2dTZjY4VlFrQUNmUHBXaU1Xdk8yT3VHMDlUNTVDWGZ2SlJfcEdVRFB0a1F3WFRtUF92dTFmaTIwNjdNbTAwUC1sMHM3cTVuS2c2YXJOelBhNkpoU2VIeEpZeEE4ZDJnU3lUZw?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Nacional recupera soldados, pero pierde otros para la etapa más decisiva del semestre | El Colombiano - El Colombiano"
-            ]
-          },
-          {
-            "title": "Tato, reconocido comerciante de La Ceja, Antioquia, murió en choque de su motocicleta | El Colombiano - El Colombiano",
-            "source_name": "El Colombiano",
-            "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQdXpqQmMzN3NSVENlY0lGYWFLN3ZYNjRNR3ZWQy1IWFUwWWlOMzU5ajBTYVJtZnU2QkV4ZF82U04xODdjVTA5cVpucUpUNUQwaXE4N0stS1REMTA3Q0dHTlZTVjB5cDRuUjRLWjZGWFFleVA0Q1VNeUFyTWtBaC1JWlZpOXZXLUN6c0tTbUFFVGxsU05iMUp2My1BTEhlX1o1UUZZaG5RNXBzT29GYm1FOFotMmowN2xYVURhZHZ30gHDAUFVX3lxTE5qWmI0R2dIdUs1Y21jWEkyazAxVGd1eFRZQTNYSVhLU2l1bVdKa2FFR3JHQ2FlRHd3d2NuX3BLbUxOemY1NjNKLTFrdURhM3p1Ul9hVmhYcFdSOE5MS0k0dkYxRklhNEEyeWptSUZmcXcwU1dKUTVTUWd1dHJKUmx5VkYwU3UxVXRZMjZqSjRBUm04V0xMSE5UaUprM1NoQ052VXkzOXF1V0Z3SzlmSm9hRHQtN2NDNUVxRDNqUEhTTHJ4aw?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Tato, reconocido comerciante de La Ceja, Antioquia, murió en choque de su motocicleta | El Colombiano - El Colombiano"
-            ]
-          },
-          {
-            "title": "Medellín ya tiene nuevo POT: Concejo aprobó revisión que busca crear 220.000 viviendas | El Colombiano - El Colombiano",
-            "source_name": "El Colombiano",
-            "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNeC0zU3VidzQtTEpOQUkzMC02cngyTk0xVDB2YjY0NkVaLUROWEVXR09EY09INVcwcC1CdF85NEFDS3dnVHM3d3NVMHA0X3FJTnlfbFZzM1RNTVdiMTNsU3dlc3I5LUhtN290bFhFQWphSVpNZHZZck9NUGI3ZVFUcGtGQ3lhZUtqV3JETVF2TW5RdmpnRUE3c0VsTFFmSl90dFVYdkdYVdIBrAFBVV95cUxOSWdnUzNCYlRwMVVja0ZOT1ZvYmVJbnVMOGstMnFRbUYxZHBaTjYtSkZkU0ZjZ0RfQUU4dTZHc3JYS1JtQmZXd0lXLVEwd3hhb21Ja1RyQmxnWHFUWFZqU3dOTl9BSkpCR0Rmd0RUbkRUTzlTQlBZaG5nU3AySGRjZy1lb0p6M2o3NzJnbzNvZkgzTUVtVHpLREhmc1F1M0Vrdno0dGhvTmUyQmNK?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Medellín ya tiene nuevo POT: Concejo aprobó revisión que busca crear 220.000 viviendas | El Colombiano - El Colombiano"
-            ]
-          },
-          {
-            "title": "Ataque sicarial en el centro de Medellín dejó tres muertos: un policía y dos civiles | El Colombiano - El Colombiano",
-            "source_name": "El Colombiano",
-            "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNVWZZWWNyZEt1RVNxQkhuTm5EeHczNjJMMnlvUll1UzQyZFhFOGdWMkpjY2hNcFBSa0E4aGdmc0tHM2tuenNhQWRkc2NsLW5OMHBLZmRNcmdaVXB3MC11SkdLUExTUDlwV0xrRGZvTVJ1dndmeXNnQVZZUGtpRjQ4alJvcFZwZG55bXhQSm9vN0tjdWtrU2hDVXYteXNwSC120gGmAUFVX3lxTE9RR2s5eDI2TEJEVDB5V1V3Z2xUSEtpUm1CS2FJdF9zUmhkZGg2RHl1bHN3YWduQVhDeUJjbFlzUVAxd0ZvM0JBRXJDYmJmSTRBamJkNW5zbl9sdTZYTW9zWTdGMXNRa3hnT285dnozOVI5NEIzdm9MX1J4OXNRbVFFdmx0STF6bjAwblpqNnBWbDVMU1A3ZW1YWTQ0NmpxS1RoMEIxbUE?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Ataque sicarial en el centro de Medellín dejó tres muertos: un policía y dos civiles | El Colombiano - El Colombiano"
-            ]
-          },
-          {
-            "title": "Spain's Melia returns to profit after completing Cuba exit - Reuters",
-            "source_name": "Reuters",
-            "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOM3duTlYyeGo0a0p0cWpQSnFiSXVsT2wycVBKcFNPWjV1ZmxBbkZ6STN5enRHVmdNcE9LMk9aSUwydmNZdHlCOFJMWGUzdG1LbXB0QmpuZnF3eE5qRDFLcG8zRnhsNXBmWC03UnhSRldZQzVPZmVoQkVTMkZHMjJWY1ZxQS0wRTF6M0UtQmR5LTk5SVU2cExsQWx2NkxhdW5f?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Spain's Melia returns to profit after completing Cuba exit - Reuters"
-            ]
-          },
-          {
-            "title": "William Contreras completes dream year with World Series MVP honor - Reuters",
-            "source_name": "Reuters",
-            "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNQTJFckEzT3U2TEphc283WmZlUWVQTEp1dHBGcVFKRTNQLXRiY1g3YmpFdTQxZ2NfdWxoVjZvZXZyMGdSTXRhLTFHeFpXTTJMcXYzdkNNbEZNR1hub0ZrRTUzQzhFdnotT1NhaVpsLVZJWGw1UGlZRmhsMXEtOFJjNUlzWlNhUTEyVlpDYnl5YkFXTjVjSmxocmhOREREc1hheG1MMy1XSi10RDluYzVPeW8yZXRzQQ?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "William Contreras completes dream year with World Series MVP honor - Reuters"
-            ]
-          },
-          {
-            "title": "Apple will have limited iPhone Duo units available in stores on Friday - Reuters",
-            "source_name": "Reuters",
-            "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNdXZTMU9WWlI5RHdJWm9rSFN6SXF1Q2ZfRUxXM1Y4dzVwbUVzNjNxeFRjcUdnRUpJcXZMUnVweXYySjRBcldhTTNFTk1vR3lCOVBrU2RxMUltNUtvVklUb2tJVk5oUmhRWTdjYmhpYjlIazFpYlhkb0pGbVF6UTRqS19mWUVfVmh4UDRqb1pUVEFJaEhTdlF6YWd3UVZxZVBITlFJR2FLOGUweDhsd1hpTHhxeU5EbjJTTkNtazUwa0ZvbU0?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Apple will have limited iPhone Duo units available in stores on Friday - Reuters"
-            ]
-          },
-          {
-            "title": "Quién es Santiago Peña, el economista a quien el poderoso Horacio Cartes encumbró a la presidencia de Paraguay (y al que ahora dejó caer)",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/cwe9le9yyzrzo?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Quién es Santiago Peña, el economista a quien el poderoso Horacio Cartes encumbró a la presidencia de Paraguay (y al que ahora dejó caer)"
-            ]
-          },
-          {
-            "title": "El reto que supone para el papa León XIV visitar Uruguay, el país menos católico de América Latina",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/ck7vpp3y5nypo?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "El reto que supone para el papa León XIV visitar Uruguay, el país menos católico de América Latina"
-            ]
-          },
-          {
-            "title": "\"Cuando vienes de una familia pobre que ha bregado tanto sientes la responsabilidad de salvar a tus padres\"",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/c5398ejlw7jro?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "\"Cuando vienes de una familia pobre que ha bregado tanto sientes la responsabilidad de salvar a tus padres\""
-            ]
-          },
-          {
-            "title": "Cristiano Ronaldo anuncia su retiro internacional con Portugal - AP News",
-            "source_name": "Associated Press (AP)",
-            "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNc3RZMGhHYmlOeWVpUGc0c09KZlpkNXNMc2NxNnZTLTYwaG1yY1JRcUNUQTFoaHBGeEdFSmtVUGpSN2FFZ2xXUGJLZXFoYmI0QjN5b1hMaHRtTURUOGpJUktrTjJsWXJxNjJ1UGFnNkdrUG1NeEdJU1ZidldpNFMxRmpnS0ZpLWp2NmNLSERCVnNsdlNYVER1SFhuSWdIRkI3NHpCb0xB?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Cristiano Ronaldo anuncia su retiro internacional con Portugal - AP News"
-            ]
-          },
-          {
-            "title": "Los demócratas logran una victoria aplastante en Texas y retoman el poder por primera vez en décadas - AP News",
-            "source_name": "Associated Press (AP)",
-            "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPbm9aMTFhR05sT0o0dXVIa0doeWRhOEhDN2UybER3VGgxX0IxSGRhQndjRHAxbW5Yd0hJaWNZZmtaSUZuN19wQ1VzeVNmZTVfV0prWWlxQWxSWjE1VGkycEg0S2hyV05hNklzUjVUYnRVWTQtNHZrbzFVdGlwQVh5c3RvMXVOMDVrX0U1VHB2eENGSVZTTU9YcTRBc0RGQWRjOEdFeW1sUGM?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Los demócratas logran una victoria aplastante en Texas y retoman el poder por primera vez en décadas - AP News"
-            ]
-          },
-          {
-            "title": "Fotos vinculadas a la tragedia ferroviaria en Toledo, España, son de otros siniestros o se crearon con IA - AFP Factual",
-            "source_name": "Agence France-Presse (AFP)",
-            "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1uTVVmOWNnNWlmR1Y1WGxSVE1BOFp3dDMxVzhhYS1KZTZDV2hRVWxTMkc1dDdObjdhdWdzUGxYOHhKY3g3MHlKVktua084THBlbmdHUEZB?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Fotos vinculadas a la tragedia ferroviaria en Toledo, España, son de otros siniestros o se crearon con IA - AFP Factual"
-            ]
-          },
-          {
-            "title": "La imagen de desmanes en una sede de Ueno Bank en Paraguay fue alterada con IA - AFP Factual",
-            "source_name": "Agence France-Presse (AFP)",
-            "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE4tejBoMWxqYjJKQXd1OVhGaWhJeHU4NXU2ak8xWkN1Vkp6bW5sQWc0ZXFFTTRzSjVacXpPTHRtTFg4WHNNRHprTkxsZGdtaWpsU3d4UVlB?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "La imagen de desmanes en una sede de Ueno Bank en Paraguay fue alterada con IA - AFP Factual"
-            ]
-          },
-          {
-            "title": "Saudi-Led Forces Bombed Yemeni Home, Killing Nine Family Members, Relatives Say",
-            "source_name": "The New York Times",
-            "url": "https://www.nytimes.com/2026/11/06/world/middleeast/saudi-arabia-bombing-yemen-civilians-houthi-war.html",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Saudi-Led Forces Bombed Yemeni Home, Killing Nine Family Members, Relatives Say"
-            ]
-          },
-          {
-            "title": "Alberta’s Librarians Brace for a New Era of ‘Book Bans’",
-            "source_name": "The New York Times",
-            "url": "https://www.nytimes.com/2026/11/06/world/canada/alberta-book-ban-public-libraries.html",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Alberta’s Librarians Brace for a New Era of ‘Book Bans’"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 26,
-        "canonical_title": "Cobertura sobre política: ¿Sheriff o presidente? - El Espectador...",
-        "summary": "¿Sheriff o presidente?    El Espectador",
-        "topic": "Política",
-        "article_count": 23,
-        "narrative_synthesis": {
-          "overview": "Acontecimiento multimedio en Política cubierto por 7 salas de redacción.",
-          "divergences": [
-            "Variación en el encuadre institucional frente al impacto ciudadano."
-          ]
-        },
-        "articles": [
-          {
-            "title": "¿Sheriff o presidente? - El Espectador",
-            "source_name": "El Espectador",
-            "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNazM3RXB2aHNFeTlsSF9JV1MxdDNoYjNKRVVrOGlxNC1SeGpOZjNmNWNZVXVFWkpmQm0tNUZ6NHk2UnZRWDR2WFJ5ak5mZjVFekFFcXNJMTFOMVRuVnVqZDRjSFJIYnV3Q3N6S3Z3T2k2VWtjNW5weGZocUY4Tm81d1FoTHNZb3lCYjg1WURydGQyYkd5b0dZ0gGrAUFVX3lxTE5ic0dfVldlLTNmSW5NYUV3SnN0Y1NkNm5iQjZRUkVnUGx5U1phWDZQX2xOSG9jcHlFUkJWZkZLVEdVcmhxSUdoX3I1S2ExZFVIRk04TEFlbHc1ZnVxYlp6d2JaWlNBUE9zVl92WkxxSlRyN3dxdmtDUnVZN3QtTWhmRWtRVjRPb1U1dXdhb1VqdFI0QzhlUTNMdWp2RlFIMmk2cUFUc203aWVEcw?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "¿Sheriff o presidente? - El Espectador"
-            ]
-          },
-          {
-            "title": "Así quedó conformado el Congreso de Estados Unidos - RTVC Noticias",
-            "source_name": "RTVC Noticias",
-            "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPWEY3Q0pRWWFKcEtzdFpzZWFJX21UN1BHVG1HRWVoRTRBcGt4SGFjQ1RUdkNTODVLcTEwUW5BcFVZWUF2OFpXQVBKRnlkRU1tUjAzMWZDTjVHY0RsWHVMbGJwLWJaTHFIYVVuN1R2OE96S05OY0EySGhDeDNwcUg5TzhnR2llYWd2WjV2cHlTWkdGMHNxZDl1OA?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Así quedó conformado el Congreso de Estados Unidos - RTVC Noticias"
-            ]
-          },
-          {
-            "title": "Corte Constitucional suspende provisionalmente la declaratoria de Emergencia Económica - RTVC Noticias",
-            "source_name": "RTVC Noticias",
-            "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOWjh1b1oyR0xPWDBILVB0cEZMVy1ZRlZDNmVTV0szOWZzZF9kLV90M01wVmdoLXc0Umk2OWlTalZJN0Q0QTlNQ2dkb2d4WTFTUUFCVFR6dzZBZ3VXX3pNaFdqTlZ5YjdpTGp3Y1ZGQUh0VHNWT0NHRFE4dzNWN01EM2ZrYkZuQnlNbWZUa3BkMkZqaUtpS1E?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Corte Constitucional suspende provisionalmente la declaratoria de Emergencia Económica - RTVC Noticias"
-            ]
-          },
-          {
-            "title": "Señal Investigativa revela plan para manipular elecciones ligado a estratega de Uribe - RTVC Noticias",
-            "source_name": "RTVC Noticias",
-            "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPblVEdzlFVGRJX19ydTNxX3g2ZUNSak5vVDM4bUhZOVE3ZUFMU0lyN1R1aEphZDRYR05QZEY1U25zWVUwUFBRNjFramtLODZmQmdWdXF0NDVVYWotVm1LSDF2TEowNW9EZVY5dm5GRl95aGNZdUFmSUwwbHlyaGVHNHh0RVV3anlMcmt1U2FrcHhXNzlBNjg2Rmp0YXBId3pXVVp0WFBQWmhwOFNUSU80N2p2Z0JpWVlRQWp0blpGUzFELWJLS1Zn?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Señal Investigativa revela plan para manipular elecciones ligado a estratega de Uribe - RTVC Noticias"
-            ]
-          },
-          {
-            "title": "Pacto Histórico respalda desobediencia civil pacifica de Iván Cepeda frente al gobierno de De la Espriella - RTVC Noticias",
-            "source_name": "RTVC Noticias",
-            "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNdGlHaW9mdEtyODZoZjJyX1FEMF9NbFNFT19CbjliczdSR3dadng1N1RYaGJfMDdhcTlUNTZLVEFaeU54RVMyQ3hyd1VLeGsyYUNpbERhTmRCWjNUTVlhekxjWDBRS2lWaDdobzIwSEZOWUloSUtwMWt6OVE5VnFCZjJnZDdmUUtNa2UtMF85dG1KOTItLUp4eW5hMEgzdw?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Pacto Histórico respalda desobediencia civil pacifica de Iván Cepeda frente al gobierno de De la Espriella - RTVC Noticias"
-            ]
-          },
-          {
-            "title": "Iván Cepeda propone Ley Anticorrupción: sin casa por cárcel ni beneficios judiciales para grandes corruptos - RTVC Noticias",
-            "source_name": "RTVC Noticias",
-            "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPUWNLMVpXa3Roc2JsYUduekd0MkpiNnFVV0MwaUhST3lvMGUyUDBYbkxpZ1pVTFhrTnFZRk5RZmlKZEJFV0ZyV212dk5rT19rNUUxV3BGSHF0RFIydmhzZjY5SWlHLXVaUHoyUF84VXpKLVhyaG5Tb3FSeGg3cGxCU2R3dmZIMFNhQlVLUjA1b1dFZlFMWlBhTVJnSy1QRjBDLTFMQkMzbVZXT0E5ZDZWMkRlMEs2SndnYmZUZEJmOFFvZHY4?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Iván Cepeda propone Ley Anticorrupción: sin casa por cárcel ni beneficios judiciales para grandes corruptos - RTVC Noticias"
-            ]
-          },
-          {
-            "title": "Revelan imágenes de hombres que habrían ingresado a casa del director del Dapre tras denuncias sobre contratos públicos en gobierno de Gustavo Petro - El Tiempo",
-            "source_name": "El Tiempo",
-            "url": "https://news.google.com/rss/articles/CBMinAJBVV95cUxORWZYa2N2UFN2cWpCX3dpWU81VWxBdW95WG9OYWpuMDdTbDdaX053WUxrR0N6Qkp5UF8wN1VyWXd2elluQUxKUmVrc1VsRnpxMFQxQVN0Zmt2al9OY281LWZCVzlQY0FyazN6MTc3dC02VGRyamtnQkttNDB1VUlCWldVQm1MekVmN3hFaDN5MFRub0pvN203R1BUNWhraXRrcllKcWxFOUdiNkNwdW9tVUszMEY2RU11MURBTTZDU1lTTGxEWWNKLUpWUEZwaEdILUlIS0pjWk8xYVF0dEd2R1ZHcEZYelVKWmJHWGthMmdob2dOOTFSdzZxRlpSamxyOXlfWEVUQ0ZMUjdUeEpHSmI2TExWNl9FZkpBOdIBogJBVV95cUxQdGVZUDJSU0JqTE5mSnNyQTVYbTAyLUFHRFh1dGpDdnVyWWR3RzJoRjlJbnBuNkMxLUU4UFctSVd3QzNKWWlrYS1QRjh1S19xMTEwamY2M1pDaURPVlBwZm5KZ2JSZXBCM2VYRkdpR3FzMGxsOGJfWURsMVZ1Nk9SVFhDU3V5dFJhUWdvc29QTTVQcmRUT2lyNXpqczBTcUdFb0x1dFRPLV9kWUw0QVpnSjZ5bDM2aWZDb05kbjNxbm1nUVVCRTMtb1lzM2VFMTE1WGRJT2ZtdHVTVXJyTUJQY2xlZmI4Nm5ZVXNlSU14UnNtSUJNdndIVmtzQzFPaE9hSzNheVdWUE44WFcwbms3ZmlLN1UybHYzWkdWQmRjM2t0dw?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Revelan imágenes de hombres que habrían ingresado a casa del director del Dapre tras denuncias sobre contratos públicos en gobierno de Gustavo Petro - El Tiempo"
-            ]
-          },
-          {
-            "title": "Atención: Deyci Jiménez publica video con el que dice quiere probar su relación con el expresidente Gustavo Petro - El Tiempo",
-            "source_name": "El Tiempo",
-            "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxOdXIza2g2YURVSGF1bkpESTV5R0hlNjhmbmN4UjJ1cDNaX09jVGw2bXljN3pBak1BRU11SmkxTTRRb3NEaDM0WWNGYWRXR0R3aUxDNlI2cEVEekFxaTJwSVBYUTlsQ2ZOdlllQTRqa3QteUJaU2RGZ21Ma0NqMHNROVB2NGh6Z2lNZnFWbFFmcnM4WWV5OFo0UmdEaVVwWFN4RmIwckdCNTI2WlE4c3Zpck9rWFAyMU1CN1N2SEZzdUdaNzJNZEktZmhnS1pVaGhGMDJzN19udHoxMjVfY19NUTJDelRLZmtGLVlIalRYNm1JRDRPREFpWHVB?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Atención: Deyci Jiménez publica video con el que dice quiere probar su relación con el expresidente Gustavo Petro - El Tiempo"
-            ]
-          },
-          {
-            "title": "Presidente Abelardo De La Espriella se refiere al escándalo de Deyci Jiménez y Gustavo Petro: ¿qué dijo? - El Tiempo",
-            "source_name": "El Tiempo",
-            "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxQS3lYTE1rUk9WeU5DQ3I2Zy1MLWlPd3lKS090dWpsSFpjZ1BMSDFod2pjUzdVWHFNNnNFUlgwUFM5amdyUTQ2OHhTQzVBa216U3pwWHBRWFh2T1MteG1pUkE4dnk5WVhXZk4xZjF1bVNZU294SEtFMTF1U3NGMTRjQVJXSWZqNmQ0d0J4b05nd0NMcXhxNWRHWGZwU0Q0V053TkVpWG9FNUVUVmxqRGMxVHZXWFRXOFBPYWRtUFllaDlJZFQ2elBkY0d3eXNkZnU5UnRiWTU1dXVpTnhDd2ROaFFDOG9zbDNTb2w1VHR4NEZxb3Y5cXdCSTBWLXXSAYICQVVfeXFMTjkwMlhSQUgxRWVZTC16eGhaSkFlVFhNbDFHUGlCd1BZXzhQNXIzektKWlR5T1RMSU0wZWlhck1PdEE4SzVaV09mU0k5QUx0d2ZKOG9UblB6ai0wSHJFSUFjeFNYbl9UNmxybllTUGVDaldFQ0t5RWxQNE5JSGhHTUc4M2xzeGIyTlZ1WEFoNmxDQURxdXVNS0xHU0FKU1BXcnVONi1VZUNHLWh3Z0tOdm5kMU5nbzhPUExBX1dpd05McGNXc3dtT2E3MzAxRldrbTNTckRTWTFYb3ZuN05Oam1MUnJ2ZkRGczFBODMzMklVc3hpN2hJdlloMFJHckQ2dG93?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Presidente Abelardo De La Espriella se refiere al escándalo de Deyci Jiménez y Gustavo Petro: ¿qué dijo? - El Tiempo"
-            ]
-          },
-          {
-            "title": "María José Pizarro se pronuncia por primera vez sobre contratos de Deyci Jiménez en vicepresidencia del Senado y denuncias contra expresidente Petro - El Tiempo",
-            "source_name": "El Tiempo",
-            "url": "https://news.google.com/rss/articles/CBMirAJBVV95cUxOZHZlSzdkWHNMZldITTlhTkZ1aG5jUUFURG94Q3hudkRSM0VORjQ1WWxISXAydDN4YlpPdS1nbWVUNTVwX0h4Q0JKeUYwamJJTFlYczhrSzRzREFuX0xJOEtRc3F3U1FGbVdFY2xaUWgwY1puQnlnem9QazN1RE5PMzUtd2plTDMyVEJWZjEtY3p0ZnZaMlVRZnJIWENEUUJSWmtzTUlwdmhWZjJ1dVN1NjJnSlhhb0t4cGhqVlJPYXduSEdzcnN2X0JBQmR0QjZoTC1XcFlsQ25fd29HcWxPa2drWHhhb0ZGNnI1LUx3UF9qalJGckZWc3JlTVZTUDlwNlpvUHpaSm1td0QtT2d3MEFDekpLN2k0UjFSV253U2JNaEl5VzRPY21fZFPSAbICQVVfeXFMTmhWQUN4b245VEotZmtscDlYWHAtN0hRYlgzYUk0d3FrTDNzZmdtZ2l5Qnd3cnUza0RLRUd2ZGIweWxQc0FZa1NRY0sxbU5rZENVLU5NOC1wN2xYQ2MtWnM3LUQ0cExNdUc0RVNtOWxTdWRKZlFwc3JhN3R5MFZfbWhqRDM3cnZQYUM5QnVGdVUtaGxBNEc4bFhqQ19SSGdHU1c3eEFlT1k4TndUOVU4M05nLTlISHlzekM4TXM2RTZYNG8zbnBuazBGbXFra29uZmdPX3ZCSXliY0NYVFhPcDV1Z2k0TGlaRlota3lVS1lvb2pqN1pycUhYSGNVdVV6U2xXcXJtTm1OUkJrWVF2cG9Udjd3czdIbzlOVFhLbjBkbldtUVdZdzh1V09Lai03X1BB?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "María José Pizarro se pronuncia por primera vez sobre contratos de Deyci Jiménez en vicepresidencia del Senado y denuncias contra expresidente Petro - El Tiempo"
-            ]
-          },
-          {
-            "title": "Empresa colombiana ofrece reparar el gasoducto con Venezuela para importar gas: 'Dejamos saber a Ecopetrol nuestra absoluta capacidad' - El Tiempo",
-            "source_name": "El Tiempo",
-            "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxOaERRLW02TE9DZzd5T2dHc1AzWTlRMjJLMGJ6eVQ5cEVmUVNXUG1iTHRIWjNpLVBtYmdDRGJReG93ZWwxbU9QS2g4bkRuT0NtbkN2RE9ldHgtUlU3MlZ4aF9iQnd0dnZZbXRidEFpYzN3ZHRLSVNkWHF6QWI4Y1ZfcFR5NnNpZTBWN3dBWTd0eENrdlRrWkdnd3Zhbk5MYjcyMW5yWkhWMDk0YThKdDlDTWpUQXFRVjBBbjFzLWxWSVZGVlc0OE1ielY3U1NXS2ktM281Y1kyX2g3a0w4Sml0OHA4bFVuOVdRdzRkZGVJOGRwbm9UY1dWazVlanUwa2s3QmZ2ZXlYeTRhVmFpT2F3?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Empresa colombiana ofrece reparar el gasoducto con Venezuela para importar gas: 'Dejamos saber a Ecopetrol nuestra absoluta capacidad' - El Tiempo"
-            ]
-          },
-          {
-            "title": "Las tensiones en el Pacto Histórico por cuenta de las denuncias de Deicy Jiménez contra Gustavo Petro: visiones encontradas sobre los señalamientos - El Tiempo",
-            "source_name": "El Tiempo",
-            "url": "https://news.google.com/rss/articles/CBMisAJBVV95cUxQY0ZQMi1QNmQ1UmRDR3ZjcmwtbmIyc0QyVjJXSzNnSy1UNnd4Y0x3Rmc4RERla3gwSTM5emVSWFgwYWM0UVB5ajhMSmZkSFJWdmZKNXp2Z1lMekZGY0Q1T1I2c09jeDFTTTcxV3ktZzNPMG5iS05PTzcyN0VMeTA1VWZBN1U2UDRFTHVuLTRQOERlTGwyaW5fUEg0cU5jWVVZZ0VoTmM3aHJ4ZkItNkV1YnZjZEgyRHdBWXkydFhiSW1kQWplckJxYVNYcGxxRHZ2aUQ4WFBjckRCRmttblNCSTBOOGNXcWJ6bDRINmhxc2xtSGZPYThXQVZwbzB3cjVaeEl3VU8zNEU2T0RHYkVfQndoVUhwM3B5Q0cwdldqeDlxSlkxdlBTVHVNQ2gwRjNC0gG2AkFVX3lxTE4zNFZjT0xoUFVzS2xwbUtPN2pjYVZNSG9TZDIxVkpWSUx0RHcwSGFWTGV1NlZnRlk0V0RGWWwxOFN4dG50LUVHQVBvdkxZb1FEMXRQWU0ydjlkVnQ3UUg1V1RaQ3NjUVdCcDc5YU5VY2JBMGhGdDJrWkJRcG1TMHNjQkYtZkxzTmowWURzazNvTW1qSFl5UERqb3FrNFQwZEJrRjlRV3pPWWdRc19KUXVkNjV5Ql9iWm5zLWdOUzZuZzBwWkE5LV9wMjQ2SExWRUlzZ3NnMURTWkdiaW9IUDkyUW9sOGNPUmYyemJHNHgtMVQyUjZKVVVrc0xvbzVJazBXOUxLQXJXMVJCNktMT2h2elF3X25YSWdnb0o4ZDhJLUZpYXFaSk85enZwMHQwd3Vla0ExaGc?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Las tensiones en el Pacto Histórico por cuenta de las denuncias de Deicy Jiménez contra Gustavo Petro: visiones encontradas sobre los señalamientos - El Tiempo"
-            ]
-          },
-          {
-            "title": "‘La conocí como una contratista de la vicepresidencia del Senado’: María José Pizarro negó vínculos con contratos de Deicy Jiménez - ELHERALDO.CO",
-            "source_name": "El Heraldo",
-            "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxOaWl1MjA2V3FLcWVVZkdnenk1ai1ScTVLdElucDZZckVYM1pwaUViYkp2cTZnVVJvSjZpXzhTYnF4VUZIZ0tLV2dqUlFVbVhuWkVjOVpFR0x1TldsSDZPRmEwYS1PdGNHOGxuX3NadVU1aU1iOThJZVFSdmNiUEpNSjRUZERZTTZHWkEtamQ3Z0RSS3VjN05lY2ZNUmpJR2lqY01KdjBtT2E1SUNVS0xzVUY0elFnT2twOXlQbm1zMmlId3VzdE9IUEctOXp0T3BmTGp0MnpyMWFhSFdQaHM2RlZyaV9pM0UwYjQyUFBBZUZNWG45aTZIYURhX0FfbFVSOER3?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "‘La conocí como una contratista de la vicepresidencia del Senado’: María José Pizarro negó vínculos con contratos de Deicy Jiménez - ELHERALDO.CO"
-            ]
-          },
-          {
-            "title": "Siguen sumándose las denuncias contra Gustavo Petro ante el Congreso - ELHERALDO.CO",
-            "source_name": "El Heraldo",
-            "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNN0JleXo0cUZnM2hubmpVQ2V2WlZVMEZPdUdqQkViTnpNcWlYYzZCU1JodWhpbzFPNEpRLWNuZXpSU3d1OFUwZzNmamlHLThHbnEtOTV0VHBwQTZKRFdtNm1GQUEzNTBERXYxRkNUdlg5THphc3ZmR2VuRVY1WmFKZ1g1dXV1cHFFMkF1QS1SenlqWk4wVkxtazBzWVJfNWVzTlBMVmZWODhuUjd0Y2F0VUpFX2Q?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Siguen sumándose las denuncias contra Gustavo Petro ante el Congreso - ELHERALDO.CO"
-            ]
-          },
-          {
-            "title": "JEP anuncia trabajo virtual, entrega su sede y elimina esquemas de protección por recortes presupuestales | El Colombiano - El Colombiano",
-            "source_name": "El Colombiano",
-            "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNd2R2a0dNVzlVNjNlbEUyNXUzSzU5eFJCWnZOTHktd1RGdXZySWdmRGdsb2xXZlVvRjlvVlJ6YjY5Zi1qQVIwN2JkR3hINEVRWTlxd0djNnNRaU5sdjVOTW1kRGFWVE5DOVBFX2FBTm0tdUxXWUxpQWdoTV9Bc1A2YllPT3lSbnhnTVFyR0syMFhPMXJxVmxfeTdpY2p5SGF6RmZCR3BVQ3VkUlIzb1hOdkZhQmJJaFVtSWZiSjdmMkVia1ByclhvZWdOdDVSNEVTY191QklPV1U3TnBCLVNoNXh3YXJ6T2Y10gHuAUFVX3lxTE9QVzBaRDNuMXN2QmxYX1lLSFNxNkNyQ3ltMElsRlViZmsxSzk1TTRHblVYNFN6cEpRdUIydmRUTWdlY01NYTVWWUV1anoyMWJYZDA4YWs1ZkFVSXZYMjJrUVpTSnVDYlBfNzZnU3diRjFNcE50SE8zVktuMnRiWklISEJ5OU5SM3BzRTN0WHA5VGxEMjlXcXMwdE5BRlA2VlN0eUN1ckxHSHRaM1ZtSXVaUVkyWWIxTUMtTzc2ajJoeGM3UE5rcEI4akFRa0JiQjJfZGlkQlg5MDZMNTJDR3hiS0hZdXB2dmJMNjVwMnc?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "JEP anuncia trabajo virtual, entrega su sede y elimina esquemas de protección por recortes presupuestales | El Colombiano - El Colombiano"
-            ]
-          },
-          {
-            "title": "MinAgricultura anuncia auditoría al FNG; Lafaurie pide auditar programa del gobierno Santos que Dangond asesoró | El Colombiano - El Colombiano",
-            "source_name": "El Colombiano",
-            "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPOWdpLUtHRkZ4Y0ZUeFNnNXVsamdmY3NwdXY4cElHeEtucU9BTGFDQW1pTGM2SWFaME5nd2gtRVBBenkzM3lyc1JBM3BZZVZCZDF1RmtxdG56MG1JdFNHN0UzMHEwSWtaYjE3SjY4X1I1dVhtdktlT1B0TkRaUjdxbnNPbTlLMTJITkdaTjlGVXFOanZlTDhyNjNKTm1nVGxUNGczZHluQ2ptd09GZVNlRNIBtgFBVV95cUxPTk9BUjhPekRVb1JEWkUxYkNXSThEWV9GVVdiM1hPeE9CV1ktWXpJRnFJVFNTZDctd0NmaXl4SVhsSkM1UDJ2MmdDbjVob2ZucUtyWjN2ckxhZlhUdXdWbS1hTUtGLXpHYjUxZ3FCRm1vSEFadTROWXFnTHNNLUdUQjBteUVxZTA2eEFOU01MckxpRXpXcTFDcmRnYzlQS3gybDZTWWVIY1RfanE0S3FiV2hORmxQUQ?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "MinAgricultura anuncia auditoría al FNG; Lafaurie pide auditar programa del gobierno Santos que Dangond asesoró | El Colombiano - El Colombiano"
-            ]
-          },
-          {
-            "title": "Por qué el Congreso de Paraguay no aceptó la renuncia de Santiago Peña como presidente y qué supone ahora el juicio político en su contra",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/crwyddpl789do?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Por qué el Congreso de Paraguay no aceptó la renuncia de Santiago Peña como presidente y qué supone ahora el juicio político en su contra"
-            ]
-          },
-          {
-            "title": "El Congreso de Paraguay debate el futuro del presidente Santiago Peña tras la crisis de Ueno Bank. Sigue las últimas noticias",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.co.uk/mundo/live/c54g11vvvemkt?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "El Congreso de Paraguay debate el futuro del presidente Santiago Peña tras la crisis de Ueno Bank. Sigue las últimas noticias"
-            ]
-          },
-          {
-            "title": "Qué es Ueno Bank y qué provocó la crisis por la que Santiago Peña renunció como presidente de Paraguay",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/cqx28zrgd0yxo?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Qué es Ueno Bank y qué provocó la crisis por la que Santiago Peña renunció como presidente de Paraguay"
-            ]
-          },
-          {
-            "title": "El Congreso de Paraguay inicia un juicio político contra Santiago Peña por el caso Ueno Bank pese a su renuncia a la presidencia",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/ckjwe5wy4nxyo?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "El Congreso de Paraguay inicia un juicio político contra Santiago Peña por el caso Ueno Bank pese a su renuncia a la presidencia"
-            ]
-          },
-          {
-            "title": "Presidente de Paraguay bajo investigación fiscal; ante posible destitución por colapso de un banco - AP News",
-            "source_name": "Associated Press (AP)",
-            "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQcFBBbFNyM1FDQV9uN1ZXbG5EdGwzQ2M4QWh2QklweEhEbXlFTG81bjQ3aHZRR2NKb3Y2aWxPXy0wRU1BcEhPbHZLdk5ObmQ5VnM2eEEwLVQwYm1TZzZ0aFJhZ1dvUGFVT0QtUnJuVjNSR0RTaEotWVNUWkE3YlhfbThQSjZnaVN2UnZIRGNNVHFkVVNISks0a0NaNkZwek10aTUxQWxmSFNES19jeWc?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Presidente de Paraguay bajo investigación fiscal; ante posible destitución por colapso de un banco - AP News"
-            ]
-          },
-          {
-            "title": "El rey Carlos III habla con jefes de gobierno en Antigua y expresa \"pesar\" por la esclavitud - AP News",
-            "source_name": "Associated Press (AP)",
-            "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQX0dHaHoteEhreWhGd3JLaE1SV01qNUxkN0dqZXN5cFRFTDdTdFZOcHVaZ3huU09iYldmWFlTbkNtNi1UZ2J6VVpRYi13WDRKN0lBR0pKNEtLMTY1V281ZUJkd0l0clFIRWVEUkZEeVBkLVc0aFBDQWFwU1FYYmJRaUkza3hBM0JPblV1NEFEakFmNl9OOHNxVVE1dW95Ym5QNFpFOQ?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "El rey Carlos III habla con jefes de gobierno en Antigua y expresa \"pesar\" por la esclavitud - AP News"
-            ]
-          },
-          {
-            "title": "Demócrata progresista El-Sayed gana carrera al Senado por Michigan, será el 1er senador musulmán - AP News",
-            "source_name": "Associated Press (AP)",
-            "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNeHowWXV0MTdVUkxpSlppbDZhdUhXN1dFQ1lJNmwwYVJsMnBhNzhjQTZMLWFtMXJUaV92N29RNko1bFRMX1M1VGZSU0dvTWZBeXBQdDdWcEJiZHladFpzNVZfc1dQQ2NET3RJWDFOWVdNNFB5Um5teFlxd0syVDVDZXlmUlRObUQ3WFNBV21jempyczRHS3hpeXljSHJnUWNlYTFGeXpPNGszREZKaDNr?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Demócrata progresista El-Sayed gana carrera al Senado por Michigan, será el 1er senador musulmán - AP News"
-            ]
-          }
-        ]
-      },
-      {
-        "id": 27,
-        "canonical_title": "Cobertura sobre salud: Minsalud declara insubsistente a Iván Sánchez, director de la ADRES - El Es...",
-        "summary": "Minsalud declara insubsistente a Iván Sánchez, director de la ADRES    El Espectador",
-        "topic": "Salud",
-        "article_count": 2,
-        "narrative_synthesis": {
-          "overview": "Acontecimiento multimedio en Salud cubierto por 2 salas de redacción.",
-          "divergences": [
-            "Variación en el encuadre institucional frente al impacto ciudadano."
-          ]
-        },
-        "articles": [
-          {
-            "title": "Minsalud declara insubsistente a Iván Sánchez, director de la ADRES - El Espectador",
-            "source_name": "El Espectador",
-            "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOalQ5UDdJeEFkRVVpTGJ3OFFQY19vWnNEZndiWVZGbzROME1EVjNQeGZLZVVyVGJlbk9TZmJ6U1lLaHBESUhnb1dfcmVYVjJKT2ZFLUUzeDVHMlExakVhRFluSlZjaEltZEJOQmxaRnFvb3pQWnhKRy1NLVp5WjRYQm1ValJaYmwzaG5LVk01WnNXbFQ4WC1SOVR6YzB2ZkhmLTd0RU5fVkl3UXc3TWpWZUl1VndHQnFtZzdPS1ptVdIB0wFBVV95cUxQSDN3RHNwcmlmT2pVejZMdGdRenJPMDVnQ1h2dENBa0xDUkFwZnhjOVdwUGR0REFmTWRkekE4anhTQURRNWljb0F5dkJIOW9sa2dXcTBVLXRNQ2JrWDNadGtSZTVxd2lCZHN6MlJvY3c5WlF3ZmhNNElqTDRfZzAtWkowc2lyaDc4Z3dRaU5NWlBBMkNOdUZPbGE5V0E5SkNVNjlhZUZyd2lZaFZ5RzJVaTFNcm1pdDh6R3h4YTNHR0tFcWQxQnNXUkt0ekx6cF9ucmMw?oc=5",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Minsalud declara insubsistente a Iván Sánchez, director de la ADRES - El Espectador"
-            ]
-          },
-          {
-            "title": "Muere Gonzalo Moratorio, el científico que \"blindó\" a Uruguay del covid-19 y luchaba por pagarse un costoso tratamiento contra el cáncer",
-            "source_name": "BBC News Mundo",
-            "url": "https://www.bbc.com/mundo/articles/c674ppz944jxo?at_medium=RSS&at_campaign=rss",
-            "narrative_angle": "Cobertura informativa",
-            "tone": "Neutro",
-            "highlighted": [
-              "Muere Gonzalo Moratorio, el científico que \"blindó\" a Uruguay del covid-19 y luchaba por pagarse un costoso tratamiento contra el cáncer"
-            ]
-          }
-        ]
       }
     ]
   },
@@ -11970,109 +12014,109 @@
     "ranking": [
       {
         "rank": 1,
-        "topic": "Deportes",
-        "count": 89,
-        "share_pct": 28.7,
+        "topic": "Política",
+        "count": 95,
+        "share_pct": 24.1,
         "status": "en_auge",
-        "velocity": "12.7 notas/día"
+        "velocity": "+42% (24h)"
       },
       {
         "rank": 2,
-        "topic": "Política",
-        "count": 48,
-        "share_pct": 15.5,
+        "topic": "Medio Ambiente",
+        "count": 52,
+        "share_pct": 13.2,
         "status": "en_auge",
-        "velocity": "6.9 notas/día"
+        "velocity": "+42% (24h)"
       },
       {
         "rank": 3,
         "topic": "Sociedad",
-        "count": 35,
-        "share_pct": 11.3,
+        "count": 51,
+        "share_pct": 12.9,
         "status": "en_auge",
-        "velocity": "5.0 notas/día"
+        "velocity": "+42% (24h)"
       },
       {
         "rank": 4,
-        "topic": "Medio Ambiente",
-        "count": 34,
-        "share_pct": 11.0,
+        "topic": "Conflicto y Paz",
+        "count": 48,
+        "share_pct": 12.2,
         "status": "estable",
-        "velocity": "4.9 notas/día"
+        "velocity": "+5% (24h)"
       },
       {
         "rank": 5,
-        "topic": "Tecnología",
-        "count": 29,
-        "share_pct": 9.4,
+        "topic": "Economía",
+        "count": 36,
+        "share_pct": 9.1,
         "status": "estable",
-        "velocity": "4.1 notas/día"
+        "velocity": "+5% (24h)"
       },
       {
         "rank": 6,
         "topic": "Salud",
-        "count": 19,
-        "share_pct": 6.1,
+        "count": 34,
+        "share_pct": 8.6,
         "status": "estable",
-        "velocity": "2.7 notas/día"
+        "velocity": "+5% (24h)"
       },
       {
         "rank": 7,
-        "topic": "Cultura",
-        "count": 16,
-        "share_pct": 5.2,
+        "topic": "Tecnología",
+        "count": 29,
+        "share_pct": 7.4,
         "status": "estable",
-        "velocity": "2.3 notas/día"
+        "velocity": "+5% (24h)"
       },
       {
         "rank": 8,
         "topic": "Internacional",
-        "count": 16,
-        "share_pct": 5.2,
+        "count": 24,
+        "share_pct": 6.1,
         "status": "en_declive",
-        "velocity": "2.3 notas/día"
+        "velocity": "-18% (24h)"
       },
       {
         "rank": 9,
-        "topic": "Conflicto y Paz",
-        "count": 14,
-        "share_pct": 4.5,
+        "topic": "Cultura",
+        "count": 20,
+        "share_pct": 5.1,
         "status": "en_declive",
-        "velocity": "2.0 notas/día"
+        "velocity": "-18% (24h)"
       },
       {
         "rank": 10,
-        "topic": "Economía",
-        "count": 10,
-        "share_pct": 3.2,
+        "topic": "Deportes",
+        "count": 5,
+        "share_pct": 1.3,
         "status": "en_declive",
-        "velocity": "1.4 notas/día"
+        "velocity": "-18% (24h)"
       }
     ],
     "rising_topics": [
       {
         "rank": 1,
-        "topic": "Deportes",
-        "count": 89,
-        "share_pct": 28.7,
+        "topic": "Política",
+        "count": 95,
+        "share_pct": 24.1,
         "status": "en_auge",
-        "velocity": "12.7 notas/día"
+        "velocity": "+42% (24h)"
       },
       {
         "rank": 2,
-        "topic": "Política",
-        "count": 48,
-        "share_pct": 15.5,
+        "topic": "Medio Ambiente",
+        "count": 52,
+        "share_pct": 13.2,
         "status": "en_auge",
-        "velocity": "6.9 notas/día"
+        "velocity": "+42% (24h)"
       },
       {
         "rank": 3,
         "topic": "Sociedad",
-        "count": 35,
-        "share_pct": 11.3,
+        "count": 51,
+        "share_pct": 12.9,
         "status": "en_auge",
-        "velocity": "5.0 notas/día"
+        "velocity": "+42% (24h)"
       }
     ]
   },
