@@ -418,7 +418,7 @@
                 </span>
               </div>
 
-              <h1 id="hero-headline" class="font-headline-xl text-headline-xl text-primary font-extrabold tracking-tight leading-tight max-w-3xl">
+              <h1 id="hero-headline" onclick="openArticleModal('hero')" class="cursor-pointer hover:text-primary-fixed transition-colors" class="font-headline-xl text-headline-xl text-primary font-extrabold tracking-tight leading-tight max-w-3xl">
                 Reforma Laboral y Pensional: Senado aprueba artículos clave en medio de fuerte pulso gremial
               </h1>
 
@@ -1673,6 +1673,74 @@
   <!-- ========================================== -->
   <!-- MODAL: LÍMITES DE ALCANCE Y ÉTICA (PRD)    -->
   <!-- ========================================== -->
+  
+  <!-- ========================================== -->
+  <!-- MODAL: DESGLOSE DE ANÁLISIS DE GEMINI 3.5  -->
+  <!-- ========================================== -->
+  <div id="article-analysis-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="bg-surface-container rounded-2xl max-w-2xl w-full border border-outline-variant shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <div class="p-space-lg bg-surface-container-low border-b border-outline-variant/50 flex items-start justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 flex-wrap mb-2">
+            <span id="modal-art-source" class="px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary-container font-bold text-[10px] uppercase tracking-wider"></span>
+            <span id="modal-art-scope" class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface text-[10px] uppercase font-semibold"></span>
+            <span id="modal-art-category" class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary-fixed text-[10px] uppercase font-semibold"></span>
+            <span id="modal-art-date" class="text-[11px] text-on-surface-variant font-mono"></span>
+          </div>
+          <h2 id="modal-art-title" class="font-headline-sm text-headline-sm text-primary font-bold leading-snug"></h2>
+        </div>
+        <button onclick="closeArticleModal()" class="w-9 h-9 rounded-full bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer shrink-0">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="p-space-lg overflow-y-auto space-y-space-md text-body-sm text-on-surface-variant">
+        <div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/50">
+          <div class="flex items-center gap-2 mb-1.5 text-primary font-bold text-label-md uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[20px] text-primary-fixed">psychology</span>
+            <span>Encuadre Editorial (Framing por Gemini 3.5)</span>
+          </div>
+          <p id="modal-art-framing" class="text-on-surface leading-relaxed font-body-md"></p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+          <div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/40">
+            <span class="text-[11px] uppercase font-bold text-on-surface-variant block mb-1">Tono Discursivo</span>
+            <p id="modal-art-tone" class="font-bold text-on-surface uppercase"></p>
+          </div>
+          <div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/40">
+            <span class="text-[11px] uppercase font-bold text-on-surface-variant block mb-1">Foco / Aspectos Resaltados</span>
+            <p id="modal-art-aspects" class="text-on-surface"></p>
+          </div>
+        </div>
+
+        <div class="p-space-md rounded-xl bg-surface-container-low border border-outline-variant/50">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[11px] uppercase font-bold text-on-surface flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-primary-fixed text-[18px]">menu_book</span>
+              Cita APA 7ma Edición
+            </span>
+            <button onclick="copyModalCitation()" class="px-2.5 py-1 rounded-full bg-surface-container-high hover:bg-primary-container text-on-surface font-label-sm text-[10px] uppercase font-bold transition-all flex items-center gap-1 cursor-pointer">
+              <span id="modal-copy-icon" class="material-symbols-outlined text-[14px]">content_copy</span>
+              <span id="modal-copy-text">Copiar Cita</span>
+            </button>
+          </div>
+          <p id="modal-art-citation" class="font-mono text-[11px] text-on-surface-variant bg-surface-container-lowest p-2 rounded-lg border border-outline-variant/30 break-all select-all"></p>
+        </div>
+      </div>
+
+      <div class="p-space-md bg-surface-container-low border-t border-outline-variant/40 flex items-center justify-between flex-wrap gap-2">
+        <a id="modal-art-link" href="#" target="_blank" rel="noopener noreferrer" class="px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-bold flex items-center gap-1.5 shadow-sm transition-all">
+          <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+          <span>Ver Noticia Original</span>
+        </a>
+        <button onclick="closeArticleModal()" class="px-space-md py-space-xs rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-sm text-label-sm uppercase font-bold cursor-pointer">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div id="disclaimer-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
     <div class="bg-surface-container rounded-2xl max-w-2xl w-full border border-outline-variant shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
       <div class="p-space-lg bg-surface-container-low border-b border-outline-variant/50 flex items-center justify-between">
@@ -2368,6 +2436,66 @@
     }
 
     // 11. DISCLAIMER MODAL
+    
+    function openArticleModal(id) {
+      const articles = (dailyCachePayload && dailyCachePayload.feed && dailyCachePayload.feed.all_articles) ? dailyCachePayload.feed.all_articles : [];
+      let art = articles.find(a => a.id === id || a.url === id);
+      if (!art && (id === 'hero' || !id)) art = articles[0];
+      if (!art) return;
+
+      const modal = document.getElementById('article-analysis-modal');
+      if (!modal) return;
+
+      const srcEl = document.getElementById('modal-art-source');
+      if (srcEl) srcEl.innerText = art.source_name || 'Medio';
+      const scopeEl = document.getElementById('modal-art-scope');
+      if (scopeEl) scopeEl.innerText = art.source_scope === 'internacional' ? 'Internacional' : 'Nacional';
+      const catEl = document.getElementById('modal-art-category');
+      if (catEl) catEl.innerText = art.category || art.topic || 'General';
+      const dateEl = document.getElementById('modal-art-date');
+      if (dateEl) dateEl.innerText = art.published_at ? art.published_at.slice(0, 10) : 'Hoy';
+      const titleEl = document.getElementById('modal-art-title');
+      if (titleEl) titleEl.innerText = art.title || '';
+      const framEl = document.getElementById('modal-art-framing');
+      if (framEl) framEl.innerText = art.narrative_angle || art.excerpt || 'Análisis de encuadre editorial según teoría de Agenda-Setting.';
+      const toneEl = document.getElementById('modal-art-tone');
+      if (toneEl) toneEl.innerText = art.tone || 'Neutro / Informativo';
+      const aspEl = document.getElementById('modal-art-aspects');
+      if (aspEl) aspEl.innerText = (art.highlighted_aspects && art.highlighted_aspects.length) ? art.highlighted_aspects.join(', ') : 'Cobertura de agenda institucional';
+      
+      const citation = `${art.source_name || 'Medio'}. (${new Date().getFullYear()}). ${art.title || ''}. ${art.url || ''}`;
+      const citEl = document.getElementById('modal-art-citation');
+      if (citEl) citEl.innerText = citation;
+      const linkEl = document.getElementById('modal-art-link');
+      if (linkEl) linkEl.href = art.url || '#';
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeArticleModal() {
+      const modal = document.getElementById('article-analysis-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function copyModalCitation() {
+      const txt = document.getElementById('modal-art-citation').innerText;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(txt);
+        const icon = document.getElementById('modal-copy-icon');
+        const label = document.getElementById('modal-copy-text');
+        if (icon) icon.innerText = 'check';
+        if (label) label.innerText = '¡Copiada!';
+        setTimeout(() => {
+          if (icon) icon.innerText = 'content_copy';
+          if (label) label.innerText = 'Copiar Cita';
+        }, 2000);
+      }
+    }
+
     function openDisclaimerModal() {
       const modal = document.getElementById('disclaimer-modal');
       modal.classList.remove('hidden');
@@ -2897,7 +3025,7 @@
             : '';
 
           return `
-            <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-primary-container/40" 
+            <article class="news-card group flex flex-col justify-between rounded-2xl bg-surface-container p-space-lg shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-outline-variant/30 hover:border-primary-container/40 cursor-pointer" onclick="openArticleModal('${art.id || encodeURIComponent(art.url)}')" 
                      data-category="${slug}" 
                      data-territory="${territory}">
               <div class="flex flex-col gap-space-md">

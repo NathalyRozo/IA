@@ -1,135 +1,127 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 
-interface NavbarProps {
-  territory?: 'all' | 'nacional' | 'internacional';
-  onTerritoryChange?: (territory: 'all' | 'nacional' | 'internacional') => void;
+export interface NavbarProps {
+  activeScope?: 'all' | 'nacional' | 'internacional';
+  onScopeChange?: (scope: 'all' | 'nacional' | 'internacional') => void;
+  searchQuery?: string;
+  onSearchChange?: (query: string) => void;
+  isSyncing?: boolean;
+  onSyncGemini?: () => void;
+  onToggleSidebar?: () => void;
   onOpenDisclaimer?: () => void;
 }
 
-export default function Navbar({ 
-  territory = 'nacional', 
-  onTerritoryChange,
-  onOpenDisclaimer 
+export default function Navbar({
+  activeScope = 'nacional',
+  onScopeChange,
+  searchQuery = '',
+  onSearchChange,
+  isSyncing = false,
+  onSyncGemini,
+  onToggleSidebar,
+  onOpenDisclaimer,
 }: NavbarProps) {
-  const [selectedTerritory, setSelectedTerritory] = useState<'all' | 'nacional' | 'internacional'>(territory);
-
-  const handleTerritory = (t: 'all' | 'nacional' | 'internacional') => {
-    setSelectedTerritory(t);
-    if (onTerritoryChange) onTerritoryChange(t);
-    window.dispatchEvent(new CustomEvent('territoryChange', { detail: t }));
-  };
+  const scopes: Array<{ id: 'all' | 'nacional' | 'internacional'; label: string; icon?: string }> = [
+    { id: 'all', label: 'Todos' },
+    { id: 'nacional', label: 'Nacional (Colombia)', icon: 'flag' },
+    { id: 'internacional', label: 'Internacional', icon: 'public' },
+  ];
 
   return (
-    <header className="fixed top-0 left-72 right-0 h-20 bg-surface/80 backdrop-blur-xl z-40 px-space-lg flex items-center justify-between gap-space-md shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-outline-variant/20">
-      {/* Search Bar & Fast Scope Switcher */}
-      <div className="flex items-center gap-space-md flex-1 max-w-xl">
+    <header className="sticky top-0 z-10 w-full bg-slate-950/85 backdrop-blur-md border-b border-slate-800 px-6 py-3.5 flex items-center justify-between flex-wrap gap-4 shadow-sm">
+      {/* Left: Hamburger & Search */}
+      <div className="flex items-center gap-3 flex-1 min-w-[240px] max-w-xl">
+        {onToggleSidebar && (
+          <button
+            type="button"
+            onClick={onToggleSidebar}
+            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors shrink-0 cursor-pointer"
+            title="Alternar Menú Lateral"
+            aria-label="Alternar Menú Lateral"
+          >
+            <span className="material-symbols-outlined text-[22px]">menu</span>
+          </button>
+        )}
+
         <div className="relative w-full flex items-center">
-          <span className="material-symbols-outlined absolute left-space-md text-on-surface-variant text-[20px]">
+          <span className="material-symbols-outlined absolute left-3.5 text-slate-400 text-[18px]">
             search
           </span>
-          <input 
-            className="w-full bg-surface-container-low rounded-full pl-11 pr-14 py-space-sm text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm outline-none focus:bg-surface-container-high transition-colors border border-outline-variant/20 focus:border-primary-fixed/40"
-            placeholder="Buscar fuentes, temas clave o perspectivas..." 
+          <input
             type="text"
-            onChange={(e) => {
-              window.dispatchEvent(new CustomEvent('searchChange', { detail: e.target.value }));
-            }}
+            value={searchQuery}
+            onChange={(e) => onSearchChange && onSearchChange(e.target.value)}
+            placeholder="Buscar fuentes, temas clave o perspectivas..."
+            className="w-full bg-slate-900 border border-slate-700/60 rounded-full pl-10 pr-12 py-1.5 text-xs text-slate-200 placeholder:text-slate-400 focus:outline-none focus:border-yellow-400/60 focus:ring-1 focus:ring-yellow-400/40 transition-all"
           />
-          <kbd className="absolute right-space-md px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase">
+          <kbd className="absolute right-3 px-2 py-0.5 rounded-full bg-slate-800 text-[10px] text-slate-400 font-mono">
             ⌘K
           </kbd>
         </div>
-
-        <div className="inline-flex p-1 bg-surface-container-low rounded-full border border-outline-variant/20 shrink-0">
-          <button 
-            type="button"
-            onClick={() => handleTerritory('all')}
-            className={`px-space-sm py-space-xs rounded-full font-label-sm text-label-sm uppercase transition-all ${
-              selectedTerritory === 'all'
-                ? 'bg-primary-container text-on-primary-container font-bold shadow-[0_0_10px_rgba(253,228,0,0.3)]'
-                : 'text-on-surface-variant hover:text-on-surface'
-            }`}
-          >
-            Todos
-          </button>
-          <button 
-            type="button"
-            onClick={() => handleTerritory('nacional')}
-            className={`px-space-md py-space-xs rounded-full font-label-sm text-label-sm uppercase transition-all ${
-              selectedTerritory === 'nacional'
-                ? 'bg-primary-container text-on-primary-container font-bold shadow-[0_0_10px_rgba(253,228,0,0.3)]'
-                : 'text-on-surface-variant hover:text-on-surface'
-            }`}
-          >
-            Nacional
-          </button>
-          <button 
-            type="button"
-            onClick={() => handleTerritory('internacional')}
-            className={`px-space-md py-space-xs rounded-full font-label-sm text-label-sm uppercase transition-all ${
-              selectedTerritory === 'internacional'
-                ? 'bg-primary-container text-on-primary-container font-bold shadow-[0_0_10px_rgba(253,228,0,0.3)]'
-                : 'text-on-surface-variant hover:text-on-surface'
-            }`}
-          >
-            Internacional
-          </button>
-        </div>
       </div>
 
-      {/* Right User Bar */}
-      <div className="flex items-center gap-space-md">
+      {/* Center: Scope Filter Switcher */}
+      <div className="flex items-center flex-wrap gap-1 bg-slate-900 p-1 rounded-full border border-slate-800 shrink-0">
+        {scopes.map((s) => {
+          const isSelected = activeScope === s.id;
+          return (
+            <button
+              key={s.id}
+              type="button"
+              onClick={() => onScopeChange && onScopeChange(s.id)}
+              className={`px-3 py-1 rounded-full text-xs font-bold uppercase transition-all flex items-center gap-1 cursor-pointer ${
+                isSelected
+                  ? 'bg-yellow-400 text-slate-950 shadow-[0_0_8px_rgba(250,204,21,0.3)]'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              {s.icon && <span className="material-symbols-outlined text-[14px]">{s.icon}</span>}
+              <span>{s.label}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Right: Actions */}
+      <div className="flex items-center flex-wrap gap-3 shrink-0">
         {/* Gemini Daily Sync Button */}
-        <button
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent('triggerGeminiSync'));
-          }}
-          className="px-space-md py-1.5 rounded-full bg-primary-container text-on-primary-container hover:shadow-[0_0_18px_rgba(253,228,0,0.45)] flex items-center gap-1.5 font-label-sm text-label-sm uppercase font-bold transition-all border border-primary-fixed/40 cursor-pointer"
-          title="Sincronizar noticias del día con Gemini"
-        >
-          <span className="material-symbols-outlined text-[16px] text-on-primary-container">sync</span>
-          <span className="hidden md:inline">Sincronizar Gemini</span>
-        </button>
-
-        {/* Ethical disclaimer shortcut */}
-        <button
-          onClick={onOpenDisclaimer}
-          className="px-space-sm py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant hover:text-primary-fixed flex items-center gap-1 font-label-sm text-label-sm uppercase transition-all border border-outline-variant/30 cursor-pointer"
-          title="Ver límites de alcance y principios deontológicos"
-        >
-          <span className="material-symbols-outlined text-[16px] text-primary-fixed">verified</span>
-          <span className="hidden sm:inline">Qué NO hace</span>
-        </button>
-
-        {/* Dark mode indicator */}
-        <div className="flex items-center bg-surface-container-low rounded-full p-1 border border-outline-variant/20">
-          <div className="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-primary-fixed">
-            <span className="material-symbols-outlined text-[16px]">dark_mode</span>
-          </div>
-        </div>
-
-        {/* Notifications */}
-        <button 
-          type="button"
-          className="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-full transition-colors cursor-pointer"
-        >
-          <span className="material-symbols-outlined text-[22px]">notifications</span>
-          <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(255,74,141,0.6)]"></span>
-        </button>
-
-        {/* User Persona Profile: Victoria León */}
-        <div className="flex items-center gap-space-sm pl-space-xs border-l border-outline-variant/30">
-          <div className="flex flex-col text-right">
-            <span className="font-label-md text-label-md text-on-surface leading-tight font-bold">
-              Victoria León
+        {onSyncGemini && (
+          <button
+            type="button"
+            onClick={onSyncGemini}
+            disabled={isSyncing}
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-yellow-400 hover:bg-yellow-300 text-slate-950 text-xs font-extrabold uppercase tracking-wider transition-all shadow-[0_0_12px_rgba(250,204,21,0.3)] cursor-pointer disabled:opacity-50"
+            title="Sincronizar noticias del día con Gemini 3.5"
+          >
+            <span className={`material-symbols-outlined text-[16px] ${isSyncing ? 'animate-spin' : ''}`}>
+              sync
             </span>
-            <span className="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider">
-              Periodista Pro
-            </span>
+            <span>{isSyncing ? 'Sincronizando...' : 'Sincronizar Gemini'}</span>
+          </button>
+        )}
+
+        {/* Ethical Limits Shortcut */}
+        {onOpenDisclaimer && (
+          <button
+            type="button"
+            onClick={onOpenDisclaimer}
+            className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700/60 hover:border-yellow-400/40 text-slate-300 text-xs font-semibold uppercase transition-all cursor-pointer"
+            title="Ver límites deontológicos de FOQUÉ"
+          >
+            <span className="material-symbols-outlined text-yellow-400 text-[16px]">verified</span>
+            <span>Qué NO hace</span>
+          </button>
+        )}
+
+        {/* Perfil Usuario: Victoria León */}
+        <div className="flex items-center gap-2 pl-2 border-l border-slate-800">
+          <div className="hidden lg:flex flex-col text-right">
+            <span className="text-xs font-bold text-slate-200 leading-tight">Victoria León</span>
+            <span className="text-[10px] text-yellow-400 font-semibold uppercase">Periodista Pro</span>
           </div>
-          <div className="w-9 h-9 rounded-full bg-primary-container text-on-primary-container font-black flex items-center justify-center shadow-[0_0_12px_rgba(253,228,0,0.3)]">
+          <div className="w-8 h-8 rounded-full bg-yellow-400 text-slate-950 font-black flex items-center justify-center text-xs shadow-sm">
             VL
           </div>
         </div>
