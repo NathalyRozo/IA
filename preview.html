@@ -1088,6 +1088,9 @@
       <!-- ---------------------------------------- -->
       <!-- VIEW 3: CONTRASTE DE INFORMACIÓN        -->
       <!-- ---------------------------------------- -->
+            <!-- ---------------------------------------- -->
+      <!-- VIEW 3: CONTRASTE DE INFORMACIÓN (FRAMING) -->
+      <!-- ---------------------------------------- -->
       <section id="view-contraste" class="tab-view flex flex-col w-full pb-space-xl">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md mb-space-md">
           <div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider font-bold">
@@ -1099,287 +1102,122 @@
           </div>
           <div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-1.5 rounded-full shadow-sm w-fit border border-outline-variant/30">
             <span class="material-symbols-outlined text-[16px] text-tertiary-fixed">sync</span>
-            <span class="font-body-sm text-body-sm text-on-surface-variant">Actualizado hace 15 minutos • <strong class="text-on-surface">48 artículos vinculados</strong></span>
+            <span class="font-body-sm text-body-sm text-on-surface-variant">Actualizado dinámicamente • <strong class="text-on-surface">10 medios indexados</strong></span>
           </div>
         </div>
 
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-lg bg-surface-container-low p-space-lg rounded-2xl shadow-sm relative overflow-hidden border border-outline-variant/30">
-          <div class="flex flex-col gap-space-xs max-w-4xl z-10">
-            <div class="flex flex-wrap items-center gap-space-xs mb-1">
-              <span class="px-space-md py-1 rounded-full bg-surface-container-high text-primary-fixed font-label-sm text-label-sm uppercase tracking-wider shadow-sm flex items-center gap-1.5 font-bold">
-                <span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(253,228,0,0.8)]"></span>
-                10 medios analizados en simultáneo
-              </span>
-              <h1 class="font-headline-xl text-headline-xl text-primary font-extrabold tracking-tight">
-              Contraste Editorial y Matriz de Encuadres (Framing Multimedio)
-            </h1>
-            <p class="font-body-md text-body-md text-on-surface-variant">
-              Descomposición analítica de encuadres mediáticos (<em>framing</em>), sesgos léxicos y divergencias de cobertura editorial entre prensa corporativa, pública e internacional.
-            </p>
+        <!-- 1. Header de Contraste a 100% de Ancho (Top-to-Bottom Stacked Layout) -->
+        <div class="w-full flex flex-col gap-4 mb-space-lg bg-surface-container-low p-space-lg rounded-2xl shadow-sm border border-outline-variant/30">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-3 border-b border-outline-variant/20">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                <span class="px-3 py-1 rounded-full bg-surface-container-high text-primary-fixed font-label-sm text-xs uppercase tracking-wider shadow-sm flex items-center gap-1.5 font-bold">
+                  <span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_rgba(253,228,0,0.8)]"></span>
+                  10 medios analizados en simultáneo
+                </span>
+                <span class="px-3 py-1 rounded-full bg-surface-container-high text-secondary-fixed font-label-sm text-xs uppercase tracking-wider font-semibold">
+                  Inteligencia de Encuadres (Framing)
+                </span>
+              </div>
+              <h1 class="font-headline-xl text-2xl lg:text-3xl text-primary font-extrabold tracking-tight">
+                Contraste Editorial y Matriz de Encuadres (Framing Multimedio)
+              </h1>
+              <p class="font-body-md text-sm text-on-surface-variant max-w-4xl mt-1">
+                Descomposición analítica de encuadres mediáticos (<em>framing</em>), sesgos léxicos y divergencias de cobertura editorial entre prensa corporativa, pública e internacional.
+              </p>
+            </div>
+
+            <!-- Selector de Modo de Visualización: Matriz Completa vs Tarjetas Enfrentadas -->
+            <div class="flex items-center gap-2 bg-surface-container-high p-1 rounded-xl border border-outline-variant/30 shrink-0 self-start lg:self-auto">
+              <button type="button" id="btn-contrast-mode-matrix" onclick="switchContrastDisplayMode('matrix')" class="px-3.5 py-2 rounded-lg text-xs font-bold uppercase transition-all bg-primary-container text-on-primary-container shadow-sm cursor-pointer flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">table_chart</span>
+                <span>Matriz Completa</span>
+              </button>
+              <button type="button" id="btn-contrast-mode-cards" onclick="switchContrastDisplayMode('cards')" class="px-3.5 py-2 rounded-lg text-xs font-semibold uppercase transition-all text-on-surface-variant hover:text-on-surface cursor-pointer flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">view_column</span>
+                <span>Enfrentados (Tarjetas)</span>
+              </button>
+            </div>
           </div>
 
-                      <div class="flex flex-col gap-2 w-full mt-3 pt-3 border-t border-outline-variant/20">
-              <div class="flex items-center justify-between flex-wrap gap-2">
-                <span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider font-bold">Seleccionar medios a contrastar (5 a 10 medios en columnas simultáneas):</span>
-                <span class="font-label-sm text-label-sm text-on-surface-variant font-mono" id="selected-outlets-count">10 medios seleccionados</span>
-              </div>
-              <div class="flex flex-wrap gap-1.5" id="contrast-outlet-chips">
-                <!-- Se llena dinámicamente con los 10 medios -->
-              </div>
+          <!-- Filtros de Encuadre / Tema en flex-wrap w-full (evita recortes de texto) -->
+          <div class="flex flex-col gap-2 w-full">
+            <span class="font-label-sm text-xs text-primary-fixed uppercase tracking-wider font-bold">
+              Filtrar por Enfoque / Tema Editorial:
+            </span>
+            <div class="flex flex-wrap items-center gap-2" id="contrast-framing-filters">
+              <button type="button" onclick="filterFraming('all', this)" class="framing-btn px-4 py-2 rounded-xl bg-primary-container text-on-primary-container font-label-md text-xs uppercase font-bold shadow-[0_0_12px_rgba(253,228,0,0.35)] cursor-pointer whitespace-nowrap">
+                Todos los Enfoques / Temas
+              </button>
+              <button type="button" onclick="filterFraming('social', this)" class="framing-btn px-4 py-2 rounded-xl bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-xs uppercase font-semibold cursor-pointer border border-outline-variant/20 whitespace-nowrap">
+                Social / Laboral / Salud
+              </button>
+              <button type="button" onclick="filterFraming('fiscal', this)" class="framing-btn px-4 py-2 rounded-xl bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-xs uppercase font-semibold cursor-pointer border border-outline-variant/20 whitespace-nowrap">
+                Fiscal / Mercados / Economía
+              </button>
+              <button type="button" onclick="filterFraming('politico', this)" class="framing-btn px-4 py-2 rounded-xl bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-md text-xs uppercase font-semibold cursor-pointer border border-outline-variant/20 whitespace-nowrap">
+                Político / Gobierno / Institucional
+              </button>
             </div>
-          <!-- Framing Filter Pills -->
-          <div class="flex flex-wrap lg:flex-nowrap items-center gap-space-xs z-10 bg-surface-container-high p-1.5 rounded-full border border-outline-variant/30">
-            <button type="button" onclick="filterFraming('all', this)" class="framing-btn px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase font-bold shadow-[0_0_12px_rgba(253,228,0,0.35)] cursor-pointer">Todos los enfoques</button>
-            <button type="button" onclick="filterFraming('social', this)" class="framing-btn px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase cursor-pointer">Social / Laboral</button>
-            <button type="button" onclick="filterFraming('fiscal', this)" class="framing-btn px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase cursor-pointer">Fiscal / Mercados</button>
-            <button type="button" onclick="filterFraming('politico', this)" class="framing-btn px-space-md py-space-xs rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md uppercase cursor-pointer">Político / Gobierno</button>
+          </div>
+
+          <!-- Selector de Medios a Contrastar (5 a 10 medios) en flex-wrap w-full -->
+          <div class="flex flex-col gap-2 w-full pt-3 border-t border-outline-variant/20">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <span class="font-label-sm text-xs text-primary-fixed uppercase tracking-wider font-bold">
+                Seleccionar medios a contrastar (selecciona de 5 a 10 medios para comparar en columnas simultáneas):
+              </span>
+              <span class="font-label-sm text-xs text-on-surface-variant font-mono" id="selected-outlets-count">10 medios seleccionados</span>
+            </div>
+            <div class="flex flex-wrap gap-2" id="contrast-outlet-chips">
+              <!-- Se llena dinámicamente con los 10 medios -->
+            </div>
           </div>
         </div>
 
-        <!-- 3 Side-by-Side Columns -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-space-lg mb-space-xl overflow-x-auto pb-4" id="contrast-columns">
-          <!-- Col 1: El Espectador (Social) -->
-          <article class="contrast-col flex flex-col justify-between bg-surface-container-low rounded-2xl p-space-lg shadow-md hover:shadow-2xl relative overflow-hidden group border border-outline-variant/30" data-framing="social">
-            <div class="absolute top-0 left-0 right-0 h-1.5 bg-secondary-container"></div>
-            <div class="flex flex-col gap-space-md">
-              <div class="flex items-start justify-between gap-space-sm pt-space-xs">
-                <div class="flex items-center gap-space-sm">
-                  <div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary-fixed font-bold font-headline-sm text-[16px] shadow-sm">EE</div>
-                  <div>
-                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">El Espectador</h3>
-                    <span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Prensa Nacional • Colombia</span>
-                  </div>
-                </div>
-                <span class="px-space-md py-1 rounded-full bg-secondary-container text-on-secondary font-label-sm text-label-sm uppercase tracking-wider font-bold shadow-sm">Enfoque Social</span>
-              </div>
-              <div class="flex flex-col gap-space-xs">
-                <span class="font-label-sm text-label-sm text-secondary-fixed uppercase tracking-wider font-bold">Titular de portada</span>
-                <h2 class="font-headline-md text-headline-md text-on-surface font-extrabold leading-snug">
-                  “Con reparos en el régimen de transición laboral, avanza la reforma en primer debate”
-                </h2>
-                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  La célula legislativa destrabó el articulado nuclear tras 14 horas de negociación, priorizando la jornada nocturna anticipada y contratos a término indefinido como norma general.
-                </p>
-              </div>
-              <div class="bg-surface-container-high rounded-xl p-space-sm flex flex-col gap-1.5 border border-outline-variant/20">
-                <div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm">
-                  <span>Tono Interpretativo</span>
-                  <span class="text-secondary-fixed font-semibold">Garantista Crítico (68%)</span>
-                </div>
-                <div class="w-full h-2 rounded-full bg-surface-container flex overflow-hidden">
-                  <div class="bg-secondary-container h-full w-[68%]"></div>
-                  <div class="bg-surface-bright h-full w-[32%]"></div>
-                </div>
-              </div>
-              <div class="flex flex-col gap-space-sm pt-space-xs">
-                <span class="font-label-md text-label-md text-on-surface uppercase tracking-wider flex items-center gap-1.5 font-bold">
-                  <span class="material-symbols-outlined text-[16px] text-secondary-fixed">fact_check</span>
-                  Deconstrucción de Puntos Clave
-                </span>
-                <div class="p-space-md rounded-xl bg-surface-container-highest/60 flex flex-col gap-space-xs border border-outline-variant/20">
-                  <div class="flex items-center gap-space-xs text-secondary-fixed font-label-sm text-label-sm uppercase font-bold">
-                    <span class="material-symbols-outlined text-[16px]">visibility</span> Énfasis Declarado
-                  </div>
-                  <p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
-                    Protección prioritaria a trabajadores de plataformas digitales, formalización agropecuaria y recargo nocturno desde las 7:00 PM.
-                  </p>
-                </div>
-                <div class="p-space-md rounded-xl bg-surface-container-highest/30 flex flex-col gap-space-xs border border-outline-variant/10">
-                  <div class="flex items-center gap-space-xs text-outline font-label-sm text-label-sm uppercase font-bold">
-                    <span class="material-symbols-outlined text-[16px]">visibility_off</span> Dimensión Omitida
-                  </div>
-                  <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                    Minimiza la cuantificación del impacto en estructura de costos de micro y peque eñas empresas frente al recargo dominical.
-                  </p>
-                </div>
+        <!-- 2. Matriz de Contraste a Ancho Completo (w-full) con Primera Columna Sticky -->
+        <section id="contrast-matrix-section" class="w-full bg-surface-container-low rounded-2xl p-space-md lg:p-space-lg shadow-md border border-outline-variant/30 mb-space-lg">
+          <div class="flex items-center justify-between mb-space-md flex-wrap gap-2">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary-fixed text-[24px]">compare_arrows</span>
+              <div>
+                <h3 class="font-headline-sm text-base lg:text-lg text-primary font-bold">Matriz de Divergencia Léxica y Encuadre Editorial</h3>
+                <p class="text-xs text-on-surface-variant">Desliza horizontalmente para comparar todos los medios seleccionados</p>
               </div>
             </div>
-            <div class="pt-space-lg flex items-center justify-between border-t border-outline-variant/20 mt-space-md">
-              <span class="text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1">
-                <span class="material-symbols-outlined text-[16px] text-primary-fixed">newspaper</span> Cobertura Registrada
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-md bg-surface-container-high text-xs text-secondary-fixed font-mono font-semibold border border-outline-variant/20">
+                Extracción PLN Multimedio
               </span>
-              <button onclick="window.open('https://www.elespectador.com/politica/', '_blank')" class="px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface hover:bg-secondary-container hover:text-on-secondary font-label-md text-label-md uppercase font-bold transition-all cursor-pointer">Ver original</button>
             </div>
-          </article>
-
-          <!-- Col 2: Reuters LatAm (Fiscal) -->
-          <article class="contrast-col flex flex-col justify-between bg-surface-container-low rounded-2xl p-space-lg shadow-md hover:shadow-2xl relative overflow-hidden group border border-outline-variant/30" data-framing="fiscal">
-            <div class="absolute top-0 left-0 right-0 h-1.5 bg-tertiary-fixed-dim"></div>
-            <div class="flex flex-col gap-space-md">
-              <div class="flex items-start justify-between gap-space-sm pt-space-xs">
-                <div class="flex items-center gap-space-sm">
-                  <div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary-fixed font-bold font-headline-sm text-[16px] shadow-sm">RE</div>
-                  <div>
-                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Reuters LatAm</h3>
-                    <span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Agencia Global • Londres/Bogotááá</span>
-                  </div>
-                </div>
-                <span class="px-space-md py-1 rounded-full bg-surface-container-high text-tertiary-fixed font-label-sm text-label-sm uppercase tracking-wider font-bold border border-tertiary-fixed/30">Económico / Mercados</span>
-              </div>
-              <div class="flex flex-col gap-space-xs">
-                <span class="font-label-sm text-label-sm text-tertiary-fixed uppercase tracking-wider font-bold">Titular de portada</span>
-                <h2 class="font-headline-md text-headline-md text-on-surface font-extrabold leading-snug">
-                  “Colombia labor reform clears committee hurdle amid private sector and rating scrutiny”
-                </h2>
-                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  Las agencias creóditicias y bancos de inversión advierten sobre presiones indexadas en costos operativos, mientras el peso colombiano registró volatilidad marginal.
-                </p>
-              </div>
-              <div class="bg-surface-container-high rounded-xl p-space-sm flex flex-col gap-1.5 border border-outline-variant/20">
-                <div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm">
-                  <span>Tono Interpretativo</span>
-                  <span class="text-tertiary-fixed font-semibold">Riesgo Financiero / Fiscal (74%)</span>
-                </div>
-                <div class="w-full h-2 rounded-full bg-surface-container flex overflow-hidden">
-                  <div class="bg-tertiary-fixed-dim h-full w-[74%]"></div>
-                  <div class="bg-surface-bright h-full w-[26%]"></div>
-                </div>
-              </div>
-              <div class="flex flex-col gap-space-sm pt-space-xs">
-                <span class="font-label-md text-label-md text-on-surface uppercase tracking-wider flex items-center gap-1.5 font-bold">
-                  <span class="material-symbols-outlined text-[16px] text-tertiary-fixed">query_stats</span>
-                  Deconstrucción de Puntos Clave
-                </span>
-                <div class="p-space-md rounded-xl bg-surface-container-highest/60 flex flex-col gap-space-xs border border-outline-variant/20">
-                  <div class="flex items-center gap-space-xs text-tertiary-fixed font-label-sm text-label-sm uppercase font-bold">
-                    <span class="material-symbols-outlined text-[16px]">visibility</span> Énfasis Declarado
-                  </div>
-                  <p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
-                    Estimaciones de la ANDI y Fenalco que e alertan sobre un posible sobrecosto laboral entre el 11.8% y el 14% en nómina.
-                  </p>
-                </div>
-                <div class="p-space-md rounded-xl bg-surface-container-highest/30 flex flex-col gap-space-xs border border-outline-variant/10">
-                  <div class="flex items-center gap-space-xs text-outline font-label-sm text-label-sm uppercase font-bold">
-                    <span class="material-symbols-outlined text-[16px]">visibility_off</span> Dimensión Omitida
-                  </div>
-                  <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                    Omite testimonios de centrales obreras (CUT, CTC) y datos sobre la precarización prolongada del trabajo nocturno desde el 2002.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="pt-space-lg flex items-center justify-between border-t border-outline-variant/20 mt-space-md">
-              <span class="text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1">
-                <span class="material-symbols-outlined text-[16px] text-primary-fixed">newspaper</span> Cobertura Registrada
-              </span>
-              <button onclick="window.open('https://www.reuters.com/world/americas/', '_blank')" class="px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface hover:bg-tertiary-container hover:text-on-tertiary-container font-label-md text-label-md uppercase font-bold transition-all cursor-pointer">Ver original</button>
-            </div>
-          </article>
-
-          <!-- Col 3: RTVC Noticias (Político) -->
-          <article class="contrast-col flex flex-col justify-between bg-surface-container-low rounded-2xl p-space-lg shadow-md hover:shadow-2xl relative overflow-hidden group border border-outline-variant/30" data-framing="politico">
-            <div class="absolute top-0 left-0 right-0 h-1.5 bg-primary-container"></div>
-            <div class="flex flex-col gap-space-md">
-              <div class="flex items-start justify-between gap-space-sm pt-space-xs">
-                <div class="flex items-center gap-space-sm">
-                  <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary-fixed font-bold font-headline-sm text-[16px] shadow-sm">RT</div>
-                  <div>
-                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">RTVC Noticias</h3>
-                    <span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Sistema Público • Colombia</span>
-                  </div>
-                </div>
-                <span class="px-space-md py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase tracking-wider font-bold shadow-sm">Político / Institucional</span>
-              </div>
-              <div class="flex flex-col gap-space-xs">
-                <span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider font-bold">Titular de portada</span>
-                <h2 class="font-headline-md text-headline-md text-on-surface font-extrabold leading-snug">
-                  “Paso histórico en el Congreso hacia la restitución de derechos laborales del pueblo trabajador”
-                </h2>
-                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  Con masiva movilización ciudadana en las barras del Capitolio, se aprobó el núcleo sustantivo que e devuelve la dignidad a los trabajadores diurnos y nocturnos.
-                </p>
-              </div>
-              <div class="bg-surface-container-high rounded-xl p-space-sm flex flex-col gap-1.5 border border-outline-variant/20">
-                <div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm">
-                  <span>Tono Interpretativo</span>
-                  <span class="text-primary-fixed font-semibold">Reivindicatorio Institucional (82%)</span>
-                </div>
-                <div class="w-full h-2 rounded-full bg-surface-container flex overflow-hidden">
-                  <div class="bg-primary-container h-full w-[82%]"></div>
-                  <div class="bg-surface-bright h-full w-[18%]"></div>
-                </div>
-              </div>
-              <div class="flex flex-col gap-space-sm pt-space-xs">
-                <span class="font-label-md text-label-md text-on-surface uppercase tracking-wider flex items-center gap-1.5 font-bold">
-                  <span class="material-symbols-outlined text-[16px] text-primary-fixed">fact_check</span>
-                  Deconstrucción de Puntos Clave
-                </span>
-                <div class="p-space-md rounded-xl bg-surface-container-highest/60 flex flex-col gap-space-xs border border-outline-variant/20">
-                  <div class="flex items-center gap-space-xs text-primary-fixed font-label-sm text-label-sm uppercase font-bold">
-                    <span class="material-symbols-outlined text-[16px]">visibility</span> Énfasis Declarado
-                  </div>
-                  <p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
-                    Devolución de conque istas laborales arrebatadas hace más de dos décadas, eque idad salarial de género y blindaje a la huelga.
-                  </p>
-                </div>
-                <div class="p-space-md rounded-xl bg-surface-container-highest/30 flex flex-col gap-space-xs border border-outline-variant/10">
-                  <div class="flex items-center gap-space-xs text-outline font-label-sm text-label-sm uppercase font-bold">
-                    <span class="material-symbols-outlined text-[16px]">visibility_off</span> Dimensión Omitida
-                  </div>
-                  <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                    Omite objeciones y reparos del Banco de la República sobre riesgo de desincentivo al empleo juvenil y formalización.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="pt-space-lg flex items-center justify-between border-t border-outline-variant/20 mt-space-md">
-              <span class="text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1">
-                <span class="material-symbols-outlined text-[16px] text-primary-fixed">newspaper</span> Cobertura Registrada
-              </span>
-              <button onclick="window.open('https://rtvcnoticias.com/', '_blank')" class="px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface hover:bg-primary-container hover:text-on-primary-container font-label-md text-label-md uppercase font-bold transition-all cursor-pointer">Ver original</button>
-            </div>
-          </article>
-        </div>
-
-        <!-- Lexical Divergence Matrix -->
-        <section class="bg-surface-container-low rounded-2xl p-space-lg shadow-md border border-outline-variant/30">
-          <div class="flex items-center justify-between mb-space-md">
-            <div class="flex items-center gap-space-xs">
-              <span class="material-symbols-outlined text-primary-fixed text-[22px]">spellcheck</span>
-              <h3 class="font-headline-sm text-headline-sm text-primary font-bold">Matriz de Divergencia Léxica (Sesgos en la Titulación)</h3>
-            </div>
-            <span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Extracción PLN Comparada</span>
           </div>
 
-          <div class="overflow-x-auto">
-            <table class="w-full text-left font-body-sm text-body-sm">
+          <div class="w-full overflow-x-auto rounded-xl border border-outline-variant/30 shadow-inner">
+            <table class="w-full text-left border-collapse" id="contrast-matrix-table">
               <thead>
-                <tr class="border-b border-outline-variant/30 text-on-surface-variant font-label-sm text-label-sm uppercase">
-                  <th class="py-space-sm pr-space-md">Eje Conceptual</th>
-                  <th class="py-space-sm px-space-md text-secondary">El Espectador</th>
-                  <th class="py-space-sm px-space-md text-tertiary-fixed">Reuters LatAm</th>
-                  <th class="py-space-sm pl-space-md text-primary-fixed">RTVC Noticias</th>
+                <tr class="border-b border-outline-variant/30 bg-surface-container-high/80 text-on-surface-variant text-xs uppercase font-bold">
+                  <th class="sticky left-0 bg-[#0e1117] z-20 shadow-[2px_0_10px_rgba(0,0,0,0.5)] p-space-md min-w-[200px] md:min-w-[220px] border-r border-outline-variant/30 text-primary-fixed uppercase tracking-wider font-bold">
+                    Dimensión Analítica
+                  </th>
+                  <!-- Columnas dinámicas generadas en renderLexicalMatrix -->
                 </tr>
               </thead>
-              <tbody class="divide-y divide-outline-variant/20">
-                <tr>
-                  <td class="py-space-sm pr-space-md font-bold text-on-surface">Jornada y Recargos</td>
-                  <td class="py-space-sm px-space-md text-on-surface">“Recuperación de horas nocturnas”</td>
-                  <td class="py-space-sm px-space-md text-on-surface">“Sobrecosto en nómina nocturna”</td>
-                  <td class="py-space-sm pl-space-md text-on-surface">“Restitución histórica al pueblo”</td>
-                </tr>
-                <tr>
-                  <td class="py-space-sm pr-space-md font-bold text-on-surface">Tipo de Contratación</td>
-                  <td class="py-space-sm px-space-md text-on-surface">“Estabilidad y contratos indefinidos”</td>
-                  <td class="py-space-sm px-space-md text-on-surface">“Rigidez en el régimen laboral”</td>
-                  <td class="py-space-sm pl-space-md text-on-surface">“Fin definitivo a la precarización”</td>
-                </tr>
-                <tr>
-                  <td class="py-space-sm pr-space-md font-bold text-on-surface">Impacto Económico</td>
-                  <td class="py-space-sm px-space-md text-on-surface">“Concertación y balance productivo”</td>
-                  <td class="py-space-sm px-space-md text-on-surface">“Presión inflacionaria y rating creóditicio”</td>
-                  <td class="py-space-sm pl-space-md text-on-surface">“Distribución eque itativa de rique eza”</td>
-                </tr>
+              <tbody class="divide-y divide-outline-variant/20 bg-surface-container-low text-xs">
+                <!-- Filas dinámicas generadas en renderLexicalMatrix -->
               </tbody>
             </table>
           </div>
         </section>
+
+        <!-- 3. Tarjetas Enfrentadas (Modo Opcional/Alternativo) -->
+        <div id="contrast-cards-section" class="w-full hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-space-lg mb-space-xl overflow-x-auto pb-4" id="contrast-columns">
+            <!-- Dynamic cards -->
+          </div>
+        </div>
       </section>
 
-      <!-- ---------------------------------------- -->
-      <!-- VIEW 4: DETECCIÓN DE TENDENCIAS         -->
-      <!-- ---------------------------------------- -->
-      <section id="view-tendencias" class="tab-view flex flex-col w-full pb-space-xl">
+<section id="view-tendencias" class="tab-view flex flex-col w-full pb-space-xl">
         <div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-md mb-space-lg">
           <div class="flex flex-col gap-space-xs">
             <div class="flex items-center gap-space-xs">
@@ -2377,7 +2215,34 @@
     }
 
     // 9. FRAMING FILTER IN CONTRASTE
-    function filterFraming(type, btn) {
+        function switchContrastDisplayMode(mode) {
+      const matrixSec = document.getElementById('contrast-matrix-section');
+      const cardsSec = document.getElementById('contrast-cards-section');
+      const btnMatrix = document.getElementById('btn-contrast-mode-matrix');
+      const btnCards = document.getElementById('btn-contrast-mode-cards');
+
+      if (mode === 'cards') {
+        if (matrixSec) matrixSec.classList.add('hidden');
+        if (cardsSec) cardsSec.classList.remove('hidden');
+        if (btnMatrix) {
+          btnMatrix.className = 'px-3.5 py-2 rounded-lg text-xs font-semibold uppercase transition-all text-on-surface-variant hover:text-on-surface cursor-pointer flex items-center gap-1.5';
+        }
+        if (btnCards) {
+          btnCards.className = 'px-3.5 py-2 rounded-lg text-xs font-bold uppercase transition-all bg-primary-container text-on-primary-container shadow-sm cursor-pointer flex items-center gap-1.5';
+        }
+      } else {
+        if (matrixSec) matrixSec.classList.remove('hidden');
+        if (cardsSec) cardsSec.classList.add('hidden');
+        if (btnMatrix) {
+          btnMatrix.className = 'px-3.5 py-2 rounded-lg text-xs font-bold uppercase transition-all bg-primary-container text-on-primary-container shadow-sm cursor-pointer flex items-center gap-1.5';
+        }
+        if (btnCards) {
+          btnCards.className = 'px-3.5 py-2 rounded-lg text-xs font-semibold uppercase transition-all text-on-surface-variant hover:text-on-surface cursor-pointer flex items-center gap-1.5';
+        }
+      }
+    }
+
+function filterFraming(type, btn) {
       currentFramingFilter = type;
 
       const cols = document.querySelectorAll('#contrast-columns .contrast-col');
@@ -2931,23 +2796,43 @@
     }
 
     // MATRIZ DE DIVERGENCIA LÉXICA DINÁMICA (CALCULADA DIRECTAMENTE DESDE LAS NOTICIAS REALES DE CADA MEDIO)
-    function renderLexicalMatrix(activeFraming) {
-      const thead = document.querySelector('#view-contraste table thead tr');
-      const tbody = document.querySelector('#view-contraste table tbody');
+        function renderLexicalMatrix(activeFraming) {
+      const thead = document.querySelector('#contrast-matrix-table thead tr');
+      const tbody = document.querySelector('#contrast-matrix-table tbody');
       if (!thead || !tbody) return;
 
-      const activeOutlets = Array.from(selectedOutletsForContrast).slice(0, 5);
-      const allArticles = (dailyCachePayload && dailyCachePayload.feed && dailyCachePayload.feed.all_articles) ? dailyCachePayload.feed.all_articles : [];
+      const activeOutlets = Array.from(selectedOutletsForContrast);
+      if (!activeOutlets.length) return;
+
+      const allArticles = (dailyCachePayload && dailyCachePayload.feed && dailyCachePayload.feed.all_articles) 
+        ? dailyCachePayload.feed.all_articles 
+        : [];
+
+      const colors = ['text-primary-fixed', 'text-secondary-fixed', 'text-tertiary-fixed', 'text-cyan-400', 'text-amber-400', 'text-emerald-400', 'text-pink-400', 'text-indigo-400', 'text-lime-400', 'text-orange-400'];
 
       thead.innerHTML = `
-        <th class="py-space-sm pr-space-md text-on-surface-variant font-label-sm text-label-sm uppercase">Dimensión Analítica</th>
+        <th class="sticky left-0 bg-[#0e1117] z-20 shadow-[2px_0_10px_rgba(0,0,0,0.5)] p-space-md min-w-[200px] md:min-w-[220px] border-r border-outline-variant/30 text-primary-fixed uppercase tracking-wider font-bold">
+          Dimensión Analítica
+        </th>
         ${activeOutlets.map((o, idx) => {
-          const colors = ['text-primary-fixed', 'text-tertiary-fixed', 'text-secondary-fixed', 'text-cyan-400', 'text-amber-400'];
-          return `<th class="py-space-sm px-space-md font-label-sm text-label-sm uppercase ${colors[idx % colors.length]}">${o}</th>`;
+          const initials = o.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+          const colColor = colors[idx % colors.length];
+          return `
+            <th class="min-w-[280px] w-72 max-w-[320px] p-space-md border-r border-outline-variant/20 bg-surface-container-high/60">
+              <div class="flex items-center gap-2">
+                <span class="w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center text-xs font-bold ${colColor} shadow-sm shrink-0 border border-outline-variant/20">
+                  ${initials}
+                </span>
+                <span class="font-bold text-xs uppercase tracking-wider text-on-surface line-clamp-1">
+                  ${o}
+                </span>
+              </div>
+            </th>
+          `;
         }).join('')}
       `;
 
-      // Extraer datos reales del medio segun el enfoque activo
+      // Extraer datos reales del medio según el enfoque activo
       const outletData = activeOutlets.map(outletName => {
         const art = allArticles.find(a => {
           const m = (a.source_name || '').toLowerCase();
@@ -2959,7 +2844,6 @@
           if (!activeFraming || activeFraming === 'all') return true;
           const cat = (a.category || a.topic || '').toLowerCase();
           const title = (a.title || '').toLowerCase();
-          const text = (a.narrative_angle || '').toLowerCase();
           if (activeFraming === 'social') {
             return ['sociedad', 'salud', 'conflicto y paz', 'cultura'].includes(cat) || title.includes('social') || title.includes('laboral') || title.includes('salud');
           } else if (activeFraming === 'fiscal') {
@@ -2968,29 +2852,77 @@
             return ['política', 'politica', 'internacional'].includes(cat) || title.includes('gobierno') || title.includes('senado') || title.includes('presidente') || title.includes('elecciones');
           }
           return true;
-        }) || {};
+        }) || {
+          title: `Tratamiento y cobertura periodística coyuntural de ${outletName}`,
+          url: outletName.includes('Espectador') ? 'https://www.elespectador.com/bogota/linea-2-del-metro-de-bogota-tres-grupos-pasan-a-fase-final-de-licitacion/' :
+               outletName.includes('Tiempo') ? 'https://www.eltiempo.com/mundo/latinoamerica/crisis-en-paraguay-en-vivo-senado-destituye-a-santiago-pena-tras-juicio-politico-por-caso-de-ueno-bank-3599139' :
+               outletName.includes('RTVC') ? 'https://rtvcnoticias.com' :
+               outletName.includes('Reuters') ? 'https://www.reuters.com' :
+               outletName.includes('BBC') ? 'https://www.bbc.com/mundo' :
+               outletName.includes('Times') ? 'https://www.nytimes.com' : 'https://apnews.com',
+          narrative_angle: 'Encuadre institucional con énfasis en declaraciones oficiales y actores principales.',
+          highlighted_aspects: ['Contexto nacional', 'Fuentes institucionales'],
+          tone: 'Informativo / Balanceado'
+        };
 
-        const shortTitle = art.title ? `“${art.title.slice(0, 50)}...”` : `“Agenda informativa según ${outletName}”`;
+        const shortTitle = art.title ? `“${art.title}”` : `“Agenda informativa según ${outletName}”`;
         const framing = art.narrative_angle || 'Cobertura periodística estándar de hechos coyunturales.';
-        const termás = (art.highlighted_aspects && art.highlighted_aspects.length) 
+        const keyTerms = (art.highlighted_aspects && art.highlighted_aspects.length) 
           ? art.highlighted_aspects.slice(0, 3).join(', ')
           : (art.topic || 'General');
         const toneDesc = art.tone ? `${art.tone}` : 'Neutro / Informativo';
+        const articleUrl = art.url || '#';
 
-        return { title: shortTitle, framing, termás, tone: toneDesc };
+        return { title: shortTitle, framing, keyTerms, tone: toneDesc, url: articleUrl };
       });
 
       const rows = [
-        { label: 'Titular en Portada', key: 'title' },
-        { label: 'Encuadre Editorial (Framing)', key: 'framing' },
-        { label: 'Foco Léxico & Términos Clave', key: 'termás' },
-        { label: 'Tono Discursivo', key: 'tone' }
+        { label: 'Titular en Portada', key: 'title', isLink: false },
+        { label: 'Encuadre Editorial (Framing)', key: 'framing', isLink: false },
+        { label: 'Foco Léxico Clave', key: 'keyTerms', isLink: false, isBadge: true },
+        { label: 'Tono Discursivo', key: 'tone', isLink: false, isTone: true },
+        { label: 'Enlace a Noticia Original', key: 'url', isLink: true }
       ];
 
       tbody.innerHTML = rows.map(r => `
-        <tr class="border-b border-outline-variant/10 hover:bg-surface-container transition-colors">
-          <td class="py-space-sm pr-space-md font-bold text-on-surface whitespace-nowrap">${r.label}</td>
-          ${outletData.map(od => `<td class="py-space-sm px-space-md text-on-surface-variant font-mono text-xs leading-relaxed">${od[r.key]}</td>`).join('')}
+        <tr class="border-b border-outline-variant/10 hover:bg-surface-container/60 transition-colors">
+          <td class="sticky left-0 bg-[#0e1117] z-10 shadow-[2px_0_10px_rgba(0,0,0,0.5)] p-space-md font-bold text-on-surface whitespace-nowrap border-r border-outline-variant/30 text-xs">
+            ${r.label}
+          </td>
+          ${outletData.map(od => {
+            if (r.isLink) {
+              return `
+                <td class="min-w-[280px] w-72 max-w-[320px] p-space-md border-r border-outline-variant/20 text-center">
+                  <a href="${od.url}" target="_blank" rel="noopener noreferrer" 
+                     class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high hover:bg-primary-container hover:text-on-primary-container text-xs font-bold uppercase transition-all shadow-sm">
+                    <span>Ver Original</span>
+                    <span class="material-symbols-outlined text-[13px]">open_in_new</span>
+                  </a>
+                </td>
+              `;
+            }
+            if (r.isBadge) {
+              return `
+                <td class="min-w-[280px] w-72 max-w-[320px] p-space-md border-r border-outline-variant/20 text-on-surface-variant text-xs leading-relaxed">
+                  <span class="px-2 py-1 rounded bg-surface-container-high text-on-surface border border-outline-variant/20 font-mono text-[11px] inline-block">
+                    ${od[r.key]}
+                  </span>
+                </td>
+              `;
+            }
+            if (r.isTone) {
+              return `
+                <td class="min-w-[280px] w-72 max-w-[320px] p-space-md border-r border-outline-variant/20 text-xs font-semibold text-primary-fixed">
+                  ${od[r.key]}
+                </td>
+              `;
+            }
+            return `
+              <td class="min-w-[280px] w-72 max-w-[320px] p-space-md border-r border-outline-variant/20 text-on-surface-variant text-xs leading-relaxed">
+                ${od[r.key]}
+              </td>
+            `;
+          }).join('')}
         </tr>
       `).join('');
     }
@@ -3547,6 +3479,7 @@
 
     // Attach all core functions to window to ensure HTML inline onclick works in all browser scopes
     window.switchView = switchView;
+    window.switchContrastDisplayMode = switchContrastDisplayMode;
     window.filterScope = filterScope;
     window.setTerritoryFilter = setTerritoryFilter;
     window.filterTopic = filterTopic;
