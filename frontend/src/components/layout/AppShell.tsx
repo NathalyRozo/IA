@@ -1,31 +1,29 @@
 'use client';
 
 import React, { useState } from 'react';
-import Sidebar from '@/components/layout/Sidebar';
-import Navbar from '@/components/layout/Navbar';
-import ScopeDisclaimer from '@/components/layout/ScopeDisclaimer';
+import MainLayout from '@/components/layout/MainLayout';
+import Dashboard from '@/components/Dashboard';
 
-export default function AppShell({ children }: { children: React.ReactNode }) {
-  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
+export default function AppShell({ children }: { children?: React.ReactNode }) {
+  const [currentView, setCurrentView] = useState('inicio');
+  const [territory, setTerritory] = useState<'all' | 'nacional' | 'internacional'>('nacional');
+  const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <div className="bg-surface-container-lowest min-h-screen text-on-surface antialiased font-body-md">
-      {/* Sidebar Navigation */}
-      <Sidebar onOpenDisclaimer={() => setIsDisclaimerOpen(true)} />
-
-      {/* Main Content Area */}
-      <div className="pl-72 flex flex-col min-h-screen">
-        <Navbar onOpenDisclaimer={() => setIsDisclaimerOpen(true)} />
-        <main className="relative pt-20 w-full px-space-lg bg-surface-container-lowest min-h-screen">
-          {children}
-        </main>
-      </div>
-
-      {/* Scope Disclaimer / PRD Ethics Modal */}
-      <ScopeDisclaimer 
-        isOpen={isDisclaimerOpen} 
-        onClose={() => setIsDisclaimerOpen(false)} 
+    <MainLayout
+      activeView={currentView}
+      onViewChange={setCurrentView}
+      selectedTerritory={territory}
+      onTerritoryChange={setTerritory}
+      onSearchChange={setSearchQuery}
+    >
+      <Dashboard
+        currentView={currentView}
+        selectedTerritory={territory}
+        searchQuery={searchQuery}
+        onNavigate={setCurrentView}
       />
-    </div>
+      {children}
+    </MainLayout>
   );
 }
