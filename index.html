@@ -418,7 +418,7 @@
                   Política Nacional
                 </span>
                 <span class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm">
-                  <span class="material-symbols-outlined text-[16px] text-tertiary-container">schedule</span> Actualizado hace 12 min
+                  <span class="material-symbols-outlined text-[16px] text-tertiary-container">schedule</span> <span id="hero-last-updated">Actualizado</span>
                 </span>
               </div>
 
@@ -2999,7 +2999,7 @@ function filterFraming(type, btn) {
 
       if (!data) {
         try {
-          const respStatic = await fetch('./data/daily_cache.json', { cache: 'no-store' });
+          const respStatic = await fetch(`./data/daily_cache.json?t=${Date.now()}`, { cache: 'no-store' });
           if (respStatic.ok) {
             data = await respStatic.json();
           }
@@ -3029,6 +3029,17 @@ function filterFraming(type, btn) {
 
       const allArticles = (data.feed && data.feed.all_articles) ? data.feed.all_articles : [];
       if (!allArticles.length) return;
+
+      const lastUpdatedEl = document.getElementById('hero-last-updated');
+      if (lastUpdatedEl && data.metadata) {
+        const ts = data.metadata.last_updated || data.metadata.updated_at || data.last_updated;
+        if (ts) {
+          const d = new Date(ts);
+          const timeStr = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          const dateStr = d.toLocaleDateString([], { day: 'numeric', month: 'short' });
+          lastUpdatedEl.innerText = `Actualizado: ${dateStr} ${timeStr}`;
+        }
+      }
 
       const featured = allArticles[0];
       if (featured) {
@@ -3390,27 +3401,41 @@ function filterFraming(type, btn) {
       const syncText = document.getElementById('sync-text');
 
       if (syncIcon) syncIcon.classList.add('animate-spin');
-      if (syncText) syncText.innerText = 'Analizando con Gemini...';
-      showToast('Sincronizando noticias de los 10 medios con Gemini 3.5...');
+      if (syncText) syncText.innerText = 'Sincronizando...';
+      showToast('Descargando las noticias más recientes analizadas con Gemini...');
 
+      let data = null;
       try {
         const resp = await fetch('http://localhost:8000/api/v1/cron/daily-update?sync=true', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' }
         });
-
         if (resp.ok) {
-          await loadDailyData(true);
-        } else {
-          await loadDailyData(true);
+          data = await resp.json();
         }
-      } catch (err) {
-        await loadDailyData(false);
-        showToast('Noticias y métricas actualizadas desde la caché generada con Gemini.');
-      } finally {
-        if (syncIcon) syncIcon.classList.remove('animate-spin');
-        if (syncText) syncText.innerText = 'Sincronizar Gemini';
+      } catch (err) {}
+
+      if (!data) {
+        try {
+          const respStatic = await fetch(`./data/daily_cache.json?t=${Date.now()}`, { cache: 'no-store' });
+          if (respStatic.ok) {
+            data = await respStatic.json();
+          }
+        } catch (err) {}
       }
+
+      if (data) {
+        dailyCachePayload = data;
+        renderDailyDataToUI(data);
+        const lastUpdated = data.metadata?.last_updated || data.metadata?.updated_at || data.last_updated;
+        const formattedDate = lastUpdated ? new Date(lastUpdated).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'reciente';
+        showToast(`¡${data.metadata?.total_articles || 'Noticias'} sincronizadas! Última actualización: ${formattedDate}`);
+      } else {
+        await loadDailyData(true);
+      }
+
+      if (syncIcon) syncIcon.classList.remove('animate-spin');
+      if (syncText) syncText.innerText = 'Sincronizar Gemini';
     }
 
     // Inicialización al cargar la página

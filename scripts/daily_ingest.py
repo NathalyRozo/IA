@@ -228,11 +228,12 @@ def classify_with_gemini(articles: List[Dict[str, Any]], api_key: str) -> List[D
             art["topic"] = art["category"]
             art["narrative_angle"] = "Cobertura informativa de agenda"
             art["tone"] = "Neutro"
+            art["highlighted_aspects"] = [art["title"][:50]]
         return articles
 
     logger.info(f"Clasificando {len(articles)} artículos con Gemini API...")
     batch_size = 10
-    
+
     # Preparar cliente google-genai si está disponible
     client = None
     try:
@@ -241,7 +242,7 @@ def classify_with_gemini(articles: List[Dict[str, Any]], api_key: str) -> List[D
     except Exception:
         client = None
 
-        for i in range(0, len(articles), batch_size):
+    for i in range(0, len(articles), batch_size):
         batch = articles[i:i + batch_size]
         payload_items = [
             {"id": a["id"], "media": a["source_name"], "title": a["title"], "excerpt": a.get("raw_text", "")[:250]}
@@ -288,7 +289,7 @@ def classify_with_gemini(articles: List[Dict[str, Any]], api_key: str) -> List[D
         }}
         """
 
-        GEMINI_MODELS = ["gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-3.7-flash"]
+        GEMINI_MODELS = ["gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-2.5-flash"]
         gemini_response_json = None
 
         # Intento con google-genai
@@ -359,15 +360,14 @@ def classify_with_gemini(articles: List[Dict[str, Any]], api_key: str) -> List[D
                 art["tone"] = info.get("tone", "Neutro")
                 art["highlighted_aspects"] = info.get("highlighted_aspects", [art["title"]])
             else:
-                # Regla estricta: NO inventar categoría por defecto si Gemini no responde
-                art["category"] = None
-                art["topic"] = None
-                art["narrative_angle"] = None
-                art["tone"] = None
-                art["highlighted_aspects"] = None
+                fallback_cat = heuristic_classify(art["title"], art.get("raw_text", ""))
+                art["category"] = fallback_cat
+                art["topic"] = fallback_cat
+                art["narrative_angle"] = "Cobertura informativa de agenda"
+                art["tone"] = "Neutro"
+                art["highlighted_aspects"] = [art["title"][:50]]
 
     return articles
-
 
 
 def scrape_homepage_articles(source: Dict[str, Any], max_items: int = 8) -> List[Dict[str, Any]]:
@@ -657,6 +657,7 @@ def update_cumulative_cache(new_articles: List[Dict[str, Any]], cache_path: str)
 
     # Construir el JSON completo estructurado
     updated_payload = {
+        "last_updated": now.isoformat(),
         "metadata": {
             "system": "FOQUÉ - Observatorio de Cobertura y Agenda Mediática",
             "updated_at": now.isoformat(),
@@ -664,7 +665,8 @@ def update_cumulative_cache(new_articles: List[Dict[str, Any]], cache_path: str)
             "total_articles": total_articles,
             "active_sources": len(MEDIA_SOURCES),
             "gemini_enabled": bool(os.getenv("GEMINI_API_KEY")),
-            "model_used": "gemini-3.5-flash-lite",
+            "model_used": "gemini-3.8-flash",
+            "last_updated": now.isoformat(),
             "ethical_disclaimer": "Herramienta analítica de encuadre y agenda setting. Queda excluido el fact-checking y la medición de opinión pública."
         },
         "feed": {
